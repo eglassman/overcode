@@ -10,14 +10,14 @@ from pipeline_util import ensure_folder_exists
 
 # Tidier, finalizer and formatter
 from pipeline_defaults_python import tidy_non_oppia as defaultTidier
-from pipeline_defaults_python import elena_finalizer as defaultFinalizer
+from pipeline_defaults_python import make_finalizer
 # from pipeline_defaults_python import format_as_html as defaultFormatter
 defaultFormatter = None
 
 stopOnError = True
 skippedSolutions = []
 
-def tidy(tidyFn, dataSrc, tidyDest):
+def tidy(tidyFn, dataSrc, tidyDest, testedFunctionName):
     ensure_folder_exists(tidyDest)
     print "Tidying data"
     for filename in os.listdir(dataSrc):
@@ -28,7 +28,7 @@ def tidy(tidyFn, dataSrc, tidyDest):
         print solNum
 
         try:
-            tidyFn(filename, dataSrc, tidyDest)
+            tidyFn(filename, dataSrc, tidyDest, testedFunctionName)
         except:
             if stopOnError: raise
             skippedSolutions.append(solNum)
@@ -77,7 +77,7 @@ def extract_var_info_from_trace(trace):
     return results
 
 
-def run_logger(dataSrc, pickleDest, finalizer=defaultFinalizer):
+def run_logger(dataSrc, pickleDest, finalizer):
     print "Running logger"
     ensure_folder_exists(pickleDest)
     for filename in os.listdir(dataSrc):
@@ -106,16 +106,21 @@ def run_logger(dataSrc, pickleDest, finalizer=defaultFinalizer):
 def preprocess_pipeline_data(folderOfData,
                              testCase,
                              tidier=defaultTidier,
-                             formatter=defaultFormatter):
+                             testedFunctionName='test',
+                             formatter=defaultFormatter,
+                             finalizer=None):
     tidyDataPath = path.join(folderOfData, 'tidyData')
     formatPath = path.join(folderOfData, 'tidyDataHTML')
     testCaseDataPath = path.join(folderOfData, 'tidyDataWithTestCase')
     picklePath = path.join(folderOfData, 'pickleFiles')
 
-    if tidier: tidy(tidier, folderOfData, tidyDataPath)
+    if finalizer == None:
+        finalizer = make_finalizer(testedFunctionName)
+
+    if tidier: tidy(tidier, folderOfData, tidyDataPath, testedFunctionName)
     if formatter: format(formatter, tidyDataPath, formatPath)
     if testCase: add_test_case(testCase, tidyDataPath, testCaseDataPath)
-    run_logger(testCaseDataPath, picklePath)
+    run_logger(testCaseDataPath, picklePath, finalizer=finalizer)
 
     print "Solutions skipped:", len(skippedSolutions)
     pprint.pprint(skippedSolutions, indent=2)
@@ -127,4 +132,4 @@ if __name__ == '__main__':
     with open(testCasePath, 'r') as f:
         testCase = f.read()
 
-    preprocess_pipeline_data(folderOfData, testCase)
+    preprocess_pipeline_data(folderOfData, testCase, testedFunctionName='dotProduct')
