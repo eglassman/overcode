@@ -5,12 +5,12 @@ import pickle
 import pprint
 import sys
 
-from generate_json_trace import *
 import pg_logger
 from pipeline_util import ensure_folder_exists
 
-# Tidier and formatter
+# Tidier, finalizer and formatter
 from pipeline_defaults_python import tidy_non_oppia as defaultTidier
+from pipeline_defaults_python import elena_finalizer as defaultFinalizer
 # from pipeline_defaults_python import format_as_html as defaultFormatter
 defaultFormatter = None
 
@@ -77,7 +77,7 @@ def extract_var_info_from_trace(trace):
     return results
 
 
-def run_logger(dataSrc, pickleDest):
+def run_logger(dataSrc, pickleDest, finalizer=defaultFinalizer):
     print "Running logger"
     ensure_folder_exists(pickleDest)
     for filename in os.listdir(dataSrc):
@@ -95,7 +95,7 @@ def run_logger(dataSrc, pickleDest):
                 raw_input_lst_json,
                 cumulative,
                 heapPrimitives,
-                elena_finalizer) # TODO: allow finalizer swapping
+                finalizer)
 
         toPickle = dict(zip(('trace', 'args', 'returnVars'), loggerOutput))
         toPickle['trace'] = extract_var_info_from_trace(toPickle['trace'])
