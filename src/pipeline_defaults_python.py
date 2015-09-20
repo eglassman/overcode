@@ -60,7 +60,34 @@ def tidy_oppia(filename, sourceDir, destDir, testedFunctionName):
             f.write("    "+line+'\n')
 
 
-def make_finalizer(testedFunctionName):
+def make_default_finalizer(testedFunctionName):
+    """Ignores most of the stuff in the trace and returns a tuple of
+    new_trace, argumentNames, returnVarNames. The original trace
+    consists of a list of these:
+    {
+        event: str,
+        func_name: str,
+        globals: { name: val, ... },
+        heap: [...],
+        line: int,
+        ordered_globals: [...],
+        stack_to_render: [...],
+        stdout: ''
+    }
+
+    The new trace is a dict like this:
+    { 0: {
+        Line: int,
+        globals: { name: val, ...},
+        locals: { name: val, ...}
+    }, 1: {...}, ...}
+
+    new_trace[i][Line] = old_trace[i][line] if it exists, -1 otherwise
+    new_trace[i][globals] = dereferenced old_trace[i][globals]
+    new_trace[i][locals] = dereferenced encoded_locals from the last frame of
+                           the old_trace's stack_to_render
+
+    """
     def elena_finalizer(input_code, output_trace):
         def extractValues(dictOfVars,heap):
             dictToReturn = {}
@@ -130,6 +157,40 @@ def make_finalizer(testedFunctionName):
         argAndReturnVarInfo['namesOfReturnVariables'] = list(set(namesOfReturnVariables_accumulated))
         return progTraceDict, argAndReturnVarInfo['namesOfArguments'], argAndReturnVarInfo['namesOfReturnVariables']
     return elena_finalizer
+
+def extract_var_info_from_trace(trace):
+    """
+    returns {
+        __lineNo__: [ (step, line # at that step), ...],
+        varname1: [ (step, <value at that step> or 'myNaN'), ...],
+        varname2: [...],
+        ...
+    }
+
+    where [varname1, varname2, ...] is the set union of all local variable
+    names found in the trace
+    """
+
+    numSteps = len(trace)
+    results = { '__lineNo__': [] }
+    accumulatedVarnames = set()
+    # Assumes trace has been formatted by elena_finalizer, and the keys of
+    # the trace are generated with a counter
+    # TODO: can we assume this? Or do we have to sort trace.keys()?
+    for step in xrange(numSteps):
+        event = trace[step]
+        # TODO: do we need (step, <line # at that step>) pairs? Or can we
+        # just use the index since we're appending in order?
+        results['__lineNo__'].append((step, event['Line']))
+        accumulatedVarnames |= set(event['locals'].keys())
+
+    for var in accumulatedVarnames:
+        # Make a list of (step, varVal) pairs for each step in the trace,
+        # where varVal is the value of var if var is defined at that step,
+        # and 'myNaN' otherwise
+        # TODO: See above - do we need the step?
+        results[var] = [(s, trace[s]['locals'].get(var, 'myNaN')) for s in xrange(numSteps)]
+    return results
 
 
 def format_as_html(filename, sourceDir, destDir):

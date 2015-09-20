@@ -9,8 +9,9 @@ import pg_logger
 from pipeline_util import ensure_folder_exists
 
 # Tidier, finalizer and formatter
+from pipeline_defaults_python import extract_var_info_from_trace as defaultTraceMunger
 from pipeline_defaults_python import tidy_non_oppia as defaultTidier
-from pipeline_defaults_python import make_finalizer
+from pipeline_defaults_python import make_default_finalizer
 # from pipeline_defaults_python import format_as_html as defaultFormatter
 defaultFormatter = None
 
@@ -53,31 +54,8 @@ def add_test_case(testCase, dataSrc, testCaseDest):
             with open(path.join(testCaseDest, filename), 'w') as f_out:
                 f_out.write(f_in.read() + '\n\n' + testCase)
 
-def extract_var_info_from_trace(trace):
-    numSteps = len(trace)
-    results = { '__lineNo__': [] }
-    accumulatedVarnames = set()
-    # Assumes trace has been formatted by elena_finalizer, and the keys of
-    # the trace are generated with a counter
-    # TODO: can we assume this? Or do we have to sort trace.keys()?
-    for step in xrange(numSteps):
-        event = trace[step]
-        # TODO: do we need (step, <line # at that step>) pairs? Or can we
-        # just use the index since we're appending in order?
-        results['__lineNo__'].append((step, event['Line']))
-        accumulatedVarnames |= set(event['locals'].keys())
 
-    for var in accumulatedVarnames:
-        # Make a list of (step, varVal) pairs for each step in the trace,
-        # where varVal is the value of var if var is defined at that step,
-        # and 'myNaN' otherwise
-        # TODO: See above - do we need the step?
-        results[var] = [(s, trace[s]['locals'].get(var, 'myNaN')) for s in xrange(numSteps)]
-
-    return results
-
-
-def run_logger(dataSrc, pickleDest, finalizer):
+def run_logger(dataSrc, pickleDest, finalizer, traceMunger):
     print "Running logger"
     ensure_folder_exists(pickleDest)
     for filename in os.listdir(dataSrc):
@@ -98,7 +76,8 @@ def run_logger(dataSrc, pickleDest, finalizer):
                 finalizer)
 
         toPickle = dict(zip(('trace', 'args', 'returnVars'), loggerOutput))
-        toPickle['trace'] = extract_var_info_from_trace(toPickle['trace'])
+        # pprint.pprint(toPickle['trace'])
+        toPickle['trace'] = traceMunger(toPickle['trace'])
 
         with open(path.join(pickleDest, solNum + '.pickle'), 'w') as f:
             pickle.dump(toPickle, f)
@@ -108,19 +87,20 @@ def preprocess_pipeline_data(folderOfData,
                              tidier=defaultTidier,
                              testedFunctionName='test',
                              formatter=defaultFormatter,
-                             finalizer=None):
+                             finalizer=None,
+                             traceMunger=defaultTraceMunger):
     tidyDataPath = path.join(folderOfData, 'tidyData')
     formatPath = path.join(folderOfData, 'tidyDataHTML')
     testCaseDataPath = path.join(folderOfData, 'tidyDataWithTestCase')
     picklePath = path.join(folderOfData, 'pickleFiles')
 
     if finalizer == None:
-        finalizer = make_finalizer(testedFunctionName)
+        finalizer = make_default_finalizer(testedFunctionName)
 
     if tidier: tidy(tidier, folderOfData, tidyDataPath, testedFunctionName)
     if formatter: format(formatter, tidyDataPath, formatPath)
     if testCase: add_test_case(testCase, tidyDataPath, testCaseDataPath)
-    run_logger(testCaseDataPath, picklePath, finalizer=finalizer)
+    run_logger(testCaseDataPath, picklePath, finalizer=finalizer, traceMunger=traceMunger)
 
     print "Solutions skipped:", len(skippedSolutions)
     pprint.pprint(skippedSolutions, indent=2)
