@@ -1,5 +1,4 @@
 import os
-import pickle
 import shutil
 import unittest
 
@@ -8,6 +7,7 @@ import pprint
 from test.mocks import (
     defaultFinalizerResults,
     defaultMungerResults,
+    unfinalizedLoggerResults,
 )
 from pipeline_defaults_python import make_default_finalizer
 from pipeline_defaults_python import extract_var_info_from_trace as defaultMunger
@@ -23,8 +23,8 @@ def wrap_finalizer_with_dumper(finalizer, fname):
     def dump_finalizer(input_code, output_trace):
         result = finalizer(input_code, output_trace)
 
-        with open(fname, 'w') as f:
-            pickle.dump(result, f)
+        # with open(fname, 'w') as f:
+        #     pickle.dump(result, f)
 
         pprint.pprint(result)
         return result
@@ -70,23 +70,18 @@ class TestPreprocessor(unittest.TestCase):
                    finalizer=dump_finalizer,
                    traceMunger=id_munger)
 
-    def test_loggerProducesCorrectTrace(self):
-        with open('./test/results_identity_finalizer.pickle', 'r') as f:
-            expectedTrace = pickle.load(f)
-        test_finalizer = self.make_testing_finalizer(expectedTrace)
 
+    def test_loggerProducesCorrectTrace(self):
+        test_finalizer = self.make_testing_finalizer(unfinalizedLoggerResults)
         preprocess(TEST_DIR_PATH,
                    'testMe(1, 2)',
                    finalizer=test_finalizer,
                    traceMunger=id_munger)
 
     def test_defaultFinalizer(self):
-        with open('./test/results_identity_finalizer.pickle', 'r') as f:
-            traceToFinalize = pickle.load(f)
-
         finalizer = make_default_finalizer('testMe')
         # arguments are input_code, output_trace
-        actualResults = finalizer('', traceToFinalize)
+        actualResults = finalizer('', unfinalizedLoggerResults)
         self.assertEqual(actualResults, defaultFinalizerResults)
 
     def test_defaultMunger(self):
