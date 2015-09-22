@@ -123,6 +123,15 @@ class TestPreprocessor(unittest.TestCase):
         # now that I have tests, try getting rid of the extra modules from
         # the list in pg_logger and see if everything still works. If it does
         # we can get rid of the extra clutter in the directory
+        # TODO: can I put this whole test file in the test directory? Might
+        # need to make src a module also
+
+        # other things I may want to test:
+        #   * the oppia default tidy function
+        #   * running the preprocessor without one/some of the pieces
+        #     (so, shove the required files into the fixture directory
+        #     manually and make sure it still works)
+        #   * running the preprocessor on code that fails
 
 
 if __name__ == '__main__':
