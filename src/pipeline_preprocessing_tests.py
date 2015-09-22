@@ -17,9 +17,15 @@ from pipeline_preprocessing import preprocess_pipeline_data as preprocess
 # folderOfData, testcase, tidier=..., testFnName=..., formatter=..., finalizer=...
 
 def id_finalizer(input_code, output_trace):
+    """
+    Only used when generating test fixtures.
+    """
     return output_trace
 
 def wrap_finalizer_with_dumper(finalizer, fname):
+    """
+    Only used when generating test fixtures.
+    """
     def dump_finalizer(input_code, output_trace):
         result = finalizer(input_code, output_trace)
 
@@ -39,9 +45,8 @@ TEST_FILE_PATH = './test/testMe000.py'
 
 class TestPreprocessor(unittest.TestCase):
     """
-    Most of these tests are actually unit tests for the default functions
-    that the preprocessor uses rather than the actual preprocessor.
-    Close enough.
+    Note: Most of these tests are actually unit tests for the default
+    functions that the preprocessor uses rather than the actual preprocessor.
     """
 
     def setUp(self):
@@ -59,12 +64,19 @@ class TestPreprocessor(unittest.TestCase):
 
     @unittest.skip('Only used for generating test fixtures')
     def test_dumpStuff(self):
-        dump_finalizer = wrap_finalizer_with_dumper(
-            make_default_finalizer('testMe'),
-            './test/results_elena_finalizer.pickle')
+        """
+        Comment out the skip decorator above and run this test alone
+        to print or serialize things as desired.
+
+        To run only this test from the command line (must not be skipped):
+        python -m unittest pipeline_preprocessing_tests.TestPreprocessor.test_dumpStuff
+        """
         # dump_finalizer = wrap_finalizer_with_dumper(
-        #     id_finalizer,
-        #     './test/results_identity_finalizer.pickle')
+        #     make_default_finalizer('testMe'),
+        #     './test/results_elena_finalizer.pickle')
+        dump_finalizer = wrap_finalizer_with_dumper(
+            id_finalizer,
+            './test/results_identity_finalizer.pickle')
         preprocess(TEST_DIR_PATH,
                    'testMe(1, 2)',
                    finalizer=dump_finalizer,
@@ -101,6 +113,16 @@ class TestPreprocessor(unittest.TestCase):
             actual = f.read()
         expected = "def testMe(a,b):\n    return a+b\n"
         self.assertEqual(actual, expected)
+
+    def test_everything(self):
+        # Technically, this is an integration test, not a unit test
+        preprocess(TEST_DIR_PATH,
+                   'testMe(1, 2)')
+        # TODO: actually test things here.
+        # TODO: unrelated to this test, but make a note so I don't forget:
+        # now that I have tests, try getting rid of the extra modules from
+        # the list in pg_logger and see if everything still works. If it does
+        # we can get rid of the extra clutter in the directory
 
 
 if __name__ == '__main__':
