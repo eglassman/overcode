@@ -1,4 +1,5 @@
 import os
+import pickle
 import shutil
 import unittest
 
@@ -7,7 +8,10 @@ import pprint
 from test.mocks import (
     defaultFinalizerResults,
     defaultMungerResults,
+    tidyTestFileContents,
+    tidyWithTestCaseContents,
     unfinalizedLoggerResults,
+    unpickledFinalResults,
 )
 from pipeline_defaults_python import make_default_finalizer
 from pipeline_defaults_python import extract_var_info_from_trace as defaultMunger
@@ -86,7 +90,7 @@ class TestPreprocessor(unittest.TestCase):
     def test_loggerProducesCorrectTrace(self):
         test_finalizer = self.make_testing_finalizer(unfinalizedLoggerResults)
         preprocess(TEST_DIR_PATH,
-                   'testMe(1, 2)',
+                   'testMe(1, 2)\n',
                    finalizer=test_finalizer,
                    traceMunger=id_munger)
 
@@ -111,28 +115,51 @@ class TestPreprocessor(unittest.TestCase):
 
         with open(os.path.join(tidyDest, 'testMe000.py'), 'r') as f:
             actual = f.read()
-        expected = "def testMe(a,b):\n    return a+b\n"
-        self.assertEqual(actual, expected)
+        # expected = "def testMe(a,b):\n    return a+b\n"
+        self.assertEqual(actual, tidyTestFileContents)
 
     def test_everything(self):
         # Technically, this is an integration test, not a unit test
         preprocess(TEST_DIR_PATH,
-                   'testMe(1, 2)')
-        # TODO: actually test things here.
-        # TODO: unrelated to this test, but make a note so I don't forget:
-        # now that I have tests, try getting rid of the extra modules from
-        # the list in pg_logger and see if everything still works. If it does
-        # we can get rid of the extra clutter in the directory
-        # TODO: can I put this whole test file in the test directory? Might
-        # need to make src a module also
+                   'testMe(1, 2)\n')
 
-        # other things I may want to test:
-        #   * the oppia default tidy function
-        #   * running the preprocessor without one/some of the pieces
-        #     (so, shove the required files into the fixture directory
-        #     manually and make sure it still works)
-        #   * running the preprocessor on code that fails
+        try:
+            with open(os.path.join(TEST_DIR_PATH, 'tidyData', 'testMe000.py'), 'r') as f:
+                tidy = f.read()
+        except IOError:
+            self.fail("Failed to read tidy data")
+        self.assertEqual(tidy, tidyTestFileContents)
 
+        try:
+            fpath = os.path.join(TEST_DIR_PATH, 'tidyDataWithTestCase', 'testMe000.py')
+            with open(fpath, 'r') as f:
+                tidyWithTestCase = f.read()
+        except IOError:
+            self.fail("Failed to read tidy data with test case")
+        self.assertEqual(tidyWithTestCase, tidyWithTestCaseContents)
+
+        try:
+            fpath = os.path.join(TEST_DIR_PATH, 'pickleFiles', 'testMe000.pickle')
+            with open(fpath, 'r') as f:
+                unpickled = pickle.load(f)
+        except IOError:
+            self.fail("Failed to load pickle file")
+        self.assertEqual(unpickled, unpickledFinalResults)
+
+
+# TODO: unrelated to this test, but make a note so I don't forget:
+# now that I have tests, try getting rid of the extra modules from
+# the list in pg_logger and see if everything still works. If it does
+# we can get rid of the extra clutter in the directory
+# TODO: can I put this whole test file in the test directory? Might
+# need to make src a module also
+
+# other things I may want to test:
+#   * the oppia default tidy function
+#   * running the preprocessor without one/some of the pieces
+#     (so, shove the required files into the fixture directory
+#     manually and make sure it still works)
+#   * running the preprocessor on code that fails
 
 if __name__ == '__main__':
-    unittest.main();
+    unittest.main()
