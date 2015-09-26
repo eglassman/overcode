@@ -121,16 +121,16 @@ ALLOWED_STDLIB_MODULE_IMPORTS = ('math', 'random', 'datetime',
 # logistical problems with doing so that I can't overcome at the moment,
 # especially getting setHTML, setCSS, and setJS to work in the imported
 # modules.)
-CUSTOM_MODULE_IMPORTS = ('callback_module',
-                         'ttt_module',
-                         'html_module',
-                         'htmlexample_module',
-# ignore these troublesome imports for now
-#                         'watch_module',   # 'import sys' might be troublesome
-#                         'bintree_module',
-#                         'GChartWrapper',
-                         'matrix',
-                         'htmlFrame')
+CUSTOM_MODULE_IMPORTS = ()#('callback_module',
+#                          'ttt_module',
+#                          'html_module',
+#                          'htmlexample_module',
+# # ignore these troublesome imports for now
+# #                         'watch_module',   # 'import sys' might be troublesome
+# #                         'bintree_module',
+# #                         'GChartWrapper',
+#                          'matrix',
+#                          'htmlFrame')
 
 
 # PREEMPTIVELY import all of these modules, so that when the user's
