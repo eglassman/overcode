@@ -5,7 +5,7 @@ import pickle
 import pprint
 import sys
 
-import pg_logger
+from external import pg_logger
 from pipeline_util import ensure_folder_exists
 
 # Tidier, finalizer and formatter

@@ -2,8 +2,12 @@ from os import path
 import StringIO
 import subprocess
 
-import pythonTidy
-import remove_comments
+from external import (
+    pythonTidy,
+    remove_comments,
+)
+# import external.pythonTidy as pythonTidy
+# import external.remove_comments
 
 def tidy_non_oppia(filename, sourceDir, destDir, testedFunctionName):
     tidy_up_buffer = StringIO.StringIO()
