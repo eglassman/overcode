@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1, 
+        "sequence": [
+            0, 
+            1, 
+            2
+        ], 
+        "varName": "i", 
+        "varNameAndSeq": "i:[0, 1, 2]"
+    }, 
+    {
+        "id": 2, 
+        "sequence": [
+            0, 
+            2, 
+            6, 
+            12
+        ], 
+        "varName": "total", 
+        "varNameAndSeq": "total:[0, 2, 6, 12]"
+    }, 
+    {
+        "id": 3, 
+        "sequence": [
+            [
+                1, 
+                2, 
+                3
+            ]
+        ], 
+        "varName": "listA", 
+        "varNameAndSeq": "listA:[[1, 2, 3]]"
+    }, 
+    {
+        "id": 4, 
+        "sequence": [
+            [
+                2, 
+                2, 
+                2
+            ]
+        ], 
+        "varName": "listB", 
+        "varNameAndSeq": "listB:[[2, 2, 2]]"
+    }, 
+    {
+        "id": 5, 
+        "sequence": [
+            0, 
+            1, 
+            2, 
+            3
+        ], 
+        "varName": "a", 
+        "varNameAndSeq": "a:[0, 1, 2, 3]"
+    }, 
+    {
+        "id": 6, 
+        "sequence": [
+            2
+        ], 
+        "varName": "b", 
+        "varNameAndSeq": "b:[2]"
+    }, 
+    {
+        "id": 7, 
+        "sequence": [
+            2, 
+            4, 
+            6
+        ], 
+        "varName": "product", 
+        "varNameAndSeq": "product:[2, 4, 6]"
+    }, 
+    {
+        "id": 8, 
+        "sequence": [
+            3
+        ], 
+        "varName": "length", 
+        "varNameAndSeq": "length:[3]"
+    }, 
+    {
+        "id": 9, 
+        "sequence": [
+            12
+        ], 
+        "varName": "ans", 
+        "varNameAndSeq": "ans:[12]"
+    }, 
+    {
+        "id": 10, 
+        "sequence": [
+            [], 
+            [
+                2
+            ], 
+            [
+                2, 
+                4
+            ], 
+            [
+                2, 
+                4, 
+                6
+            ]
+        ], 
+        "varName": "AB", 
+        "varNameAndSeq": "AB:[[], [2], [2, 4], [2, 4, 6]]"
+    }
+]

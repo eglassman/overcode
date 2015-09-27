@@ -1,0 +1,1908 @@
+[
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 2, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "xrange", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 3
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 4
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171938260000", 
+            "201409171904310000"
+        ], 
+        "number": 201409171938260000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            5
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>),</span><span class='mi'>1</span><span class='p'>):</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 6
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 7
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172230410000"
+        ], 
+        "number": 201409172230410000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            6, 
+            7
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span><span class='p'>(</span><span class='n'>a</span><span class='p'>,</span><span class='n'>b</span><span class='p'>)</span><span class='ow'>in</span> <span class='nb'>zip</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>a</span><span class='o'>*</span><span class='n'>b</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 2, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "zip"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 8
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 9
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 10
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172033470000", 
+            "201409172031390000"
+        ], 
+        "number": 201409172033470000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            8, 
+            9, 
+            10
+        ], 
+        "variableIDs": [
+            2, 
+            3, 
+            4, 
+            5, 
+            6, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='nb'>int</span><span class='p'>(</span><span class='n'>product</span><span class='p'>)</span><span class='o'>+</span><span class='n'>total</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "int", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 11
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 13
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171912480000"
+        ], 
+        "number": 201409171912480000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            11, 
+            12, 
+            13
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA__</span><span class='p'>,</span><span class='n'>listB__</span><span class='p'>):</span><br>    <span class='n'>length</span><span class='o'>=</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA__</span><span class='p'>)</span><br>    <span class='n'>listc</span><span class='o'>=</span><span class='p'>[]</span><br>    <span class='k'>for</span> <span class='n'>i__</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='n'>length</span><span class='p'>):</span><br>        <span class='n'>listc</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>listA__</span><span class='o'>.</span><span class='n'>pop</span><span class='p'>()</span><span class='o'>*</span><span class='n'>listB__</span><span class='o'>.</span><span class='n'>pop</span><span class='p'>())</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i__</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listc</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listc</span><span class='o'>.</span><span class='n'>pop</span><span class='p'>()</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "len", 
+            "for", 
+            "append", 
+            "pop", 
+            "pop", 
+            "mult", 
+            "range", 
+            "for", 
+            "pop", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 14
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 15
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 16
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 17
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 18
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 19
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 20
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171910380000"
+        ], 
+        "number": 201409171910380000, 
+        "phraseIDs": [
+            2, 
+            5, 
+            14, 
+            15, 
+            16, 
+            17, 
+            18, 
+            19, 
+            20
+        ], 
+        "variableIDs": [
+            8, 
+            2
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>a</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>n</span><span class='o'>=</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)</span><br>    <span class='k'>for</span> <span class='n'>n</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='n'>n</span><span class='p'>):</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><br>        <span class='n'>a</span><span class='o'>=</span><span class='n'>a</span><span class='o'>+</span><span class='mi'>1</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "len", 
+            "for", 
+            "mult", 
+            "add", 
+            "add", 
+            "range"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 21
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 22
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 23
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 24
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 25
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171908400000"
+        ], 
+        "number": 201409171908400000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            21, 
+            22, 
+            23, 
+            24, 
+            25
+        ], 
+        "variableIDs": [
+            2, 
+            3, 
+            4, 
+            5
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 27
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171902140000"
+        ], 
+        "number": 201409171902140000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            12, 
+            26, 
+            27
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 6, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 7
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171913490000", 
+            "201409171905230000", 
+            "201409172222330000", 
+            "201409172216240000", 
+            "201409170154260000", 
+            "201409172145260000"
+        ], 
+        "number": 201409171913490000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            26, 
+            7
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 10
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172138350000"
+        ], 
+        "number": 201409172138350000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            10, 
+            12, 
+            26
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>length</span><span class='o'>=</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='n'>length</span><span class='p'>):</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 2, 
+        "keywords": [
+            "len", 
+            "for", 
+            "mult", 
+            "add", 
+            "range"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 28
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 29
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 7
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171904440000", 
+            "201409172147420000"
+        ], 
+        "number": 201409171904440000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            7, 
+            28, 
+            29
+        ], 
+        "variableIDs": [
+            8, 
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span> <br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 3, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 5, 
+                "phraseID": 11
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 7
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171925160000", 
+            "201409172009070000", 
+            "201409172142170000"
+        ], 
+        "number": 201409171925160000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            11, 
+            5, 
+            7
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>ans</span><span class='o'>=</span><span class='nb'>sum</span><span class='p'>(</span><span class='n'>a</span><span class='o'>*</span><span class='n'>b</span> <span class='k'>for</span><span class='p'>(</span><span class='n'>a</span><span class='p'>,</span><span class='n'>b</span><span class='p'>)</span><span class='ow'>in</span> <span class='nb'>zip</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>))</span><br>    <span class='k'>return</span> <span class='n'>ans</span><br></pre></div><br></td></tr></table>", 
+        "count": 4, 
+        "keywords": [
+            "sum"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 30
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 31
+            }
+        ], 
+        "members": [
+            "201409171911530000", 
+            "201409171904110000", 
+            "201409171907560000", 
+            "201409171910280000"
+        ], 
+        "number": 201409171911530000, 
+        "phraseIDs": [
+            1, 
+            30, 
+            31
+        ], 
+        "variableIDs": [
+            9, 
+            3, 
+            4, 
+            5, 
+            6
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='k'>assert</span> <span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)</span><span class='o'>==</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listB</span><span class='p'>)</span><br>    <span class='n'>AB</span><span class='o'>=</span><span class='p'>[]</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>AB</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>])</span><br>    <span class='k'>return</span> <span class='nb'>sum</span><span class='p'>(</span><span class='n'>AB</span><span class='p'>)</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "append", 
+            "mult", 
+            "range", 
+            "len", 
+            "sum"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 32
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 33
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 34
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 35
+            }
+        ], 
+        "members": [
+            "201409171912030000"
+        ], 
+        "number": 201409171912030000, 
+        "phraseIDs": [
+            32, 
+            1, 
+            34, 
+            35, 
+            33, 
+            26
+        ], 
+        "variableIDs": [
+            1, 
+            10, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 11
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 10
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171902170000"
+        ], 
+        "number": 201409171902170000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            10, 
+            11, 
+            12
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>a</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>length</span><span class='o'>=</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>while</span> <span class='n'>a</span><span class='o'>&lt;</span><span class='n'>length</span><span class='p'>:</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><br>        <span class='n'>a</span><span class='o'>+=</span><span class='mi'>1</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "len", 
+            "while", 
+            "lt", 
+            "mult", 
+            "add", 
+            "add"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 21
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 28
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 36
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 37
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 38
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172043050000"
+        ], 
+        "number": 201409172043050000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            36, 
+            37, 
+            38, 
+            21, 
+            28, 
+            5
+        ], 
+        "variableIDs": [
+            8, 
+            2, 
+            3, 
+            4, 
+            5
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 2, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 4
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172148220000", 
+            "201409172016270000"
+        ], 
+        "number": 201409172148220000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            4, 
+            26, 
+            5
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>AB</span><span class='o'>=</span><span class='p'>[]</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>AB</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>])</span><br>    <span class='k'>return</span> <span class='nb'>sum</span><span class='p'>(</span><span class='n'>AB</span><span class='p'>)</span><br></pre></div><br></td></tr></table>", 
+        "count": 2, 
+        "keywords": [
+            "for", 
+            "append", 
+            "mult", 
+            "range", 
+            "len", 
+            "sum"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 33
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 34
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 35
+            }
+        ], 
+        "members": [
+            "201409172138080000", 
+            "201409172025300000"
+        ], 
+        "number": 201409172138080000, 
+        "phraseIDs": [
+            1, 
+            26, 
+            35, 
+            34, 
+            33
+        ], 
+        "variableIDs": [
+            1, 
+            10, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>+</span><span class='n'>total</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 39
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172035340000"
+        ], 
+        "number": 201409172035340000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            26, 
+            39
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>a</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>b</span><span class='o'>=</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>a</span><span class='o'>*</span><span class='n'>b</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 2, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 40
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 41
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 9
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 10
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172049230000", 
+            "201409171904580000"
+        ], 
+        "number": 201409172049230000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            40, 
+            9, 
+            10, 
+            41, 
+            26
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            5, 
+            6, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='k'>return</span> <span class='nb'>sum</span><span class='p'>(</span><span class='n'>a</span><span class='o'>*</span><span class='n'>b</span> <span class='k'>for</span><span class='p'>(</span><span class='n'>a</span><span class='p'>,</span><span class='n'>b</span><span class='p'>)</span><span class='ow'>in</span> <span class='nb'>zip</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>))</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "sum"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 42
+            }
+        ], 
+        "members": [
+            "201409171914330000"
+        ], 
+        "number": 201409171914330000, 
+        "phraseIDs": [
+            1, 
+            42
+        ], 
+        "variableIDs": [
+            3, 
+            4, 
+            5, 
+            6
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>ans</span><span class='o'>=</span><span class='nb'>sum</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)))</span><br>    <span class='k'>return</span> <span class='n'>ans</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "sum"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 43
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 31
+            }
+        ], 
+        "members": [
+            "201409171911280000"
+        ], 
+        "number": 201409171911280000, 
+        "phraseIDs": [
+            1, 
+            43, 
+            31
+        ], 
+        "variableIDs": [
+            1, 
+            3, 
+            4, 
+            9
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "xrange", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 44
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 10
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172019510000"
+        ], 
+        "number": 201409172019510000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            12, 
+            10, 
+            44
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>a</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>while</span> <span class='n'>a</span><span class='o'>&lt;</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>):</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><br>        <span class='n'>a</span><span class='o'>+=</span><span class='mi'>1</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "while", 
+            "len", 
+            "lt", 
+            "mult", 
+            "add", 
+            "add"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 21
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 45
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 24
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 38
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172003520000"
+        ], 
+        "number": 201409172003520000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            38, 
+            45, 
+            21, 
+            24
+        ], 
+        "variableIDs": [
+            2, 
+            3, 
+            4, 
+            5
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>product</span><span class='o'>+</span><span class='n'>total</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 46
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171905480000"
+        ], 
+        "number": 201409171905480000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            12, 
+            46, 
+            26
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>length</span><span class='o'>=</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "len", 
+            "for", 
+            "mult", 
+            "add", 
+            "xrange", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 28
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 44
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 7
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171938580000"
+        ], 
+        "number": 201409171938580000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            7, 
+            44, 
+            28
+        ], 
+        "variableIDs": [
+            8, 
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>a</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>while</span> <span class='n'>a</span><span class='o'>&lt;</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>product</span><br>        <span class='n'>a</span><span class='o'>=</span><span class='n'>a</span><span class='o'>+</span><span class='mi'>1</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "while", 
+            "len", 
+            "lt", 
+            "mult", 
+            "add", 
+            "add"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 21
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 45
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 47
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 27
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 25
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171945140000"
+        ], 
+        "number": 201409171945140000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            45, 
+            47, 
+            21, 
+            25, 
+            27
+        ], 
+        "variableIDs": [
+            2, 
+            3, 
+            4, 
+            5, 
+            7
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>index</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 48
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 26
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 7
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171932560000"
+        ], 
+        "number": 201409171932560000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            7, 
+            48, 
+            26
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>a</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>while</span> <span class='n'>a</span><span class='o'>&lt;</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>):</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><br>        <span class='n'>a</span><span class='o'>=</span><span class='n'>a</span><span class='o'>+</span><span class='mi'>1</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "while", 
+            "len", 
+            "lt", 
+            "mult", 
+            "add", 
+            "add"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 21
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 45
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 24
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 25
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172145430000"
+        ], 
+        "number": 201409172145430000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            45, 
+            21, 
+            24, 
+            25
+        ], 
+        "variableIDs": [
+            2, 
+            3, 
+            4, 
+            5
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "xrange", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 44
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 4
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171904420000"
+        ], 
+        "number": 201409171904420000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            44, 
+            5, 
+            4
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>length</span><span class='o'>=</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='n'>length</span><span class='p'>):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "len", 
+            "for", 
+            "mult", 
+            "add", 
+            "range"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 28
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 29
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 10
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171900070000"
+        ], 
+        "number": 201409171900070000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            10, 
+            12, 
+            28, 
+            29
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7, 
+            8
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>length</span><span class='o'>=</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)</span><br>    <span class='n'>a</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>while</span> <span class='n'>a</span><span class='o'>&lt;</span><span class='n'>length</span><span class='p'>:</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>a</span><span class='p'>]</span><br>        <span class='n'>a</span><span class='o'>+=</span><span class='mi'>1</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "len", 
+            "while", 
+            "lt", 
+            "mult", 
+            "add", 
+            "add"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 28
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 21
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 36
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 24
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 38
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171905190000"
+        ], 
+        "number": 201409171905190000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            36, 
+            5, 
+            38, 
+            21, 
+            24, 
+            28
+        ], 
+        "variableIDs": [
+            8, 
+            2, 
+            3, 
+            4, 
+            5
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>=</span><span class='n'>total</span><span class='o'>+</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "mult", 
+            "add", 
+            "xrange", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 44
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 49
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 4
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172147020000"
+        ], 
+        "number": 201409172147020000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            4, 
+            5, 
+            44, 
+            49
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6<br>7</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>AB</span><span class='o'>=</span><span class='p'>[]</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>range</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>AB</span><span class='o'>.</span><span class='n'>append</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>])</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>AB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "append", 
+            "mult", 
+            "add", 
+            "range", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 33
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 11
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 34
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 50
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409171911310000"
+        ], 
+        "number": 201409171911310000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            5, 
+            33, 
+            11, 
+            34, 
+            50
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            10
+        ]
+    }, 
+    {
+        "code": "<table class='highlighttable'><tr><td class='linenos'><div class='linenodiv'><pre>1<br>2<br>3<br>4<br>5<br>6</pre></div></td><td class='code'><div class='highlight'><pre><span class='k'>def</span> <span class='nf'>dotProduct</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>,</span><span class='n'>listB</span><span class='p'>):</span><br>    <span class='n'>total</span><span class='o'>=</span><span class='mi'>0</span><br>    <span class='k'>for</span> <span class='n'>i</span> <span class='ow'>in</span> <span class='nb'>xrange</span><span class='p'>(</span><span class='mi'>0</span><span class='p'>,</span><span class='nb'>len</span><span class='p'>(</span><span class='n'>listA</span><span class='p'>)):</span><br>        <span class='n'>product</span><span class='o'>=</span><span class='n'>listA</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><span class='o'>*</span><span class='n'>listB</span><span class='p'>[</span><span class='n'>i</span><span class='p'>]</span><br>        <span class='n'>total</span><span class='o'>+=</span><span class='n'>product</span><br>    <span class='k'>return</span> <span class='n'>total</span><br></pre></div><br></td></tr></table>", 
+        "count": 1, 
+        "keywords": [
+            "for", 
+            "mult", 
+            "add", 
+            "xrange", 
+            "len"
+        ], 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 2
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 3
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 12
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 10
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 5
+            }
+        ], 
+        "members": [
+            "201409172228080000"
+        ], 
+        "number": 201409172228080000, 
+        "phraseIDs": [
+            1, 
+            2, 
+            3, 
+            5, 
+            10, 
+            12
+        ], 
+        "variableIDs": [
+            1, 
+            2, 
+            3, 
+            4, 
+            7
+        ]
+    }
+]
