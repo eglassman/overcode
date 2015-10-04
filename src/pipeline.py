@@ -71,12 +71,24 @@ def populate_from_pickles(pickleSrc, formattedSrc, formattedExtn='.py.html'):
         # with open(path.join(formattedSrc, solNum + formattedExtn), 'r') as f:
         #     argAndReturnVarInfo[solNumInt]['code'] = f.read()
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## populate_from_pickles
+###############################################################################
+## adds to:
+##  progTraceDictAll: solnum -> trace
+##  argAndReturnVarInfo: solnum -> { args, returnVars }
+##
+###############################################################################
+
 populate_from_pickles(path.join(folderOfData, 'pickleFiles'), path.join(folderOfData, 'tidyDataHTML'))
-
-
-###############################################################################
-## Stacey has worked up to here.
-###############################################################################
 
 
 #from: http://stackoverflow.com/questions/8230315/python-sets-are-not-json-serializable
@@ -179,12 +191,59 @@ def getVarEquivsAcrossAllSolsLinear():
             break
     return numSkippedSols_tooLong
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## getVarEquivsAcrossAllSolsLinear
+###############################################################################
+## adds to:
+##  dictOfNamesAndFilesIndexedByVarSeqTempName: tempName -> (local name, solnum)
+##  dictTempNameToSequence: tempName -> value sequence
+##
+## for each trace
+##      for each local variable
+##          extract sequence of values
+##          if we have already seen it,
+##              add (local name, solnum) to the correct entry in dictOfNames
+##          else
+##              add a new entry in dictOfNames: tempName -> (local name, solnum)
+##              add a new entry in dictTemp: tempName -> sequence
+###############################################################################
+
 print "Getting variable equivalents"
 numSkippedSols_tooLong = getVarEquivsAcrossAllSolsLinear()
 
 
 '''Begin populating a json file (dictForJson) that is indexed by
 the solution name and includes things like the weird and common variable names'''
+
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## Populating dictForJson
+###############################################################################
+## adds to:
+##  dictForJson: solnum -> {
+##      weirdVars: [ local name, ... ]
+##  }
+##
+## find the number of occurences of each abstract variable
+## for each number, in descending order
+##      for each abstract variable with only 1 occurrance
+##          add entry to dictForJson[solnum][weirdVars]
+###############################################################################
 
 print "Populating dictForJson"
 dictForJson = {}
@@ -200,8 +259,7 @@ for nums in sorted(set(map(len, dictOfNamesAndFilesIndexedByVarSeqTempName.value
             #     print localVar, solname
             # print
             if nums == 1:
-                # TODO: is the iteritems not necessary?
-                for (localVar, solname) in v: #.iteritems():
+                for (localVar, solname) in v:
                     # print localVar, solname, dictForJson.keys()
 
                     if str(solname) in dictForJson.keys():
@@ -228,6 +286,28 @@ def extractVarName(tempName):
 
 dictOfSeqAndCommonNameByTempVar = {}
 dictOfNumFilesByCommonName = {}
+
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## Extract variable names
+###############################################################################
+## adds to:
+##  dictOfNumFilesByCommonName: canon name -> [ number of files, ... ]
+##  NOTE: multiple elements in the list means that more than one abstract
+##        variable has the same canon name
+##  NOTE: the list is sorted in descending order
+##
+## for each temp variable
+##      get the canon name of the variable (the most common local name)
+##      add to dictOfNumFilesByCommonName
+###############################################################################
 
 print "Extracting variable names"
 # Sweep through and accumulate file lengths into a dict
@@ -258,6 +338,41 @@ dumpOutput(dictOfNamesAndFilesIndexedByVarSeqTempName,
 '''Add more info to dictForJson, like the common names for each variable, and
 modifiers to that common name, to indicate with sequence it takes on...'''
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## Add common names
+###############################################################################
+## adds to:
+##  dictOfSeqAndCommonNameByTempVar: temp name -> {
+##      howManyFiles
+##      commonName
+##      commonNameWithSuffix
+##      sequence
+##  }
+##  dictOfSeqByCommonNamePlusSuffix: canon name with suffix -> sequence of values
+##  dictForJson: solnum -> {
+##      sharedVars: [ canon name with suffix, ...]
+##      localVars: [ local variable name, ...]
+##      commonNameAppend: [ suffix, ...]
+##      commonName: [ canon name, ...]
+##      *** may also have weirdVars from above
+##  }
+##
+## for each temp variable
+##      count the number of files it appears in
+##      get canon name and add suffix if necessary
+##      add sequence of values to dictOfSeqBy... and dictOfSeqAnd...
+##      for each (local variable, solnum) the temp var occurs in
+##          add to dictForJson
+###############################################################################
+
 print "Adding common names"
 dictOfSeqByCommonNamePlusSuffix = {}
 for tempKey, listOfFileAndVars in dictOfNamesAndFilesIndexedByVarSeqTempName.iteritems():
@@ -287,7 +402,7 @@ for tempKey, listOfFileAndVars in dictOfNamesAndFilesIndexedByVarSeqTempName.ite
 
         dictOfSeqAndCommonNameByTempVar[tempKey]['sequence'] = seqStr
         for localVarName, solNum in listOfFileAndVars:
-            if solNum in dictForJson.keys():
+            if solNum in dictForJson:
                 if 'sharedVars' in dictForJson[solNum]:
                     dictForJson[solNum]['sharedVars'].append(canonName+canonAppend) #+' '+seqStr)
                     dictForJson[solNum]['localVars'].append(localVarName)
@@ -333,6 +448,30 @@ def getFreeVars(dictOfLocalAndCommonVarNames, argAndReturnData):
         argAndReturnData[int(k)]['studentCreatedVars'] = freeVars[k]
     return freeVars
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## getFreeVars
+###############################################################################
+## adds to:
+##  freeVars: solnum -> [ local variable, ...]
+##  argAndReturnData: solnum -> {
+##      studentCreatedVars: freeVars[solnum]
+##      *** also args, returnVals from earlier
+## }
+##
+## for each (solnum, dictForJson entry)
+##      for each local variable and weird variable
+##          if the variable is not an argument or return variable
+##              add it to freeVars
+###############################################################################
+
 print "Getting free variables"
 freeVars = getFreeVars(dictForJson,argAndReturnVarInfo)
 
@@ -368,12 +507,49 @@ def produceFooBarBazJson(argsAndCode):
         listOfSolDictsForTable.append(dictWithName)
     return listOfSolDictsForTable
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## produceFooBarBazJson
+###############################################################################
+## adds to:
+##  listOfSolDictsForTable: [ ordered dict {
+##      solution: solnum
+##      arguments: sorted list of arguments
+##      studentCreatedVars: sorted list of studentCreatedVars and return variables
+## }]
+##
+## for each solution in argAndReturnVarInfo
+##      create an ordered dict and add it to the list
+###############################################################################
+
 print "Producing and writing solution dicts for table"
 listOfSolDictsForTable = produceFooBarBazJson(argAndReturnVarInfo)
 dumpOutput(listOfSolDictsForTable, 'listOfSolDictsForTable.json')
 # with open(path.join(destFolder, 'listOfSolDictsForTable.json'), 'w') as outfile:
     # json.dump(listOfSolDictsForTable, outfile)
 
+
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## collect common variables
+###############################################################################
+## adds to:
+##  allCommonVar: set of all shared variables from all solutions (via dictForJson)
+###############################################################################
 
 '''Collect all common vars into a single list.'''
 
@@ -410,6 +586,77 @@ tabCounter = {}
 lilCtr = 0
 
 numSkippedSols_6 = []
+
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## collect common variables
+###############################################################################
+## adds to:
+##  dictForExhibit: {
+##      items: [{
+##          *** from dictForJson:
+##          sharedVars
+##          localVars
+##          commonNameAppend
+##          commonName
+##          weirdVars (maybe)
+##
+##          type: 'solution'
+##          label: solnum
+##          fnames: list of every node the AST visitor found
+##          canonicalPycode: list of strings: non-empty lines of stripped, renamed source
+##          canonicalPYcodeIndents: list of ints: size of indentation for each non-empty
+##                                  line of the renamed source
+##          code: colorful HTML version of the renamed source
+##      }]
+##      properties: {}
+##      types: {
+##          Answer: {}
+##          pluralLabel: 'Answers'
+##      }
+##  }
+##  phraseCounter: Counter of lines of whitespace-stripped code
+##  tabCounter: dict: stripped line of code -> Counter of the size of the indentation
+##                    before that line
+##
+## for each dict of solution info in dictForJson
+##      if there are multiple instances of the same abstract variable
+##          find the indices of the shared instances
+##          if the canon name and local name are not equal
+##              change the shared name to <canon>_<local>__
+##      make a temporary copy of the solution info dict
+##      add keys to the temp dict:
+##          'type': 'solution'
+##          'label': solnum
+##          'fnames': the result of calling fnames on the tidy solution
+##      for each abstract variable in the solution
+##          rename the local variable to <canon>_temp
+##          re-rename the local variable to the canon name
+##      for each weird variable in the solution
+##          if the weird variable shares the canon name with another abstract var
+##              rename the variable to <weird>__
+##      add key to temp dict:
+##          'canonicalPYcode': a list of non-empty lines in the renamed source
+##                             with whitespace removed
+##      write the renamed source to <folderOfData>/tidyDataCanonicalized/<solnum>.py
+##      update phraseCounter with the stripped, renamed lines of source
+##      add key to temp dict:
+##          'canonicalPYcodeIndents': a list of the size of leading indentation for
+##                                    each non-empty line in the renamed source
+##      if no problems were encountered in any of the renamings
+##          format the source as colorful HTML
+##          write the pretty code into <folderOfData>/tidyDataCanonicalizedHTML/<solnum>.py
+##          add key to temp dict:
+##              'code': the pretty code
+##      append the temp dict to dictForExhibit[items]
+###############################################################################
 
 print "Creating dict for Exhibit"
 for solNum, solDict in dictForJson.iteritems():
@@ -459,7 +706,6 @@ for solNum, solDict in dictForJson.iteritems():
     if 'sharedVars' in tempDict.keys():
         for i in range(len(tempDict['sharedVars'])):
             locVarName = tempDict['localVars'][i]
-            # extracts just the name, not the sequence of values we appended
             sharedVarNameWithStar = tempDict['sharedVars'][i]+extraToken 
             try:
                 renamed_src = identifier_renamer.rename_identifier(renamed_src, locVarName,sharedVarNameWithStar)
@@ -532,6 +778,7 @@ for solNum, solDict in dictForJson.iteritems():
         dictForExihibit['items'].append(tempDict)
         # print "len(dictForExihibit['items'])", len(dictForExihibit['items'])
 
+
 print "Writing dictForExihibit and phraseAndTabCounter"
 dumpOutput(dictForExihibit, 'dictForExihibit.json')
 # with open(path.join(destFolder, 'dictForExihibit.json'),'w') as jsonFile:
@@ -554,6 +801,37 @@ dumpOutput(phraseAndTabCounter, 'phraseAndTabCounter.json')
 def returnSameAnswerQ(list,newSolnum):
     return True
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## making dictOfRepresentatives
+###############################################################################
+## adds to:
+##  dictOfRepresentatives: dict: solnum -> {
+##      rep: {
+##          <same as dictForExhibit items above>
+##      }
+##      count: int
+##      members: [ solnum, ...]
+##  }
+##
+## initialize dictOfRepresentatives with the first item in dictForExhibit
+## for each dict of info in dictForExhibit (beyond the first)
+##      for each representative
+##          compare the item in question with the representative by comparing
+##          sets of canonicalized lines
+##              if the item matches the representative
+##                  increase the representative's count
+##                  add the item's solnum to the representative's members
+##              otherwise, make it a new representative
+###############################################################################
+
 theJSON = dictForExihibit.copy()
 dictOfRepresentatives = {}
 dictOfRepresentatives[theJSON['items'][0]['label']]= {}
@@ -561,7 +839,7 @@ dictOfRepresentatives[theJSON['items'][0]['label']]['rep'] = theJSON['items'][0]
 dictOfRepresentatives[theJSON['items'][0]['label']]['count'] = 1
 dictOfRepresentatives[theJSON['items'][0]['label']]['members'] = [theJSON['items'][0]['label']]
 
-print "Formatting for D3 prototype"
+print "Finding representatives"
 for JSONitem in theJSON['items'][1:]:
     added = False
     for groupID, REPitem in dictOfRepresentatives.iteritems():
@@ -574,12 +852,36 @@ for JSONitem in theJSON['items'][1:]:
     if not added:
         dictOfRepresentatives[JSONitem['label']] = {'rep': JSONitem, 'count': 1, 'members' : [JSONitem['label']] }
 
-# pprint.pprint(dictOfRepresentatives)
 
 print "Writing repDict"
 dumpOutput(dictOfRepresentatives, 'repDict.json')
-# with open(path.join(destFolder, 'repDict.json'),'w') as jsonFile:
-#     json.dump(dictOfRepresentatives, jsonFile, sort_keys=True, indent=4, cls=ElenaEncoder)
+
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## finding misfits
+###############################################################################
+## adds to:
+##  misfitMembers: list of solnums
+##  repCounts: list of tuples (solnum, count)
+##  repDataDict: {
+##      'misfitMembers': misfitMembers above
+##      'repCountsSorted': repCounts above, sorted by group size, descending
+##  }
+##
+## for each representative
+##      if the representative is the only member, append it to misfitMembers
+## add to repCounts: ('misfits', number of misfits)
+## for each representative with more than one member
+##      add its label and count to repCounts
+## initialize repDataDict
+###############################################################################
 
 print "Finding misfits"
 misfitTotal = 0
@@ -608,6 +910,46 @@ dumpOutput(repDataDict, 'repDictSorted.json')
 # with open(path.join(destFolder, 'repDictSorted.json'),'w') as jsonFile:
 #     json.dump(repDataDict, jsonFile, sort_keys=True, indent=4, cls=ElenaEncoder)
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## set up solutions, phrases, variables
+###############################################################################
+## adds to:
+##  solutions: list of dicts: {
+##      code: colorful html version of a representative's source
+##      phraseIDs: list of ints
+##      variableIDs: list of ints
+##      lines: list of dicts: { indent, phraseID }
+##      keywords: list of every node the AST visitor found
+##      number: int: solnum of representative
+##      members: list of solnums of representative's group
+##      count: int: size of representative's group
+##  }
+##  phrases: list of strings
+##  variables: list of strings
+##  sequences: list of sequences of values
+##
+## for each group and representative
+##      for each line of code in the representative
+##          initialize a solution dict
+##          append the line to phrases if it's not already there
+##          the ID of the phrase is the index in phrases + 1
+##          add the phrase ID to solution[phraseIDs]
+##          add the indent and phraseID to solution[lines]
+##      for each abstract variable in the representative that isn't a weird
+##          add the variable to variables if it is not already there
+##          add the sequence of that variable to sequences if it is not already there
+##          the ID of the variable is its index in variables plus 1
+##          add the variable ID to solution[variableIDs]
+##      convert phraseIDs and variableIDs from sets to lists
+###############################################################################
 
 raw_solutions = dictOfRepresentatives
 solutions = []
@@ -615,8 +957,7 @@ phrases = []
 variables = []
 sequences = []
 
-# TODO: figure out what this is doing
-print "Something with phrases"
+print "Setting up solutions, phrases, variables, sequences"
 for groupID, groupDescription in raw_solutions.iteritems():
     solution = {'code': groupDescription['rep']['code']}
     solution['phraseIDs'] = set()
@@ -677,6 +1018,33 @@ def generateCodeWithFeatureSpans(phrase):
 
     return newcodeline
 
+###############################################################################
+
+  #   #   ###   #####  #####
+  ##  #  #   #    #    #
+  # # #  #   #    #    ###
+  #  ##  #   #    #    #
+  #   #   ###     #    #####
+
+###############################################################################
+## last bit of stuff
+###############################################################################
+## for each phrase
+##      change the phrase to a dict: {
+##          id: index in list + 1
+##          code: escaped (HTML-safe) line
+##          indent: most common indent size for that phrase
+##          codeWithFeatureSpans: line with each word changed to a <span>
+##      }
+## for each variable
+##      change the variable to a dict: {
+##          id: index in list + 1
+##          varName: variable name
+##          varNameAndSeq: <name>:<str(sequence)>
+##          sequence: sequence
+##      }
+###############################################################################
+
 print "Finding most common indent and writing phrases"
 for i in range(len(phrases)):
     phrase = phrases[i]
@@ -713,7 +1081,7 @@ print 'numSkippedSols_3 and 4 and 5 and 6', numSkippedSols_3, numSkippedSols_4,n
 print 'numSkippedSols_2b', numSkippedSols_2b
 print 'src_skipped_by_philip', src_skipped_by_philip
 print 'solnum_skipped_by_philip', solnum_skipped_by_philip
-print 'len', len(solnum_skipped_by_philip), ' set-len ', '''
+print 'len', len(solnum_skipped_by_philip), ' set-len ',
 
 #print 'len(set(numSkippedSols_1)) ',len(set(numSkippedSols_1))
 #print 'len(set(numSkippedSols_2)) ',len(set(numSkippedSols_2))
@@ -750,4 +1118,4 @@ print set(solnum_skipped_by_philip)
 print 'len(set(numSkippedSols_RemoveComments)) ',len(set(numSkippedSols_RemoveComments))
 print numSkippedSols_RemoveComments
 
-
+'''
