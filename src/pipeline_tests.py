@@ -5,7 +5,7 @@ import unittest
 
 from pipeline_preprocessing import preprocess_pipeline_data
 
-TEST_DIR_PATH = '../../overcode_data/6.0001_dotprod'
+TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests' #'../../overcode_data/6.0001_dotprod'
 # Set to True to delete the output from the pipeline after the test.
 remove_output = False
 
