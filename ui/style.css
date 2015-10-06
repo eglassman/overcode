@@ -1,0 +1,75 @@
+body { 
+  overflow-y: hidden; 
+  overflow-x: hidden; 
+  padding-left: 8px;
+  padding-right: 8px;
+}
+#header {
+	border-bottom: solid 1px #ddd;
+	min-height: 180px;
+}
+#header-prefix { padding-right: 0px; }
+#header-container { padding-left: 25px; }
+#filter-container { overflow-y: auto; border-left: solid 1px #ddd; }
+
+/* Grid styling */
+#grid-colB { 
+	overflow-y: scroll; 
+	overflow-x: hidden;
+	border-left: solid 1px #ddd;
+	position: relative;
+}
+#grid-colA {
+	overflow-y: scroll; 
+	overflow-x: hidden;
+	padding-left: 25px;
+	position: relative;
+}
+.stack {
+	position: relative;
+	margin-bottom: 40px;
+	left: 0px;
+}
+span.stackid {
+  float: right;
+}
+div.read>pre {
+  background-color: #def;
+}
+.codeEx {
+    display: none;
+}
+code span.dimmed { opacity: 0.3; }
+code span.line-remove { background-color: #FFA3BD; text-decoration: line-through; }
+code span.line-insert { background-color: #AFFC8B;}
+code span.highlighted { background-color: #FFFFB2;}
+
+#nothing { margin-left: 30px; }
+
+#grid-colA div pre code span.dimmed { opacity: 1.0;}
+pre.h3 {text-align: center;} 
+
+/* Sidebar styling */
+#lines-header { margin-top: 0px; padding-top: 10px; text-align: center; }
+#remaining-phrases {margin-left: 10px; margin-top: 10px; overflow-y: scroll; overflow-x: hidden; }
+#variable-list {overflow-y: scroll; overflow-x: hidden; }
+.sidebar-list div.badge { width: 40px; display: inline-block; vertical-align: top;}
+.sidebar-list div.code { width: 80%; display: inline-block; vertical-align: top;}
+.sidebar-list pre { display: inline; padding: 0; background-color: #fff; border: none; margin-left: 5px; color: #c7254e;}
+.sidebar-list>li {padding: 0px; margin-bottom: 5px}
+.sidebar-list>li>a {padding: 0px; }
+#sidebar .tab-pane { border-left: solid 1px #ddd; border-right: solid 1px #ddd; }
+.ui-slider { width: 80%; margin-left: 10px;}
+
+#rewrite, #variables { padding: 10px; }
+#rule-list>li:hover { background-color: #ddd; }
+#add-rule:hover { background-color: #fff; }
+#pattern-input, #repl-input {
+	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+	font-size: 90%;
+	color: #c7254e;
+}
+#rule-list>li>span.badge:hover { cursor: pointer; background-color: black;}
+#variable-list>li>small {display: inline-block; margin-left: 5px;}
+#testcase {margin-left: 20px; }
+#variables-header { padding-bottom: 10px; }

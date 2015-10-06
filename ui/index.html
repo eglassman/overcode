@@ -1,0 +1,171 @@
+<!DOCTYPE html> <head> <meta charset="UTF-8">
+  <title>Student submissions</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="//yandex.st/highlightjs/8.0/styles/default.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    function debounce(a,b,c){var d;return function(){var e=this,f=arguments;clearTimeout(d),d=setTimeout(function(){d=null,c||a.apply(e,f)},b),c&&!d&&a.apply(e,f)}}
+  </script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script>
+  <script src="//yandex.st/highlightjs/8.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <!--<script src="http://momentjs.com/downloads/moment.min.js"></script>-->
+  <script src="libraries/moment.js"></script>
+
+  <script src="progress.js"></script>
+  <script src="rules.js"></script>
+  <script src="filter.js"></script>
+  <script src="stacks.js"></script>
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <div class="row">
+    <div id="main" class="col-xs-8">
+      <div id="header">
+        <div class="row">
+          <div id="header-container" class="col-xs-6">
+            <h4>
+              <select id="data-select" class="form-control" style="display: inline; width: 175px;">
+                <!--<option value="iterPower">iterPower</option>
+                  <option value="iterPowerNewLogger">iterPower--New Logger</option>-->
+                  <option value="iterPowerNewRenamer">iterPower</option>
+                <!--<option value="hangman">hangman</option>
+                  <option value="hangmanNewLogger">hangman--New Logger</option>-->
+                  <option value="hangmanNewRenamer">hangman</option>
+                <!--<option value="compDeriv">computeDeriv</option>-->
+                  <option value="compDerivNewRenamer">computeDeriv</option>
+                <option value="dotProd">6.0001 dot product</option>
+                <option value="quadratic">6.0001 quadratic</option>
+                  <option value="uniqVals">6.0001 unique values</option>
+                  <!--<option value="replaceSim">6.0001 replacement sim</option>-->
+                  <option value="replaceSim10trials">6.0001 replacement sim (10 trials)</option>
+                  <option value="euler">Oppia Project Euler data</option>
+              </select>
+              <!--<span class="text-muted"><span id="total-solutions"></span> total submissions</span>-->
+            </h4>
+
+            <div class="progress">
+              <div class="progress-bar">
+                <span>done</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div id="header-prefix" class="col-xs-4">
+                <div class="text-muted text-right">
+                  <h4>showing</h4>
+                  <h4>that represent</h4>
+                </div>
+              </div>
+              <div class="col-xs-8">
+                <h4>
+                  <span id="num-filtered-stacks">
+                    <span id="num-stacks"></span>
+                    of
+                  </span>
+                  <span id="total-stacks"></span>
+                  total stacks
+                </h4>
+                <h4>
+                  <span id="num-filtered-solutions">
+                    <span id="num-solutions"></span>
+                    of
+                  </span>
+                  <span id="total-solutions"></span>
+                  total submissions
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div id="filter-container" class="col-xs-6">
+            <h4 id="filter-header">filtering by:</h4>
+            <ul class="nav nav-pills nav-stacked sidebar-list" id="filter-phrases">
+            </ul>
+            <div id="nothing"><i>nothing yet</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="grid" class="row">
+        <div id="grid-colA" class="col-xs-6">
+          <h5 class="text-muted">Largest stack (matching filters)</h5>
+        </div>
+        <div id="grid-colB" class="col-xs-6">
+          <h5 class="text-muted">Remaining stacks (matching filters)</h>
+        </div>
+      </div>
+    </div>
+
+    <div id="sidebar" class="col-xs-4">
+      <!-- Nav tabs -->
+      <ul id="sidebar-nav" class="nav nav-tabs nav-justified">
+        <li class="active"><a href="#filter" class="filter" data-toggle="tab">Filter</a></li>
+        <li><a href="#rewrite" class="rewrite" data-toggle="tab">Rewrite</a></li>
+        <li><a href="#variables" class="variables" data-toggle="tab">Legend</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="filter">
+          <div id="sidebar-top">
+            <h5 id="lines-header">
+              <b>lines</b> that appear in at least
+              <input type="text" id="lineThresh" style="text-align: center; font-weight:bold;" size=1>
+              submissions
+            </h5>
+            <div id="slider-threshold-phrases"></div>
+          </div>
+
+          <ul class="nav nav-pills nav-stacked sidebar-list" id="remaining-phrases">
+          </ul>
+        </div>
+        <div class="tab-pane" id="rewrite">
+          <h3>rewrite rules</h3>
+          <ul class="list-group" id="rule-list">
+          </ul>
+          <ul class="list-group">
+            <li id="add-rule" class="list-group-item">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="pattern-input" class="col-xs-2 control-label">Rewrite</label>
+                  <div class="col-xs-10">
+                    <input type="text" class="form-control" id="pattern-input" placeholder="pattern">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="repl-input" class="col-xs-2 control-label">as</label>
+                  <div class="col-xs-10">
+                    <input type="text" class="form-control" id="repl-input" placeholder="replacement">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-offset-8 col-xs-4">
+                    <button id="add-rule-btn" type="button" class="btn btn-default">Add new rule</button>
+                  </div>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane" id="variables">
+          <div id="variables-header">
+            <h3>variable legend</h3>
+            <div>Variables and their runtime values on the test case:</div>
+            <code id="testcase"></code>
+          </div>
+          <ul class="list-group" id="variable-list">
+          </ul>
+        </div>
+      </div>
+    </div> <!--end sidebar-->
+  </div> <!--end row-->
+</body>
