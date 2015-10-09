@@ -43,7 +43,7 @@ if args.run_pre:
     )
 if args.run_pipeline:
     outputPath = path.join(args.basedir, 'output')
-    # pipeline.run(datadir, outputPath)
+    pipeline.run(datadir, outputPath)
 
     # write config
     configPath = '../ui/config.json'

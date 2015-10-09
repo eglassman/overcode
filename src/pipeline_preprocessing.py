@@ -1,4 +1,3 @@
-# import inputs
 import os
 from os import path
 import pickle
@@ -104,12 +103,3 @@ def preprocess_pipeline_data(folderOfData,
 
     print "Solutions skipped:", len(skippedSolutions)
     pprint.pprint(skippedSolutions, indent=2)
-
-if __name__ == '__main__':
-    basedir = '../../overcode_data/6.0001_dotprod'
-    folderOfData = path.join(basedir, 'data')
-    testCasePath = path.join(basedir, 'testCase.py')
-    with open(testCasePath, 'r') as f:
-        testCase = f.read()
-
-    preprocess_pipeline_data(folderOfData, testCase, testedFunctionName='dotProduct')

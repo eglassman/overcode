@@ -17,14 +17,8 @@ from external import (
 from pipeline_util import ensure_folder_exists
 
 
-# TODO: make command line runnable
-# baseDir = '../../overcode_data/6.0001_dotprod'
-# funcName = 'dotProduct'
-
 # HACKIEST HACK THAT EVER HACKED
 def run(folderOfData, destFolder):
-    # folderOfData = path.join(baseDir, 'data')
-    # destFolder = path.join(baseDir, 'output')
 
     # Constants and initial lists
     getRidOfStars = True
