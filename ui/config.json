@@ -1,5 +1,6 @@
 {
     "base_dirs": {
+        "example2": "hangman", 
         "example1": "6.0001_dotprod"
     }
 }
