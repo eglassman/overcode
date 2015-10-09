@@ -13,9 +13,9 @@ from test.mocks import (
     unfinalizedLoggerResults,
     unpickledFinalResults,
 )
-from pipeline_defaults_python import make_default_finalizer
-from pipeline_defaults_python import extract_var_info_from_trace as defaultMunger
-from pipeline_defaults_python import tidy_non_oppia as defaultTidier
+from pipeline_default_functions import make_default_finalizer
+from pipeline_default_functions import extract_var_info_from_trace as defaultMunger
+from pipeline_default_functions import tidy_non_oppia as defaultTidier
 
 from pipeline_preprocessing import preprocess_pipeline_data as preprocess
 # folderOfData, testcase, tidier=..., testFnName=..., formatter=..., finalizer=...

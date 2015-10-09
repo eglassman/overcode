@@ -6,8 +6,6 @@ from external import (
     pythonTidy,
     remove_comments,
 )
-# import external.pythonTidy as pythonTidy
-# import external.remove_comments
 
 def tidy_non_oppia(filename, sourceDir, destDir, testedFunctionName):
     tidy_up_buffer = StringIO.StringIO()

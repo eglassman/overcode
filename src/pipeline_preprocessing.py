@@ -9,10 +9,10 @@ from external import pg_logger
 from pipeline_util import ensure_folder_exists
 
 # Tidier, finalizer and formatter
-from pipeline_defaults_python import extract_var_info_from_trace as defaultTraceMunger
-from pipeline_defaults_python import tidy_non_oppia as defaultTidier
-from pipeline_defaults_python import make_default_finalizer
-# from pipeline_defaults_python import format_as_html as defaultFormatter
+from pipeline_default_functions import extract_var_info_from_trace as defaultTraceMunger
+from pipeline_default_functions import tidy_non_oppia as defaultTidier
+from pipeline_default_functions import make_default_finalizer
+# from pipeline_default_functions import format_as_html as defaultFormatter
 defaultFormatter = None
 
 stopOnError = True
