@@ -1,0 +1,5 @@
+{
+    "base_data_dirs": {
+        "example1": "../../../overcode_data/6.0001_dotprod"
+    }
+}

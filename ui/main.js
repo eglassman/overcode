@@ -91,42 +91,36 @@ var loadData = function(e) {
   redraw();
 
   // load the new data
-  var dataSource = $("#data-select").val();
-  d3.json("data/phrases_"+dataSource+".json", function(error, phrases) {
-    allPhrases = phrases.map(function(d) {
-      d.merged = false;
-      return d;
-    });
+  getDataSource(function(error, dataSourceDir) {
+    if (error) throw error;
+    console.log(dataSourceDir)
 
-    d3.json("data/solutions_"+dataSource+".json", function(error, solutions) {
-      allSolutions = solutions;
+    // TODO: is there a JS equivalent of os.path.join?
+    var outputPath = dataSourceDir + '/output/';
 
-      d3.json("data/variables_"+dataSource+".json", function(error, variables) {
-        allVariables = variables.map(function(d) { d.merged = false; return d;});
+  // var dataSource = $("#data-select").val();
+    d3.json(outputPath + 'phrases.json', function(error, phrases) {
+      allPhrases = phrases.map(function(d) {
+        d.merged = false;
+        return d;
+      });
 
-        // fill allStacks as single-solution stacks
-        initializeStacks();
-        numTotalSolutions = allStacks.reduce(function(prev, stack) {
-          return prev + stackCount(stack);
-        }, 0);
-        if (dataSource == "hangmanNewRenamer")
-          $("#testcase").html("getGuessedWord('tiger','aeiou')");
-        else if (dataSource == "iterPowerNewRenamer")
-          $("#testcase").html("iterPower(5.0, 3)");
-        else if (dataSource == "compDerivNewRenamer")
-          $("#testcase").html("computeDeriv([-13.39, 0.0, 17.5, 3.0, 1.0])");
-        else if (dataSource == "dotProd")
-          $("#testcase").html("dotProduct([1, 2, 3],[4, 5, 6])");
-        else if (dataSource == "quadratic")
-          $("#testcase").html("evalQuadratic(1, 2, 3, 4)");
-        else if (dataSource == "uniqVals")
-          $("#testcase").html("uniqueValues({'jack':1,'snape':2,'hogwarts':2,'harry':4})");
-        else if (dataSource == "replaceSim10trials")
-          $("#testcase").html("replacementSimulation(10)");
+      d3.json(outputPath + 'solutions.json', function(error, solutions) {
+        allSolutions = solutions;
 
-        redraw();
-        logAction("loaded", [dataSource, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
+        d3.json(outputPath + 'variables.json', function(error, variables) {
+          allVariables = variables.map(function(d) { d.merged = false; return d;});
 
+          // fill allStacks as single-solution stacks
+          initializeStacks();
+          numTotalSolutions = allStacks.reduce(function(prev, stack) {
+            return prev + stackCount(stack);
+          }, 0);
+
+          redraw();
+          logAction("loaded", [dataSource, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
+
+        });
       });
     });
   });

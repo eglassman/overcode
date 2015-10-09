@@ -1,0 +1,40 @@
+var PARAM_BASE_DIR_KEY = 'src';
+
+function getDataSource(callback) {
+    console.log('location.search:',window.location.search)
+
+    // Slightly modified from:
+    // http://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-url-parameter
+    var params = {};
+    if (location.search) {
+        var parts = location.search.substring(1).split('&');
+        for (var i = 0; i < parts.length; i++) {
+            var param_and_val = parts[i].split('=');
+            if (!param_and_val[0]) {
+                continue;
+            }
+            params[param_and_val[0]] = unescape(param_and_val[1]) || true;
+        }
+    }
+
+    var base_dir_key = params[PARAM_BASE_DIR_KEY];
+
+    d3.json('config.json', function(error, config) {
+        if (error) {
+            callback(error, null);
+            return;
+        }
+        console.log('loaded config:',config);
+        
+        if (! config.hasOwnProperty('base_data_dirs')) {
+            callback(new Error('Missing base_data_dirs from config.json'), null);
+            return;
+        }
+        if (config.base_data_dirs[base_dir_key] === undefined) {
+            callback(new Error('No entry in config.json for key: ' + base_dir_key), null);
+            return;
+        }
+
+        callback(null, config.base_data_dirs[base_dir_key]);
+    });
+}
