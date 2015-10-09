@@ -44,7 +44,7 @@ var generateRewriteRule = function(downStack,upStack) {
         console.log(_.where(allPhrases,{id:diff1[0]})[0].code);
         console.log(_.where(allPhrases,{id:diff2[0]})[0].code); 
         $("#repl-input").val(_.where(allPhrases,{id:diff1[0]})[0].code);
-	    $("#pattern-input").val(_.where(allPhrases,{id:diff2[0]})[0].code);
+        $("#pattern-input").val(_.where(allPhrases,{id:diff2[0]})[0].code);
     } else {
         console.log('cannot yet predict rewrite rule');
     };
@@ -65,26 +65,25 @@ var stackMembers = function(stack) {
 };
 
 var fetchExamplePyFiles = function(solutionIDs,divToAppendTo) {
-    var dataSource = $("#data-select").val(); //a repeat from main.js
+  // baseDir is defined in main.js
+  if (baseDir === undefined) return;
 
-    //for solID in solutionIDs
-    for (i = 0; i < solutionIDs.length; i++) {
-        solFileName = solutionIDs[i] + ".py";
-        //get solFileName
-        d3.text("data/"+dataSource+"/"+solFileName, function(text) {
-            var data = d3.csv.parseRows(text).map(function(row) {
-                return row.map(function(value) {
-                    return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                });
-            });
-            var codeEx = "<pre><code><span>";
-            codeEx+= data.join("</span><br><span>");
-            codeEx += "</span></code></pre>";
-            divToAppendTo.append(codeEx);
-            //$(divToAppendTo).text(codeEx).html();
-            //console.log(codeEx)
+  var dataSource = baseDir + '/data/'
+  for (i = 0; i < solutionIDs.length; i++) {
+    solFileName = solutionIDs[i] + ".py";
+    //get solFileName
+    d3.text(dataSource + solFileName, function(text) {
+      var data = d3.csv.parseRows(text).map(function(row) {
+        return row.map(function(value) {
+          return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         });
-    }
+      });
+      var codeEx = "<pre><code><span>";
+      codeEx+= data.join("</span><br><span>");
+      codeEx += "</span></code></pre>";
+      divToAppendTo.append(codeEx);
+    });
+  }
 }
 
 var generateCode = function(lines, referencePhraseIDs) {

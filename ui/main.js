@@ -1,3 +1,5 @@
+var baseDir;
+
 var miscBottom = true;
 hljs.initHighlightingOnLoad();
 
@@ -56,7 +58,7 @@ $(function() {
   $("#rewrite-rules").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").height());
 
   // Event Handlers
-  $("#data-select").on('change', loadData);
+  // $("#data-select").on('change', loadData);
   $("#pattern-input, #repl-input").on('keyup', previewRule);
   $("#add-rule-btn").on('click', addRule);
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -67,8 +69,13 @@ $(function() {
       drawStacks();
   });
 
-  // Load the default dataset
-  loadData();
+  getBaseDir(function(error, returnedBaseDir) {
+    if (error) throw error;
+
+    baseDir = returnedBaseDir;
+    // Load the default dataset
+    loadData();
+  });
 });
 
 // Load initial phrases and representative solutions
@@ -91,36 +98,29 @@ var loadData = function(e) {
   redraw();
 
   // load the new data
-  getDataSource(function(error, dataSourceDir) {
-    if (error) throw error;
-    console.log(dataSourceDir)
+  // TODO: is there a JS equivalent of os.path.join?
+  var outputPath = baseDir + '/output/';
+  d3.json(outputPath + 'phrases.json', function(error, phrases) {
+    allPhrases = phrases.map(function(d) {
+      d.merged = false;
+      return d;
+    });
 
-    // TODO: is there a JS equivalent of os.path.join?
-    var outputPath = dataSourceDir + '/output/';
+    d3.json(outputPath + 'solutions.json', function(error, solutions) {
+      allSolutions = solutions;
 
-  // var dataSource = $("#data-select").val();
-    d3.json(outputPath + 'phrases.json', function(error, phrases) {
-      allPhrases = phrases.map(function(d) {
-        d.merged = false;
-        return d;
-      });
+      d3.json(outputPath + 'variables.json', function(error, variables) {
+        allVariables = variables.map(function(d) { d.merged = false; return d;});
 
-      d3.json(outputPath + 'solutions.json', function(error, solutions) {
-        allSolutions = solutions;
+        // fill allStacks as single-solution stacks
+        initializeStacks();
+        numTotalSolutions = allStacks.reduce(function(prev, stack) {
+          return prev + stackCount(stack);
+        }, 0);
 
-        d3.json(outputPath + 'variables.json', function(error, variables) {
-          allVariables = variables.map(function(d) { d.merged = false; return d;});
+        redraw();
+        logAction("loaded", [baseDir, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
 
-          // fill allStacks as single-solution stacks
-          initializeStacks();
-          numTotalSolutions = allStacks.reduce(function(prev, stack) {
-            return prev + stackCount(stack);
-          }, 0);
-
-          redraw();
-          logAction("loaded", [dataSource, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
-
-        });
       });
     });
   });

@@ -1,6 +1,6 @@
 var PARAM_BASE_DIR_KEY = 'src';
 
-function getDataSource(callback) {
+function getBaseDir(callback) {
     console.log('location.search:',window.location.search)
 
     // Slightly modified from:
@@ -21,20 +21,21 @@ function getDataSource(callback) {
 
     d3.json('config.json', function(error, config) {
         if (error) {
+            // error loading the json file
             callback(error, null);
             return;
         }
-        console.log('loaded config:',config);
-        
-        if (! config.hasOwnProperty('base_data_dirs')) {
-            callback(new Error('Missing base_data_dirs from config.json'), null);
+        if (! config.hasOwnProperty('base_dirs')) {
+            // no base_dirs key
+            callback(new Error('Missing base_dirs from config.json'), null);
             return;
         }
-        if (config.base_data_dirs[base_dir_key] === undefined) {
+        if (config.base_dirs[base_dir_key] === undefined) {
             callback(new Error('No entry in config.json for key: ' + base_dir_key), null);
             return;
         }
 
-        callback(null, config.base_data_dirs[base_dir_key]);
+        var base_dir = 'overcode_data/' + config.base_dirs[base_dir_key];
+        callback(null, base_dir);
     });
 }
