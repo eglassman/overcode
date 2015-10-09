@@ -4,8 +4,10 @@ import shutil
 import unittest
 
 from pipeline_preprocessing import preprocess_pipeline_data
+import pipeline
 
-TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests' #'../../overcode_data/6.0001_dotprod'
+TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests'
+# TEST_DIR_PATH = '../../overcode_data/6.0001_dotprod'
 # Set to True to delete the output from the pipeline after the test.
 remove_output = False
 
@@ -36,9 +38,8 @@ class TestPipeline(unittest.TestCase):
         with open(path.join(mocksPath, 'variables.json'), 'r') as f:
             expectedVariables = json.load(f)
 
-        # Everything is just run directly, rather than being encapsulated,
-        # so importing will run it. Yikes.
-        import pipeline
+        # LOL
+        pipeline.run()
 
         with open(path.join(TEST_DIR_PATH, 'output', 'phrases.json'), 'r') as f:
             actualPhrases = json.load(f)
