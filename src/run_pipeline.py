@@ -5,6 +5,7 @@ from os import path
 
 import pipeline_preprocessing
 import pipeline
+import fancy_pipeline
 
 parser = argparse.ArgumentParser()
 parser.add_argument('basedir', help='Path to the base directory')
@@ -19,6 +20,8 @@ parser.add_argument('-p', '--run-pipeline',
     help='Run the full pipeline with the given key')
 parser.add_argument('-P', '--run-pre', action='store_true',
     help='Flag: run the preprocessor')
+parser.add_argument('-f', '--run-fancy',
+    help='Run the fancy pipeline with the given key')
 
 args = parser.parse_args()
 
@@ -41,16 +44,20 @@ if args.run_pre:
         testcase,
         testedFunctionName=args.funcname
     )
-if args.run_pipeline:
+if args.run_pipeline or args.run_fancy:
     outputPath = path.join(args.basedir, 'output')
-    pipeline.run(datadir, outputPath)
+    if args.run_pipeline:
+        pipeline.run(datadir, outputPath)
+        key = args.run_pipeline
+    else:
+        fancy_pipeline.run(datadir, outputPath)
+        key = args.run_fancy
 
     # write config
     configPath = '../ui/config.json'
     with open(configPath, 'r') as f:
         conf = json.load(f)
 
-    key = args.run_pipeline
     unqualifiedBasedir = path.basename(args.basedir.rstrip('/'))
     conf['base_dirs'][key] = unqualifiedBasedir
 
