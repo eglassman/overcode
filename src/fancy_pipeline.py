@@ -30,9 +30,18 @@ class VariableInstance(object):
         self.local_name = local_name
         self.abstract_var = None
 
-    def __str__(self):
+    def __repr__(self):
         return "Variable(" + self.local_name + ") in solution " + str(self.solnum)
-    __repr__ = __str__
+    
+    def __str__(self):
+        s = """
+Local name: %s
+Solution: %s
+Sequence: %s
+""" % (self.local_name, self.solnum, str(self.sequence))
+        if self.abstract_var:
+            s += "Belongs to: " + AbstractVariable.__repr__(self.abstract_var)
+        return s
 
 class AbstractVariable(object):
     def __init__(self, sequence):
@@ -52,12 +61,11 @@ class AbstractVariable(object):
 
     def __repr__(self):
         return "AbstractVariable(" + str(self.sequence) + ")"
-    
+
     def __str__(self):
         return """
 Sequence: %s
-Solutions: %s
-        """ % (str(self.sequence), pprint.pformat(self.solutions))
+Solutions: %s""" % (str(self.sequence), pprint.pformat(self.solutions))
 
 ###############################################################################
 ## Load preprocessed data
@@ -84,6 +92,19 @@ def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formatted
         all_solutions.append(sol)
 
 ###############################################################################
+## Abstract variable collection
+###############################################################################
+def add_to_abstracts(var, all_abstracts):
+    for abstract in all_abstracts:
+        if abstract.should_contain(var):
+            abstract.add_instance(var)
+            break
+    else:
+        new_abstract = AbstractVariable(var.sequence)
+        new_abstract.add_instance(var)
+        all_abstracts.append(new_abstract)
+
+###############################################################################
 ## Variable sequence extraction
 ###############################################################################
 def extract_single_sequence(column):
@@ -103,7 +124,7 @@ def extract_single_sequence(column):
 class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
 
-def extract_sequences_single_sol(sol):
+def extract_sequences_single_sol(sol, all_abstracts):
     if '__return__' not in sol.trace:
         raise ExtractionException('Too long')
 
@@ -118,32 +139,17 @@ def extract_sequences_single_sol(sol):
             continue
         var = VariableInstance(sequence, sol.solnum, localVarName)
         sol.local_vars.append(var)
+        add_to_abstracts(var, all_abstracts)
 
-def extract_variable_sequences(all_solutions):
+def extract_and_collect_var_seqs(all_solutions, all_abstracts):
     skipped = []
     for sol in all_solutions:
         try:
-            extract_sequences_single_sol(sol)
+            extract_sequences_single_sol(sol, all_abstracts)
         except ExtractionException:
             skipped.append(sol.solnum)
 
     return skipped
-
-
-###############################################################################
-## Abstract variable collection
-###############################################################################
-def collect_abstracts(all_solutions, all_abstracts):
-    for sol in all_solutions:
-        for var in sol.local_vars:
-            for abstract in all_abstracts:
-                if abstract.should_contain(var):
-                    abstract.add_instance(var)
-                    break
-            else:
-                new_abstract = AbstractVariable(var.sequence)
-                new_abstract.add_instance(var)
-                all_abstracts.append(new_abstract)
 
 
 ###############################################################################
@@ -168,14 +174,16 @@ def collect_abstracts(all_solutions, all_abstracts):
 def run(folderOfData, destFolder):
     all_solutions = []
     populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
-    skipped_extract_sequences = extract_variable_sequences(all_solutions)
-
     all_abstracts = []
-    collect_abstracts(all_solutions, all_abstracts)
+    skipped_extract_sequences = extract_and_collect_var_seqs(
+        all_solutions, all_abstracts)
+
+    # collect_abstracts(all_solutions, all_abstracts)
 
 
     # pprint.pprint(all_solutions)
     # pprint.pprint(all_solutions[0].local_vars)
     pprint.pprint(all_abstracts)
-    print(all_abstracts[0])
+    # print(all_abstracts[0])
+    print all_solutions[0].local_vars[0]
     print "skipped:", skipped_extract_sequences
