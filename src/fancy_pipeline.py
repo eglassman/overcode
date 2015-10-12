@@ -6,6 +6,10 @@ import pprint
 
 from pipeline_util import ensure_folder_exists
 
+
+###############################################################################
+## Classes
+###############################################################################
 class Solution(object):
     def __init__(self, solnum, trace, args, retVars):
         self.solnum = solnum
@@ -30,6 +34,34 @@ class VariableInstance(object):
         return "Variable(" + self.local_name + ") in solution " + str(self.solnum)
     __repr__ = __str__
 
+class AbstractVariable(object):
+    def __init__(self, sequence):
+        self.sequence = sequence
+        self.solutions = {}
+
+    def should_contain(self, inst):
+        assert isinstance(inst, VariableInstance)
+        return self.sequence == inst.sequence
+
+    def add_instance(self, inst):
+        assert isinstance(inst, VariableInstance)
+        assert inst.abstract_var == None
+
+        self.solutions[inst.solnum] = inst.local_name
+        inst.abstract_var = self
+
+    def __repr__(self):
+        return "AbstractVariable(" + str(self.sequence) + ")"
+    
+    def __str__(self):
+        return """
+Sequence: %s
+Solutions: %s
+        """ % (str(self.sequence), pprint.pformat(self.solutions))
+
+###############################################################################
+## Load preprocessed data
+###############################################################################
 def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formattedExtn='.py.html'):
     print "Loading data"
     for filename in os.listdir(pickleSrc):
@@ -51,7 +83,9 @@ def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formatted
 
         all_solutions.append(sol)
 
-
+###############################################################################
+## Variable sequence extraction
+###############################################################################
 def extract_single_sequence(column):
     valueSequence = []
     for elem in column:
@@ -66,47 +100,82 @@ def extract_single_sequence(column):
                     valueSequence.append(val)
     return valueSequence
 
+class ExtractionException(Exception):
+    """No __return__ value in a solution trace."""
+
+def extract_sequences_single_sol(sol):
+    if '__return__' not in sol.trace:
+        raise ExtractionException('Too long')
+
+    for localVarName, localVarData in sol.trace.iteritems():
+        if localVarName.startswith('__'):
+            continue
+        sequence = extract_single_sequence(localVarData)
+        if (len(sequence) == 1 and
+            type(sequence[0]) is str and
+            sequence[0].startswith('__')):
+            # Just a function definition
+            continue
+        var = VariableInstance(sequence, sol.solnum, localVarName)
+        sol.local_vars.append(var)
+
 def extract_variable_sequences(all_solutions):
     skipped = []
     for sol in all_solutions:
-        if '__return__' not in sol.trace:
+        try:
+            extract_sequences_single_sol(sol)
+        except ExtractionException:
             skipped.append(sol.solnum)
-            continue
 
-        for localVarName, localVarData in sol.trace.iteritems():
-            if localVarName.startswith('__'):
-                continue
-            sequence = extract_single_sequence(localVarData)
-            if (len(sequence) == 1 and
-                type(sequence[0]) is str and
-                sequence[0].startswith('__')):
-                # Just a function definition
-                continue
-            var = VariableInstance(sequence, sol.solnum, localVarName)
-            sol.local_vars.append(var)
     return skipped
 
 
-#from: http://stackoverflow.com/questions/8230315/python-sets-are-not-json-serializable
-    #and http://stackoverflow.com/questions/624926/how-to-detect-whether-a-python-variable-is-a-function
-    class ElenaEncoder(json.JSONEncoder):
-        def default(self, obj):
-           if isinstance(obj, set):
-              return {'type':'set', 'list':list(obj)}
-           if isinstance(obj, types.FunctionType):
-              return {'type':'function'}
-           return json.JSONEncoder.default(self, obj)
+###############################################################################
+## Abstract variable collection
+###############################################################################
+def collect_abstracts(all_solutions, all_abstracts):
+    for sol in all_solutions:
+        for var in sol.local_vars:
+            for abstract in all_abstracts:
+                if abstract.should_contain(var):
+                    abstract.add_instance(var)
+                    break
+            else:
+                new_abstract = AbstractVariable(var.sequence)
+                new_abstract.add_instance(var)
+                all_abstracts.append(new_abstract)
 
-def dumpOutput(data, filename, sort_keys=True, indent=4):
-    filepath = path.join(destFolder, filename)
-    with open(filepath, 'w') as f:
-        json.dump(data, f, sort_keys=sort_keys, indent=indent, cls=ElenaEncoder)
+
+###############################################################################
+## Dump output
+###############################################################################
+
+#from: http://stackoverflow.com/questions/8230315/python-sets-are-not-json-serializable
+#and http://stackoverflow.com/questions/624926/how-to-detect-whether-a-python-variable-is-a-function
+# class ElenaEncoder(json.JSONEncoder):
+#     def default(self, obj):
+#        if isinstance(obj, set):
+#           return {'type':'set', 'list':list(obj)}
+#        if isinstance(obj, types.FunctionType):
+#           return {'type':'function'}
+#        return json.JSONEncoder.default(self, obj)
+
+# def dumpOutput(data, filename, sort_keys=True, indent=4):
+#     filepath = path.join(destFolder, filename)
+#     with open(filepath, 'w') as f:
+#         json.dump(data, f, sort_keys=sort_keys, indent=indent, cls=ElenaEncoder)
 
 def run(folderOfData, destFolder):
     all_solutions = []
     populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
-
     skipped_extract_sequences = extract_variable_sequences(all_solutions)
 
-    pprint.pprint(all_solutions)
-    pprint.pprint(all_solutions[0].local_vars)
+    all_abstracts = []
+    collect_abstracts(all_solutions, all_abstracts)
+
+
+    # pprint.pprint(all_solutions)
+    # pprint.pprint(all_solutions[0].local_vars)
+    pprint.pprint(all_abstracts)
+    print(all_abstracts[0])
+    print "skipped:", skipped_extract_sequences
