@@ -273,22 +273,22 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
         except:
             raise RenamerException('Failed to rename ' + str(sol.solnum))
 
-        for unstrippedLine in renamed_src.split('\n'):
-            strippedLine = unstrippedLine.strip()
-            if not (unstrippedLine == '' or strippedLine == ''):
-                leadingSpace = len(unstrippedLine) - len(strippedLine) #how much was lobbed off?
-                sol.canonicalPYcode.append(strippedLine)
-                sol.canonicalPYcodeIndents.append(leadingSpace)
+    for unstrippedLine in renamed_src.split('\n'):
+        strippedLine = unstrippedLine.strip()
+        if not (unstrippedLine == '' or strippedLine == ''):
+            leadingSpace = len(unstrippedLine) - len(strippedLine) #how much was lobbed off?
+            sol.canonicalPYcode.append(strippedLine)
+            sol.canonicalPYcodeIndents.append(leadingSpace)
 
-                if strippedLine not in tab_counters:
-                    tab_counters[strippedLine] = Counter()
-                tab_counters[strippedLine].update([leadingSpace])
+            if strippedLine not in tab_counters:
+                tab_counters[strippedLine] = Counter()
+            tab_counters[strippedLine].update([leadingSpace])
 
-        with open(canon_path, 'w') as f:
-            f.write(renamed_src)
+    with open(canon_path, 'w') as f:
+        f.write(renamed_src)
 
-        phrase_counter.update(sol.canonicalPYcode)
-        # TODO: pygmentize?
+    phrase_counter.update(sol.canonicalPYcode)
+    # TODO: pygmentize?
 
 def rewrite_all_solutions(all_solutions, phrase_counter, tab_counters, folderOfData):
     skipped = []
