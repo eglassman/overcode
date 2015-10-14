@@ -14,6 +14,8 @@ from pipeline_util import ensure_folder_exists
 ## Classes
 ###############################################################################
 class Solution(object):
+    """Information about a single solution."""
+
     def __init__(self, solnum, trace, args, retVars):
         self.solnum = solnum
         self.trace = trace
@@ -29,6 +31,8 @@ class Solution(object):
     __repr__ = __str__
 
 class VariableInstance(object):
+    """A single variable within a solution."""
+
     def __init__(self, sequence, solnum, local_name):
         self.sequence = sequence
         self.solnum = solnum
@@ -50,42 +54,66 @@ Sequence: %s
         return s
 
 class AbstractVariable(object):
-    def __init__(self, sequence):
-        self.sequence = sequence
-        self.solutions = {}
+    """A canonical variable as characterized by its sequence of values."""
 
+    def __init__(self, sequence):
+        # Sequence of values taken on by this variable
+        self.sequence = sequence
+        # solnum -> local name of this variable in that solution
+        self.solutions = {}
+        # Counter for keeping track of most common names
         self.name_ctr = Counter()
         self.canon_name = None
-        # solnum -> new name
-        self.rename_to = {}
-
         self.is_unique = True
 
     def should_contain(self, inst):
+        """
+        Whether a particular VariableInstance is an example of this abstract
+        variable.
+
+        inst: an instance of VariableInstance
+        returns: boolean, True if inst should be added to self, False otherewise.
+        """
         assert isinstance(inst, VariableInstance)
         return self.sequence == inst.sequence
 
     def add_instance(self, inst):
+        """
+        Add a VariableInstance to this abstract variable.
+
+        inst: an instance of VariableInstance. Must not be associated with
+              another AbstractVariable.
+        """
         assert isinstance(inst, VariableInstance)
         assert inst.abstract_var == None
 
+        # Update internal data structures
         self.solutions[inst.solnum] = inst.local_name
         self.name_ctr[inst.local_name] += 1
         if self.is_unique:
             self.is_unique = False
+        # Link the VariableInstance to this AbstractVariable
         inst.abstract_var = self
 
     def most_common_name(self):
+        """
+        Get the most common name for this abstract variable across all solutions.
+
+        returns: string
+        """
         name, count = self.name_ctr.most_common(1)[0]
         return name
 
     def print_solutions(self):
+        """Pretty print the solutions containing this abstract variable."""
         pprint.pprint(self.solutions)
 
     def print_names(self):
+        """Pretty print the local names given to this abstract variable."""
         pprint.pprint(self.name_ctr)
 
     def __eq__(self, other):
+        """Two AbstractVariables are equal if they have the same sequence."""
         assert isinstance(other, AbstractVariable)
         return self.sequence == other.sequence
 
@@ -99,18 +127,28 @@ class AbstractVariable(object):
     __str__ = __repr__
 
 class Stack(object):
+    """A group of Solutions that are considered equivalent."""
     def __init__(self):
         self.representative = None
         self.members = []
         self.count = 0
 
     def should_contain(self, sol):
+        """
+        Whether a particular solution belongs in this stack.
+
+        sol: an instance of Solution
+        returns: boolean, True if sol belongs in this stack, False otherwise
+        """
         assert isinstance(sol, Solution)
         if self.representative == None:
             return True
         return set(self.representative.canonicalPYcode) == set(sol.canonicalPYcode)
 
     def add_solution(self, sol):
+        """
+        Add a solution to this stack.
+        """
         assert isinstance(sol, Solution)
         if self.representative == None:
             self.representative = sol
@@ -122,11 +160,24 @@ class Stack(object):
 ## Load preprocessed data
 ###############################################################################
 def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formattedExtn='.py.html'):
+    """
+    Load program traces, args and return variables from pickle files as
+    created by the pipeline preprocessor. Create a Solution instance for
+    each pickle file and add them to all_solutions.
+
+    all_solutions: list to add solutions to
+    pickleSrc: string, path to directory containing pickle files
+    formattedSrc: string, path to directory containing formatted code, e.g.
+                  as HTML
+    formattedExtn: string, extension of files in the formattedSrc directory
+
+    mutates all_solutions
+    """
+
     print "Loading data"
     for filename in os.listdir(pickleSrc):
         solnum = filename.split('.')[0]
-        solNumInt = int(solnum)
-        print solnum
+        # print solnum
 
         with open(path.join(pickleSrc, filename), 'r') as f:
             unpickled = pickle.load(f)
@@ -146,6 +197,16 @@ def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formatted
 ## Abstract variable collection
 ###############################################################################
 def add_to_abstracts(var, all_abstracts):
+    """
+    Add var to the AbstractVariable it belongs in, or create a new one if there
+    is not yet an appropriate AbstractVariable.
+
+    var: an instance of VariableInstance
+    all_abstracts: list of existing AbstractVariable instances
+
+    mutates all_abstracts and var
+    """
+
     for abstract in all_abstracts:
         if abstract.should_contain(var):
             abstract.add_instance(var)
@@ -156,14 +217,28 @@ def add_to_abstracts(var, all_abstracts):
         all_abstracts.append(new_abstract)
 
 def find_canon_names(all_abstracts):
+    """
+    Assign canon names to all AbstractVariables by appending a modifier to
+    the most common name if it collides with another name, or appending a
+    double underscore if a variable is unique.
+
+    all_abstracts: list of AbstractVariable instances
+
+    mutates the elements of all_abstracts
+    """
+
+    # TODO: make sure that name collisions are resolved in favor of
+    # the AbstractVariable that is most commonly assigned that name
     seen = {}
     uniques = []
     for abstract in all_abstracts:
+        # Skip unique variables for now, they get renamed differently
         if abstract.is_unique:
             uniques.append(abstract)
             continue
 
         name = abstract.most_common_name()
+        # If we've already seen that name, append a modifier
         if name in seen:
             append = '___' + str(seen[name])
         else:
@@ -171,6 +246,7 @@ def find_canon_names(all_abstracts):
 
         abstract.canon_name = name + append
         seen[name] = seen.get(name, 1) + 1
+
     for unique in uniques:
         name = unique.most_common_name()
         if name in seen:
@@ -183,6 +259,13 @@ def find_canon_names(all_abstracts):
 ## Variable sequence extraction
 ###############################################################################
 def extract_single_sequence(column):
+    """
+    Collapse a trace of variable values over time into a single sequence.
+
+    column: list of (step, value) pairs
+    returns: list of values
+    """
+
     valueSequence = []
     for elem in column:
         val = elem[1]
@@ -200,6 +283,19 @@ class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
 
 def extract_sequences_single_sol(sol, all_abstracts):
+    """
+    For each local variable in a single solution, extract its sequence of
+    values, create a VariableInstance, and assign that VariableInstance to
+    an AbstractVariable.
+
+    sol: instance of Solution
+    all_abstracts: list of AbstractVariable instances. Can be empty.
+    raises ExtractionException if there is no __return__ value in the
+           solution trace
+
+    mutates sol and all_abstracts
+    """
+
     if '__return__' not in sol.trace:
         raise ExtractionException('Too long')
 
@@ -212,16 +308,29 @@ def extract_sequences_single_sol(sol, all_abstracts):
             sequence[0].startswith('__')):
             # Just a function definition
             continue
+
+        # Create a new VariableInstance, add it to the solution's local vars,
+        # assign it to an abstract variable, and add that to the solution's
+        # abstract vars.
         var = VariableInstance(sequence, sol.solnum, localVarName)
         sol.local_vars.append(var)
         add_to_abstracts(var, all_abstracts)
-
         sol.abstract_vars.append(var.abstract_var)
 
 def extract_and_collect_var_seqs(all_solutions, all_abstracts):
+    """
+    Extract and collect variable information from all solutions.
+
+    all_solutions: list of Solution instances
+    all_abstracts: list of existing AbstractVariable instances
+    returns: list, solution numbers skipped
+
+    mutates all_abstracts and elements of all_solutions
+    """
     skipped = []
     for sol in all_solutions:
         try:
+            print "Collecting variables in", sol.solnum
             extract_sequences_single_sol(sol, all_abstracts)
         except ExtractionException:
             skipped.append(sol.solnum)
@@ -232,6 +341,13 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
 ## Rewrite solutions
 ###############################################################################
 def fix_name_clashes(sol):
+    """
+    Fix the problem with multiple copies of a single AbstractVariable within
+    a single solution.
+
+    sol: instance of Solution
+    """
+
     if len(sol.abstract_vars) == len(set(sol.abstract_vars)):
         return
     assert len(sol.abstract_vars) > len(set(sol.abstract_vars))
@@ -254,6 +370,21 @@ class RenamerException(Exception):
     """A problem occurred while calling identifier_renamer."""
 
 def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
+    """
+    Rename local variables within a single solution to their canon equivalents,
+    or a modified version if there is a clash. Also stores the canonical python
+    code in the Solution.
+
+    sol: instance of Solution
+    tidy_path: string, path to directory containing tidied source for sol
+    canon_path: string, path to directory to write the canonicalized source to
+    phrase_counter: Counter for canonical lines of code
+    tab_counters: dict of Counters for indentation
+    raises RenamerException if a problem occurs when renaming
+
+    mutates sol, phrase_counter, and tab_counters
+    """
+
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
@@ -271,8 +402,10 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
             renamed_src = identifier_renamer.rename_identifier(
                 renamed_src, shared_name + extra_token, shared_name)
         except:
+            # Who knows what kind of exception this raises? Raise our own
             raise RenamerException('Failed to rename ' + str(sol.solnum))
 
+    # Store canonical code in the Solution
     for unstrippedLine in renamed_src.split('\n'):
         strippedLine = unstrippedLine.strip()
         if not (unstrippedLine == '' or strippedLine == ''):
@@ -291,6 +424,18 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
     # TODO: pygmentize?
 
 def rewrite_all_solutions(all_solutions, phrase_counter, tab_counters, folderOfData):
+    """
+    Rename variables across all solutions, write out the canonicalized code,
+    and keep track of phrases.
+
+    all_solutions: list of Solution instances
+    phrase_counter: Counter for canonical lines of code
+    tab_counters: dict of Counters for indentation
+    folderOfData: base directory containing data and output folders
+    returns: list, solution numbers skipped
+
+    mutates phrase_counter and tab_counters, and elements of all_solutions
+    """
     skipped = []
 
     canon_folder = path.join(folderOfData, 'tidyDataCanonicalized')
@@ -301,6 +446,7 @@ def rewrite_all_solutions(all_solutions, phrase_counter, tab_counters, folderOfD
         tidy_path = path.join(folderOfData, 'tidyData', sol.solnum + '.py')
         canon_path = path.join(canon_folder, sol.solnum + '.py')
         try:
+            print "Rewriting", sol.solnum
             rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters)
         except RenamerException:
             skipped.append(sol.solnum)
@@ -312,6 +458,14 @@ def rewrite_all_solutions(all_solutions, phrase_counter, tab_counters, folderOfD
 ## Create stacks
 ###############################################################################
 def stack_solutions(all_solutions, all_stacks):
+    """
+    Collect solutions into stacks.
+
+    all_solutions: list of Solution instances
+    all_stacks: list of existing Stacks
+
+    mutates all_stacks
+    """
     for sol in all_solutions:
         for stack in all_stacks:
             if stack.should_contain(sol):
@@ -327,8 +481,17 @@ def stack_solutions(all_solutions, all_stacks):
 ## Populate solutions, phrases, variables
 ###############################################################################
 def create_output(all_stacks, solutions, phrases, variables):
+    """
+    Make dictionaries in the expected output format by collecting
+    info from the Stacks.
+
+    all_stacks: list of Stack instances
+    solutions, phrases, variables: lists to add results to
+
+    mutates solutions, phrases, and variables
+    """
+
     for stack in all_stacks:
-        # solution = {'code': groupDescription['rep']['code']}
         solution = {}
         solution['phraseIDs'] = set()
         solution['variableIDs'] = set()
@@ -344,7 +507,6 @@ def create_output(all_stacks, solutions, phrases, variables):
             lineDict['indent'] = rep.canonicalPYcodeIndents[i]
             lineDict['phraseID'] = phraseID
             solution['lines'].append(lineDict)
-        # if 'sharedVars' in groupDescription['rep'].keys():
         for avar in rep.abstract_vars:
             if not avar.canon_name.endswith('__'):
                 if avar not in variables:
@@ -363,6 +525,11 @@ def create_output(all_stacks, solutions, phrases, variables):
         solutions.append(solution)
 
 def reformat_phrases(phrases, tab_counters):
+    """
+    Put the phrases list into the expected output format.
+    """
+
+    # TODO: feature spans?
     for i in range(len(phrases)):
         phrase = phrases[i]
         mostCommonIndent = tab_counters[phrase].most_common(1)[0][0]
@@ -374,6 +541,10 @@ def reformat_phrases(phrases, tab_counters):
         }
 
 def reformat_variables(variables):
+    """
+    Put the variables list into the expected output format.
+    """
+
     for i in range(len(variables)):
         var = variables[i]
         variables[i] = {
@@ -397,7 +568,9 @@ class ElenaEncoder(json.JSONEncoder):
           return {'type':'function'}
        return json.JSONEncoder.default(self, obj)
 
-
+###############################################################################
+## Run the pipeline!
+###############################################################################
 def run(folderOfData, destFolder):
     ensure_folder_exists(destFolder)
     def dumpOutput(data, filename, sort_keys=True, indent=4):
@@ -405,22 +578,27 @@ def run(folderOfData, destFolder):
         with open(filepath, 'w') as f:
             json.dump(data, f, sort_keys=sort_keys, indent=indent, cls=ElenaEncoder)
 
+    # Load solutions
     all_solutions = []
     populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
 
+    # Collect variables into AbstractVariables
     all_abstracts = []
     skipped_extract_sequences = extract_and_collect_var_seqs(
         all_solutions, all_abstracts)
     find_canon_names(all_abstracts)
 
+    # Canonicalize source and collect phrases
     phrase_counter = Counter()
     tab_counters = {}
     skipped_rewrite = rewrite_all_solutions(
         all_solutions, phrase_counter, tab_counters, folderOfData)
 
+    # Stack solutions
     all_stacks = []
     stack_solutions(all_solutions, all_stacks)
 
+    # Get output
     solutions = []
     phrases = []
     variables = []
@@ -432,11 +610,5 @@ def run(folderOfData, destFolder):
     dumpOutput(phrases, 'phrases.json')
     dumpOutput(variables, 'variables.json')
 
-    # pprint.pprint(all_solutions)
-    # pprint.pprint(all_solutions[0].local_vars)
-    # pprint.pprint(all_abstracts)
-    # print(all_abstracts[0])
-    # print "NAME:",all_abstracts[0].most_common_name()
-    # print all_solutions[0].local_vars[0]
     print "skipped when extracting:", skipped_extract_sequences
     print "skipped when rewriting:", skipped_rewrite
