@@ -64,7 +64,7 @@ class AbstractVariable(object):
         # Counter for keeping track of most common names
         self.name_ctr = Counter()
         self.canon_name = None
-        self.is_unique = True
+        self.is_unique = None
 
     def should_contain(self, inst):
         """
@@ -90,7 +90,9 @@ class AbstractVariable(object):
         # Update internal data structures
         self.solutions[inst.solnum] = inst.local_name
         self.name_ctr[inst.local_name] += 1
-        if self.is_unique:
+        if self.is_unique==None:
+            self.is_unique = True
+        elif self.is_unique:
             self.is_unique = False
         # Link the VariableInstance to this AbstractVariable
         inst.abstract_var = self
