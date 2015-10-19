@@ -101,10 +101,9 @@ class AbstractVariable(object):
         """
         Get the most common name for this abstract variable across all solutions.
 
-        returns: string
+        returns: (most common name, count) tuple
         """
-        name, count = self.name_ctr.most_common(1)[0]
-        return name
+        return self.name_ctr.most_common(1)[0]
 
     def print_solutions(self):
         """Pretty print the solutions containing this abstract variable."""
@@ -218,7 +217,7 @@ def add_to_abstracts(var, all_abstracts):
         new_abstract.add_instance(var)
         all_abstracts.append(new_abstract)
 
-def find_canon_names(all_abstracts):
+def find_canon_names_old(all_abstracts):
     """
     Assign canon names to all AbstractVariables by appending a modifier to
     the most common name if it collides with another name, or appending a
@@ -239,7 +238,7 @@ def find_canon_names(all_abstracts):
             uniques.append(abstract)
             continue
 
-        name = abstract.most_common_name()
+        name, count = abstract.most_common_name()
         # If we've already seen that name, append a modifier
         if name in seen:
             append = '___' + str(seen[name])
@@ -250,7 +249,51 @@ def find_canon_names(all_abstracts):
         seen[name] = seen.get(name, 1) + 1
 
     for unique in uniques:
-        name = unique.most_common_name()
+        name, count = unique.most_common_name()
+        if name in seen:
+            unique.canon_name = name + '__'
+        else:
+            unique.canon_name = name
+
+def find_canon_names(all_abstracts):
+    """
+    Assign canon names to all AbstractVariables by appending a modifier to
+    the most common name if it collides with another name, or appending a
+    double underscore if a variable is unique.
+
+    all_abstracts: list of AbstractVariable instances
+
+    mutates the elements of all_abstracts
+    """
+
+    # name -> (count, AbstractVariable)
+    name_dict = {}
+    uniques = []
+
+    # Create a map from names to a list of (number of solutions using
+    # that name, associated AbstractVariable instance) pairs
+    for abstract in all_abstracts:
+        if abstract.is_unique:
+            uniques.append(abstract)
+            continue
+        name, count = abstract.most_common_name()
+        if name not in name_dict:
+            name_dict[name] = [(count, abstract)]
+        else:
+            name_dict[name].append((count, abstract))
+
+    # For each name, assign modifiers if necessary in order of popularity
+    for name in name_dict:
+        # Sorting tuples uses the first element by default, no need to specify
+        name_dict[name].sort()
+        for i in range(len(name_dict[name])):
+            count, abstract = name_dict[name][i]
+            append = '' if i == 0 else '___' + str(i + 1)
+            abstract.canon_name = name + append
+
+    # Unique variables just get double underscores if they clash
+    for unique in uniques:
+        name, count = unique.most_common_name()
         if name in seen:
             unique.canon_name = name + '__'
         else:
