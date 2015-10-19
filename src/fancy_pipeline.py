@@ -294,7 +294,7 @@ def find_canon_names(all_abstracts):
     # Unique variables just get double underscores if they clash
     for unique in uniques:
         name, count = unique.most_common_name()
-        if name in seen:
+        if name in name_dict:
             unique.canon_name = name + '__'
         else:
             unique.canon_name = name
@@ -434,16 +434,30 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
         renamed_src = f.read()
 
     extra_token = '_temp'
+    # Two passes to avoid conflicts between new names and old names
+    # TODO: can this be abstracted? It's bothering me :(
+    # First pass: local to <canon>_temp
     for lvar in sol.local_vars:
         if lvar.rename_to:
             shared_name = lvar.rename_to
         else:
             shared_name = lvar.abstract_var.canon_name
 
-        # Two passes to avoid conflicts between new names and old names
         try:
             renamed_src = identifier_renamer.rename_identifier(
                 renamed_src, lvar.local_name, shared_name + extra_token)
+        except:
+            # Who knows what kind of exception this raises? Raise our own
+            raise RenamerException('Failed to rename ' + str(sol.solnum))
+
+    # Second pass: <canon>_temp to <canon>
+    for lvar in sol.local_vars:
+        if lvar.rename_to:
+            shared_name = lvar.rename_to
+        else:
+            shared_name = lvar.abstract_var.canon_name
+
+        try:
             renamed_src = identifier_renamer.rename_identifier(
                 renamed_src, shared_name + extra_token, shared_name)
         except:
