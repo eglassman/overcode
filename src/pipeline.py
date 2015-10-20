@@ -323,8 +323,8 @@ def run(folderOfData, destFolder):
             canonName = extractVarName(tempKey)
 
             offSetFromMax = dictOfNumFilesByCommonName[canonName].index(numFiles)
-            if offSetFromMax > 1:
-                canonAppend = '___' + str(offSetFromMax)
+            if offSetFromMax > 0:
+                canonAppend = '___' + str(offSetFromMax + 1)
             else:
                 canonAppend = ''
 
