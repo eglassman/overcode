@@ -45,11 +45,12 @@ if args.run_pre:
         testedFunctionName=args.funcname
     )
 if args.run_pipeline or args.run_fancy:
-    outputPath = path.join(args.basedir, 'output')
     if args.run_pipeline:
+        outputPath = path.join(args.basedir, 'output_old')
         pipeline.run(datadir, outputPath)
         key = args.run_pipeline
     else:
+        outputPath = path.join(args.basedir, 'output')
         fancy_pipeline.run(datadir, outputPath)
         key = args.run_fancy
 
