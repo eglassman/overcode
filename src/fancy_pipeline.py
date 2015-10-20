@@ -285,7 +285,7 @@ def find_canon_names(all_abstracts):
     # For each name, assign modifiers if necessary in order of popularity
     for name in name_dict:
         # Sorting tuples uses the first element by default, no need to specify
-        name_dict[name].sort()
+        name_dict[name].sort(reverse=True)
         for i in range(len(name_dict[name])):
             count, abstract = name_dict[name][i]
             append = '' if i == 0 else '___' + str(i + 1)
