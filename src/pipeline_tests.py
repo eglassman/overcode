@@ -6,7 +6,7 @@ import unittest
 from pipeline_preprocessing import preprocess_pipeline_data
 # import pipeline
 import fancy_pipeline as pipeline
-from test import compare_solutions as comparators
+from test import comparators
 
 # TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests'
 TEST_DIR_PATH = '../../overcode_data/6.0001_dotprod'
