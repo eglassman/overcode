@@ -17,17 +17,16 @@ class TestPipeline(unittest.TestCase):
     def setUp(self):
         # This was always running. TODO: figure out why and fix it.
         # Run preprocessing if it hasn't been run already
-        # try:
-        #     fpath = path.join(TEST_DIR_PATH, 'data', 'pickleFiles', '2014170154260000.pickle')
-        #     with open(fpath, 'r') as f:
-        #         pass
-        # except IOError:
-        #     folderOfData = path.join(TEST_DIR_PATH, 'data')
-        #     testCasePath = path.join(TEST_DIR_PATH, 'testCase.py')
-        #     with open(testCasePath, 'r') as f:
-        #         testCase = f.read()
-        #     preprocess_pipeline_data(folderOfData, testCase, testedFunctionName='dotProduct')
-        pass
+        try:
+            fpath = path.join(TEST_DIR_PATH, 'data', 'pickleFiles', '201409170154260000.pickle')
+            with open(fpath, 'r') as f:
+                pass
+        except IOError:
+            folderOfData = path.join(TEST_DIR_PATH, 'data')
+            testCasePath = path.join(TEST_DIR_PATH, 'testCase.py')
+            with open(testCasePath, 'r') as f:
+                testCase = f.read()
+            preprocess_pipeline_data(folderOfData, testCase, testedFunctionName='dotProduct')
 
     def tearDown(self):
         if remove_output:
