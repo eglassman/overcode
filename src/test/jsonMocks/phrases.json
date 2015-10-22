@@ -120,8 +120,8 @@
         "indent": 8
     }, 
     {
-        "code": "a=0", 
-        "codeWithFeatureSpans": "<span class='feature feature-a'>a</span>=<span class='feature feature-0'>0</span>", 
+        "code": "a___2=0", 
+        "codeWithFeatureSpans": "a___2=<span class='feature feature-0'>0</span>", 
         "id": 21, 
         "indent": 4
     }, 
@@ -138,14 +138,14 @@
         "indent": 4
     }, 
     {
-        "code": "total=total+listA[a]*listB[a]", 
-        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-total'>total</span>+<span class='feature feature-listA'>listA</span>[<span class='feature feature-a'>a</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-a'>a</span>]", 
+        "code": "total=total+listA[a___2]*listB[a___2]", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-total'>total</span>+<span class='feature feature-listA'>listA</span>[a___2]*<span class='feature feature-listB'>listB</span>[a___2]", 
         "id": 24, 
         "indent": 8
     }, 
     {
-        "code": "a=a+1", 
-        "codeWithFeatureSpans": "<span class='feature feature-a'>a</span>=<span class='feature feature-a'>a</span>+<span class='feature feature-1'>1</span>", 
+        "code": "a___2=a___2+1", 
+        "codeWithFeatureSpans": "a___2=a___2+<span class='feature feature-1'>1</span>", 
         "id": 25, 
         "indent": 8
     }, 
@@ -210,20 +210,20 @@
         "indent": 4
     }, 
     {
-        "code": "while a&lt;length:", 
-        "codeWithFeatureSpans": "<span class='feature feature-while'>while</span> <span class='feature feature-a'>a</span><<span class='feature feature-length'>length</span>:", 
+        "code": "while a___2&lt;length:", 
+        "codeWithFeatureSpans": "<span class='feature feature-while'>while</span> a___2<<span class='feature feature-length'>length</span>:", 
         "id": 36, 
         "indent": 4
     }, 
     {
-        "code": "total+=listA[a]*listB[a]", 
-        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>+=<span class='feature feature-listA'>listA</span>[<span class='feature feature-a'>a</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-a'>a</span>]", 
+        "code": "total+=listA[a___2]*listB[a___2]", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>+=<span class='feature feature-listA'>listA</span>[a___2]*<span class='feature feature-listB'>listB</span>[a___2]", 
         "id": 37, 
         "indent": 8
     }, 
     {
-        "code": "a+=1", 
-        "codeWithFeatureSpans": "<span class='feature feature-a'>a</span>+=<span class='feature feature-1'>1</span>", 
+        "code": "a___2+=1", 
+        "codeWithFeatureSpans": "a___2+=<span class='feature feature-1'>1</span>", 
         "id": 38, 
         "indent": 8
     }, 
@@ -264,8 +264,8 @@
         "indent": 4
     }, 
     {
-        "code": "while a&lt;len(listA):", 
-        "codeWithFeatureSpans": "<span class='feature feature-while'>while</span> <span class='feature feature-a'>a</span><<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>):", 
+        "code": "while a___2&lt;len(listA):", 
+        "codeWithFeatureSpans": "<span class='feature feature-while'>while</span> a___2<<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>):", 
         "id": 45, 
         "indent": 4
     }, 
@@ -276,8 +276,8 @@
         "indent": 8
     }, 
     {
-        "code": "product=listA[a]*listB[a]", 
-        "codeWithFeatureSpans": "<span class='feature feature-product'>product</span>=<span class='feature feature-listA'>listA</span>[<span class='feature feature-a'>a</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-a'>a</span>]", 
+        "code": "product=listA[a___2]*listB[a___2]", 
+        "codeWithFeatureSpans": "<span class='feature feature-product'>product</span>=<span class='feature feature-listA'>listA</span>[a___2]*<span class='feature feature-listB'>listB</span>[a___2]", 
         "id": 47, 
         "indent": 8
     }, 

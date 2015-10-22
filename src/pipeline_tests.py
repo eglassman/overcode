@@ -6,7 +6,7 @@ import unittest
 from pipeline_preprocessing import preprocess_pipeline_data
 # import pipeline
 import fancy_pipeline as pipeline
-from test.compare_solutions import assertStackMembersEqual
+from test import compare_solutions as comparators
 
 # TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests'
 TEST_DIR_PATH = '../../overcode_data/6.0001_dotprod'
@@ -34,29 +34,12 @@ class TestPipeline(unittest.TestCase):
             shutil.rmtree(path.join(TEST_DIR_PATH, 'output'))
 
     def test_finalResults(self):
-        mocksPath = './test/jsonMocks'
-        with open(path.join(mocksPath, 'phrases.json'), 'r') as f:
-            expectedPhrases = json.load(f)
-        with open(path.join(mocksPath, 'solutions.json'), 'r') as f:
-            expectedSolutions = json.load(f)
-        with open(path.join(mocksPath, 'variables.json'), 'r') as f:
-            expectedVariables = json.load(f)
-
         pipeline.run(path.join(TEST_DIR_PATH, 'data'), path.join(TEST_DIR_PATH, 'output'))
 
-        with open(path.join(TEST_DIR_PATH, 'output', 'phrases.json'), 'r') as f:
-            actualPhrases = json.load(f)
-        with open(path.join(TEST_DIR_PATH, 'output', 'solutions.json'), 'r') as f:
-            actualSolutions = json.load(f)
-        with open(path.join(TEST_DIR_PATH, 'output', 'variables.json'), 'r') as f:
-            actualVariables = json.load(f)
-
-        # self.assertEqual(expectedPhrases, actualPhrases)
-        assertStackMembersEqual(
-            path.join(mocksPath, 'solutions.json'),
-            path.join(TEST_DIR_PATH, 'output', 'solutions.json'))
-        # self.assertEqual(expectedSolutions, actualSolutions)
-        # self.assertEqual(expectedVariables, actualVariables)
+        mocksPath = './test/jsonMocks'
+        comparators.assertStackMembersEqual(mocksPath, path.join(TEST_DIR_PATH, 'output'))
+        comparators.assertPhrasesEqual(mocksPath, path.join(TEST_DIR_PATH, 'output'))
+        comparators.assertNoMissingVariables(mocksPath, path.join(TEST_DIR_PATH, 'output'))
 
 if __name__ == '__main__':
     unittest.main()
