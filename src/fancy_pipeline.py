@@ -146,7 +146,9 @@ class Stack(object):
         assert isinstance(sol, Solution)
         if self.representative == None:
             return True
-        return set(self.representative.canonicalPYcode) == set(sol.canonicalPYcode)
+        same_output = self.representative.output == sol.output
+        lines_match = set(self.representative.canonicalPYcode) == set(sol.canonicalPYcode)
+        return lines_match and same_output
 
     def add_solution(self, sol):
         """
@@ -307,7 +309,12 @@ def extract_sequences_single_sol(sol, all_abstracts):
     """
 
     if '__return__' not in sol.trace:
-        raise ExtractionException('Too long')
+        raise ExtractionException('Solution did not run to completion')
+
+    # The second-to-last step seems to always have the return value.
+    # Steps in the trace are of the form (step, value), so take just
+    # the value
+    sol.output = sol.trace['__return__'][-2][1]
 
     for localVarName, localVarData in sol.trace.iteritems():
         if localVarName.startswith('__'):
@@ -338,11 +345,13 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
     mutates all_abstracts and elements of all_solutions
     """
     skipped = []
-    for sol in all_solutions:
+    for sol in all_solutions[:]:
         try:
             print "Collecting variables in", sol.solnum
             extract_sequences_single_sol(sol, all_abstracts)
         except ExtractionException:
+            # Since we are iterating through a copy, this will not cause problems
+            all_solutions.remove(sol)
             skipped.append(sol.solnum)
 
     return skipped
@@ -541,7 +550,8 @@ def create_output(all_stacks, solutions, phrases, variables):
         #     solution['variableIDs'] = []
         # if 'fnames' in groupDescription['rep'].keys():
         #     solution['keywords'] = rep['fnames']
-        solution['number'] = int(rep.solnum)
+        solution['number'] = rep.solnum
+        solution['output'] = rep.output
         solution['members'] = stack.members
         solution['count'] = stack.count
         solution['phraseIDs'] = list(solution['phraseIDs'])
