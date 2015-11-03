@@ -260,7 +260,7 @@ var drawVariables = function() {
       .html(function(d) { return d.varName; });
   variableEnter.append("small")
       .attr("class", "sequence text-muted")
-      .html(function(d) { console.log(d.sequence); return d.sequence.join(' &rarr; ');}); //return d.varNameAndSeq.replace(/^.*?:/, "");
+      .html(function(d) { /*console.log(d.sequence);*/ return d.sequence.join(' &rarr; ');}); //return d.varNameAndSeq.replace(/^.*?:/, "");
   variableEnter.on("click", function(d) {
     logAction("clickVariableForFiltering", [d.id, d.varName]);
     filterVariables.push(d);

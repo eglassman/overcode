@@ -58,7 +58,7 @@ var stackCount = function(stack) {
 
 var stackMembers = function(stack) {
   return stack.solutions.reduce(function(prev, solution) {
-      console.log(solution.members)
+      // console.log(solution.members)
       //console.log(solution.members.split(','))
     return prev.concat(solution.members); //string.split(',')
   }, []);

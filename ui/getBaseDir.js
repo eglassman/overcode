@@ -1,8 +1,6 @@
 var PARAM_BASE_DIR_KEY = 'src';
 
 function getBaseDir(callback) {
-    console.log('location.search:',window.location.search)
-
     // Slightly modified from:
     // http://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-url-parameter
     var params = {};
