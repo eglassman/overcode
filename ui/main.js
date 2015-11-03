@@ -3,8 +3,14 @@ var baseDir;
 var miscBottom = true;
 hljs.initHighlightingOnLoad();
 
-var allPhrases, allSolutions, allStacks, allVariables;
+var allPhrases, allSolutions/*, allStacks*/, allVariables;
 var rules;
+var stacksByOutput = {
+  0: [],
+  12: [],
+  null: [], // Why, Javascript?
+  36: []
+}
 
 var mergedPhrases = [], mergedVariables = [];
 var mergedStacks = [], filteredStacks = [];
@@ -58,7 +64,7 @@ $(function() {
   $("#rewrite-rules").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").height());
 
   // Event Handlers
-  // $("#data-select").on('change', loadData);
+  $("#output-select").on('change', redraw);
   $("#pattern-input, #repl-input").on('keyup', previewRule);
   $("#add-rule-btn").on('click', addRule);
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -81,7 +87,7 @@ $(function() {
 // Load initial phrases and representative solutions
 var loadData = function(e) {
   // first, empty everything
-  allStacks = []; allPhrases = []; allVariables = []; allSolutions = [];
+  /*allStacks = []; */allPhrases = []; allVariables = []; allSolutions = [];
   filterPhrases = [];
   filterVariables = [];
   mergedPhrases = []; mergedStacks = []; mergedVariables = [];
@@ -114,7 +120,8 @@ var loadData = function(e) {
 
         // fill allStacks as single-solution stacks
         initializeStacks();
-        numTotalSolutions = allStacks.reduce(function(prev, stack) {
+        // numTotalSolutions = allStacks.reduce(function(prev, stack) {
+        numTotalSolutions = getCurrentStack().reduce(function(prev, stack) {
           return prev + stackCount(stack);
         }, 0);
 

@@ -84,7 +84,8 @@ var addRule = function() {
 var applyRules = function() {
 	// create deep copies of the mergedPhrases and mergedStacks
 	mergedPhrases = allPhrases.map(function(phrase) {return copyObject(phrase);});
-	mergedStacks = allStacks.map(function(stack) {return copyObject(stack);});
+	// mergedStacks = allStacks.map(function(stack) {return copyObject(stack);});
+	mergedStacks = getCurrentStack().map(function(stack) {return copyObject(stack);});
 	mergedVariables = allVariables.map(function(variable) {return copyObject(variable);});
 
 	// apply each rule in sequence
@@ -161,7 +162,8 @@ var applyRule = function(rule) {
 			newStack.solutions = newStack.solutions.concat(stack.solutions);
 	        newStack.originalStacks = newStack.originalStacks.concat(stack.originalStacks);
 	        // propagate category
-	        allStacks.forEach(function(s) {
+	        // allStacks.forEach(function(s) {
+	        getCurrentStack().forEach(function(s) {
 	          if (newStack.originalStacks.indexOf(s.id) != -1)
 	            s.category = newStack.category;
 	        });

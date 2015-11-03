@@ -1,6 +1,7 @@
 var initializeStacks = function() {
-  allStacks = [];
+  // allStacks = [];
   allSolutions.forEach(function(solution, i) {
+    console.log('solution id ' + i + ' has output ' + solution.output);
     solution.phraseIDs.sort(d3.ascending);
     solution.variableIDs.sort(d3.ascending);
     var stack = { id: i+1,
@@ -12,8 +13,10 @@ var initializeStacks = function() {
                   category: 'unread',
                   originalStacks: [i+1]
                 };
-    allStacks.push(stack);
+    // allStacks.push(stack);
+    stacksByOutput[solution.output].push(stack);
   });
+  console.log('stacksByOutput:', stacksByOutput);
 }
 
 var stackCopy = function(stack) {
@@ -26,6 +29,11 @@ var stackCopy = function(stack) {
           category: stack.category
         };
 };
+
+var getCurrentStack = function() {
+  var current_output = $('#output-select').val()
+  return stacksByOutput[current_output]
+}
 
 var generateRewriteRule = function(downStack,upStack) {
   var diff1, diff2;
@@ -253,7 +261,8 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       d.category = 'done';
       $(this).addClass("read");
 
-      allStacks.forEach(function(s) {
+      // allStacks.forEach(function(s) {
+      getCurrentStack().forEach(function(s) {
         if (d.originalStacks.indexOf(s.id) != -1)
           s.category = d.category;
       });
@@ -322,7 +331,8 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     d.category = 'done';
     $(this).addClass("read");
 
-    allStacks.forEach(function(s) {
+    // allStacks.forEach(function(s) {
+    getCurrentStack().forEach(function(s) {
       if (d.originalStacks.indexOf(s.id) != -1)
         s.category = d.category;
     });
