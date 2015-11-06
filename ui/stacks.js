@@ -1,7 +1,11 @@
+var addOutputChoice = function(output) {
+  $('#output-select').append($('<option>', { value: output, text: output }));
+}
+
 var initializeStacks = function() {
   // allStacks = [];
   allSolutions.forEach(function(solution, i) {
-    console.log('solution id ' + i + ' has output ' + solution.output);
+    // console.log('solution id ' + i + ' has output ' + solution.output);
     solution.phraseIDs.sort(d3.ascending);
     solution.variableIDs.sort(d3.ascending);
     var stack = { id: i+1,
@@ -14,7 +18,12 @@ var initializeStacks = function() {
                   originalStacks: [i+1]
                 };
     // allStacks.push(stack);
-    stacksByOutput[solution.output].push(stack);
+    if (solution.output in stacksByOutput) {
+      stacksByOutput[solution.output].push(stack);
+    } else {
+      stacksByOutput[solution.output] = [stack]
+      addOutputChoice(solution.output)
+    }
   });
   console.log('stacksByOutput:', stacksByOutput);
 }
@@ -32,7 +41,8 @@ var stackCopy = function(stack) {
 
 var getCurrentStack = function() {
   var current_output = $('#output-select').val()
-  return stacksByOutput[current_output]
+  current_stack = stacksByOutput[current_output]
+  return current_stack !== undefined ? current_stack : [];
 }
 
 var generateRewriteRule = function(downStack,upStack) {

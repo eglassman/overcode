@@ -6,10 +6,10 @@ hljs.initHighlightingOnLoad();
 var allPhrases, allSolutions/*, allStacks*/, allVariables;
 var rules;
 var stacksByOutput = {
-  0: [],
-  12: [],
-  null: [], // Why, Javascript?
-  36: []
+  // 0: [],
+  // 12: [],
+  // null: [], // Why, Javascript?
+  // 36: []
 }
 
 var mergedPhrases = [], mergedVariables = [];
