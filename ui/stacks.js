@@ -42,6 +42,15 @@ var stackCopy = function(stack) {
 var getCurrentStack = function() {
   var current_output = $('#output-select').val()
   current_stack = stacksByOutput[current_output]
+
+  if (current_stack === undefined) {
+    var everything = []
+    $.each(stacksByOutput, function(out) {
+      everything = everything.concat(stacksByOutput[out])
+    });
+    return everything
+  }
+
   return current_stack !== undefined ? current_stack : [];
 }
 
@@ -150,8 +159,8 @@ var drawStacks = function() {
     referenceStacks = [firstStack];
   }
 
-  drawStackColumn("#grid-colA", referenceStacks, referencePhraseIDs, true);
-  drawStackColumn("#grid-colB", filteredStacks.slice(1), referencePhraseIDs, false);
+  drawStackColumn("#grid-colA", filteredStacks.slice(0,2), referencePhraseIDs, true);
+  drawStackColumn("#grid-colB", filteredStacks.slice(2), referencePhraseIDs, false);
 
   if (filterPhrases.length == 0) {
     $("#num-filtered-stacks").hide();

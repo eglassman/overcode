@@ -84,6 +84,25 @@ $(function() {
   });
 });
 
+var fakeStuff = function() {
+  var stacks = $('#grid-colA').find('.stack')
+  console.log(stacks.get(0))
+  s = stacks
+  var first = stacks.get(0)
+  if (first !== undefined) {
+    $(first).append($('<table><tr><td>dotProduct([1, 2, 3], [4, 5, 6])</td><td class="correct-ans badge">32</td></tr><tr><td>dotProduct([1, 1, 1], [2, 2, 2])</td><td class="correct-ans badge">6</td></tr></table>').width('100%'))
+    $(first).find('.stackid').before('<span class="group">Correct</span>')
+  }
+  var second = stacks.get(1)
+  if (second !== undefined) {
+    $(second).append($('<table><tr><td class="incorrect-test">dotProduct([1, 2, 3], [4, 5, 6])</td><td class="incorrect-ans badge">6</td></tr><tr><td>dotProduct([1, 1, 1], [2, 2, 2])</td><td class="correct-ans badge">6</td></tr></table>').width('100%'))
+    $(second).find('.stackid').before('<span class="group">Incorrect 1</span>')
+  }
+
+  $('#grid-colB').find('.stack').find('.stackid').before('<span class="group">Correct</span>')
+}
+
+
 // Load initial phrases and representative solutions
 var loadData = function(e) {
   // first, empty everything
@@ -288,4 +307,6 @@ var redraw = function() {
   drawVariables();
   drawStacks();
   updateProgress();
+  fakeStuff();
+
 };

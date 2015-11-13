@@ -6,11 +6,38 @@ body {
 }
 #header {
 	border-bottom: solid 1px #ddd;
-	min-height: 180px;
+	min-height: 120px;
 }
 #header-prefix { padding-right: 0px; }
 #header-container { padding-left: 25px; }
 #filter-container { overflow-y: auto; border-left: solid 1px #ddd; }
+
+.progress {
+    margin-bottom: 0px;
+}
+pre {
+    padding: 6px;
+}
+.hljs {
+    padding: 0.3em;
+}
+.correct-ans {
+    background-color: lightgreen;
+    color: #343634;
+}
+.incorrect-ans {
+    background-color: #D9534F;
+    color: #F9F2F4;
+}
+.incorrect-test{
+    color: #D9534F;
+    font-weight: bold;
+}
+.group {
+    position: relative;
+    left: 100px;
+    font-weight: 500;
+}
 
 /* Grid styling */
 #grid-colB { 
@@ -27,7 +54,7 @@ body {
 }
 .stack {
 	position: relative;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	left: 0px;
 }
 span.stackid {
