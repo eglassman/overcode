@@ -5,7 +5,7 @@ from os import path
 
 import pipeline_preprocessing
 import pipeline_old
-import fancy_pipeline
+import pipeline
 
 parser = argparse.ArgumentParser()
 parser.add_argument('basedir', help='Path to the base directory')
@@ -51,7 +51,7 @@ if args.run_pipeline or args.run_old:
         key = args.run_old
     else:
         outputPath = path.join(args.basedir, 'output')
-        fancy_pipeline.run(datadir, outputPath)
+        pipeline.run(datadir, outputPath)
         key = args.run_pipeline
 
     # write config

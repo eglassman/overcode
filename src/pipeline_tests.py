@@ -4,7 +4,7 @@ import shutil
 import unittest
 
 from pipeline_preprocessing import preprocess_pipeline_data
-import fancy_pipeline as pipeline
+import pipeline
 from test import comparators
 
 # TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests'
