@@ -60,7 +60,7 @@ def add_test_case(testCase, dataSrc, testCaseDest):
                 f_out.write(f_in.read() + '\n\n' + testCase)
 
 
-def run_logger(dataSrc, pickleDest, finalizer, traceMunger):
+def run_logger(dataSrc, testCases, pickleDest, finalizer, traceMunger):
     ensure_folder_exists(pickleDest)
     skipped = []
 
@@ -70,21 +70,36 @@ def run_logger(dataSrc, pickleDest, finalizer, traceMunger):
         print solNum
 
         with open(path.join(dataSrc, filename), 'r') as f:
-            raw_input_lst_json = False
-            cumulative = False
-            heapPrimitives = False
+            source = f.read()
 
-            # trace, args, returnVars = pg_logger.exec_script_str_local(
-            loggerOutput = pg_logger.exec_script_str_local(
-                f.read(),
-                raw_input_lst_json,
-                cumulative,
-                heapPrimitives,
+        toPickle = {}
+        toPickle['testCases'] = testCases
+        toPickle['traces'] = []
+        toPickle['args'] = []
+        toPickle['returnVars'] = []
+
+        # loggerOutput = pg_logger.exec_script_str_local(
+        for testCase in testCases:
+            trace, args, returnVars = pg_logger.exec_script_str_local(
+                source + '\n\n' + testCase,
+                False, # raw_input_lst_json,
+                False, # cumulative,
+                False, # heapPrimitives,
                 finalizer)
+            toPickle['traces'].append(traceMunger(trace))
+            toPickle['args'].append(args)
+            toPickle['returnVars'].append(returnVars)
 
-        toPickle = dict(zip(('trace', 'args', 'returnVars'), loggerOutput))
+        # toPickle = dict(zip(('trace', 'args', 'returnVars'), loggerOutput))
         # pprint.pprint(toPickle['trace'])
-        toPickle['trace'] = traceMunger(toPickle['trace'])
+        # toPickle['trace'] = traceMunger(toPickle['trace'])
+
+        # Flatten single-element lists into singletons for backwards compatability
+        if len(toPickle['traces']) == 1:
+            toPickle['trace'] = toPickle['traces'][0]
+            del toPickle['traces']
+            toPickle['args'] = toPickle['args'][0]
+            toPickle['returnVars'] = toPickle['returnVars'][0]
 
         pickleFilePath = path.join(pickleDest, solNum + '.pickle')
         try:
@@ -97,7 +112,7 @@ def run_logger(dataSrc, pickleDest, finalizer, traceMunger):
     return skipped
 
 def preprocess_pipeline_data(folderOfData,
-                             testCase,
+                             testCaseSrc,
                              tidier=defaultTidier,
                              testedFunctionName='test',
                              formatter=defaultFormatter,
@@ -111,6 +126,14 @@ def preprocess_pipeline_data(folderOfData,
     if finalizer == None:
         finalizer = make_default_finalizer(testedFunctionName)
 
+    ensure_folder_exists(testCaseDataPath)
+    with open(testCaseSrc, 'r') as f:
+        testCases = [line.strip() for line in f if line.startswith(testedFunctionName)]
+        # rawTestCases = f.read().split('\n')
+    print "testCases:", testCases
+    if testCases == []:
+        raise ValueError("No test cases matching the given function name")
+
     skipped_tidy = []
     skipped_format = []
     skipped_logger = []
@@ -118,9 +141,11 @@ def preprocess_pipeline_data(folderOfData,
         skipped_tidy = tidy(tidier, folderOfData, tidyDataPath, testedFunctionName)
     if formatter:
         skipped_format = format(formatter, tidyDataPath, formatPath)
-    if testCase:
-        add_test_case(testCase, tidyDataPath, testCaseDataPath)
-    skipped_logger = run_logger(testCaseDataPath, picklePath, finalizer=finalizer, traceMunger=traceMunger)
+
+
+    # if testCases:
+    #     add_test_case(testCases, tidyDataPath, testCaseDataPath)
+    skipped_logger = run_logger(tidyDataPath, testCases, picklePath, finalizer=finalizer, traceMunger=traceMunger)
 
     print "Solutions skipped:", len(skipped_tidy) + len(skipped_format) + len(skipped_logger)
     if skipped_tidy:

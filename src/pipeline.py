@@ -187,12 +187,18 @@ def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formatted
         with open(path.join(pickleSrc, filename), 'r') as f:
             unpickled = pickle.load(f)
 
-        sol = Solution(solnum,
-                       unpickled['trace'],
-                       unpickled['args'],
-                       unpickled['returnVars'])
+        try:
+            sol = Solution(solnum,
+                           unpickled['traces'][0],
+                           unpickled['args'][0],
+                           unpickled['returnVars'][0])
+        except KeyError:
+            sol = Solution(solnum,
+                           unpickled['trace'],
+                           unpickled['args'],
+                           unpickled['returnVars'])
 
-        if formattedSrc:
+        if formattedSrc: # Legacy, untested
             with open(path.join(formattedSrc, solNum + formattedExtn), 'r') as f:
                 sol.formatted_code = f.read()
 
