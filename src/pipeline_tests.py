@@ -4,7 +4,6 @@ import shutil
 import unittest
 
 from pipeline_preprocessing import preprocess_pipeline_data
-# import pipeline
 import fancy_pipeline as pipeline
 from test import comparators
 
@@ -15,7 +14,6 @@ remove_output = False
 
 class TestPipeline(unittest.TestCase):
     def setUp(self):
-        # This was always running. TODO: figure out why and fix it.
         # Run preprocessing if it hasn't been run already
         try:
             fpath = path.join(TEST_DIR_PATH, 'data', 'pickleFiles', '201409170154260000.pickle')

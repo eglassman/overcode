@@ -4,7 +4,7 @@ import json
 from os import path
 
 import pipeline_preprocessing
-import pipeline
+import pipeline_old
 import fancy_pipeline
 
 parser = argparse.ArgumentParser()
@@ -20,8 +20,8 @@ parser.add_argument('-p', '--run-pipeline',
     help='Run the full pipeline with the given key')
 parser.add_argument('-P', '--run-pre', action='store_true',
     help='Flag: run the preprocessor')
-parser.add_argument('-f', '--run-fancy',
-    help='Run the fancy pipeline with the given key')
+parser.add_argument('-o', '--run-old',
+    help='Run the old pipeline with the given key')
 
 args = parser.parse_args()
 
@@ -44,15 +44,15 @@ if args.run_pre:
         testcase,
         testedFunctionName=args.funcname
     )
-if args.run_pipeline or args.run_fancy:
-    if args.run_pipeline:
+if args.run_pipeline or args.run_old:
+    if args.run_old:
         outputPath = path.join(args.basedir, 'output_old')
-        pipeline.run(datadir, outputPath)
-        key = args.run_pipeline
+        pipeline_old.run(datadir, outputPath)
+        key = args.run_old
     else:
         outputPath = path.join(args.basedir, 'output')
         fancy_pipeline.run(datadir, outputPath)
-        key = args.run_fancy
+        key = args.run_pipeline
 
     # write config
     configPath = '../ui/config.json'
