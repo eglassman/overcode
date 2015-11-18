@@ -419,21 +419,8 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
 
         try:
             renamed_src = identifier_renamer.rename_identifier(
-                renamed_src, lvar.local_name, shared_name + extra_token)
-        except:
-            # Who knows what kind of exception this raises? Raise our own
-            raise RenamerException('Failed to rename ' + str(sol.solnum))
-
-    # Second pass: <canon>_temp to <canon>
-    for lvar in sol.local_vars:
-        if lvar.rename_to:
-            shared_name = lvar.rename_to
-        else:
-            shared_name = lvar.abstract_var.canon_name
-
-        try:
-            renamed_src = identifier_renamer.rename_identifier(
-                renamed_src, shared_name + extra_token, shared_name)
+                #renamed_src, lvar.local_name, shared_name + extra_token)
+                renamed_src, lvar.local_name, '___')
         except:
             # Who knows what kind of exception this raises? Raise our own
             raise RenamerException('Failed to rename ' + str(sol.solnum))
@@ -625,6 +612,10 @@ def run(folderOfData, destFolder):
     # Canonicalize source and collect phrases
     phrase_counter = Counter()
     tab_counters = {}
+    #skipped_rewrite = rewrite_all_solutions(
+    #    all_solutions, phrase_counter, tab_counters, folderOfData)
+
+    #try out the ubercanonicalization that strips out variable names altogether
     skipped_rewrite = rewrite_all_solutions(
         all_solutions, phrase_counter, tab_counters, folderOfData)
 
