@@ -5,6 +5,7 @@ import os
 from os import path
 import pickle
 import pprint
+import re
 
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists
@@ -28,6 +29,37 @@ class Solution(object):
 
     def __str__(self):
         return "Solution(" + str(self.solnum) + ")"
+    __repr__ = __str__
+
+class Line(object):
+    """A line of code with blanks for variables."""
+
+    @staticmethod
+    def split_template_into_lines(src, mappings):
+        line_objects = []
+        raw_lines = src.split('\n')
+
+        for raw_line in raw_lines:
+            stripped_line = raw_line.strip()
+            if stripped_line == '':
+                continue
+            indent = len(raw_line) - len(stripped_line)
+
+            blanks = re.findall(r'___\d___', stripped_line)
+            variables = [mappings[blank] for blank in blanks]
+
+            template = re.sub(r'___\d___', '___', stripped_line)
+            line_objects.append(Line(template, variables, indent))
+        return line_objects
+
+    def __init__(self, template, variables, indent):
+        self.template = template
+        self.variables = variables
+        self.indent = indent
+
+    def __str__(self):
+        # DEBUGGING STR METHOD ONLY
+        return self.template + " ||| " + str(self.variables) + "\n"
     __repr__ = __str__
 
 class VariableInstance(object):
@@ -388,6 +420,26 @@ def fix_name_clashes(sol):
 class RenamerException(Exception):
     """A problem occurred while calling identifier_renamer."""
 
+def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
+    with open(tidy_path, 'U') as f:
+        renamed_src = f.read()
+
+    mappings = {}
+    ctr = 0
+    for lvar in sol.local_vars:
+        placeholder = '___' + str(ctr) + '___'
+        try:
+            renamed_src = identifier_renamer.rename_identifier(
+                renamed_src, lvar.local_name, placeholder)
+        except:
+            raise RenamerException('Failed to rename ' + str(sol.solnum))
+
+        ctr += 1
+        mappings[placeholder] = lvar.abstract_var
+
+    lines = Line.split_template_into_lines(renamed_src, mappings)
+    print lines
+
 def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
     """
     Rename local variables within a single solution to their canon equivalents,
@@ -480,7 +532,8 @@ def rewrite_all_solutions(all_solutions, phrase_counter, tab_counters, folderOfD
         canon_path = path.join(canon_folder, sol.solnum + '.py')
         try:
             print "Rewriting", sol.solnum
-            rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters)
+            # rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters)
+            make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters)
         except RenamerException:
             skipped.append(sol.solnum)
 
