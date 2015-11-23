@@ -8,7 +8,7 @@ import pipeline
 from test import comparators
 
 # TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests'
-TEST_DIR_PATH = '../../overcode_data/6.0001_dotprod'
+TEST_DIR_PATH = '../../overcode_data/dotprod'
 # Set to True to delete the output from the pipeline after the test.
 remove_output = False
 
@@ -36,7 +36,8 @@ class TestPipeline(unittest.TestCase):
         mocksPath = './test/jsonMocks'
         comparators.assertStackMembersEqual(mocksPath, path.join(TEST_DIR_PATH, 'output'))
         comparators.assertPhrasesEqual(mocksPath, path.join(TEST_DIR_PATH, 'output'))
-        comparators.assertNoMissingVariables(mocksPath, path.join(TEST_DIR_PATH, 'output'))
+        # comparators.assertNoMissingVariables(mocksPath, path.join(TEST_DIR_PATH, 'output'))
+        comparators.assertVariablesEqual(mocksPath, path.join(TEST_DIR_PATH, 'output'))
 
 if __name__ == '__main__':
     unittest.main()

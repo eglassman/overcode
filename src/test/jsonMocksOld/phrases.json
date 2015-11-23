@@ -1,0 +1,302 @@
+[
+    {
+        "code": "def dotProduct(listA,listB):", 
+        "codeWithFeatureSpans": "<span class='feature feature-def'>def</span> <span class='feature feature-dotProduct'>dotProduct</span>(<span class='feature feature-listA'>listA</span>,<span class='feature feature-listB'>listB</span>):", 
+        "id": 1, 
+        "indent": 0
+    }, 
+    {
+        "code": "total=0", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-0'>0</span>", 
+        "id": 2, 
+        "indent": 4
+    }, 
+    {
+        "code": "for i in xrange(0,len(listA)):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> <span class='feature feature-i'>i</span> <span class='feature feature-in'>in</span> <span class='feature feature-xrange'>xrange</span>(<span class='feature feature-0'>0</span>,<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)):", 
+        "id": 3, 
+        "indent": 4
+    }, 
+    {
+        "code": "total=total+listA[i]*listB[i]", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-total'>total</span>+<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>]", 
+        "id": 4, 
+        "indent": 8
+    }, 
+    {
+        "code": "return total", 
+        "codeWithFeatureSpans": "<span class='feature feature-return'>return</span> <span class='feature feature-total'>total</span>", 
+        "id": 5, 
+        "indent": 4
+    }, 
+    {
+        "code": "for i in range(0,len(listA),1):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> <span class='feature feature-i'>i</span> <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-0'>0</span>,<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>),<span class='feature feature-1'>1</span>):", 
+        "id": 6, 
+        "indent": 4
+    }, 
+    {
+        "code": "total+=listA[i]*listB[i]", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>+=<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>]", 
+        "id": 7, 
+        "indent": 8
+    }, 
+    {
+        "code": "for(a,b)in zip(listA,listB):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span>(<span class='feature feature-a'>a</span>,<span class='feature feature-b'>b</span>)<span class='feature feature-in'>in</span> <span class='feature feature-zip'>zip</span>(<span class='feature feature-listA'>listA</span>,<span class='feature feature-listB'>listB</span>):", 
+        "id": 8, 
+        "indent": 4
+    }, 
+    {
+        "code": "product=a*b", 
+        "codeWithFeatureSpans": "<span class='feature feature-product'>product</span>=<span class='feature feature-a'>a</span>*<span class='feature feature-b'>b</span>", 
+        "id": 9, 
+        "indent": 8
+    }, 
+    {
+        "code": "total+=product", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>+=<span class='feature feature-product'>product</span>", 
+        "id": 10, 
+        "indent": 8
+    }, 
+    {
+        "code": "for i in range(0,len(listA)):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> <span class='feature feature-i'>i</span> <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-0'>0</span>,<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)):", 
+        "id": 11, 
+        "indent": 4
+    }, 
+    {
+        "code": "product=listA[i]*listB[i]", 
+        "codeWithFeatureSpans": "<span class='feature feature-product'>product</span>=<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>]", 
+        "id": 12, 
+        "indent": 8
+    }, 
+    {
+        "code": "total=int(product)+total", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-int'>int</span>(<span class='feature feature-product'>product</span>)+<span class='feature feature-total'>total</span>", 
+        "id": 13, 
+        "indent": 8
+    }, 
+    {
+        "code": "def dotProduct(listA__,listB__):", 
+        "codeWithFeatureSpans": "<span class='feature feature-def'>def</span> <span class='feature feature-dotProduct'>dotProduct</span>(listA__,listB__):", 
+        "id": 14, 
+        "indent": 0
+    }, 
+    {
+        "code": "length=len(listA__)", 
+        "codeWithFeatureSpans": "<span class='feature feature-length'>length</span>=<span class='feature feature-len'>len</span>(listA__)", 
+        "id": 15, 
+        "indent": 4
+    }, 
+    {
+        "code": "listc=[]", 
+        "codeWithFeatureSpans": "<span class='feature feature-listc'>listc</span>=[]", 
+        "id": 16, 
+        "indent": 4
+    }, 
+    {
+        "code": "for i__ in range(0,length):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> i__ <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-0'>0</span>,<span class='feature feature-length'>length</span>):", 
+        "id": 17, 
+        "indent": 4
+    }, 
+    {
+        "code": "listc.append(listA__.pop()*listB__.pop())", 
+        "codeWithFeatureSpans": "<span class='feature feature-listc'>listc</span>.<span class='feature feature-append'>append</span>(listA__.<span class='feature feature-pop'>pop</span>()*listB__.<span class='feature feature-pop'>pop</span>())", 
+        "id": 18, 
+        "indent": 8
+    }, 
+    {
+        "code": "for i__ in range(0,len(listc)):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> i__ <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-0'>0</span>,<span class='feature feature-len'>len</span>(<span class='feature feature-listc'>listc</span>)):", 
+        "id": 19, 
+        "indent": 4
+    }, 
+    {
+        "code": "total+=listc.pop()", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>+=<span class='feature feature-listc'>listc</span>.<span class='feature feature-pop'>pop</span>()", 
+        "id": 20, 
+        "indent": 8
+    }, 
+    {
+        "code": "a___2=0", 
+        "codeWithFeatureSpans": "a___2=<span class='feature feature-0'>0</span>", 
+        "id": 21, 
+        "indent": 4
+    }, 
+    {
+        "code": "n=len(listA)", 
+        "codeWithFeatureSpans": "<span class='feature feature-n'>n</span>=<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)", 
+        "id": 22, 
+        "indent": 4
+    }, 
+    {
+        "code": "for n in range(0,n):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> <span class='feature feature-n'>n</span> <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-0'>0</span>,<span class='feature feature-n'>n</span>):", 
+        "id": 23, 
+        "indent": 4
+    }, 
+    {
+        "code": "total=total+listA[a___2]*listB[a___2]", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-total'>total</span>+<span class='feature feature-listA'>listA</span>[a___2]*<span class='feature feature-listB'>listB</span>[a___2]", 
+        "id": 24, 
+        "indent": 8
+    }, 
+    {
+        "code": "a___2=a___2+1", 
+        "codeWithFeatureSpans": "a___2=a___2+<span class='feature feature-1'>1</span>", 
+        "id": 25, 
+        "indent": 8
+    }, 
+    {
+        "code": "for i in range(len(listA)):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> <span class='feature feature-i'>i</span> <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)):", 
+        "id": 26, 
+        "indent": 4
+    }, 
+    {
+        "code": "total=total+product", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-total'>total</span>+<span class='feature feature-product'>product</span>", 
+        "id": 27, 
+        "indent": 8
+    }, 
+    {
+        "code": "length=len(listA)", 
+        "codeWithFeatureSpans": "<span class='feature feature-length'>length</span>=<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)", 
+        "id": 28, 
+        "indent": 4
+    }, 
+    {
+        "code": "for i in range(0,length):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> <span class='feature feature-i'>i</span> <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-0'>0</span>,<span class='feature feature-length'>length</span>):", 
+        "id": 29, 
+        "indent": 4
+    }, 
+    {
+        "code": "ans=sum(a*b for(a,b)in zip(listA,listB))", 
+        "codeWithFeatureSpans": "<span class='feature feature-ans'>ans</span>=<span class='feature feature-sum'>sum</span>(<span class='feature feature-a'>a</span>*<span class='feature feature-b'>b</span> <span class='feature feature-for'>for</span>(<span class='feature feature-a'>a</span>,<span class='feature feature-b'>b</span>)<span class='feature feature-in'>in</span> <span class='feature feature-zip'>zip</span>(<span class='feature feature-listA'>listA</span>,<span class='feature feature-listB'>listB</span>))", 
+        "id": 30, 
+        "indent": 4
+    }, 
+    {
+        "code": "return ans", 
+        "codeWithFeatureSpans": "<span class='feature feature-return'>return</span> <span class='feature feature-ans'>ans</span>", 
+        "id": 31, 
+        "indent": 4
+    }, 
+    {
+        "code": "assert len(listA)==len(listB)", 
+        "codeWithFeatureSpans": "<span class='feature feature-assert'>assert</span> <span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)==<span class='feature feature-len'>len</span>(<span class='feature feature-listB'>listB</span>)", 
+        "id": 32, 
+        "indent": 4
+    }, 
+    {
+        "code": "AB=[]", 
+        "codeWithFeatureSpans": "<span class='feature feature-AB'>AB</span>=[]", 
+        "id": 33, 
+        "indent": 4
+    }, 
+    {
+        "code": "AB.append(listA[i]*listB[i])", 
+        "codeWithFeatureSpans": "<span class='feature feature-AB'>AB</span>.<span class='feature feature-append'>append</span>(<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>])", 
+        "id": 34, 
+        "indent": 8
+    }, 
+    {
+        "code": "return sum(AB)", 
+        "codeWithFeatureSpans": "<span class='feature feature-return'>return</span> <span class='feature feature-sum'>sum</span>(<span class='feature feature-AB'>AB</span>)", 
+        "id": 35, 
+        "indent": 4
+    }, 
+    {
+        "code": "while a___2&lt;length:", 
+        "codeWithFeatureSpans": "<span class='feature feature-while'>while</span> a___2<<span class='feature feature-length'>length</span>:", 
+        "id": 36, 
+        "indent": 4
+    }, 
+    {
+        "code": "total+=listA[a___2]*listB[a___2]", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>+=<span class='feature feature-listA'>listA</span>[a___2]*<span class='feature feature-listB'>listB</span>[a___2]", 
+        "id": 37, 
+        "indent": 8
+    }, 
+    {
+        "code": "a___2+=1", 
+        "codeWithFeatureSpans": "a___2+=<span class='feature feature-1'>1</span>", 
+        "id": 38, 
+        "indent": 8
+    }, 
+    {
+        "code": "total=listA[i]*listB[i]+total", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>]+<span class='feature feature-total'>total</span>", 
+        "id": 39, 
+        "indent": 8
+    }, 
+    {
+        "code": "a=listA[i]", 
+        "codeWithFeatureSpans": "<span class='feature feature-a'>a</span>=<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]", 
+        "id": 40, 
+        "indent": 8
+    }, 
+    {
+        "code": "b=listB[i]", 
+        "codeWithFeatureSpans": "<span class='feature feature-b'>b</span>=<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>]", 
+        "id": 41, 
+        "indent": 8
+    }, 
+    {
+        "code": "return sum(a*b for(a,b)in zip(listA,listB))", 
+        "codeWithFeatureSpans": "<span class='feature feature-return'>return</span> <span class='feature feature-sum'>sum</span>(<span class='feature feature-a'>a</span>*<span class='feature feature-b'>b</span> <span class='feature feature-for'>for</span>(<span class='feature feature-a'>a</span>,<span class='feature feature-b'>b</span>)<span class='feature feature-in'>in</span> <span class='feature feature-zip'>zip</span>(<span class='feature feature-listA'>listA</span>,<span class='feature feature-listB'>listB</span>))", 
+        "id": 42, 
+        "indent": 4
+    }, 
+    {
+        "code": "ans=sum(listA[i]*listB[i]for i in range(len(listA)))", 
+        "codeWithFeatureSpans": "<span class='feature feature-ans'>ans</span>=<span class='feature feature-sum'>sum</span>(<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>]<span class='feature feature-for'>for</span> <span class='feature feature-i'>i</span> <span class='feature feature-in'>in</span> <span class='feature feature-range'>range</span>(<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)))", 
+        "id": 43, 
+        "indent": 4
+    }, 
+    {
+        "code": "for i in xrange(len(listA)):", 
+        "codeWithFeatureSpans": "<span class='feature feature-for'>for</span> <span class='feature feature-i'>i</span> <span class='feature feature-in'>in</span> <span class='feature feature-xrange'>xrange</span>(<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>)):", 
+        "id": 44, 
+        "indent": 4
+    }, 
+    {
+        "code": "while a___2&lt;len(listA):", 
+        "codeWithFeatureSpans": "<span class='feature feature-while'>while</span> a___2<<span class='feature feature-len'>len</span>(<span class='feature feature-listA'>listA</span>):", 
+        "id": 45, 
+        "indent": 4
+    }, 
+    {
+        "code": "total=product+total", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>=<span class='feature feature-product'>product</span>+<span class='feature feature-total'>total</span>", 
+        "id": 46, 
+        "indent": 8
+    }, 
+    {
+        "code": "product=listA[a___2]*listB[a___2]", 
+        "codeWithFeatureSpans": "<span class='feature feature-product'>product</span>=<span class='feature feature-listA'>listA</span>[a___2]*<span class='feature feature-listB'>listB</span>[a___2]", 
+        "id": 47, 
+        "indent": 8
+    }, 
+    {
+        "code": "index=0", 
+        "codeWithFeatureSpans": "<span class='feature feature-index'>index</span>=<span class='feature feature-0'>0</span>", 
+        "id": 48, 
+        "indent": 4
+    }, 
+    {
+        "code": "listA[i]*listB[i]", 
+        "codeWithFeatureSpans": "<span class='feature feature-listA'>listA</span>[<span class='feature feature-i'>i</span>]*<span class='feature feature-listB'>listB</span>[<span class='feature feature-i'>i</span>]", 
+        "id": 49, 
+        "indent": 8
+    }, 
+    {
+        "code": "total+=AB[i]", 
+        "codeWithFeatureSpans": "<span class='feature feature-total'>total</span>+=<span class='feature feature-AB'>AB</span>[<span class='feature feature-i'>i</span>]", 
+        "id": 50, 
+        "indent": 8
+    }
+]
