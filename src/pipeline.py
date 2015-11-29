@@ -46,20 +46,26 @@ class Line(object):
             indent = len(raw_line) - len(stripped_line)
 
             blanks = re.findall(r'___\d___', stripped_line)
-            variables = [mappings[blank] for blank in blanks]
+            variables, names = zip(*[mappings[blank] for blank in blanks])
 
             template = re.sub(r'___\d___', '___', stripped_line)
-            line_objects.append(Line(template, variables, indent))
+            line_objects.append(Line(template, variables, names, indent))
         return line_objects
 
-    def __init__(self, template, variables, indent):
+    def __init__(self, template, variables, names, indent):
         self.template = template
         self.variables = variables
+        self.names = names
         self.indent = indent
+
+    def render(self):
+        # Replace all the blanks with '{}' so we can use built-in string formatting
+        # to fill in the blanks with the list of ordered names
+        return self.template.replace('___', '{}').format(*self.names)
 
     def __str__(self):
         # DEBUGGING STR METHOD ONLY
-        return self.template + " ||| " + str(self.variables) + "\n"
+        return self.template + " ||| " + str(self.names) + "\n"
     __repr__ = __str__
 
 class VariableInstance(object):
@@ -435,10 +441,15 @@ def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
             raise RenamerException('Failed to rename ' + str(sol.solnum))
 
         ctr += 1
-        mappings[placeholder] = lvar.abstract_var
+
+        if lvar.rename_to:
+            shared_name = lvar.rename_to
+        else:
+            shared_name = lvar.abstract_var.canon_name
+        mappings[placeholder] = (lvar.abstract_var, shared_name)
 
     lines = Line.split_template_into_lines(renamed_src, mappings)
-    print lines
+    print [l.render() for l in lines]
 
 def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
     """
