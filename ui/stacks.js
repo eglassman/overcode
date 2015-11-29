@@ -42,6 +42,13 @@ var stackCopy = function(stack) {
 var getCurrentStack = function() {
   var current_output = $('#output-select').val()
   current_stack = stacksByOutput[current_output]
+  if (current_stack === undefined) {
+    var everything = []
+    $.each(stacksByOutput, function(out) {
+      everything = everything.concat(stacksByOutput[out])
+    });
+    return everything
+  }
   return current_stack !== undefined ? current_stack : [];
 }
 
