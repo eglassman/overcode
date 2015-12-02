@@ -35,7 +35,7 @@ class Line(object):
     """A line of code with blanks for variables."""
 
     @staticmethod
-    def split_template_into_lines(src, mappings):
+    def split_solution_into_lines(src, mappings):
         line_objects = []
         raw_lines = src.split('\n')
 
@@ -448,7 +448,7 @@ def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
             shared_name = lvar.abstract_var.canon_name
         mappings[placeholder] = (lvar.abstract_var, shared_name)
 
-    lines = Line.split_template_into_lines(renamed_src, mappings)
+    lines = Line.split_solution_into_lines(renamed_src, mappings)
     print [l.render() for l in lines]
 
 def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
