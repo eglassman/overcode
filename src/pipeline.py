@@ -426,6 +426,7 @@ def fix_name_clashes(sol):
 class RenamerException(Exception):
     """A problem occurred while calling identifier_renamer."""
 
+#replaces rewrite_source, does not yet fully implement rewrite_source
 def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
@@ -442,7 +443,8 @@ def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
 
         ctr += 1
 
-        if lvar.rename_to:
+        #todo: terrible variable name for mechanism for handling variable name clashes
+        if lvar.rename_to: 
             shared_name = lvar.rename_to
         else:
             shared_name = lvar.abstract_var.canon_name
