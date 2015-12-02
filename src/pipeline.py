@@ -451,7 +451,8 @@ def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
         mappings[placeholder] = (lvar.abstract_var, shared_name)
 
     lines = Line.split_solution_into_lines(renamed_src, mappings)
-    print [l.render() for l in lines]
+    print [l.render() for l in lines] #put together lines
+    print [l for l in lines] #print un-rendered lines
 
 def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
     """
