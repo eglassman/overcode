@@ -62,6 +62,7 @@ $(function() {
   $("#remaining-phrases").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").outerHeight() - $("#sidebar-top").outerHeight() - 15);
   $("#variable-list").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").outerHeight() - $("#variables-header").outerHeight() - 130);
   $("#rewrite-rules").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").height());
+  $("#tests").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").height());
 
   // Event Handlers
   $("#output-select").on('change', redraw);

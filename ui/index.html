@@ -102,7 +102,8 @@
       <ul id="sidebar-nav" class="nav nav-tabs nav-justified">
         <li class="active"><a href="#filter" class="filter" data-toggle="tab">Filter</a></li>
         <li><a href="#rewrite" class="rewrite" data-toggle="tab">Rewrite</a></li>
-        <li><a href="#variables" class="variables" data-toggle="tab">Legend</a></li>
+        <li><a href="#variables" class="variables" data-toggle="tab">Variables</a></li>
+        <li><a href="#tests" class="tests" data-toggle="tab">Tests</a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -156,6 +157,58 @@
           </div>
           <ul class="list-group" id="variable-list">
           </ul>
+        </div>
+        <div class="tab-pane" id="tests">
+          <div><h3>Test Cases</h3>
+          <!-- <table>
+          <tr><th>Test Case</th><th>Expected Result</th></tr>
+          <tr>
+            <td><code>dotProduct([1, 2, 3], [2, 2, 2])</code></td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td><code>dotProduct([1, 2, 3], [4, 5, 6])</code></td>
+            <td>32</td>
+          </tr>
+          </table>-->
+          </div>
+          <ul class="list-group">
+            <li class="testcase list-group-item">
+              <div class="testcaseheader">Test 1</div>
+              <code>evaluatePoly([0.0, 0.0, 5.0, 9.3, 7.0], -13)</code>
+              <div class="correctresult">&rarr; 180339.9</div> 
+            </li>
+            <li class="testcase list-group-item">
+              <div class="testcaseheader">Test 2</div>
+              <code>evaluatePoly([-12.2], 10)</code>
+              <div class="correctresult">&rarr; -12.2</div>
+            </li>
+          </ul>
+
+          <h4>Error Signatures</h4>
+          <div id="error-sigs">
+            <div class="error-sig">
+              <input type="checkbox" checked="checked"></input>
+              <div class="error-sig-holder">
+                <div class="error-sig-section error-sig-section-left">OK</div>
+                <div class="error-sig-section error-sig-section-right">OK</div>
+              </div>
+            </div>
+            <div class="error-sig">
+              <input type="checkbox"></input>
+              <div class="error-sig-holder">
+                <div class="error-sig-section error-sig-section-left">OK</div>
+                <div class="error-sig-section error-sig-section-right incorrect">10.0</div>
+              </div>
+            </div>
+            <div class="error-sig">
+              <input type="checkbox" checked="checked"></input>
+              <div class="error-sig-holder">
+                <div class="error-sig-section error-sig-section-left incorrect">None</div>
+                <div class="error-sig-section error-sig-section-right incorrect">None</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div> <!--end sidebar-->
