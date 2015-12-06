@@ -157,8 +157,13 @@ var drawStacks = function() {
     referenceStacks = [firstStack];
   }
 
+  var correctStacks = filteredStacks.slice(0, 10);
+  var incorrectStacks = filteredStacks.slice(10);
   drawStackColumn("#grid-colA", referenceStacks, referencePhraseIDs, true);
-  drawStackColumn("#grid-colB", filteredStacks.slice(1), referencePhraseIDs, false);
+  drawStackColumn("#grid-colB", correctStacks, referencePhraseIDs, false);
+  drawStackColumn("#grid-colC", incorrectStacks, referencePhraseIDs, false);
+
+  setColOffsets();
 
   if (filterPhrases.length == 0) {
     $("#num-filtered-stacks").hide();
@@ -383,3 +388,54 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       .style("left", function(d) { if (!isFinite(d.id)) { return "0px"; } else { return "1000px"; }});
   stackExit.remove();
 };
+
+
+// FAKEY FAKEY FAKE
+
+var colBOrderedOffsets = []
+var colCOrderedOffsets = []
+var setColOffsets = function() {
+  var corrects = $('#grid-colB').find('.stack');
+  corrects.each(function() {
+    colBOrderedOffsets.push($(this).prop('offsetTop'))
+  });
+  console.log('offsets, col B:', colBOrderedOffsets);
+
+  // When this is real, this will have to be the offset of the first incorrect
+  // stack that goes with each correct stack. Right now it assumes 1-to-1
+  var incorrects = $('#grid-colC').find('.stack');
+  incorrects.each(function() {
+    colCOrderedOffsets.push($(this).prop('offsetTop'));
+  });
+  console.log('offsets, col C:', colCOrderedOffsets);
+}
+
+var setStackScrollHandlers = function() {
+  $('#grid-colB').scroll(function() {
+    var colBScrollTop = $(this).scrollTop();
+    var stackIndex = 0;
+    for (stackIndex = 0; stackIndex < colBOrderedOffsets.length; stackIndex++) {
+      var nextOffset = colBOrderedOffsets[stackIndex+1];
+      if (nextOffset === undefined || nextOffset > colBScrollTop) {
+        break
+      }
+    }
+
+    var colCScrollTop = $('#grid-colC').scrollTop();
+    var nextColCOffset = colCOrderedOffsets[stackIndex+1];
+    var currentColCOffset = colCOrderedOffsets[stackIndex];
+    var previousColCOffset = stackIndex === 0 ? 0 : colCOrderedOffsets[stackIndex-1];
+    // console.log('At stack number', stackIndex, 'with C offset', currentColCOffset);
+
+    if (nextColCOffset !== undefined && colCScrollTop >= nextColCOffset) {
+      $('#grid-colC').scrollTop(currentColCOffset);
+      // console.log('scrolling to:',currentColCOffset);
+    }
+
+    if (colCScrollTop < currentColCOffset) {
+      $('#grid-colC').scrollTop(currentColCOffset);
+      // console.log('scrolling to:',currentColCOffset);
+    }
+
+  });
+}

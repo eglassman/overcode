@@ -57,7 +57,7 @@ $(function() {
 
   // Constrain various lists to the browser height
   $("#main, #sidebar").css("height", $(window).innerHeight());
-  $("#grid-colB,#grid-colA").css("height", $("#main").innerHeight() - $("#header").outerHeight() - $("#header").position().top - 5);
+  $("#grid-colB,#grid-colA,#grid-colC").css("height", $("#main").innerHeight() - $("#header").outerHeight() - $("#header").position().top - 5);
   $("#filter-container").css("height", $("#header").outerHeight());
   $("#remaining-phrases").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").outerHeight() - $("#sidebar-top").outerHeight() - 15);
   $("#variable-list").css("height", $("#sidebar").innerHeight() - $("#sidebar-nav").outerHeight() - $("#variables-header").outerHeight() - 130);
@@ -75,6 +75,9 @@ $(function() {
     if (previewing)
       drawStacks();
   });
+
+  // Scrolling coupling
+  setStackScrollHandlers();
 
   getBaseDir(function(error, returnedBaseDir) {
     if (error) throw error;
