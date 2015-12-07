@@ -24,48 +24,74 @@ class Solution(object):
         self.retVars = retVars
         self.local_vars = []
         self.abstract_vars = []
-        self.canonicalPYcode = []
-        self.canonicalPYcodeIndents = []
+        self.lines = []
+        #self.canonicalPYcode = []
+        #self.canonicalPYcodeIndents = []
+
+    def canonical(self):
+        """
+        Print canonicalized solution
+
+        Fix the problem with multiple copies of a single AbstractVariable within
+        a single solution.
+
+        """
+        #if there aren't multiple copies of a single abstract variable
+        if len(sol.abstract_vars) == len(set(sol.abstract_vars)): 
+            for line in self.lines:
+                print line.indent + line.render_canonical() #print normally
+
+        assert len(sol.abstract_vars) > len(set(sol.abstract_vars))
+        print 'Fixing clash in', sol.solnum
+
+        # Multiple instances of a single abstract variable
+        copy_of_lines = []
+        for var in sol.abstract_vars:
+            indices = [i for i, v in enumerate(sol.abstract_vars) if v == var]
+            if len(indices) == 1:
+                continue
+            for ind in indices:
+                abs_var = sol.abstract_vars[ind]
+                local_var = sol.local_vars[ind]
+
+                for line in self.lines:
+                    copy_of_lines.append(line_modified)
+
+        #         if not abs_var.canon_name == local_var.local_name:
+        #             # If canon and local names are both i, don't rename to i_i__
+        #             new_name = abs_var.canon_name + '_' + local_var.local_name + '__'
+        #             local_var.rename_to = new_name
 
     def __str__(self):
-        return "Solution(" + str(self.solnum) + ")"
+        return "Solution(" + str(self.solnum) + ")" #+ " with local_vars: " + self.local_vars + " and abstract_vars"
     __repr__ = __str__
 
 class Line(object):
-    """A line of code with blanks for variables."""
+    """A line of code, with indent recorded, with blanks for variables, plus information about the variables' local names and abstract identity."""
 
-    @staticmethod
-    def split_solution_into_lines(src, mappings):
-        line_objects = []
-        raw_lines = src.split('\n')
-
-        for raw_line in raw_lines:
-            stripped_line = raw_line.strip()
-            if stripped_line == '':
-                continue
-            indent = len(raw_line) - len(stripped_line)
-
-            blanks = re.findall(r'___\d___', stripped_line)
-            variables, local_names = zip(*[mappings[blank] for blank in blanks])
-
-            template = re.sub(r'___\d___', '___', stripped_line)
-            line_objects.append(Line(template, variables, local_names, indent))
-        return line_objects
-
-    def __init__(self, template, variables, names, indent):
+    #Line(template, local_names, abstract_variables, indent)
+    def __init__(self, template, local_names, abstract_variables, indent):
         self.template = template
-        self.variables = variables
-        self.names = names
+        self.abstract_variables = abstract_variables
+        self.local_names = local_names
         self.indent = indent
+
+    def __eq__(self, other):
+        """Two Lines are equal if they have the same template and abstract variables."""
+        assert isinstance(other, Line)
+        return self.abstract_variables == other.abstract_variables and self.template == other.template
+
+    def render_canonical(self):
+        #todo
 
     def render(self):
         # Replace all the blanks with '{}' so we can use built-in string formatting
         # to fill in the blanks with the list of ordered names
-        return self.template.replace('___', '{}').format(*self.names)
+        return self.template.replace('___', '{}').format(*self.abstract_variables) #todo: print cannon name .canon_name
 
     def __str__(self):
         # DEBUGGING STR METHOD ONLY
-        return self.template + " ||| " + str(self.names) + "\n"
+        return self.template + " ||| " + str(self.abstract_variables) + " ||| " + str(self.local_names) + "\n"
     __repr__ = __str__
 
 class VariableInstance(object):
@@ -185,7 +211,7 @@ class Stack(object):
         if self.representative == None:
             return True
         same_output = self.representative.output == sol.output
-        lines_match = set(self.representative.canonicalPYcode) == set(sol.canonicalPYcode)
+        lines_match = set(self.representative.lines) == set(sol.lines)
         return lines_match and same_output
 
     def add_solution(self, sol):
@@ -397,40 +423,17 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
 ###############################################################################
 ## Rewrite solutions
 ###############################################################################
-def fix_name_clashes(sol):
-    """
-    Fix the problem with multiple copies of a single AbstractVariable within
-    a single solution.
-
-    sol: instance of Solution
-    """
-
-    if len(sol.abstract_vars) == len(set(sol.abstract_vars)):
-        return
-    assert len(sol.abstract_vars) > len(set(sol.abstract_vars))
-    print 'Fixing clash in', sol.solnum
-
-    # Multiple instances of a single abstract variable
-    for var in sol.abstract_vars:
-        indices = [i for i, v in enumerate(sol.abstract_vars) if v == var]
-        if len(indices) == 1:
-            continue
-        for ind in indices:
-            abs_var = sol.abstract_vars[ind]
-            local_var = sol.local_vars[ind]
-            if not abs_var.canon_name == local_var.local_name:
-                # If canon and local names are both i, don't rename to i_i__
-                new_name = abs_var.canon_name + '_' + local_var.local_name + '__'
-                local_var.rename_to = new_name
 
 class RenamerException(Exception):
     """A problem occurred while calling identifier_renamer."""
 
 #replaces rewrite_source, does not yet fully implement rewrite_source
-def make_lines(sol, tidy_path, canon_path):
+def compute_lines(sol, tidy_path):
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
+    #This code renames all variables as placeholders, and saves a mapping
+    #from placeholder to original name and abstract variable object
     mappings = {}
     ctr = 0
     for lvar in sol.local_vars:
@@ -443,11 +446,32 @@ def make_lines(sol, tidy_path, canon_path):
 
         ctr += 1
 
-        mappings[placeholder] = (lvar.abstract_var, lvar.local_name)
+        mappings[placeholder] = (lvar.local_name, lvar.abstract_var)
+    #print mappings
 
-    lines = Line.split_solution_into_lines(renamed_src, mappings)
-    print [l.render() for l in lines] #put together lines
-    print [l for l in lines] #print un-rendered lines
+    #This code breaks solutions down into line objects
+    raw_lines = renamed_src.split('\n')
+    for raw_line in raw_lines:
+        stripped_line = raw_line.strip()
+
+        #ignore empty lines
+        if stripped_line == '':
+            continue
+        indent = len(raw_line) - len(stripped_line)
+
+        blanks = re.findall(r'___\d___', stripped_line)
+        #print 'blanks',blanks
+        local_names, abstract_variables = zip(*[mappings[blank] for blank in blanks])
+        #print local_names, abstract_variables
+
+        template = re.sub(r'___\d___', '___', stripped_line)
+        sol.lines.append(Line(template, local_names, abstract_variables, indent))
+
+    print [l for l in sol.lines]
+
+    #lines = Line.split_solution_into_lines(renamed_src, mappings)
+    #print [l.render() for l in lines] #put together lines
+    #print [l for l in lines] #print un-rendered lines
 
 def rewrite_source(sol, tidy_path, canon_path):
     """
@@ -526,14 +550,15 @@ def rewrite_all_solutions(all_solutions, folderOfData):
     canon_folder = path.join(folderOfData, 'tidyDataCanonicalized')
     ensure_folder_exists(canon_folder)
     for sol in all_solutions:
-        fix_name_clashes(sol)
+        #fix_name_clashes(sol)
 
         tidy_path = path.join(folderOfData, 'tidyData', sol.solnum + '.py')
-        canon_path = path.join(canon_folder, sol.solnum + '.py')
+        #canon_path = path.join(canon_folder, sol.solnum + '.py')
         try:
-            print "Rewriting", sol.solnum
+            print "Computing lines for", sol.solnum
             # rewrite_source(sol, tidy_path, canon_path, phrase_counter)
-            make_lines(sol, tidy_path, canon_path)
+            compute_lines(sol, tidy_path)
+            print sol.canonical()
         except RenamerException:
             skipped.append(sol.solnum)
 
