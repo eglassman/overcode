@@ -427,7 +427,7 @@ class RenamerException(Exception):
     """A problem occurred while calling identifier_renamer."""
 
 #replaces rewrite_source, does not yet fully implement rewrite_source
-def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
+def make_lines(sol, tidy_path, canon_path, phrase_counter):
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
@@ -454,7 +454,7 @@ def make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters):
     print [l.render() for l in lines] #put together lines
     print [l for l in lines] #print un-rendered lines
 
-def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
+def rewrite_source(sol, tidy_path, canon_path, phrase_counter):
     """
     Rename local variables within a single solution to their canon equivalents,
     or a modified version if there is a clash. Also stores the canonical python
@@ -464,10 +464,9 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
     tidy_path: string, path to directory containing tidied source for sol
     canon_path: string, path to directory to write the canonicalized source to
     phrase_counter: Counter for canonical lines of code
-    tab_counters: dict of Counters for indentation
     raises RenamerException if a problem occurs when renaming
 
-    mutates sol, phrase_counter, and tab_counters
+    mutates sol, phrase_counter
     """
 
     with open(tidy_path, 'U') as f:
@@ -512,28 +511,23 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters):
             sol.canonicalPYcode.append(strippedLine)
             sol.canonicalPYcodeIndents.append(leadingSpace)
 
-            if strippedLine not in tab_counters:
-                tab_counters[strippedLine] = Counter()
-            tab_counters[strippedLine].update([leadingSpace])
-
     with open(canon_path, 'w') as f:
         f.write(renamed_src)
 
     phrase_counter.update(sol.canonicalPYcode)
     # TODO: pygmentize?
 
-def rewrite_all_solutions(all_solutions, phrase_counter, tab_counters, folderOfData):
+def rewrite_all_solutions(all_solutions, phrase_counter, folderOfData):
     """
     Rename variables across all solutions, write out the canonicalized code,
     and keep track of phrases.
 
     all_solutions: list of Solution instances
     phrase_counter: Counter for canonical lines of code
-    tab_counters: dict of Counters for indentation
     folderOfData: base directory containing data and output folders
     returns: list, solution numbers skipped
 
-    mutates phrase_counter and tab_counters, and elements of all_solutions
+    mutates phrase_counter and elements of all_solutions
     """
     skipped = []
 
@@ -546,8 +540,8 @@ def rewrite_all_solutions(all_solutions, phrase_counter, tab_counters, folderOfD
         canon_path = path.join(canon_folder, sol.solnum + '.py')
         try:
             print "Rewriting", sol.solnum
-            # rewrite_source(sol, tidy_path, canon_path, phrase_counter, tab_counters)
-            make_lines(sol, tidy_path, canon_path, phrase_counter, tab_counters)
+            # rewrite_source(sol, tidy_path, canon_path, phrase_counter)
+            make_lines(sol, tidy_path, canon_path, phrase_counter)
         except RenamerException:
             skipped.append(sol.solnum)
 
@@ -625,7 +619,7 @@ def create_output(all_stacks, solutions, phrases, variables):
         solution['variableIDs'] = list(solution['variableIDs'])
         solutions.append(solution)
 
-def reformat_phrases(phrases, tab_counters):
+def reformat_phrases(phrases):
     """
     Put the phrases list into the expected output format.
     """
@@ -633,11 +627,9 @@ def reformat_phrases(phrases, tab_counters):
     # TODO: feature spans?
     for i in range(len(phrases)):
         phrase = phrases[i]
-        mostCommonIndent = tab_counters[phrase].most_common(1)[0][0]
         phrases[i] = {
             'id': i+1,
-            'code': cgi.escape(phrase),
-            'indent': mostCommonIndent,
+            'code': cgi.escape(phrase)
             # 'codeWithFeatureSpans': generateCodeWithFeatureSpans(phrase)
         }
 
@@ -691,9 +683,8 @@ def run(folderOfData, destFolder):
 
     # Canonicalize source and collect phrases
     phrase_counter = Counter()
-    tab_counters = {}
     skipped_rewrite = rewrite_all_solutions(
-        all_solutions, phrase_counter, tab_counters, folderOfData)
+        all_solutions, phrase_counter, folderOfData)
 
     # Stack solutions
     all_stacks = []
@@ -704,7 +695,7 @@ def run(folderOfData, destFolder):
     phrases = []
     variables = []
     create_output(all_stacks, solutions, phrases, variables)
-    reformat_phrases(phrases, tab_counters)
+    reformat_phrases(phrases)
     reformat_variables(variables)
 
     dumpOutput(solutions, 'solutions.json')
