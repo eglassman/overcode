@@ -457,7 +457,7 @@ var setStackScrollHandlers = function() {
       }
     }
 
-    console.log('At stack number', stackIndex);
+    // console.log('At stack number', stackIndex);
     var colBScrollTop = $('#grid-colB').scrollTop();
     var nextColBOffset = colBOrderedOffsets[stackIndex+1];
     var currentColBOffset = colBOrderedOffsets[stackIndex];
