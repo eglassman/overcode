@@ -443,12 +443,7 @@ def make_lines(sol, tidy_path, canon_path, phrase_counter):
 
         ctr += 1
 
-        #todo: terrible variable name for mechanism for handling variable name clashes
-        if lvar.rename_to: 
-            shared_name = lvar.rename_to
-        else:
-            shared_name = lvar.abstract_var.canon_name
-        mappings[placeholder] = (lvar.abstract_var, shared_name)
+        mappings[placeholder] = (lvar.abstract_var, lvar.local_name)
 
     lines = Line.split_solution_into_lines(renamed_src, mappings)
     print [l.render() for l in lines] #put together lines
