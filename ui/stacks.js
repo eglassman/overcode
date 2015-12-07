@@ -410,6 +410,7 @@ var setColOffsets = function() {
   console.log('offsets, col C:', colCOrderedOffsets);
 }
 
+var lastColCScrollTop;
 var setStackScrollHandlers = function() {
   $('#grid-colB').scroll(function() {
     var colBScrollTop = $(this).scrollTop();
@@ -427,15 +428,15 @@ var setStackScrollHandlers = function() {
     var previousColCOffset = stackIndex === 0 ? 0 : colCOrderedOffsets[stackIndex-1];
     // console.log('At stack number', stackIndex, 'with C offset', currentColCOffset);
 
-    if (nextColCOffset !== undefined && colCScrollTop >= nextColCOffset) {
-      $('#grid-colC').scrollTop(currentColCOffset);
-      // console.log('scrolling to:',currentColCOffset);
-    }
+    var tooFar = nextColCOffset !== undefined && colCScrollTop >= nextColCOffset;
+    var notFarEnough = colCScrollTop < currentColCOffset;
 
-    if (colCScrollTop < currentColCOffset) {
-      $('#grid-colC').scrollTop(currentColCOffset);
-      // console.log('scrolling to:',currentColCOffset);
+    if (tooFar || notFarEnough) {
+      if (lastColCScrollTop !== currentColCOffset) {
+        $('#grid-colC').animate({ scrollTop: currentColCOffset }, 500);
+        lastColCScrollTop = currentColCOffset;
+        // console.log('scrolling to:',currentColCOffset);
+      }
     }
-
   });
 }
