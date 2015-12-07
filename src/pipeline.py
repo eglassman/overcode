@@ -427,7 +427,7 @@ class RenamerException(Exception):
     """A problem occurred while calling identifier_renamer."""
 
 #replaces rewrite_source, does not yet fully implement rewrite_source
-def make_lines(sol, tidy_path, canon_path, phrase_counter):
+def make_lines(sol, tidy_path, canon_path):
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
@@ -449,7 +449,7 @@ def make_lines(sol, tidy_path, canon_path, phrase_counter):
     print [l.render() for l in lines] #put together lines
     print [l for l in lines] #print un-rendered lines
 
-def rewrite_source(sol, tidy_path, canon_path, phrase_counter):
+def rewrite_source(sol, tidy_path, canon_path):
     """
     Rename local variables within a single solution to their canon equivalents,
     or a modified version if there is a clash. Also stores the canonical python
@@ -458,10 +458,9 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter):
     sol: instance of Solution
     tidy_path: string, path to directory containing tidied source for sol
     canon_path: string, path to directory to write the canonicalized source to
-    phrase_counter: Counter for canonical lines of code
     raises RenamerException if a problem occurs when renaming
 
-    mutates sol, phrase_counter
+    mutates sol
     """
 
     with open(tidy_path, 'U') as f:
@@ -509,20 +508,18 @@ def rewrite_source(sol, tidy_path, canon_path, phrase_counter):
     with open(canon_path, 'w') as f:
         f.write(renamed_src)
 
-    phrase_counter.update(sol.canonicalPYcode)
     # TODO: pygmentize?
 
-def rewrite_all_solutions(all_solutions, phrase_counter, folderOfData):
+def rewrite_all_solutions(all_solutions, folderOfData):
     """
     Rename variables across all solutions, write out the canonicalized code,
     and keep track of phrases.
 
     all_solutions: list of Solution instances
-    phrase_counter: Counter for canonical lines of code
     folderOfData: base directory containing data and output folders
     returns: list, solution numbers skipped
 
-    mutates phrase_counter and elements of all_solutions
+    mutates elements of all_solutions
     """
     skipped = []
 
@@ -536,7 +533,7 @@ def rewrite_all_solutions(all_solutions, phrase_counter, folderOfData):
         try:
             print "Rewriting", sol.solnum
             # rewrite_source(sol, tidy_path, canon_path, phrase_counter)
-            make_lines(sol, tidy_path, canon_path, phrase_counter)
+            make_lines(sol, tidy_path, canon_path)
         except RenamerException:
             skipped.append(sol.solnum)
 
@@ -676,10 +673,9 @@ def run(folderOfData, destFolder):
         all_solutions, all_abstracts)
     find_canon_names(all_abstracts)
 
-    # Canonicalize source and collect phrases
-    phrase_counter = Counter()
+    # Canonicalize source
     skipped_rewrite = rewrite_all_solutions(
-        all_solutions, phrase_counter, folderOfData)
+        all_solutions, folderOfData)
 
     # Stack solutions
     all_stacks = []
