@@ -46,10 +46,10 @@ class Line(object):
             indent = len(raw_line) - len(stripped_line)
 
             blanks = re.findall(r'___\d___', stripped_line)
-            variables, names = zip(*[mappings[blank] for blank in blanks])
+            variables, local_names = zip(*[mappings[blank] for blank in blanks])
 
             template = re.sub(r'___\d___', '___', stripped_line)
-            line_objects.append(Line(template, variables, names, indent))
+            line_objects.append(Line(template, variables, local_names, indent))
         return line_objects
 
     def __init__(self, template, variables, names, indent):
