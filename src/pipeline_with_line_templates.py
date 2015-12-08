@@ -1,5 +1,6 @@
 ### Elena's Rewrite of Stacey's Pipeline Implementation, using Line Templates as an internal representation
 
+#standard utilities
 import cgi
 from collections import Counter
 import json
@@ -9,9 +10,14 @@ import pickle
 import pprint
 import re
 
-from external import identifier_renamer
-from pipeline_util import ensure_folder_exists
+#custom utilities
+from external import identifier_renamer #philip's variable renamer
+from pipeline_util import ensure_folder_exists #rob's helper
 
-import solution_class
-import line_class
+#class definitions
 import variable_instance_class
+import abstract_variable_class
+import line_class
+import solution_class
+import stack_class
+
