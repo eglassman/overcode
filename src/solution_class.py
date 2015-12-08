@@ -49,6 +49,17 @@ class Solution(object):
         #             new_name = abs_var.canon_name + '_' + local_var.local_name + '__'
         #             local_var.rename_to = new_name
 
+    def getDict(self):
+        return self.__dict__
+
     def __str__(self):
-        return "Solution(" + str(self.solnum) + ")" #+ " with local_vars: " + self.local_vars + " and abstract_vars"
+        #abbreviated print out:
+        #return "Solution(" + str(self.solnum) + ")" #+ " with local_vars: " + self.local_vars + " and abstract_vars"
+
+        #long print out
+        # output = 'solnum: ' + self.solnum + '/n'
+        # output += 'trace: ' + self.
+
+        #debugging print out
+        return str(self.__dict__)
     __repr__ = __str__

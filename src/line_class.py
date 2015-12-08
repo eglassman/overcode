@@ -18,6 +18,7 @@ class Line(object):
 
     def render_canonical(self):
         #todo
+        pass
 
     def render(self):
         # Replace all the blanks with '{}' so we can use built-in string formatting

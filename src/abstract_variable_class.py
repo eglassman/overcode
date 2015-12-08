@@ -1,6 +1,9 @@
 ###############################################################################
 ## AbstractVariable Class
 ###############################################################################
+from collections import Counter
+from variable_instance_class import VariableInstance
+
 class AbstractVariable(object):
     """A canonical variable as characterized by its sequence of values."""
 
@@ -63,16 +66,23 @@ class AbstractVariable(object):
         """Pretty print the local names given to this abstract variable."""
         pprint.pprint(self.name_ctr)
 
+    def getDict(self):
+        return self.__dict__
+
     def __eq__(self, other):
         """Two AbstractVariables are equal if they have the same sequence."""
         assert isinstance(other, AbstractVariable)
         return self.sequence == other.sequence
 
     def __repr__(self):
-        if self.canon_name:
-            inside = str(self.canon_name) + " " + str(self.sequence)
-        else:
-            inside = str(self.sequence)
-        return "AbstractVariable(" + inside + ")"
+        # #Nice printout
+        # if self.canon_name:
+        #     inside = str(self.canon_name) + " " + str(self.sequence)
+        # else:
+        #     inside = str(self.sequence)
+        # return "AbstractVariable(" + inside + ")"
+
+        #debugging print out
+        return str(self.__dict__)
 
     __str__ = __repr__
