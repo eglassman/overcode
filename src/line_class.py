@@ -2,13 +2,13 @@
 ## Line Class
 ###############################################################################
 class Line(object):
-    """A line of code, with indent recorded, with blanks for variables, plus information about the variables' local names and abstract identity."""
+    """A line of code, with indent recorded, with blanks for variables, and the corresponding abstract variables to fill the blanks."""
 
     #Line(template, local_names, abstract_variables, indent)
-    def __init__(self, template, local_names, abstract_variables, indent):
+    def __init__(self, template, abstract_variables, indent):
         self.template = template
         self.abstract_variables = abstract_variables
-        self.local_names = local_names
+        #self.local_names = local_names
         self.indent = indent
 
     def __eq__(self, other):
