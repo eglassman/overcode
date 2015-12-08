@@ -5,7 +5,7 @@ from os import path
 
 import pipeline_preprocessing
 import pipeline_old
-import pipeline
+import pipeline_with_line_templates as pipeline
 
 parser = argparse.ArgumentParser()
 parser.add_argument('basedir', help='Path to the base directory')
