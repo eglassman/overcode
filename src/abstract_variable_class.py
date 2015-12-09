@@ -75,14 +75,14 @@ class AbstractVariable(object):
         return self.sequence == other.sequence
 
     def __repr__(self):
-        # #Nice printout
-        # if self.canon_name:
-        #     inside = str(self.canon_name) + " " + str(self.sequence)
-        # else:
-        #     inside = str(self.sequence)
-        # return "AbstractVariable(" + inside + ")"
+        #Nice printout
+        if self.canon_name:
+            inside = str(self.canon_name) + " " + str(self.sequence)
+        else:
+            inside = str(self.sequence)
+        return "AbstractVariable(" + inside + ")"
 
         #debugging print out
-        return str(self.__dict__)
+        #return str(self.__dict__)
 
     __str__ = __repr__
