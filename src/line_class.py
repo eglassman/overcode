@@ -14,11 +14,11 @@ class Line(object):
     def __eq__(self, other):
         """Two Lines are equal if they have the same template and abstract variables."""
         assert isinstance(other, Line)
+        #print type(other)
         return self.abstract_variables == other.abstract_variables and self.template == other.template
 
-    def render_canonical(self):
-        #todo
-        pass
+    def getDict(self):
+        return self.__dict__
 
     def render(self):
         # Replace all the blanks with '{}' so we can use built-in string formatting
@@ -27,5 +27,5 @@ class Line(object):
 
     def __str__(self):
         # DEBUGGING STR METHOD ONLY
-        return self.template + " ||| " + str(self.abstract_variables) + " ||| " + str(self.local_names) + "\n"
+        return self.template + " ||| " + str(self.abstract_variables) + "\n" # + " ||| " + str(self.local_names) + "\n"
     __repr__ = __str__
