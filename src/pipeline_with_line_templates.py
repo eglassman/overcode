@@ -242,15 +242,37 @@ def run(folderOfData, destFolder):
     for line in all_lines:
         add_to_setlist(line.template,all_templates)
 
+    template_dict = {}
     for template in all_templates:
-        print template
+        #print template
+        hand_made_counter = {};
         for sol in all_solutions:
             for line in sol.lines:
-                if line[0].template==template:
-                    print sol.solnum,line
+                line_object = line[0]
+                if line_object.template==template:
+                    #print sol.solnum,line
+                    in_hand_made_counter = False
+                    for line_key, count in hand_made_counter.iteritems():
+                        if line_key == line_object:
+                            hand_made_counter[line_key]+=1
+                            in_hand_made_counter = True
+                    if not(in_hand_made_counter):
+                        hand_made_counter[line_object] = 1
+                    #template_dict[template][line[0]] += 1
+
+        template_dict[template] = hand_made_counter
+
 
     # for sol in all_solutions:
     #     pprint.pprint(sol.getDict())
-    pprint.pprint(all_solutions[0].getDict())
+    #pprint.pprint(all_solutions[0].getDict())
+    print 'template_dict'
+    #pprint.pprint(template_dict)
+    for template,count_dict in template_dict.iteritems():
+        print ''
+        print 'template'
+        print template
+        print ':'
+        print pprint.pprint(count_dict)
 
     
