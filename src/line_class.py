@@ -15,7 +15,15 @@ class Line(object):
         """Two Lines are equal if they have the same template and abstract variables."""
         assert isinstance(other, Line)
         #print type(other)
-        return self.abstract_variables == other.abstract_variables and self.template == other.template
+        # print 'comparing', self,other
+        same = self.abstract_variables == other.abstract_variables and self.template == other.template
+        # if same:
+        #     print 'match'
+        # else:
+        #     print 'different'
+        # print ''
+        # print ''
+        return same
 
     def getDict(self):
         return self.__dict__
