@@ -25,7 +25,7 @@ var initializeStacks = function() {
       addOutputChoice(solution.output)
     }
   });
-  console.log('stacksByOutput:', stacksByOutput);
+  // console.log('stacksByOutput:', stacksByOutput);
 }
 
 var stackCopy = function(stack) {
