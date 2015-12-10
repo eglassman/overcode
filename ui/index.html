@@ -168,8 +168,13 @@
             <li class="testcase list-group-item">
               <div class="testcaseheader">Test 1</div>
               <code>dotProduct([31, 98, -78, -50, 55, -4],<br> [-94, -23, -56, 31, 77, -84])</code>
+              <!-- Select elements do not allow formatting of their options, so no indication
+              of correct/incorrect results... TODO: explore alternatives -->
+              <!-- The other downside of select inputs is that you can only choose one option
+              at a time, unless you use a multiple-select, but then there's nested scrollbars
+              which is maybe not the best. -->
               <div><select class="form-control">
-                <option>2221</option>
+                <option>Correct result: 2221</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -183,7 +188,7 @@
               <div class="testcaseheader">Test 2</div>
               <code>dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58],<br> [88, -79, -47, 4, -19, -14, -47, -75, 35])</code>
               <div><select class="form-control">
-                <option>-3489</option>
+                <option>Correct result: -3489</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -197,7 +202,7 @@
               <div class="testcaseheader">Test 3</div>
               <code>dotProduct([-22, -54, 20, 23, 76, 0],<br> [48, 62, -4, 89, -41, 15])</code>
               <div><select class="form-control">
-                <option>-5553</option>
+                <option>Correct result: -5553</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -211,7 +216,7 @@
               <div class="testcaseheader">Test 4</div>
               <code>dotProduct([69, 57, -64, -4, -5, -32, 30, 33],<br> [-13, -16, -73, 26, -11, 98, 100, -8])</code>
               <div><select class="form-control">
-                <option>2414</option>
+                <option>Correct result: 2414</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -225,7 +230,7 @@
               <div class="testcaseheader">Test 5</div>
               <code>dotProduct([-62, 4, 73, -46, 79, -56],<br> [77, -80, 3, 99, 59, 7])</code>
               <div><select class="form-control">
-                <option>-5160</option>
+                <option>Correct result: -5160</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -239,7 +244,7 @@
               <div class="testcaseheader">Test 6</div>
               <code>dotProduct([-45], [-60])</code>
               <div><select class="form-control">
-                <option>2700</option>
+                <option>Correct result: 2700</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -253,7 +258,7 @@
               <div class="testcaseheader">Test 7</div>
               <code>dotProduct([4, 69, -97], [-91, -71, -93])</code>
               <div><select class="form-control">
-                <option>3758</option>
+                <option>Correct result: 3758</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -267,7 +272,7 @@
               <div class="testcaseheader">Test 8</div>
               <code>dotProduct([68, 33, 56, 20, 4],<br> [18, 93, -15, -57, -82])</code>
               <div><select class="form-control">
-                <option>1985</option>
+                <option>Correct result: 1985</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -281,7 +286,7 @@
               <div class="testcaseheader">Test 9</div>
               <code>dotProduct([72, 18, 18, -57, -91, 61],<br> [37, 8, 11, 30, 2, -64])</code>
               <div><select class="form-control">
-                <option>-2790</option>
+                <option>Correct result: -2790</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
@@ -295,7 +300,7 @@
               <div class="testcaseheader">Test 10</div>
               <code>dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28],<br> [68, 39, -5, 7, 67, 91, 48, -60, -67])</code>
               <div><select class="form-control">
-                <option>8499</option>
+                <option>Correct result: 8499</option>
                 <option>All Failures</option>
                 <option>&lt;built-in function 'sum'&gt;</option>
                 <option>[31, 98, -78, -50, 55, -4, -94, -23, -56, 31, 77, -84]</option>
