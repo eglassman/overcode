@@ -78,7 +78,10 @@ def run_logger(dataSrc, testCases, pickleDest, finalizer, traceMunger):
         toPickle['args'] = []
         toPickle['returnVars'] = []
 
-        # loggerOutput = pg_logger.exec_script_str_local(
+        # TODO: when the sol has errors, printed out from line 1283 in pg_logger
+        # look for trace['exception_msg'] (probably in the finalizer) and don't
+        # bother rerunning on all the test cases for certain exceptions, e.g.,
+        # RuntimeErrors form max recursion depth exceeded
         for testCase in testCases:
             trace, args, returnVars = pg_logger.exec_script_str_local(
                 source + '\n\n' + testCase,
@@ -106,8 +109,8 @@ def run_logger(dataSrc, testCases, pickleDest, finalizer, traceMunger):
             with open(pickleFilePath, 'w') as f:
                 pickle.dump(toPickle, f)
         except pickle.PicklingError:
-            if stopOnError: raise
             os.remove(pickleFilePath)
+            if stopOnError: raise
             skipped.append(solNum)
     return skipped
 
