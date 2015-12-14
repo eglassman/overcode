@@ -6,7 +6,10 @@ body {
 }
 #header {
 	border-bottom: solid 1px #ddd;
-	min-height: 180px;
+	min-height: 140px;
+}
+.progress {
+    margin-bottom: 10px;
 }
 #header-prefix { padding-right: 0px; }
 #header-container { padding-left: 25px; }
@@ -85,7 +88,6 @@ body {
 	overflow-y: scroll; 
 	overflow-x: hidden;
 	border-left: solid 1px #ddd;
-    border-right: solid 1px #ddd;
 	position: relative;
 }
 #grid-colA {
@@ -95,8 +97,19 @@ body {
 	position: relative;
 }
 
-#grid-colC {
-    overflow-y: scroll;
+#reference {
+    height: 190px;
+    border-bottom: 1px solid #ddd;
+    margin-left: 0px;
+    padding-left: 25px;
+}
+
+#reference h5 {
+    margin-bottom: 5px;
+}
+
+#reference .dimmed {
+    opacity: 1.0;
 }
 
 .stack {
@@ -120,7 +133,6 @@ code span.highlighted { background-color: #FFFFB2;}
 
 #nothing { margin-left: 30px; }
 
-#grid-colA div pre code span.dimmed { opacity: 1.0;}
 pre.h3 {text-align: center;} 
 
 /* Sidebar styling */

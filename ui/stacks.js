@@ -157,11 +157,12 @@ var drawStacks = function() {
     referenceStacks = [firstStack];
   }
 
-  var correctStacks = filteredStacks.slice(0, 10);
+  var correctStacks = filteredStacks.slice(1, 10);
   var incorrectStacks = filteredStacks.slice(10);
-  drawStackColumn("#grid-colA", referenceStacks, referencePhraseIDs, true);
-  drawStackColumn("#grid-colB", correctStacks, referencePhraseIDs, false);
-  drawStackColumn("#grid-colC", incorrectStacks, referencePhraseIDs, false);
+
+  drawStackColumn('#reference', filteredStacks.slice(0, 1), referencePhraseIDs, false);
+  drawStackColumn("#grid-colA", correctStacks, referencePhraseIDs, false);
+  drawStackColumn("#grid-colB", incorrectStacks, referencePhraseIDs, false);
 
   setColOffsets();
 
@@ -391,28 +392,62 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
 
 
 // FAKEY FAKEY FAKE
+// TODO: look into Bootstrap Scrollspy!!!
 
+var colAOrderedOffsets = []
 var colBOrderedOffsets = []
-var colCOrderedOffsets = []
 var setColOffsets = function() {
-  var corrects = $('#grid-colB').find('.stack');
+  var corrects = $('#grid-colA').find('.stack');
   corrects.each(function() {
-    colBOrderedOffsets.push($(this).prop('offsetTop'))
+    colAOrderedOffsets.push($(this).prop('offsetTop'))
   });
-  // console.log('offsets, col B:', colBOrderedOffsets);
+  // console.log('offsets, col B:', colAOrderedOffsets);
 
   // When this is real, this will have to be the offset of the first incorrect
   // stack that goes with each correct stack. Right now it assumes 1-to-1
-  var incorrects = $('#grid-colC').find('.stack');
+  var incorrects = $('#grid-colB').find('.stack');
   incorrects.each(function() {
-    colCOrderedOffsets.push($(this).prop('offsetTop'));
+    colBOrderedOffsets.push($(this).prop('offsetTop'));
   });
-  // console.log('offsets, col C:', colCOrderedOffsets);
+  // console.log('offsets, col C:', colBOrderedOffsets);
 }
 
-var lastColCScrollTop, lastColBScrollTop;
+var lastColBScrollTop, lastColAScrollTop;
 var ignoreScrollEvents = false;
 var setStackScrollHandlers = function() {
+  $('#grid-colA').scroll(function() {
+    if (ignoreScrollEvents) { return; }
+    var colAScrollTop = $(this).scrollTop();
+    var stackIndex = 0;
+    for (stackIndex = 0; stackIndex < colAOrderedOffsets.length; stackIndex++) {
+      var nextOffset = colAOrderedOffsets[stackIndex+1];
+      if (nextOffset === undefined || nextOffset > colAScrollTop) {
+        break
+      }
+    }
+
+    var colBScrollTop = $('#grid-colB').scrollTop();
+    var nextColBOffset = colBOrderedOffsets[stackIndex+1];
+    var currentColBOffset = colBOrderedOffsets[stackIndex];
+    var previousColBOffset = stackIndex === 0 ? 0 : colBOrderedOffsets[stackIndex-1];
+    // console.log('At stack number', stackIndex, 'with C offset', currentColBOffset);
+
+    var tooFar = nextColBOffset !== undefined && colBScrollTop >= nextColBOffset;
+    var notFarEnough = colBScrollTop < currentColBOffset;
+
+    if (tooFar || notFarEnough) {
+      if (lastColBScrollTop !== currentColBOffset) {
+        ignoreScrollEvents = true;
+        $('#grid-colB').animate({ scrollTop: currentColBOffset }, 300, function() {
+          // animation done
+          ignoreScrollEvents = false;
+        });
+        lastColBScrollTop = currentColBOffset;
+        // console.log('scrolling to:',currentColBOffset);
+      }
+    }
+  });
+
   $('#grid-colB').scroll(function() {
     if (ignoreScrollEvents) { return; }
     var colBScrollTop = $(this).scrollTop();
@@ -424,57 +459,24 @@ var setStackScrollHandlers = function() {
       }
     }
 
-    var colCScrollTop = $('#grid-colC').scrollTop();
-    var nextColCOffset = colCOrderedOffsets[stackIndex+1];
-    var currentColCOffset = colCOrderedOffsets[stackIndex];
-    var previousColCOffset = stackIndex === 0 ? 0 : colCOrderedOffsets[stackIndex-1];
-    // console.log('At stack number', stackIndex, 'with C offset', currentColCOffset);
-
-    var tooFar = nextColCOffset !== undefined && colCScrollTop >= nextColCOffset;
-    var notFarEnough = colCScrollTop < currentColCOffset;
-
-    if (tooFar || notFarEnough) {
-      if (lastColCScrollTop !== currentColCOffset) {
-        ignoreScrollEvents = true;
-        $('#grid-colC').animate({ scrollTop: currentColCOffset }, 500, function() {
-          // animation done
-          ignoreScrollEvents = false;
-        });
-        lastColCScrollTop = currentColCOffset;
-        // console.log('scrolling to:',currentColCOffset);
-      }
-    }
-  });
-
-  $('#grid-colC').scroll(function() {
-    if (ignoreScrollEvents) { return; }
-    var colCScrollTop = $(this).scrollTop();
-    var stackIndex = 0;
-    for (stackIndex = 0; stackIndex < colCOrderedOffsets.length; stackIndex++) {
-      var nextOffset = colCOrderedOffsets[stackIndex+1];
-      if (nextOffset === undefined || nextOffset > colCScrollTop) {
-        break
-      }
-    }
-
     // console.log('At stack number', stackIndex);
-    var colBScrollTop = $('#grid-colB').scrollTop();
-    var nextColBOffset = colBOrderedOffsets[stackIndex+1];
-    var currentColBOffset = colBOrderedOffsets[stackIndex];
-    // console.log('At stack number', stackIndex, 'with C offset', currentColBOffset);
+    var colAScrollTop = $('#grid-colA').scrollTop();
+    var nextColAOffset = colAOrderedOffsets[stackIndex+1];
+    var currentColAOffset = colAOrderedOffsets[stackIndex];
+    // console.log('At stack number', stackIndex, 'with C offset', currentColAOffset);
 
-    var tooFar = nextColBOffset !== undefined && colBScrollTop >= nextColBOffset;
-    var notFarEnough = colBScrollTop < currentColBOffset;
+    var tooFar = nextColAOffset !== undefined && colAScrollTop >= nextColAOffset;
+    var notFarEnough = colAScrollTop < currentColAOffset;
 
     if (tooFar || notFarEnough) {
-      if (lastColBScrollTop !== currentColBOffset) {
+      if (lastColAScrollTop !== currentColAOffset) {
         ignoreScrollEvents = true;
-        $('#grid-colB').animate({ scrollTop: currentColBOffset }, 500, function() {
+        $('#grid-colA').animate({ scrollTop: currentColAOffset }, 300, function() {
           // animation done
           ignoreScrollEvents = false;
         });
-        lastColBScrollTop = currentColBOffset;
-        // console.log('scrolling to:',currentColBOffset);
+        lastColAScrollTop = currentColAOffset;
+        // console.log('scrolling to:',currentColAOffset);
       }
     }
   });
