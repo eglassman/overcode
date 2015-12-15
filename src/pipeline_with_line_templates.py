@@ -27,6 +27,11 @@ from stack_class import Stack
 #import functions
 from variable_sequence_extraction import extract_and_collect_var_seqs
 
+
+#hack for now
+CORRECT = 12
+
+
 ###############################################################################
 ## Dump output
 ###############################################################################
@@ -145,6 +150,8 @@ def compute_lines(sol, tidy_path, all_lines):
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
+    #pprint.pprint(sol.getDict())
+
     #This code renames all variables as placeholders, and saves a mapping
     #from placeholder to original name and abstract variable object
     mappings = {}
@@ -164,7 +171,9 @@ def compute_lines(sol, tidy_path, all_lines):
 
     #This code breaks solutions down into line objects
     raw_lines = renamed_src.split('\n')
+    line_no = 0 #there is no line zero, but it will get incremented at the start of every loop
     for raw_line in raw_lines:
+        line_no += 1
         stripped_line = raw_line.strip()
 
         #ignore empty lines
@@ -174,12 +183,30 @@ def compute_lines(sol, tidy_path, all_lines):
 
         blanks = re.findall(r'___\d___', stripped_line)
         #print 'blanks',blanks
-        local_names, abstract_variables = zip(*[mappings[blank] for blank in blanks])
+        if len(blanks) > 0:
+            local_names, abstract_variables = zip(*[mappings[blank] for blank in blanks])
+        else:
+            local_names = ()
+            abstract_variables = ()
         #print local_names, abstract_variables
 
         template = re.sub(r'___\d___', '___', stripped_line)
+
+        line_values = {}
+        for loc_nam in local_names:
+            #print 'line_no: ', line_no, [a for (a,b) in sol.trace['__lineNo__'] if b==line_no] #zip(*sol.trace['__lineNo__'])
+            #print 'line_no: ', line_no, 'loc_nam', loc_nam, [ [d for (c,d) in sol.trace[loc_nam] if c==a and d!='myNaN' ] for (a,b) in sol.trace['__lineNo__'] if b==line_no]
+            line_values[loc_nam] = []
+            for loc_val in [ [d for (c,d) in sol.trace[loc_nam] if c==a ] for (a,b) in sol.trace['__lineNo__'] if b==line_no]:
+                #if loc_val[0]!='myNaN':
+                line_values[loc_nam].append(loc_val[0])
+            #print line_values[loc_nam]
+
+        step_values = []
+        for loc_nam in local_names:
+            step_values.append((line_values[loc_nam],))
         
-        this_line_as_general_line = Line(template, abstract_variables, indent);
+        this_line_as_general_line = Line(template, abstract_variables, indent, step_values);
         this_line_in_solution = (this_line_as_general_line, local_names);
         
         sol.lines.append( this_line_in_solution );
@@ -220,6 +247,7 @@ def run(folderOfData, destFolder):
     #dumpOutput(all_solutions,'all_solutions.json')
     # for sol in all_solutions:
     #     pprint.pprint(sol.getDict())
+    
 
     # Collect variables into AbstractVariables
     all_abstracts = []
@@ -227,6 +255,12 @@ def run(folderOfData, destFolder):
     #print all_abstracts
     #for absvar in all_abstracts:
     #    pprint.pprint(absvar.getDict())
+
+    all_solutions = [sol for sol in all_solutions if sol.output==CORRECT]
+
+    # for sol in all_solutions:
+    #     pprint.pprint(sol.getDict())
+
 
     find_canon_names(all_abstracts)
     # for absvar in all_abstracts:
@@ -265,7 +299,11 @@ def run(folderOfData, destFolder):
 
     # for sol in all_solutions:
     #     pprint.pprint(sol.getDict())
-    #pprint.pprint(all_solutions[0].getDict())
+    for i in xrange(10):
+        pprint.pprint(all_solutions[i].getDict())
+    for sol in all_solutions:
+        pprint.pprint(sol.output)
+
     print 'template_dict'
     #pprint.pprint(template_dict)
     for template,count_dict in template_dict.iteritems():

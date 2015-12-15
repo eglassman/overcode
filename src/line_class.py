@@ -5,18 +5,20 @@ class Line(object):
     """A line of code, with indent recorded, with blanks for variables, and the corresponding abstract variables to fill the blanks."""
 
     #Line(template, local_names, abstract_variables, indent)
-    def __init__(self, template, abstract_variables, indent):
+    def __init__(self, template, abstract_variables, indent, line_values):
         self.template = template
         self.abstract_variables = abstract_variables
         #self.local_names = local_names
         self.indent = indent
+        self.line_values = line_values
 
     def __eq__(self, other):
         """Two Lines are equal if they have the same template and abstract variables."""
         assert isinstance(other, Line)
         #print type(other)
         # print 'comparing', self,other
-        same = self.abstract_variables == other.abstract_variables and self.template == other.template
+        #same = self.abstract_variables == other.abstract_variables and self.template == other.template
+        same = self.line_values == other.line_values and self.template == other.template
         # if same:
         #     print 'match'
         # else:
@@ -35,5 +37,5 @@ class Line(object):
 
     def __str__(self):
         # DEBUGGING STR METHOD ONLY
-        return self.template + " ||| " + str(self.abstract_variables) + "\n" # + " ||| " + str(self.local_names) + "\n"
+        return self.template + " ||| " + str(self.abstract_variables) + " ||| " + str(self.line_values) + "\n" # + " ||| " + str(self.local_names) + "\n"
     __repr__ = __str__
