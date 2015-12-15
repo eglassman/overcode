@@ -18,13 +18,10 @@ class Line(object):
         #print type(other)
         # print 'comparing', self,other
         #same = self.abstract_variables == other.abstract_variables and self.template == other.template
+        
+        #same = set(self.line_values) == set(other.line_values) and self.template == other.template
         same = self.line_values == other.line_values and self.template == other.template
-        # if same:
-        #     print 'match'
-        # else:
-        #     print 'different'
-        # print ''
-        # print ''
+        
         return same
 
     def getDict(self):
@@ -37,5 +34,11 @@ class Line(object):
 
     def __str__(self):
         # DEBUGGING STR METHOD ONLY
-        return self.template + " ||| " + str(self.abstract_variables) + " ||| " + str(self.line_values) + "\n" # + " ||| " + str(self.local_names) + "\n"
+
+        for line_val in line_values:
+            print line_val
+
+        raise #this string method should print out a different representation of values
+
+        return self.template + " ||| " + str(self.abstract_variables) + " ||| " + line_values_formatted + "\n" # + " ||| " + str(self.local_names) + "\n"
     __repr__ = __str__

@@ -200,11 +200,12 @@ def compute_lines(sol, tidy_path, all_lines):
             for loc_val in [ [d for (c,d) in sol.trace[loc_nam] if c==a ] for (a,b) in sol.trace['__lineNo__'] if b==line_no]:
                 #if loc_val[0]!='myNaN':
                 line_values[loc_nam].append(loc_val[0])
-            #print line_values[loc_nam]
+        #print 'line_values',line_values
 
         step_values = []
         for loc_nam in local_names:
-            step_values.append((line_values[loc_nam],))
+            step_values.append(tuple(line_values[loc_nam]))
+        #print 'step_values', step_values
         
         this_line_as_general_line = Line(template, abstract_variables, indent, step_values);
         this_line_in_solution = (this_line_as_general_line, local_names);
