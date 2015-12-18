@@ -111,7 +111,7 @@ var fetchExamplePyFiles = function(solutionIDs,divToAppendTo) {
   }
 }
 
-var generateCode = function(lines, referencePhraseIDs) {
+var generateCode = function(lines, referencePhraseIDs, correct) {
   code = "<pre><code>";
   lines.forEach(function(line, i) {
     var phrase = mergedPhrases.filter(function(p) {return p.id == line.phraseID;})[0];
@@ -127,7 +127,16 @@ var generateCode = function(lines, referencePhraseIDs) {
     else
       code += codeIndent + "<span class='dimmed'>" + codeLine + "</span>" + "<br>";
   });
-  code += "</code></pre>";
+  code += "</code>"
+
+  var correctness;
+  if (correct) {
+    correctness = '<div class="results"> <span class="glyphicon glyphicon-ok-sign"></span> Correct</div>';
+  } else {
+    correctness = '<div class="results"> <span class="incorrect-results"><span class="glyphicon glyphicon-remove-sign"></span> Tests failed:</span> Test 1, Test 2</div>';
+  }
+  code += correctness;
+  code += "</pre>";
   return code;
 };
 
@@ -160,9 +169,9 @@ var drawStacks = function() {
   var correctStacks = filteredStacks.slice(1, 10);
   var incorrectStacks = filteredStacks.slice(10);
 
-  drawStackColumn('#reference', filteredStacks.slice(0, 1), referencePhraseIDs, false);
-  drawStackColumn("#grid-colA", correctStacks, referencePhraseIDs, false);
-  drawStackColumn("#grid-colB", incorrectStacks, referencePhraseIDs, false);
+  drawStackColumn('#reference', filteredStacks.slice(0, 1), referencePhraseIDs, false, true);
+  drawStackColumn("#grid-colA", correctStacks, referencePhraseIDs, false, true);
+  drawStackColumn("#grid-colB", incorrectStacks, referencePhraseIDs, false, false);
 
   setColOffsets();
 
@@ -245,7 +254,7 @@ var interpolateNumber = function(d) {
   };
 };
 
-var drawStackColumn = function(selector, stackData, referencePhraseIDs, isReference) {
+var drawStackColumn = function(selector, stackData, referencePhraseIDs, isReference, correct) {
   var column = d3.select(selector);
   var stack = column.selectAll("div.stack")
       .data(stackData.slice(0,200), function(d) {return d.id;});
@@ -257,7 +266,7 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     var codeDiv = $(this).find("div.code");
     var code = d.id == "miscellaneous" ?
           "<pre><h3>VARIOUS</h3></pre>" :
-          generateCode(d.lines, referencePhraseIDs);
+          generateCode(d.lines, referencePhraseIDs, correct);
     //get ids of first ten examples
     //var first10Examples = stackMembers(d).slice(0, 10);
     //console.log(first10Examples);
@@ -321,7 +330,7 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     .attr("class", "badge")
     .style("margin", "5px")
     .text(function(d) {return stackCount(d);});
-  stackEnter.append("span").attr("class", "stackid text-muted").text(function(d) { return "id: " + d.id; });
+  // stackEnter.append("span").attr("class", "stackid text-muted").text(function(d) { return "id: " + d.id; });
 
   var stackCode = stackEnter.append("div")
     .attr("class", function(d) {
@@ -330,7 +339,7 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
   stackCode.html(function(d) {
       code = d.id == "miscellaneous" ?
           "<pre><h3>VARIOUS</h3></pre>" :
-          generateCode(d.lines, referencePhraseIDs);
+          generateCode(d.lines, referencePhraseIDs, correct);
         code+="<div class='codeEx'></div>";
         return code;
       }).each(function(d) {
@@ -415,6 +424,7 @@ var setColOffsets = function() {
 var lastColBScrollTop, lastColAScrollTop;
 var ignoreScrollEvents = false;
 var setStackScrollHandlers = function() {
+  /*
   $('#grid-colA').scroll(function() {
     if (ignoreScrollEvents) { return; }
     var colAScrollTop = $(this).scrollTop();
@@ -479,5 +489,5 @@ var setStackScrollHandlers = function() {
         // console.log('scrolling to:',currentColAOffset);
       }
     }
-  });
+  }); */
 }

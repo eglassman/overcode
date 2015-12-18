@@ -98,7 +98,7 @@ body {
 }
 
 #reference {
-    height: 190px;
+    height: 200px;
     border-bottom: 1px solid #ddd;
     margin-left: 0px;
     padding-left: 25px;
@@ -117,6 +117,28 @@ body {
 	margin-bottom: 40px;
 	left: 0px;
 }
+
+.stack pre {
+    background-color: #F8F8F8;
+}
+.hljs {
+    background-color: #EDEDED;
+}
+
+.results {
+    margin-top: 4px;
+    margin-left: -4px;
+    margin-bottom: -5px;
+    font-size: 12px;
+}
+
+.glyphicon-ok-sign {
+    color: #5CB85C;
+}
+.incorrect-results {
+    color: #BC2E29;
+}
+
 span.stackid {
   float: right;
 }
