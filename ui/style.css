@@ -135,8 +135,17 @@ body {
 .glyphicon-ok-sign {
     color: #5CB85C;
 }
+
+.correct-background {
+    background-color: #5CB85C;
+}
+
 .incorrect-results {
     color: #BC2E29;
+}
+
+.incorrect-background {
+    background-color: #BC2E29;
 }
 
 span.stackid {

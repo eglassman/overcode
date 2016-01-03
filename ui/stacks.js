@@ -130,12 +130,9 @@ var generateCode = function(lines, referencePhraseIDs, correct) {
   code += "</code>"
 
   var correctness;
-  if (correct) {
-    correctness = '<div class="results"> <span class="glyphicon glyphicon-ok-sign"></span> Correct</div>';
-  } else {
-    correctness = '<div class="results"> <span class="incorrect-results"><span class="glyphicon glyphicon-remove-sign"></span> Tests failed:</span> Test 1, Test 2</div>';
+  if (!correct) {
+    code += '<div class="results"> <span class="incorrect-results">Tests failed:</span> Test 1, Test 2</div>';
   }
-  code += correctness;
   code += "</pre>";
   return code;
 };
@@ -330,7 +327,17 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     .attr("class", "badge")
     .style("margin", "5px")
     .text(function(d) {return stackCount(d);});
+  // id, now removed
   // stackEnter.append("span").attr("class", "stackid text-muted").text(function(d) { return "id: " + d.id; });
+
+  // correctness badge
+  var icon = correct ? "glyphicon-ok" : "glyphicon-remove";
+  var correctnessClass = correct ? "correct-background" : "incorrect-background";
+  stackEnter.append("span")
+    .attr("class", "badge " + correctnessClass)
+    .style("font-size", "10px")
+    .append("span")
+    .attr("class", "glyphicon " + icon)
 
   var stackCode = stackEnter.append("div")
     .attr("class", function(d) {
