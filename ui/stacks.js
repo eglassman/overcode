@@ -334,8 +334,7 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
   var icon = correct ? "glyphicon-ok" : "glyphicon-remove";
   var correctnessClass = correct ? "correct-background" : "incorrect-background";
   stackEnter.append("span")
-    .attr("class", "badge " + correctnessClass)
-    .style("font-size", "10px")
+    .attr("class", "badge correctness-class " + correctnessClass)
     .append("span")
     .attr("class", "glyphicon " + icon)
 

@@ -148,6 +148,10 @@ body {
     background-color: #BC2E29;
 }
 
+.correctness-class {
+    font-size: 10px;
+}
+
 span.stackid {
   float: right;
 }
