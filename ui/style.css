@@ -6,10 +6,15 @@ body {
 }
 #header {
 	border-bottom: solid 1px #ddd;
-	min-height: 140px;
+	min-height: 120px;
 }
+
+#main {
+    padding-right: 0px;
+}
+
 .progress {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 #header-prefix { padding-right: 0px; }
 #header-container { padding-left: 25px; }
@@ -93,15 +98,15 @@ body {
 #grid-colA {
 	overflow-y: scroll; 
 	overflow-x: hidden;
-	padding-left: 25px;
+	padding-left: 12px;
 	position: relative;
 }
 
 #reference {
-    height: 200px;
+    height: 180px;
     border-bottom: 1px solid #ddd;
     margin-left: 0px;
-    padding-left: 25px;
+    padding-left: 12px;
 }
 
 #reference h5 {
@@ -114,12 +119,13 @@ body {
 
 .stack {
 	position: relative;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	left: 0px;
 }
 
 .stack pre {
     background-color: #F8F8F8;
+    padding: 7px;
 }
 .hljs {
     background-color: #EDEDED;
