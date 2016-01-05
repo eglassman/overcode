@@ -78,6 +78,15 @@ $(function() {
       drawStacks();
   });
 
+  // show/hide additional failure signatures
+  $('#failure-sigs-control').on('click', function() {
+    if ($(this).hasClass('collapsed')) {
+      $(this).text('Hide Additional Failure Signatures');
+    } else {
+      $(this).text('Show Additional Failure Signatures');
+    }
+  })
+
   // Scrolling coupling
   setStackScrollHandlers();
 

@@ -157,6 +157,10 @@ body {
 .correctness-class {
     font-size: 10px;
 }
+.result-display {
+    margin-top: 5px;
+    max-width: 90px;
+}
 
 span.stackid {
   float: right;
