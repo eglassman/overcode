@@ -50,7 +50,7 @@ def assertVariablesEqual(old, new):
 
 def compare_phrases(path1, path2):
     def extract_code_and_indent(phrase):
-        return (phrase['code'], phrase['indent'])
+        return (phrase['code'])
     return _do_compare(path1, path2, 'phrases', extract_code_and_indent)
 
 def assertPhrasesEqual(path1, path2):
