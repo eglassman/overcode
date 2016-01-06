@@ -6,31 +6,28 @@
             1, 
             2
         ], 
-        "varName": "i", 
-        "varNameAndSeq": "i:[0, 1, 2]"
+        "varName": "i"
     }, 
     {
         "id": 2, 
         "sequence": [
             0, 
             2, 
-            6, 
-            12
+            4, 
+            6
         ], 
-        "varName": "total", 
-        "varNameAndSeq": "total:[0, 2, 6, 12]"
+        "varName": "total"
     }, 
     {
         "id": 3, 
         "sequence": [
             [
                 1, 
-                2, 
-                3
+                1, 
+                1
             ]
         ], 
-        "varName": "listA", 
-        "varNameAndSeq": "listA:[[1, 2, 3]]"
+        "varName": "listA"
     }, 
     {
         "id": 4, 
@@ -41,44 +38,35 @@
                 2
             ]
         ], 
-        "varName": "listB", 
-        "varNameAndSeq": "listB:[[2, 2, 2]]"
+        "varName": "listB"
     }, 
     {
         "id": 5, 
         "sequence": [
-            1, 
-            2, 
-            3
+            2
         ], 
-        "varName": "a", 
-        "varNameAndSeq": "a:[1, 2, 3]"
+        "varName": "b"
     }, 
     {
         "id": 6, 
         "sequence": [
-            2
+            3
         ], 
-        "varName": "b", 
-        "varNameAndSeq": "b:[2]"
+        "varName": "length"
     }, 
     {
         "id": 7, 
         "sequence": [
-            2, 
-            4, 
-            6
+            1
         ], 
-        "varName": "product", 
-        "varNameAndSeq": "product:[2, 4, 6]"
+        "varName": "a"
     }, 
     {
         "id": 8, 
         "sequence": [
-            3
+            6
         ], 
-        "varName": "length", 
-        "varNameAndSeq": "length:[3]"
+        "varName": "ans"
     }, 
     {
         "id": 9, 
@@ -88,16 +76,17 @@
             2, 
             3
         ], 
-        "varName": "a___2", 
-        "varNameAndSeq": "a___2:[0, 1, 2, 3]"
+        "varName": "a___2"
     }, 
     {
         "id": 10, 
         "sequence": [
-            12
+            3, 
+            0, 
+            1, 
+            2
         ], 
-        "varName": "ans", 
-        "varNameAndSeq": "ans:[12]"
+        "varName": "n"
     }, 
     {
         "id": 11, 
@@ -108,15 +97,48 @@
             ], 
             [
                 2, 
-                4
+                2
             ], 
             [
                 2, 
-                4, 
-                6
+                2, 
+                2
+            ], 
+            [
+                2, 
+                2
+            ], 
+            [
+                2
+            ], 
+            []
+        ], 
+        "varName": "listc"
+    }, 
+    {
+        "id": 12, 
+        "sequence": [
+            [], 
+            [
+                2
+            ], 
+            [
+                2, 
+                2
+            ], 
+            [
+                2, 
+                2, 
+                2
             ]
         ], 
-        "varName": "AB", 
-        "varNameAndSeq": "AB:[[], [2], [2, 4], [2, 4, 6]]"
+        "varName": "AB"
+    }, 
+    {
+        "id": 13, 
+        "sequence": [
+            0
+        ], 
+        "varName": "index"
     }
 ]
