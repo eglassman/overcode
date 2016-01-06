@@ -1,0 +1,4422 @@
+Loading data
+Collecting variables in 201409170154260000
+Collecting variables in 201409171900070000
+Collecting variables in 201409171902140000
+Collecting variables in 201409171902170000
+Collecting variables in 201409171904110000
+Collecting variables in 201409171904310000
+Collecting variables in 201409171904420000
+Collecting variables in 201409171904440000
+Collecting variables in 201409171904580000
+Collecting variables in 201409171905190000
+Collecting variables in 201409171905230000
+Collecting variables in 201409171905480000
+Collecting variables in 201409171907560000
+Collecting variables in 201409171908400000
+Collecting variables in 201409171910280000
+Collecting variables in 201409171910380000
+Collecting variables in 201409171911280000
+Collecting variables in 201409171911310000
+Collecting variables in 201409171911530000
+Collecting variables in 201409171912030000
+Collecting variables in 201409171912480000
+Collecting variables in 201409171913490000
+Collecting variables in 201409171914330000
+Collecting variables in 201409171925160000
+Collecting variables in 201409171932560000
+Collecting variables in 201409171938260000
+Collecting variables in 201409171938580000
+Collecting variables in 201409171945140000
+Collecting variables in 201409172003520000
+Collecting variables in 201409172009070000
+Collecting variables in 201409172016270000
+Collecting variables in 201409172019510000
+Collecting variables in 201409172025300000
+Collecting variables in 201409172031390000
+Collecting variables in 201409172033470000
+Collecting variables in 201409172035340000
+Collecting variables in 201409172043050000
+Collecting variables in 201409172049230000
+Collecting variables in 201409172138080000
+Collecting variables in 201409172138350000
+Collecting variables in 201409172142170000
+Collecting variables in 201409172145260000
+Collecting variables in 201409172145430000
+Collecting variables in 201409172147020000
+Collecting variables in 201409172147420000
+Collecting variables in 201409172148220000
+Collecting variables in 201409172216240000
+Collecting variables in 201409172222330000
+Collecting variables in 201409172228080000
+Collecting variables in 201409172230410000
+Collecting variables in 201409172239520000
+Collecting variables in 201409172244530000
+Collecting variables in 201409172257210000
+Collecting variables in 201409172312010000
+Collecting variables in 201409172313020000
+Collecting variables in 201409172316280000
+Collecting variables in 201409172318240000
+Collecting variables in 201409180024430000
+Collecting variables in 201409180025210000
+Collecting variables in 201409180026070000
+Collecting variables in 201409180043220000
+Collecting variables in 201409180114310000
+Collecting variables in 201409180116480000
+Collecting variables in 201409180121580000
+Collecting variables in 201409180157510000
+Collecting variables in 201409180206130000
+Collecting variables in 201409180211170000
+Collecting variables in 201409180222090000
+Collecting variables in 201409180233150000
+Collecting variables in 201409180314350000
+Collecting variables in 201409180328280000
+Collecting variables in 201409180351530000
+Collecting variables in 201409180353280000
+Collecting variables in 201409180537380000
+Collecting variables in 201409180647180000
+Collecting variables in 201409181341180000
+Collecting variables in 201409181354490000
+Collecting variables in 201409181453170000
+Collecting variables in 201409181502260000
+Collecting variables in 201409181506000000
+Collecting variables in 201409181537020000
+Collecting variables in 201409181558170000
+Collecting variables in 201409181615150000
+Collecting variables in 201409181641280000
+Collecting variables in 201409181649370000
+Collecting variables in 201409181709420000
+Collecting variables in 201409181744260000
+Collecting variables in 201409181757340000
+Collecting variables in 201409181802570000
+Collecting variables in 201409181823540000
+Collecting variables in 201409181844380000
+Collecting variables in 201409181921400000
+Collecting variables in 201409181930370000
+Collecting variables in 201409181942200000
+Collecting variables in 201409182016360000
+Collecting variables in 201409182019510000
+Collecting variables in 201409182037230000
+Collecting variables in 201409182039220000
+Collecting variables in 201409182046150000
+Collecting variables in 201409182048450000
+Collecting variables in 201409182117210000
+Collecting variables in 201409182148000000
+Collecting variables in 201409182257410000
+Collecting variables in 201409190009040000
+Collecting variables in 201409190135280000
+Collecting variables in 201409190144000000
+Collecting variables in 201409190225520000
+Collecting variables in 201409190250040000
+Collecting variables in 201409190255010000
+Collecting variables in 201409190257120000
+Collecting variables in 201409190315200000
+Collecting variables in 201409190401580000
+Collecting variables in 201409190408210000
+Collecting variables in 201409190411140000
+Collecting variables in 201409190722530000
+Collecting variables in 201409191305430000
+Collecting variables in 201409191409100000
+Collecting variables in 201409191442470000
+Collecting variables in 201409191504220000
+Collecting variables in 201409191548300000
+Collecting variables in 201409191551190000
+Collecting variables in 201409191622120000
+Collecting variables in 201409191646480000
+Collecting variables in 201409192016540000
+Collecting variables in 201409192027270000
+Collecting variables in 201409192036020000
+Collecting variables in 201409192038210000
+Collecting variables in 201409192154260000
+Collecting variables in 201409192216280000
+Collecting variables in 201409192316300000
+Collecting variables in 201409200102040000
+Collecting variables in 201409200214510000
+Collecting variables in 201409200235110000
+Collecting variables in 201409200240190000
+Collecting variables in 201409200242200000
+Collecting variables in 201409200248190000
+Collecting variables in 201409200324050000
+Collecting variables in 201409200350310000
+Collecting variables in 201409200409080000
+Collecting variables in 201409200440390000
+Collecting variables in 201409200442460000
+Collecting variables in 201409201136370000
+Collecting variables in 201409201226360000
+Collecting variables in 201409201242300000
+Collecting variables in 201409201632380000
+Collecting variables in 201409201707400000
+Collecting variables in 201409201719240000
+Collecting variables in 201409201744160000
+Collecting variables in 201409201746190000
+Collecting variables in 201409201919520000
+Collecting variables in 201409201944010000
+Collecting variables in 201409202031260000
+Collecting variables in 201409202035390000
+Collecting variables in 201409202111060000
+Collecting variables in 201409202116550000
+Collecting variables in 201409202158490000
+Collecting variables in 201409210006350000
+Collecting variables in 201409210159310000
+Collecting variables in 201409210204290000
+Collecting variables in 201409210211150000
+Collecting variables in 201409210227060000
+Collecting variables in 201409210240100000
+Collecting variables in 201409210240260000
+Collecting variables in 201409210246300000
+Collecting variables in 201409210251320000
+Collecting variables in 201409210542220000
+Collecting variables in 201409210553030000
+Collecting variables in 201409211331120000
+Collecting variables in 201409211552320000
+Collecting variables in 201409211559050000
+Collecting variables in 201409211654390000
+Collecting variables in 201409211726040000
+Collecting variables in 201409211736180000
+Collecting variables in 201409211743280000
+Collecting variables in 201409211757300000
+Collecting variables in 201409211802190000
+Collecting variables in 201409211817270000
+Collecting variables in 201409211829050000
+Collecting variables in 201409211854090000
+Collecting variables in 201409211854340000
+Collecting variables in 201409211855470000
+Collecting variables in 201409211858350000
+Collecting variables in 201409211900010000
+Collecting variables in 201409211909560000
+Collecting variables in 201409211954070000
+Collecting variables in 201409211957340000
+Collecting variables in 201409212013260000
+Collecting variables in 201409212041540000
+Collecting variables in 201409212114570000
+Collecting variables in 201409212135130000
+Collecting variables in 201409212154070000
+Collecting variables in 201409212226110000
+Collecting variables in 201409212312230000
+Collecting variables in 201409212346300000
+Collecting variables in 201409220019370000
+Collecting variables in 201409220030210000
+Collecting variables in 201409220118390000
+Collecting variables in 201409220157110000
+Collecting variables in 201409220202410000
+Collecting variables in 201409220250250000
+Collecting variables in 201409220300020000
+Collecting variables in 201409220301430000
+Collecting variables in 201409220326220000
+Collecting variables in 201409220331200000
+Collecting variables in 201409220342010000
+Collecting variables in 201409220401190000
+Collecting variables in 201409220406590000
+Collecting variables in 201409220408060000
+Collecting variables in 201409220415440000
+Collecting variables in 201409220422180000
+Collecting variables in 201409220423200000
+Collecting variables in 201409220459590000
+Collecting variables in 201409220537160000
+Collecting variables in 201409220553230000
+Collecting variables in 201409220625570000
+Collecting variables in 201409220645170000
+Collecting variables in 201409221256150000
+Collecting variables in 201409221257160000
+Collecting variables in 201409221313240000
+Collecting variables in 201409221315390000
+Collecting variables in 201409221328500000
+Collecting variables in 201409221354530000
+Collecting variables in 201409221357530000
+Collecting variables in 201409221411380000
+Collecting variables in 201409221421090000
+Collecting variables in 201409221502210000
+Collecting variables in 201409221513000000
+Collecting variables in 201409221518320000
+Collecting variables in 201409221524040000
+Collecting variables in 201409221531140000
+Collecting variables in 201409221532550000
+Collecting variables in 201409221629280000
+Collecting variables in 201409221637260000
+Collecting variables in 201409221641170000
+Collecting variables in 201409221652080000
+Collecting variables in 201409221710410000
+Collecting variables in 201409221746310000
+Collecting variables in 201409221819390000
+Collecting variables in 201409221832020000
+Computing lines for 201409170154260000
+length of lines  5
+Computing lines for 201409171900070000
+length of lines  9
+Computing lines for 201409171902140000
+length of lines  10
+Computing lines for 201409171902170000
+length of lines  11
+Computing lines for 201409171904110000
+length of lines  12
+Computing lines for 201409171904310000
+length of lines  14
+Computing lines for 201409171904420000
+length of lines  15
+Computing lines for 201409171904440000
+length of lines  15
+Computing lines for 201409171904580000
+length of lines  18
+Computing lines for 201409171905190000
+length of lines  20
+Computing lines for 201409171905230000
+length of lines  20
+Computing lines for 201409171905480000
+length of lines  21
+Computing lines for 201409171907560000
+length of lines  21
+Computing lines for 201409171908400000
+length of lines  23
+Computing lines for 201409171910280000
+length of lines  23
+Computing lines for 201409171910380000
+length of lines  27
+Computing lines for 201409171911280000
+length of lines  28
+Computing lines for 201409171911310000
+length of lines  30
+Computing lines for 201409171911530000
+length of lines  30
+Computing lines for 201409171912030000
+length of lines  32
+Computing lines for 201409171912480000
+length of lines  33
+Computing lines for 201409171913490000
+length of lines  33
+Computing lines for 201409171914330000
+length of lines  34
+Computing lines for 201409171925160000
+length of lines  34
+Computing lines for 201409171932560000
+length of lines  34
+Computing lines for 201409171938260000
+length of lines  34
+Computing lines for 201409171938580000
+length of lines  34
+Computing lines for 201409171945140000
+length of lines  35
+Computing lines for 201409172003520000
+length of lines  35
+Computing lines for 201409172009070000
+length of lines  35
+Computing lines for 201409172016270000
+length of lines  35
+Computing lines for 201409172019510000
+length of lines  35
+Computing lines for 201409172025300000
+length of lines  35
+Computing lines for 201409172031390000
+length of lines  36
+Computing lines for 201409172033470000
+length of lines  36
+Computing lines for 201409172035340000
+length of lines  37
+Computing lines for 201409172043050000
+length of lines  37
+Computing lines for 201409172049230000
+length of lines  37
+Computing lines for 201409172138080000
+length of lines  37
+Computing lines for 201409172138350000
+length of lines  37
+Computing lines for 201409172142170000
+length of lines  37
+Computing lines for 201409172145260000
+length of lines  37
+Computing lines for 201409172145430000
+length of lines  37
+Computing lines for 201409172147020000
+length of lines  38
+Computing lines for 201409172147420000
+length of lines  38
+Computing lines for 201409172148220000
+length of lines  38
+Computing lines for 201409172216240000
+length of lines  38
+Computing lines for 201409172222330000
+length of lines  38
+Computing lines for 201409172228080000
+length of lines  38
+Computing lines for 201409172230410000
+length of lines  39
+Computing lines for 201409172239520000
+length of lines  39
+Computing lines for 201409172244530000
+length of lines  39
+Computing lines for 201409172257210000
+length of lines  41
+Computing lines for 201409172312010000
+length of lines  41
+Computing lines for 201409172313020000
+length of lines  41
+Computing lines for 201409172316280000
+length of lines  43
+Computing lines for 201409172318240000
+length of lines  43
+Computing lines for 201409180024430000
+length of lines  43
+Computing lines for 201409180025210000
+length of lines  47
+Computing lines for 201409180026070000
+length of lines  49
+Computing lines for 201409180043220000
+length of lines  49
+Computing lines for 201409180114310000
+length of lines  50
+Computing lines for 201409180116480000
+length of lines  50
+Computing lines for 201409180121580000
+length of lines  50
+Computing lines for 201409180157510000
+length of lines  51
+Computing lines for 201409180206130000
+length of lines  51
+Computing lines for 201409180211170000
+length of lines  51
+Computing lines for 201409180222090000
+length of lines  51
+Computing lines for 201409180233150000
+length of lines  51
+Computing lines for 201409180314350000
+length of lines  51
+Computing lines for 201409180328280000
+length of lines  51
+Computing lines for 201409180353280000
+length of lines  52
+Computing lines for 201409180537380000
+length of lines  52
+Computing lines for 201409180647180000
+length of lines  52
+Computing lines for 201409181341180000
+length of lines  52
+Computing lines for 201409181354490000
+length of lines  52
+Computing lines for 201409181453170000
+length of lines  52
+Computing lines for 201409181502260000
+length of lines  52
+Computing lines for 201409181506000000
+length of lines  52
+Computing lines for 201409181537020000
+length of lines  52
+Computing lines for 201409181558170000
+length of lines  53
+Computing lines for 201409181615150000
+length of lines  53
+Computing lines for 201409181641280000
+length of lines  53
+Computing lines for 201409181649370000
+length of lines  56
+Computing lines for 201409181709420000
+length of lines  57
+Computing lines for 201409181744260000
+length of lines  57
+Computing lines for 201409181757340000
+length of lines  57
+Computing lines for 201409181802570000
+length of lines  57
+Computing lines for 201409181823540000
+length of lines  57
+Computing lines for 201409181844380000
+length of lines  57
+Computing lines for 201409181921400000
+length of lines  57
+Computing lines for 201409181930370000
+length of lines  58
+Computing lines for 201409182016360000
+length of lines  58
+Computing lines for 201409182019510000
+length of lines  60
+Computing lines for 201409182037230000
+length of lines  60
+Computing lines for 201409182039220000
+length of lines  60
+Computing lines for 201409182046150000
+length of lines  60
+Computing lines for 201409182048450000
+length of lines  60
+Computing lines for 201409182117210000
+length of lines  60
+Computing lines for 201409182148000000
+length of lines  60
+Computing lines for 201409182257410000
+length of lines  60
+Computing lines for 201409190009040000
+length of lines  61
+Computing lines for 201409190135280000
+length of lines  61
+Computing lines for 201409190144000000
+length of lines  61
+Computing lines for 201409190225520000
+length of lines  62
+Computing lines for 201409190250040000
+length of lines  63
+Computing lines for 201409190255010000
+length of lines  64
+Computing lines for 201409190257120000
+length of lines  65
+Computing lines for 201409190315200000
+length of lines  67
+Computing lines for 201409190401580000
+length of lines  67
+Computing lines for 201409190408210000
+length of lines  67
+Computing lines for 201409190411140000
+length of lines  67
+Computing lines for 201409190722530000
+length of lines  67
+Computing lines for 201409191305430000
+length of lines  69
+Computing lines for 201409191409100000
+length of lines  73
+Computing lines for 201409191442470000
+length of lines  73
+Computing lines for 201409191504220000
+length of lines  77
+Computing lines for 201409191548300000
+length of lines  78
+Computing lines for 201409191551190000
+length of lines  79
+Computing lines for 201409191622120000
+length of lines  79
+Computing lines for 201409191646480000
+length of lines  80
+Computing lines for 201409192016540000
+length of lines  80
+Computing lines for 201409192027270000
+length of lines  81
+Computing lines for 201409192036020000
+length of lines  82
+Computing lines for 201409192038210000
+length of lines  82
+Computing lines for 201409192154260000
+length of lines  82
+Computing lines for 201409192216280000
+length of lines  82
+Computing lines for 201409192316300000
+length of lines  82
+Computing lines for 201409200102040000
+length of lines  82
+Computing lines for 201409200214510000
+length of lines  82
+Computing lines for 201409200235110000
+length of lines  82
+Computing lines for 201409200240190000
+length of lines  83
+Computing lines for 201409200242200000
+length of lines  84
+Computing lines for 201409200248190000
+length of lines  85
+Computing lines for 201409200324050000
+length of lines  86
+Computing lines for 201409200350310000
+length of lines  86
+Computing lines for 201409200409080000
+length of lines  87
+Computing lines for 201409200440390000
+length of lines  87
+Computing lines for 201409200442460000
+length of lines  87
+Computing lines for 201409201136370000
+length of lines  89
+Computing lines for 201409201226360000
+length of lines  89
+Computing lines for 201409201242300000
+length of lines  89
+Computing lines for 201409201632380000
+length of lines  89
+Computing lines for 201409201707400000
+length of lines  90
+Computing lines for 201409201719240000
+length of lines  90
+Computing lines for 201409201744160000
+length of lines  91
+Computing lines for 201409201746190000
+length of lines  91
+Computing lines for 201409201919520000
+length of lines  92
+Computing lines for 201409201944010000
+length of lines  92
+Computing lines for 201409202031260000
+length of lines  92
+Computing lines for 201409202035390000
+length of lines  92
+Computing lines for 201409202111060000
+length of lines  92
+Computing lines for 201409202116550000
+length of lines  95
+Computing lines for 201409202158490000
+length of lines  95
+Computing lines for 201409210006350000
+length of lines  95
+Computing lines for 201409210159310000
+length of lines  95
+Computing lines for 201409210204290000
+length of lines  95
+Computing lines for 201409210211150000
+length of lines  95
+Computing lines for 201409210227060000
+length of lines  95
+Computing lines for 201409210240100000
+length of lines  95
+Computing lines for 201409210240260000
+length of lines  99
+Computing lines for 201409210246300000
+length of lines  99
+Computing lines for 201409210251320000
+length of lines  99
+Computing lines for 201409210542220000
+length of lines  99
+Computing lines for 201409210553030000
+length of lines  99
+Computing lines for 201409211331120000
+length of lines  99
+Computing lines for 201409211552320000
+length of lines  99
+Computing lines for 201409211559050000
+length of lines  99
+Computing lines for 201409211654390000
+length of lines  99
+Computing lines for 201409211726040000
+length of lines  101
+Computing lines for 201409211736180000
+length of lines  101
+Computing lines for 201409211743280000
+length of lines  101
+Computing lines for 201409211757300000
+length of lines  101
+Computing lines for 201409211802190000
+length of lines  101
+Computing lines for 201409211817270000
+length of lines  103
+Computing lines for 201409211829050000
+length of lines  103
+Computing lines for 201409211854090000
+length of lines  104
+Computing lines for 201409211854340000
+length of lines  104
+Computing lines for 201409211855470000
+length of lines  104
+Computing lines for 201409211858350000
+length of lines  104
+Computing lines for 201409211900010000
+length of lines  104
+Computing lines for 201409211909560000
+length of lines  104
+Computing lines for 201409211954070000
+length of lines  105
+Computing lines for 201409211957340000
+length of lines  105
+Computing lines for 201409212013260000
+length of lines  105
+Computing lines for 201409212041540000
+length of lines  105
+Computing lines for 201409212114570000
+length of lines  105
+Computing lines for 201409212135130000
+length of lines  108
+Computing lines for 201409212154070000
+length of lines  108
+Computing lines for 201409212226110000
+length of lines  108
+Computing lines for 201409212312230000
+length of lines  108
+Computing lines for 201409212346300000
+length of lines  108
+Computing lines for 201409220019370000
+length of lines  108
+Computing lines for 201409220030210000
+length of lines  109
+Computing lines for 201409220118390000
+length of lines  110
+Computing lines for 201409220157110000
+length of lines  110
+Computing lines for 201409220202410000
+length of lines  110
+Computing lines for 201409220250250000
+length of lines  110
+Computing lines for 201409220300020000
+length of lines  110
+Computing lines for 201409220301430000
+length of lines  110
+Computing lines for 201409220326220000
+length of lines  110
+Computing lines for 201409220331200000
+length of lines  110
+Computing lines for 201409220342010000
+length of lines  110
+Computing lines for 201409220401190000
+length of lines  110
+Computing lines for 201409220406590000
+length of lines  110
+Computing lines for 201409220408060000
+length of lines  110
+Computing lines for 201409220415440000
+length of lines  110
+Computing lines for 201409220422180000
+length of lines  110
+Computing lines for 201409220423200000
+length of lines  110
+Computing lines for 201409220459590000
+length of lines  110
+Computing lines for 201409220537160000
+length of lines  110
+Computing lines for 201409220553230000
+length of lines  110
+Computing lines for 201409220625570000
+length of lines  110
+Computing lines for 201409220645170000
+length of lines  110
+Computing lines for 201409221256150000
+length of lines  110
+Computing lines for 201409221257160000
+length of lines  111
+Computing lines for 201409221313240000
+length of lines  111
+Computing lines for 201409221315390000
+length of lines  111
+Computing lines for 201409221328500000
+length of lines  113
+Computing lines for 201409221354530000
+length of lines  113
+Computing lines for 201409221357530000
+length of lines  113
+Computing lines for 201409221411380000
+length of lines  113
+Computing lines for 201409221421090000
+length of lines  113
+Computing lines for 201409221502210000
+length of lines  113
+Computing lines for 201409221513000000
+length of lines  113
+Computing lines for 201409221518320000
+length of lines  113
+Computing lines for 201409221524040000
+length of lines  114
+Computing lines for 201409221531140000
+length of lines  114
+Computing lines for 201409221532550000
+length of lines  114
+Computing lines for 201409221629280000
+length of lines  114
+Computing lines for 201409221637260000
+length of lines  117
+Computing lines for 201409221641170000
+length of lines  118
+Computing lines for 201409221652080000
+length of lines  118
+Computing lines for 201409221710410000
+length of lines  118
+Computing lines for 201409221746310000
+length of lines  118
+Computing lines for 201409221819390000
+length of lines  118
+Computing lines for 201409221832020000
+length of lines  118
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 0,
+ 'line_values': [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)],
+ 'template': 'def dotProduct(___,___):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],)],
+ 'template': '___=0'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in range(len(___)):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___+=___[___]*___[___]'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),),
+ 'indent': 4,
+ 'line_values': [([12, 12],)],
+ 'template': 'return ___'}
+{'abstract_variables': (AbstractVariable(length [3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],)],
+ 'template': '___=len(___)'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(length [3])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)],
+ 'template': 'for ___ in range(0,___):'}
+{'abstract_variables': (AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 4],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___[___]*___[___]'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(product [2, 4, 6])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([2, 4, 6],)],
+ 'template': '___+=___'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(product [2, 4, 6])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([0, 2, 6],), ([2, 4, 6],)],
+ 'template': '___=___+___'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in range(0,len(___)):'}
+{'abstract_variables': (AbstractVariable(ans [12]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN'],),
+                 (['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],),
+                 (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],),
+                 (['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],),
+                 (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],),
+                 ([[1, 2, 3],
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN'],),
+                 ([[2, 2, 2],
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN'],)],
+ 'template': '___=sum(___*___ for(___,___)in zip(___,___))'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in xrange(0,len(___)):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],),
+                 ([0, 2, 6],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___+___[___]*___[___]'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in xrange(len(___)):'}
+{'abstract_variables': (AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___[___]'}
+{'abstract_variables': (AbstractVariable(b [2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___[___]'}
+{'abstract_variables': (AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 4],), ([1, 2, 3],), ([2, 2, 2],)],
+ 'template': '___=___*___'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(length [3])),
+ 'indent': 4,
+ 'line_values': [([0, 1, 2, 3],), ([3, 3, 3, 3],)],
+ 'template': 'while ___<___:'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),),
+ 'indent': 8,
+ 'line_values': [([0, 1, 2],)],
+ 'template': '___+=1'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(total [0, 2, 6, 12])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([2, 4, 6],), ([0, 2, 6],)],
+ 'template': '___=___+___'}
+{'abstract_variables': (AbstractVariable(n [3, 0, 1, 2]),
+                        AbstractVariable(n [3, 0, 1, 2])),
+ 'indent': 4,
+ 'line_values': [([3, 0, 1, 2],), ([3, 0, 1, 2],)],
+ 'template': 'for ___ in range(0,___):'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(i___2 [0, 1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [([0, 1, 2],), ([0, 1, 2],)],
+ 'template': '___=___+1'}
+{'abstract_variables': (AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []]),),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],)],
+ 'template': '___=[]'}
+{'abstract_variables': (AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []]),
+                        AbstractVariable(listA__ [[1, 2, 3], [1, 2], [1], []]),
+                        AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []])),
+ 'indent': 8,
+ 'line_values': [([[], [6], [6, 4]],),
+                 ([[1, 2, 3], [1, 2], [1]],),
+                 ([[2, 2, 2], [2, 2], [2]],)],
+ 'template': '___.append(___.pop()*___.pop())'}
+{'abstract_variables': (AbstractVariable(i__ [0, 1, 2, 0, 1, 2]),
+                        AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []])),
+ 'indent': 4,
+ 'line_values': [([2, 0, 1, 2],), ([[6, 4, 2], [6, 4], [6], []],)],
+ 'template': 'for ___ in range(0,len(___)):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([[6, 4, 2], [6, 4], [6]],)],
+ 'template': '___+=___.pop()'}
+{'abstract_variables': (AbstractVariable(ans [12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN'],),
+                 ([[1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3]],),
+                 (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2],),
+                 ([[2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2]],),
+                 (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2],),
+                 (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2],),
+                 ([[1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3]],)],
+ 'template': '___=sum(___[___]*___[___]for ___ in range(len(___)))'}
+{'abstract_variables': (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([[], [2], [2, 4]],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___.append(___[___]*___[___])'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([[2], [2, 4], [2, 4, 6]],), ([0, 1, 2],)],
+ 'template': '___+=___[___]'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [([[1, 2, 3]],), ([[2, 2, 2]],)],
+ 'template': 'assert len(___)==len(___)'}
+{'abstract_variables': (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]),),
+ 'indent': 4,
+ 'line_values': [([[2, 4, 6], [2, 4, 6]],)],
+ 'template': 'return sum(___)'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(total [0, 2, 6, 12])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([2, 4, 6],), ([0, 2, 6],)],
+ 'template': '___=int(___)+___'}
+{'abstract_variables': (AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   3,
+                   3,
+                   3,
+                   3,
+                   'myNaN'],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   3,
+                   3,
+                   3,
+                   3,
+                   'myNaN'],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 ([[1, 2, 3],
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   [1, 2, 3]],),
+                 ([[2, 2, 2],
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   'myNaN',
+                   [2, 2, 2]],)],
+ 'template': 'return sum(___*___ for(___,___)in zip(___,___))'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([0, 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'while ___<len(___):'}
+{'abstract_variables': (AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 1, 2, 3],),
+                 (['myNaN', 2, 2, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': 'for(___,___)in zip(___,___):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(total [0, 2, 6, 12])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],),
+                 ([0, 2, 6],)],
+ 'template': '___=___[___]*___[___]+___'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___[___]*___[___]'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in range(0,len(___),1):'}
+{'abstract_variables': (AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in ___:'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],),
+                 ([1, 2, 3],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___+=___*___[___]'}
+{'abstract_variables': (AbstractVariable(product___2 [0, 2, 4, 6]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 4],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___[___]*___[___]'}
+{'abstract_variables': (AbstractVariable(ans [12]),
+                        AbstractVariable(total [0, 2, 6, 12])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([12],)],
+ 'template': '___=___'}
+{'abstract_variables': (AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []]),),
+ 'indent': 4,
+ 'line_values': [([[1, 2, 3], [2, 3], [3], []],)],
+ 'template': 'while ___!=list():'}
+{'abstract_variables': (AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []]),
+                        AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 4],),
+                 ([[1, 2, 3], [2, 3], [3]],),
+                 ([[2, 2, 2], [2, 2], [2]],)],
+ 'template': '___=___[0]*___[0]'}
+{'abstract_variables': (AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []]),
+                        AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []])),
+ 'indent': 8,
+ 'line_values': [([[1, 2, 3], [2, 3], [3]],), ([[1, 2, 3], [2, 3], [3]],)],
+ 'template': '___.remove(___[0])'}
+{'abstract_variables': (AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []]),
+                        AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []])),
+ 'indent': 8,
+ 'line_values': [([[2, 2, 2], [2, 2], [2]],), ([[2, 2, 2], [2, 2], [2]],)],
+ 'template': '___.remove(___[0])'}
+{'abstract_variables': (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]),
+                        AbstractVariable(product [2, 4, 6])),
+ 'indent': 8,
+ 'line_values': [([[], [2], [2, 4]],), ([2, 4, 6],)],
+ 'template': '___.append(___)'}
+{'abstract_variables': (AbstractVariable(ans [12]),
+                        AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[2, 4, 6]],)],
+ 'template': '___=sum(___)'}
+{'abstract_variables': (AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 4],),
+                 ([1, 2, 3],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___*___[___]'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in range(len(___)):'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(length [3])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)],
+ 'template': 'for ___ in range(___):'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 (['myNaN', 0, 1, 2, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 (['myNaN', 0, 1, 2, 2],),
+                 (['myNaN', 0, 1, 2, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'return sum([___[___]*___[___]for ___ in range(len(___))])'}
+{'abstract_variables': (AbstractVariable(length__ [3, 2, 1, 0]),),
+ 'indent': 4,
+ 'line_values': [([3, 2, 1, 0],)],
+ 'template': 'while ___>0:'}
+{'abstract_variables': (AbstractVariable(dot [0, 6, 10, 12]),
+                        AbstractVariable(dot [0, 6, 10, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(length__ [3, 2, 1, 0]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(length__ [3, 2, 1, 0])),
+ 'indent': 8,
+ 'line_values': [([0, 6, 10],),
+                 ([0, 6, 10],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([3, 2, 1],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([3, 2, 1],)],
+ 'template': '___=___+___[___-1]*___[___-1]'}
+{'abstract_variables': (AbstractVariable(length__ [3, 2, 1, 0]),
+                        AbstractVariable(length__ [3, 2, 1, 0])),
+ 'indent': 8,
+ 'line_values': [([3, 2, 1],), ([3, 2, 1],)],
+ 'template': '___=___-1'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(length [3])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)],
+ 'template': 'for ___ in xrange(___):'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([0, 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'while ___ in range(0,len(___)):'}
+{'abstract_variables': (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(a [1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [([[], [2], [2, 4]],),
+                 ([1, 2, 3],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([1, 2, 3],)],
+ 'template': '___.append(___*___[___.index(___)])'}
+{'abstract_variables': (),
+ 'indent': 4,
+ 'line_values': [],
+ 'template': 'import math'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),),
+ 'indent': 4,
+ 'line_values': [([],)],
+ 'template': 'print ___'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': 'for ___ in range(len(___))and range(len(___)):'}
+{'abstract_variables': (AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 1, 2, 3, 3],),
+                 (['myNaN', 2, 2, 2, 2],),
+                 (['myNaN', 1, 2, 3, 3],),
+                 (['myNaN', 2, 2, 2, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': 'return sum([___*___ for(___,___)in zip(___,___)])'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in range(0,len(___)):'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(length [3])),
+ 'indent': 4,
+ 'line_values': [([0, 1, 2, 3],), ([3, 3, 3, 3],)],
+ 'template': 'while ___<=___-1:'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(a [1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 0, 1],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([1, 2, 3],)],
+ 'template': '___=___.index(___)'}
+{'abstract_variables': (AbstractVariable(product___2 [0, 2, 4, 6]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 4],), ([1, 2, 3],), ([2, 2, 2],)],
+ 'template': '___=___*___'}
+{'abstract_variables': (AbstractVariable(x [0, 1, 2, 0]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],)],
+ 'template': 'for ___ in range(len(___)):'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(x [0, 1, 2, 0]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(x [0, 1, 2, 0]),
+                        AbstractVariable(x [0, 1, 2, 0]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 8,
+ 'line_values': [([[1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3]],),
+                 ([0, 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0],),
+                 ([[2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2]],),
+                 ([0, 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0],),
+                 ([0, 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0],),
+                 ([[1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3]],)],
+ 'template': 'return sum(___[___]*___[___]for ___ in range(0,len(___)))'}
+{'abstract_variables': (AbstractVariable(n [4, 5, 7]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],)],
+ 'template': '___=len(___)+1'}
+{'abstract_variables': (AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(n [4, 5, 7]),
+                        AbstractVariable(n [4, 5, 7]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([4, 4, 5],),
+                 ([4, 4, 5],),
+                 ([0, 1, 2],)],
+ 'template': '___=___[___-(___-___)]'}
+{'abstract_variables': (AbstractVariable(b [2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(n [4, 5, 7]),
+                        AbstractVariable(n [4, 5, 7]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([4, 4, 5],),
+                 ([4, 4, 5],),
+                 ([0, 1, 2],)],
+ 'template': '___=___[___-(___-___)]'}
+{'abstract_variables': (AbstractVariable(n [4, 5, 7]),
+                        AbstractVariable(n [4, 5, 7]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([4, 4, 5],), ([4, 4, 5],), ([0, 1, 2],)],
+ 'template': '___=___+___'}
+{'abstract_variables': (),
+ 'indent': 4,
+ 'line_values': [],
+ 'template': 'import operator'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],)],
+ 'template': '___=___'}
+{'abstract_variables': (AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[2, 2, 2]],)],
+ 'template': '___=___'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [([[1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2]],)],
+ 'template': 'return sum(map(operator.mul,___,___))'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],),
+                 ([0, 2, 6],),
+                 ([1, 2, 3],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___+___*___[___]'}
+{'abstract_variables': (AbstractVariable(listC___2 [[2, 4, 6]]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 'myNaN', 'myNaN', 'myNaN'],),
+                 (['myNaN', 1, 2, 3],),
+                 (['myNaN', 2, 2, 2],),
+                 (['myNaN', 1, 2, 3],),
+                 (['myNaN', 2, 2, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': '___=[___*___ for(___,___)in zip(___,___)]'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([[1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3]],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   0,
+                   0,
+                   0,
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 ([[2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2]],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   0,
+                   0,
+                   0,
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   0,
+                   0,
+                   0,
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 ([[1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3]],)],
+ 'template': 'return sum(___[___]*___[___]for ___ in range(len(___)))'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in xrange(0,len(___),1):'}
+{'abstract_variables': (AbstractVariable(length [3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],)],
+ 'template': '___=int(len(___))'}
+{'abstract_variables': (AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 4],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=int(___[___])*int(___[___])'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(length [3])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)],
+ 'template': 'for ___ in xrange(0,___):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___+=int(___[___])*int(___[___])'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([0, 0, 1, 2],),
+                 (['myNaN', 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for(___,___)in enumerate(___):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(total [0, 2, 6, 12])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([1, 2, 3],), ([2, 2, 2],), ([0, 2, 6],)],
+ 'template': '___=___*___+___'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 0,
+ 'line_values': [(['myNaN'],), (['myNaN'],)],
+ 'template': 'def dotProduct(___,___):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),),
+ 'indent': 4,
+ 'line_values': [([],)],
+ 'template': '___=0'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(length [3])),
+ 'indent': 4,
+ 'line_values': [([0, 0, 1, 2],), ([3, 3, 3, 3],)],
+ 'template': 'for ___ in range(___):'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([0, 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in xrange(0,len(___)):'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [([[1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3],
+                   [1, 2, 3]],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   0,
+                   0,
+                   0,
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 ([[2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2]],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   0,
+                   0,
+                   0,
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 (['myNaN',
+                   'myNaN',
+                   'myNaN',
+                   0,
+                   0,
+                   0,
+                   1,
+                   1,
+                   1,
+                   2,
+                   2,
+                   2,
+                   2,
+                   'myNaN'],),
+                 ([[2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2],
+                   [2, 2, 2]],)],
+ 'template': 'return sum(int(___[___])*int(___[___])for ___ in range(len(___)))'}
+{'abstract_variables': (),
+ 'indent': 4,
+ 'line_values': [],
+ 'template': 'import itertools'}
+{'abstract_variables': (AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 1, 2, 3],),
+                 (['myNaN', 2, 2, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': 'for(___,___)in itertools.izip(___,___):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],), ([1, 2, 3],), ([2, 2, 2],)],
+ 'template': '___+=___*___'}
+{'abstract_variables': (AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [([[1, 2, 3]],), ([[2, 2, 2]],)],
+ 'template': 'if len(___)!=len(___):'}
+{'abstract_variables': (),
+ 'indent': 8,
+ 'line_values': [],
+ 'template': "print 'length of A and B need to be the same'"}
+{'abstract_variables': (),
+ 'indent': 8,
+ 'line_values': [],
+ 'template': 'return None'}
+{'abstract_variables': (), 'indent': 4, 'line_values': [], 'template': 'else:'}
+{'abstract_variables': (AbstractVariable(count [[0, 1, 2]]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],)],
+ 'template': '___=range(len(___))'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(count [[0, 1, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 0, 1, 2],),
+                 ([[0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2]],)],
+ 'template': 'for ___ in ___:'}
+{'abstract_variables': (AbstractVariable(listC___2 [[2, 4, 6]]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i__ [0, 1, 2, 4, 6]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i__ [0, 1, 2, 4, 6]),
+                        AbstractVariable(i__ [0, 1, 2, 4, 6]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 'myNaN', 'myNaN', 'myNaN'],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 (['myNaN', 0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 (['myNaN', 0, 1, 2],),
+                 (['myNaN', 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': '___=[___[___]*___[___]for ___ in range(len(___))]'}
+{'abstract_variables': (AbstractVariable(i__ [0, 1, 2, 4, 6]),
+                        AbstractVariable(listC___2 [[2, 4, 6]])),
+ 'indent': 4,
+ 'line_values': [([2, 2, 4, 6],),
+                 ([[2, 4, 6], [2, 4, 6], [2, 4, 6], [2, 4, 6]],)],
+ 'template': 'for ___ in ___:'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [([0, 1, 2, 3],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2, 3],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': 'while ___<len(___)and ___<len(___):'}
+{'abstract_variables': (AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([0, 0, 1, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in range(len(___)):'}
+{'abstract_variables': (AbstractVariable(product___3 [2, 6, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],), ([[2, 2, 2]],)],
+ 'template': '___=___[0]*___[0]'}
+{'abstract_variables': (AbstractVariable(i___3 [1, 2]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],)],
+ 'template': 'for ___ in range(1,len(___)):'}
+{'abstract_variables': (AbstractVariable(product___3 [2, 6, 12]),
+                        AbstractVariable(product___3 [2, 6, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i___3 [1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i___3 [1, 2])),
+ 'indent': 8,
+ 'line_values': [([2, 6],),
+                 ([2, 6],),
+                 ([[1, 2, 3], [1, 2, 3]],),
+                 ([1, 2],),
+                 ([[2, 2, 2], [2, 2, 2]],),
+                 ([1, 2],)],
+ 'template': '___=___+___[___]*___[___]'}
+{'abstract_variables': (AbstractVariable(product [2, 4, 6]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i___2 [0, 1, 2, 3])),
+ 'indent': 8,
+ 'line_values': [(['myNaN', 2, 4],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=sum([___[___]*___[___]])'}
+{'abstract_variables': (AbstractVariable(ans [12]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(a [1, 2, 3]),
+                        AbstractVariable(b [2]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN', 'myNaN', 'myNaN', 'myNaN'],),
+                 (['myNaN', 1, 2, 3],),
+                 (['myNaN', 2, 2, 2],),
+                 (['myNaN', 1, 2, 3],),
+                 (['myNaN', 2, 2, 2],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': '___=sum([___*___ for(___,___)in zip(___,___)])'}
+{'abstract_variables': (AbstractVariable(sumLists [0, 6, 8, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([0, 6, 8],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___+=___[___-1]*___[___-1]'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listA [[1, 2, 3]])),
+ 'indent': 4,
+ 'line_values': [([0, 3],), ([[1, 2, 3], [1, 2, 3]],)],
+ 'template': 'while ___<len(___):'}
+{'abstract_variables': (AbstractVariable(i___2 [0, 1, 2, 3]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 8,
+ 'line_values': [([0, 1, 2, 3],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)],
+ 'template': 'while ___<len(___):'}
+{'abstract_variables': (AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(total [0, 2, 6, 12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(i [0, 1, 2]),
+                        AbstractVariable(listB [[2, 2, 2]]),
+                        AbstractVariable(i [0, 1, 2])),
+ 'indent': 8,
+ 'line_values': [([0, 2, 6],),
+                 ([0, 2, 6],),
+                 ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],),
+                 ([0, 1, 2],),
+                 ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],),
+                 ([0, 1, 2],)],
+ 'template': '___=___+int(___[___])*int(___[___])'}
+{'abstract_variables': (), 'indent': 4, 'line_values': [], 'template': "'''"}
+{'abstract_variables': (),
+ 'indent': 4,
+ 'line_values': [],
+ 'template': 'listA: a list of numbers'}
+{'abstract_variables': (),
+ 'indent': 4,
+ 'line_values': [],
+ 'template': 'listB: a list of numbers of the same length as listA'}
+{'abstract_variables': (AbstractVariable(ans [12]),
+                        AbstractVariable(listA [[1, 2, 3]]),
+                        AbstractVariable(listB [[2, 2, 2]])),
+ 'indent': 4,
+ 'line_values': [(['myNaN'],), ([[1, 2, 3]],), ([[2, 2, 2]],)],
+ 'template': '___=reduce(operator.add,map(operator.mul,___,___))'}
+{'abstract_vars': [AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('tot',)),
+           (for ___ in range(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+,
+            ('i', 'listA')),
+           (___+=___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('tot', 'listA', 'i', 'listB', 'i')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('tot',))],
+ 'local_vars': [Variable(i) in solution 201409170154260000,
+                Variable(tot) in solution 201409170154260000,
+                Variable(listA) in solution 201409170154260000,
+                Variable(listB) in solution 201409170154260000],
+ 'output': 12,
+ 'retVars': ['tot'],
+ 'solnum': '201409170154260000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 8),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 3),
+                          (7, 4),
+                          (8, 3),
+                          (9, 4),
+                          (10, 3),
+                          (11, 5),
+                          (12, 5),
+                          (13, 8)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 12),
+                          (13, 'myNaN')],
+           'i': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 1),
+                 (8, 1),
+                 (9, 2),
+                 (10, 2),
+                 (11, 2),
+                 (12, 2),
+                 (13, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, 'myNaN')],
+           'tot': [(0, 'myNaN'),
+                   (1, 'myNaN'),
+                   (2, 'myNaN'),
+                   (3, 'myNaN'),
+                   (4, 0),
+                   (5, 0),
+                   (6, 2),
+                   (7, 2),
+                   (8, 6),
+                   (9, 6),
+                   (10, 12),
+                   (11, 12),
+                   (12, 12),
+                   (13, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(product [2, 4, 6]),
+                   AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(length [3]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('answer',)),
+           (___=len(___) ||| (AbstractVariable(length [3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+,
+            ('length_of_list', 'listA')),
+           (for ___ in range(0,___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(length [3])) ||| [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)]
+,
+            ('i', 'length_of_list')),
+           (___=___[___]*___[___] ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 4],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('dot_product', 'listA', 'i', 'listB', 'i')),
+           (___+=___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6])) ||| [([0, 2, 6],), ([2, 4, 6],)]
+,
+            ('answer', 'dot_product')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('answer',))],
+ 'local_vars': [Variable(dot_product) in solution 201409171900070000,
+                Variable(i) in solution 201409171900070000,
+                Variable(length_of_list) in solution 201409171900070000,
+                Variable(answer) in solution 201409171900070000,
+                Variable(listA) in solution 201409171900070000,
+                Variable(listB) in solution 201409171900070000],
+ 'output': 12,
+ 'retVars': ['answer'],
+ 'solnum': '201409171900070000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 10),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 5),
+                          (7, 6),
+                          (8, 4),
+                          (9, 5),
+                          (10, 6),
+                          (11, 4),
+                          (12, 5),
+                          (13, 6),
+                          (14, 4),
+                          (15, 7),
+                          (16, 7),
+                          (17, 10)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 'myNaN'),
+                          (13, 'myNaN'),
+                          (14, 'myNaN'),
+                          (15, 'myNaN'),
+                          (16, 12),
+                          (17, 'myNaN')],
+           'answer': [(0, 'myNaN'),
+                      (1, 'myNaN'),
+                      (2, 'myNaN'),
+                      (3, 'myNaN'),
+                      (4, 0),
+                      (5, 0),
+                      (6, 0),
+                      (7, 0),
+                      (8, 2),
+                      (9, 2),
+                      (10, 2),
+                      (11, 6),
+                      (12, 6),
+                      (13, 6),
+                      (14, 12),
+                      (15, 12),
+                      (16, 12),
+                      (17, 'myNaN')],
+           'dot_product': [(0, 'myNaN'),
+                           (1, 'myNaN'),
+                           (2, 'myNaN'),
+                           (3, 'myNaN'),
+                           (4, 'myNaN'),
+                           (5, 'myNaN'),
+                           (6, 'myNaN'),
+                           (7, 2),
+                           (8, 2),
+                           (9, 2),
+                           (10, 4),
+                           (11, 4),
+                           (12, 4),
+                           (13, 6),
+                           (14, 6),
+                           (15, 6),
+                           (16, 6),
+                           (17, 'myNaN')],
+           'i': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 'myNaN'),
+                 (6, 0),
+                 (7, 0),
+                 (8, 0),
+                 (9, 1),
+                 (10, 1),
+                 (11, 1),
+                 (12, 2),
+                 (13, 2),
+                 (14, 2),
+                 (15, 2),
+                 (16, 2),
+                 (17, 'myNaN')],
+           'length_of_list': [(0, 'myNaN'),
+                              (1, 'myNaN'),
+                              (2, 'myNaN'),
+                              (3, 'myNaN'),
+                              (4, 'myNaN'),
+                              (5, 3),
+                              (6, 3),
+                              (7, 3),
+                              (8, 3),
+                              (9, 3),
+                              (10, 3),
+                              (11, 3),
+                              (12, 3),
+                              (13, 3),
+                              (14, 3),
+                              (15, 3),
+                              (16, 3),
+                              (17, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, [1, 2, 3]),
+                     (14, [1, 2, 3]),
+                     (15, [1, 2, 3]),
+                     (16, [1, 2, 3]),
+                     (17, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, [2, 2, 2]),
+                     (14, [2, 2, 2]),
+                     (15, [2, 2, 2]),
+                     (16, [2, 2, 2]),
+                     (17, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(product [2, 4, 6]),
+                   AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('total',)),
+           (for ___ in range(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+,
+            ('i', 'listA')),
+           (___=___[___]*___[___] ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 4],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('product', 'listA', 'i', 'listB', 'i')),
+           (___=___+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6])) ||| [([0, 2, 6],), ([0, 2, 6],), ([2, 4, 6],)]
+,
+            ('total', 'total', 'product')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('total',))],
+ 'local_vars': [Variable(product) in solution 201409171902140000,
+                Variable(i) in solution 201409171902140000,
+                Variable(total) in solution 201409171902140000,
+                Variable(listA) in solution 201409171902140000,
+                Variable(listB) in solution 201409171902140000],
+ 'output': 12,
+ 'retVars': ['total'],
+ 'solnum': '201409171902140000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 9),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 5),
+                          (7, 3),
+                          (8, 4),
+                          (9, 5),
+                          (10, 3),
+                          (11, 4),
+                          (12, 5),
+                          (13, 3),
+                          (14, 6),
+                          (15, 6),
+                          (16, 9)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 'myNaN'),
+                          (13, 'myNaN'),
+                          (14, 'myNaN'),
+                          (15, 12),
+                          (16, 'myNaN')],
+           'i': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 0),
+                 (8, 1),
+                 (9, 1),
+                 (10, 1),
+                 (11, 2),
+                 (12, 2),
+                 (13, 2),
+                 (14, 2),
+                 (15, 2),
+                 (16, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, [1, 2, 3]),
+                     (14, [1, 2, 3]),
+                     (15, [1, 2, 3]),
+                     (16, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, [2, 2, 2]),
+                     (14, [2, 2, 2]),
+                     (15, [2, 2, 2]),
+                     (16, 'myNaN')],
+           'product': [(0, 'myNaN'),
+                       (1, 'myNaN'),
+                       (2, 'myNaN'),
+                       (3, 'myNaN'),
+                       (4, 'myNaN'),
+                       (5, 'myNaN'),
+                       (6, 2),
+                       (7, 2),
+                       (8, 2),
+                       (9, 4),
+                       (10, 4),
+                       (11, 4),
+                       (12, 6),
+                       (13, 6),
+                       (14, 6),
+                       (15, 6),
+                       (16, 'myNaN')],
+           'total': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, 'myNaN'),
+                     (3, 'myNaN'),
+                     (4, 0),
+                     (5, 0),
+                     (6, 0),
+                     (7, 2),
+                     (8, 2),
+                     (9, 2),
+                     (10, 6),
+                     (11, 6),
+                     (12, 6),
+                     (13, 12),
+                     (14, 12),
+                     (15, 12),
+                     (16, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(product [2, 4, 6]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('endlist',)),
+           (for ___ in range(0,len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+,
+            ('i', 'listA')),
+           (___=___[___]*___[___] ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 4],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('multispots', 'listA', 'i', 'listB', 'i')),
+           (___+=___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6])) ||| [([0, 2, 6],), ([2, 4, 6],)]
+,
+            ('endlist', 'multispots')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('endlist',))],
+ 'local_vars': [Variable(i) in solution 201409171902170000,
+                Variable(endlist) in solution 201409171902170000,
+                Variable(multispots) in solution 201409171902170000,
+                Variable(listA) in solution 201409171902170000,
+                Variable(listB) in solution 201409171902170000],
+ 'output': 12,
+ 'retVars': ['endlist'],
+ 'solnum': '201409171902170000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 9),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 5),
+                          (7, 3),
+                          (8, 4),
+                          (9, 5),
+                          (10, 3),
+                          (11, 4),
+                          (12, 5),
+                          (13, 3),
+                          (14, 6),
+                          (15, 6),
+                          (16, 9)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 'myNaN'),
+                          (13, 'myNaN'),
+                          (14, 'myNaN'),
+                          (15, 12),
+                          (16, 'myNaN')],
+           'endlist': [(0, 'myNaN'),
+                       (1, 'myNaN'),
+                       (2, 'myNaN'),
+                       (3, 'myNaN'),
+                       (4, 0),
+                       (5, 0),
+                       (6, 0),
+                       (7, 2),
+                       (8, 2),
+                       (9, 2),
+                       (10, 6),
+                       (11, 6),
+                       (12, 6),
+                       (13, 12),
+                       (14, 12),
+                       (15, 12),
+                       (16, 'myNaN')],
+           'i': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 0),
+                 (8, 1),
+                 (9, 1),
+                 (10, 1),
+                 (11, 2),
+                 (12, 2),
+                 (13, 2),
+                 (14, 2),
+                 (15, 2),
+                 (16, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, [1, 2, 3]),
+                     (14, [1, 2, 3]),
+                     (15, [1, 2, 3]),
+                     (16, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, [2, 2, 2]),
+                     (14, [2, 2, 2]),
+                     (15, [2, 2, 2]),
+                     (16, 'myNaN')],
+           'multispots': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 2),
+                          (7, 2),
+                          (8, 2),
+                          (9, 4),
+                          (10, 4),
+                          (11, 4),
+                          (12, 6),
+                          (13, 6),
+                          (14, 6),
+                          (15, 6),
+                          (16, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(a [1, 2, 3]),
+                   AbstractVariable(b [2]),
+                   AbstractVariable(ans [12]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=sum(___*___ for(___,___)in zip(___,___)) ||| (AbstractVariable(ans [12]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN'],), (['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],), (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],), (['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],), (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],), ([[1, 2, 3], 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN'],), ([[2, 2, 2], 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN'],)]
+,
+            ('dotProduct', 'a', 'b', 'a', 'b', 'listA', 'listB')),
+           (return ___ ||| (AbstractVariable(ans [12]),) ||| [([12, 12],)]
+,
+            ('dotProduct',))],
+ 'local_vars': [Variable(a) in solution 201409171904110000,
+                Variable(b) in solution 201409171904110000,
+                Variable(dotProduct) in solution 201409171904110000,
+                Variable(listA) in solution 201409171904110000,
+                Variable(listB) in solution 201409171904110000],
+ 'output': 12,
+ 'retVars': ['dotProduct'],
+ 'solnum': '201409171904110000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 6),
+                          (2, 1),
+                          (3, 2),
+                          (4, 2),
+                          (5, 2),
+                          (6, 2),
+                          (7, 2),
+                          (8, 2),
+                          (9, 2),
+                          (10, 2),
+                          (11, 2),
+                          (12, 2),
+                          (13, 2),
+                          (14, 2),
+                          (15, 2),
+                          (16, 3),
+                          (17, 3),
+                          (18, 6)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 2),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 4),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 6),
+                          (13, 'myNaN'),
+                          (14, 'myNaN'),
+                          (15, None),
+                          (16, 'myNaN'),
+                          (17, 12),
+                          (18, 'myNaN')],
+           'a': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 'myNaN'),
+                 (6, 1),
+                 (7, 1),
+                 (8, 1),
+                 (9, 2),
+                 (10, 2),
+                 (11, 2),
+                 (12, 3),
+                 (13, 3),
+                 (14, 3),
+                 (15, 3),
+                 (16, 'myNaN'),
+                 (17, 'myNaN'),
+                 (18, 'myNaN')],
+           'b': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 'myNaN'),
+                 (6, 2),
+                 (7, 2),
+                 (8, 2),
+                 (9, 2),
+                 (10, 2),
+                 (11, 2),
+                 (12, 2),
+                 (13, 2),
+                 (14, 2),
+                 (15, 2),
+                 (16, 'myNaN'),
+                 (17, 'myNaN'),
+                 (18, 'myNaN')],
+           'dotProduct': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 'myNaN'),
+                          (13, 'myNaN'),
+                          (14, 'myNaN'),
+                          (15, 'myNaN'),
+                          (16, 12),
+                          (17, 12),
+                          (18, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, 'myNaN'),
+                     (5, 'myNaN'),
+                     (6, 'myNaN'),
+                     (7, 'myNaN'),
+                     (8, 'myNaN'),
+                     (9, 'myNaN'),
+                     (10, 'myNaN'),
+                     (11, 'myNaN'),
+                     (12, 'myNaN'),
+                     (13, 'myNaN'),
+                     (14, 'myNaN'),
+                     (15, 'myNaN'),
+                     (16, [1, 2, 3]),
+                     (17, [1, 2, 3]),
+                     (18, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, 'myNaN'),
+                     (5, 'myNaN'),
+                     (6, 'myNaN'),
+                     (7, 'myNaN'),
+                     (8, 'myNaN'),
+                     (9, 'myNaN'),
+                     (10, 'myNaN'),
+                     (11, 'myNaN'),
+                     (12, 'myNaN'),
+                     (13, 'myNaN'),
+                     (14, 'myNaN'),
+                     (15, 'myNaN'),
+                     (16, [2, 2, 2]),
+                     (17, [2, 2, 2]),
+                     (18, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('dot',)),
+           (for ___ in xrange(0,len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+,
+            ('i', 'listA')),
+           (___=___+___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('dot', 'dot', 'listA', 'i', 'listB', 'i')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('dot',))],
+ 'local_vars': [Variable(i) in solution 201409171904310000,
+                Variable(listA) in solution 201409171904310000,
+                Variable(dot) in solution 201409171904310000,
+                Variable(listB) in solution 201409171904310000],
+ 'output': 12,
+ 'retVars': ['dot'],
+ 'solnum': '201409171904310000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 8),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 3),
+                          (7, 4),
+                          (8, 3),
+                          (9, 4),
+                          (10, 3),
+                          (11, 5),
+                          (12, 5),
+                          (13, 8)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 12),
+                          (13, 'myNaN')],
+           'dot': [(0, 'myNaN'),
+                   (1, 'myNaN'),
+                   (2, 'myNaN'),
+                   (3, 'myNaN'),
+                   (4, 0),
+                   (5, 0),
+                   (6, 2),
+                   (7, 2),
+                   (8, 6),
+                   (9, 6),
+                   (10, 12),
+                   (11, 12),
+                   (12, 12),
+                   (13, 'myNaN')],
+           'i': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 1),
+                 (8, 1),
+                 (9, 2),
+                 (10, 2),
+                 (11, 2),
+                 (12, 2),
+                 (13, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('ans',)),
+           (for ___ in xrange(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+,
+            ('i', 'listA')),
+           (___=___+___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('ans', 'ans', 'listA', 'i', 'listB', 'i')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('ans',))],
+ 'local_vars': [Variable(i) in solution 201409171904420000,
+                Variable(ans) in solution 201409171904420000,
+                Variable(listA) in solution 201409171904420000,
+                Variable(listB) in solution 201409171904420000],
+ 'output': 12,
+ 'retVars': ['ans'],
+ 'solnum': '201409171904420000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 8),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 3),
+                          (7, 4),
+                          (8, 3),
+                          (9, 4),
+                          (10, 3),
+                          (11, 5),
+                          (12, 5),
+                          (13, 8)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 12),
+                          (13, 'myNaN')],
+           'ans': [(0, 'myNaN'),
+                   (1, 'myNaN'),
+                   (2, 'myNaN'),
+                   (3, 'myNaN'),
+                   (4, 0),
+                   (5, 0),
+                   (6, 2),
+                   (7, 2),
+                   (8, 6),
+                   (9, 6),
+                   (10, 12),
+                   (11, 12),
+                   (12, 12),
+                   (13, 'myNaN')],
+           'i': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 1),
+                 (8, 1),
+                 (9, 2),
+                 (10, 2),
+                 (11, 2),
+                 (12, 2),
+                 (13, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(length [3]),
+                   AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=len(___) ||| (AbstractVariable(length [3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+,
+            ('length', 'listA')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('c',)),
+           (for ___ in range(0,___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(length [3])) ||| [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)]
+,
+            ('x', 'length')),
+           (___+=___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('c', 'listA', 'x', 'listB', 'x')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('c',))],
+ 'local_vars': [Variable(c) in solution 201409171904440000,
+                Variable(length) in solution 201409171904440000,
+                Variable(x) in solution 201409171904440000,
+                Variable(listA) in solution 201409171904440000,
+                Variable(listB) in solution 201409171904440000],
+ 'output': 12,
+ 'retVars': ['c'],
+ 'solnum': '201409171904440000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 9),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 5),
+                          (7, 4),
+                          (8, 5),
+                          (9, 4),
+                          (10, 5),
+                          (11, 4),
+                          (12, 6),
+                          (13, 6),
+                          (14, 9)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 'myNaN'),
+                          (13, 12),
+                          (14, 'myNaN')],
+           'c': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 2),
+                 (8, 2),
+                 (9, 6),
+                 (10, 6),
+                 (11, 12),
+                 (12, 12),
+                 (13, 12),
+                 (14, 'myNaN')],
+           'length': [(0, 'myNaN'),
+                      (1, 'myNaN'),
+                      (2, 'myNaN'),
+                      (3, 'myNaN'),
+                      (4, 3),
+                      (5, 3),
+                      (6, 3),
+                      (7, 3),
+                      (8, 3),
+                      (9, 3),
+                      (10, 3),
+                      (11, 3),
+                      (12, 3),
+                      (13, 3),
+                      (14, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, [1, 2, 3]),
+                     (14, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, [2, 2, 2]),
+                     (14, 'myNaN')],
+           'x': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 'myNaN'),
+                 (6, 0),
+                 (7, 0),
+                 (8, 1),
+                 (9, 1),
+                 (10, 2),
+                 (11, 2),
+                 (12, 2),
+                 (13, 2),
+                 (14, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(product [2, 4, 6]),
+                   AbstractVariable(i [0, 1, 2]),
+                   AbstractVariable(a [1, 2, 3]),
+                   AbstractVariable(b [2]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('total',)),
+           (for ___ in range(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+,
+            ('i', 'listA')),
+           (___=___[___] ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],)]
+,
+            ('term_listA', 'listA', 'i')),
+           (___=___[___] ||| (AbstractVariable(b [2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('term_listB', 'listB', 'i')),
+           (___=___*___ ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2])) ||| [(['myNaN', 2, 4],), ([1, 2, 3],), ([2, 2, 2],)]
+,
+            ('product', 'term_listA', 'term_listB')),
+           (___+=___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6])) ||| [([0, 2, 6],), ([2, 4, 6],)]
+,
+            ('total', 'product')),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('total',))],
+ 'local_vars': [Variable(product) in solution 201409171904580000,
+                Variable(i) in solution 201409171904580000,
+                Variable(term_listA) in solution 201409171904580000,
+                Variable(term_listB) in solution 201409171904580000,
+                Variable(total) in solution 201409171904580000,
+                Variable(listA) in solution 201409171904580000,
+                Variable(listB) in solution 201409171904580000],
+ 'output': 12,
+ 'retVars': ['total'],
+ 'solnum': '201409171904580000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 11),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 5),
+                          (7, 6),
+                          (8, 7),
+                          (9, 3),
+                          (10, 4),
+                          (11, 5),
+                          (12, 6),
+                          (13, 7),
+                          (14, 3),
+                          (15, 4),
+                          (16, 5),
+                          (17, 6),
+                          (18, 7),
+                          (19, 3),
+                          (20, 8),
+                          (21, 8),
+                          (22, 11)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 'myNaN'),
+                          (13, 'myNaN'),
+                          (14, 'myNaN'),
+                          (15, 'myNaN'),
+                          (16, 'myNaN'),
+                          (17, 'myNaN'),
+                          (18, 'myNaN'),
+                          (19, 'myNaN'),
+                          (20, 'myNaN'),
+                          (21, 12),
+                          (22, 'myNaN')],
+           'i': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 0),
+                 (8, 0),
+                 (9, 0),
+                 (10, 1),
+                 (11, 1),
+                 (12, 1),
+                 (13, 1),
+                 (14, 1),
+                 (15, 2),
+                 (16, 2),
+                 (17, 2),
+                 (18, 2),
+                 (19, 2),
+                 (20, 2),
+                 (21, 2),
+                 (22, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, [1, 2, 3]),
+                     (14, [1, 2, 3]),
+                     (15, [1, 2, 3]),
+                     (16, [1, 2, 3]),
+                     (17, [1, 2, 3]),
+                     (18, [1, 2, 3]),
+                     (19, [1, 2, 3]),
+                     (20, [1, 2, 3]),
+                     (21, [1, 2, 3]),
+                     (22, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, [2, 2, 2]),
+                     (14, [2, 2, 2]),
+                     (15, [2, 2, 2]),
+                     (16, [2, 2, 2]),
+                     (17, [2, 2, 2]),
+                     (18, [2, 2, 2]),
+                     (19, [2, 2, 2]),
+                     (20, [2, 2, 2]),
+                     (21, [2, 2, 2]),
+                     (22, 'myNaN')],
+           'product': [(0, 'myNaN'),
+                       (1, 'myNaN'),
+                       (2, 'myNaN'),
+                       (3, 'myNaN'),
+                       (4, 'myNaN'),
+                       (5, 'myNaN'),
+                       (6, 'myNaN'),
+                       (7, 'myNaN'),
+                       (8, 2),
+                       (9, 2),
+                       (10, 2),
+                       (11, 2),
+                       (12, 2),
+                       (13, 4),
+                       (14, 4),
+                       (15, 4),
+                       (16, 4),
+                       (17, 4),
+                       (18, 6),
+                       (19, 6),
+                       (20, 6),
+                       (21, 6),
+                       (22, 'myNaN')],
+           'term_listA': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 1),
+                          (7, 1),
+                          (8, 1),
+                          (9, 1),
+                          (10, 1),
+                          (11, 2),
+                          (12, 2),
+                          (13, 2),
+                          (14, 2),
+                          (15, 2),
+                          (16, 3),
+                          (17, 3),
+                          (18, 3),
+                          (19, 3),
+                          (20, 3),
+                          (21, 3),
+                          (22, 'myNaN')],
+           'term_listB': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 2),
+                          (8, 2),
+                          (9, 2),
+                          (10, 2),
+                          (11, 2),
+                          (12, 2),
+                          (13, 2),
+                          (14, 2),
+                          (15, 2),
+                          (16, 2),
+                          (17, 2),
+                          (18, 2),
+                          (19, 2),
+                          (20, 2),
+                          (21, 2),
+                          (22, 'myNaN')],
+           'total': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, 'myNaN'),
+                     (3, 'myNaN'),
+                     (4, 0),
+                     (5, 0),
+                     (6, 0),
+                     (7, 0),
+                     (8, 0),
+                     (9, 2),
+                     (10, 2),
+                     (11, 2),
+                     (12, 2),
+                     (13, 2),
+                     (14, 6),
+                     (15, 6),
+                     (16, 6),
+                     (17, 6),
+                     (18, 6),
+                     (19, 12),
+                     (20, 12),
+                     (21, 12),
+                     (22, 'myNaN')]}}
+{'abstract_vars': [AbstractVariable(i___2 [0, 1, 2, 3]),
+                   AbstractVariable(length [3]),
+                   AbstractVariable(total [0, 2, 6, 12]),
+                   AbstractVariable(listA [[1, 2, 3]]),
+                   AbstractVariable(listB [[2, 2, 2]])],
+ 'args': ['listA', 'listB'],
+ 'lines': [(def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+,
+            ('listA', 'listB')),
+           (___=len(___) ||| (AbstractVariable(length [3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+,
+            ('n', 'listA')),
+           (___=0 ||| (AbstractVariable(i___2 [0, 1, 2, 3]),) ||| [(['myNaN'],)]
+,
+            ('m',)),
+           (___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+,
+            ('answer',)),
+           (while ___<___: ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(length [3])) ||| [([0, 1, 2, 3],), ([3, 3, 3, 3],)]
+,
+            ('m', 'n')),
+           (___=___+___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [([0, 2, 6],), ([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+,
+            ('answer', 'answer', 'listA', 'm', 'listB', 'm')),
+           (___+=1 ||| (AbstractVariable(i___2 [0, 1, 2, 3]),) ||| [([0, 1, 2],)]
+,
+            ('m',)),
+           (return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+,
+            ('answer',))],
+ 'local_vars': [Variable(m) in solution 201409171905190000,
+                Variable(n) in solution 201409171905190000,
+                Variable(answer) in solution 201409171905190000,
+                Variable(listA) in solution 201409171905190000,
+                Variable(listB) in solution 201409171905190000],
+ 'output': 12,
+ 'retVars': ['answer'],
+ 'solnum': '201409171905190000',
+ 'trace': {'__lineNo__': [(0, 1),
+                          (1, 11),
+                          (2, 1),
+                          (3, 2),
+                          (4, 3),
+                          (5, 4),
+                          (6, 5),
+                          (7, 6),
+                          (8, 7),
+                          (9, 5),
+                          (10, 6),
+                          (11, 7),
+                          (12, 5),
+                          (13, 6),
+                          (14, 7),
+                          (15, 5),
+                          (16, 8),
+                          (17, 8),
+                          (18, 11)],
+           '__return__': [(0, 'myNaN'),
+                          (1, 'myNaN'),
+                          (2, 'myNaN'),
+                          (3, 'myNaN'),
+                          (4, 'myNaN'),
+                          (5, 'myNaN'),
+                          (6, 'myNaN'),
+                          (7, 'myNaN'),
+                          (8, 'myNaN'),
+                          (9, 'myNaN'),
+                          (10, 'myNaN'),
+                          (11, 'myNaN'),
+                          (12, 'myNaN'),
+                          (13, 'myNaN'),
+                          (14, 'myNaN'),
+                          (15, 'myNaN'),
+                          (16, 'myNaN'),
+                          (17, 12),
+                          (18, 'myNaN')],
+           'answer': [(0, 'myNaN'),
+                      (1, 'myNaN'),
+                      (2, 'myNaN'),
+                      (3, 'myNaN'),
+                      (4, 'myNaN'),
+                      (5, 'myNaN'),
+                      (6, 0),
+                      (7, 0),
+                      (8, 2),
+                      (9, 2),
+                      (10, 2),
+                      (11, 6),
+                      (12, 6),
+                      (13, 6),
+                      (14, 12),
+                      (15, 12),
+                      (16, 12),
+                      (17, 12),
+                      (18, 'myNaN')],
+           'listA': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [1, 2, 3]),
+                     (3, [1, 2, 3]),
+                     (4, [1, 2, 3]),
+                     (5, [1, 2, 3]),
+                     (6, [1, 2, 3]),
+                     (7, [1, 2, 3]),
+                     (8, [1, 2, 3]),
+                     (9, [1, 2, 3]),
+                     (10, [1, 2, 3]),
+                     (11, [1, 2, 3]),
+                     (12, [1, 2, 3]),
+                     (13, [1, 2, 3]),
+                     (14, [1, 2, 3]),
+                     (15, [1, 2, 3]),
+                     (16, [1, 2, 3]),
+                     (17, [1, 2, 3]),
+                     (18, 'myNaN')],
+           'listB': [(0, 'myNaN'),
+                     (1, 'myNaN'),
+                     (2, [2, 2, 2]),
+                     (3, [2, 2, 2]),
+                     (4, [2, 2, 2]),
+                     (5, [2, 2, 2]),
+                     (6, [2, 2, 2]),
+                     (7, [2, 2, 2]),
+                     (8, [2, 2, 2]),
+                     (9, [2, 2, 2]),
+                     (10, [2, 2, 2]),
+                     (11, [2, 2, 2]),
+                     (12, [2, 2, 2]),
+                     (13, [2, 2, 2]),
+                     (14, [2, 2, 2]),
+                     (15, [2, 2, 2]),
+                     (16, [2, 2, 2]),
+                     (17, [2, 2, 2]),
+                     (18, 'myNaN')],
+           'm': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 'myNaN'),
+                 (5, 0),
+                 (6, 0),
+                 (7, 0),
+                 (8, 0),
+                 (9, 1),
+                 (10, 1),
+                 (11, 1),
+                 (12, 2),
+                 (13, 2),
+                 (14, 2),
+                 (15, 3),
+                 (16, 3),
+                 (17, 3),
+                 (18, 'myNaN')],
+           'n': [(0, 'myNaN'),
+                 (1, 'myNaN'),
+                 (2, 'myNaN'),
+                 (3, 'myNaN'),
+                 (4, 3),
+                 (5, 3),
+                 (6, 3),
+                 (7, 3),
+                 (8, 3),
+                 (9, 3),
+                 (10, 3),
+                 (11, 3),
+                 (12, 3),
+                 (13, 3),
+                 (14, 3),
+                 (15, 3),
+                 (16, 3),
+                 (17, 3),
+                 (18, 'myNaN')]}}
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+12
+template_dict
+
+template
+___+=___
+:
+{___+=___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6])) ||| [([0, 2, 6],), ([2, 4, 6],)]
+: 26}
+None
+
+template
+___=___+___[___]*___[___]
+:
+{___=___+___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 37,
+ ___=___+___[___]*___[___] ||| (AbstractVariable(product___3 [2, 6, 12]), AbstractVariable(product___3 [2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i___3 [1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___3 [1, 2])) ||| [([2, 6],), ([2, 6],), ([[1, 2, 3], [1, 2, 3]],), ([1, 2],), ([[2, 2, 2], [2, 2, 2]],), ([1, 2],)]
+: 2}
+None
+
+template
+___=___.index(___)
+:
+{___=___.index(___) ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(a [1, 2, 3])) ||| [(['myNaN', 0, 1],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([1, 2, 3],)]
+: 1}
+None
+
+template
+for ___ in xrange(0,len(___)):
+:
+{for ___ in xrange(0,len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 11,
+ for ___ in xrange(0,len(___)): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [([0, 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 2}
+None
+
+template
+for ___ in range(0,len(___)):
+:
+{for ___ in range(0,len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 45,
+ for ___ in range(0,len(___)): ||| (AbstractVariable(i__ [0, 1, 2, 0, 1, 2]), AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []])) ||| [([2, 0, 1, 2],), ([[6, 4, 2], [6, 4], [6], []],)]
+: 1,
+ for ___ in range(0,len(___)): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 1}
+None
+
+template
+___.append(___[___]*___[___])
+:
+{___.append(___[___]*___[___]) ||| (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([[], [2], [2, 4]],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 15}
+None
+
+template
+for ___ in xrange(0,___):
+:
+{for ___ in xrange(0,___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(length [3])) ||| [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)]
+: 1}
+None
+
+template
+for ___ in range(0,___):
+:
+{for ___ in range(0,___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(length [3])) ||| [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)]
+: 11,
+ for ___ in range(0,___): ||| (AbstractVariable(n [3, 0, 1, 2]), AbstractVariable(n [3, 0, 1, 2])) ||| [([3, 0, 1, 2],), ([3, 0, 1, 2],)]
+: 1}
+None
+
+template
+___=___[___]
+:
+{___=___[___] ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],)]
+: 6,
+ ___=___[___] ||| (AbstractVariable(b [2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 7}
+None
+
+template
+return sum(int(___[___])*int(___[___])for ___ in range(len(___)))
+:
+{return sum(int(___[___])*int(___[___])for ___ in range(len(___))) ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]])) ||| [([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 'myNaN'],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 'myNaN'],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 'myNaN'],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 1}
+None
+
+template
+___=sum([___[___]*___[___]])
+:
+{___=sum([___[___]*___[___]]) ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [(['myNaN', 2, 4],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+___=reduce(operator.add,map(operator.mul,___,___))
+:
+{___=reduce(operator.add,map(operator.mul,___,___)) ||| (AbstractVariable(ans [12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN'],), ([[1, 2, 3]],), ([[2, 2, 2]],)]
+: 1}
+None
+
+template
+while ___<=___-1:
+:
+{while ___<=___-1: ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(length [3])) ||| [([0, 1, 2, 3],), ([3, 3, 3, 3],)]
+: 1}
+None
+
+template
+___=sum([___*___ for(___,___)in zip(___,___)])
+:
+{___=sum([___*___ for(___,___)in zip(___,___)]) ||| (AbstractVariable(ans [12]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 'myNaN', 'myNaN', 'myNaN'],), (['myNaN', 1, 2, 3],), (['myNaN', 2, 2, 2],), (['myNaN', 1, 2, 3],), (['myNaN', 2, 2, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 1}
+None
+
+template
+___+=___*___
+:
+{___+=___*___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2])) ||| [([0, 2, 6],), ([1, 2, 3],), ([2, 2, 2],)]
+: 1}
+None
+
+template
+for ___ in xrange(0,len(___),1):
+:
+{for ___ in xrange(0,len(___),1): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 1}
+None
+
+template
+___=0
+:
+{___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+: 213,
+ ___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([],)]
+: 1}
+None
+
+template
+___=___+___
+:
+{___=___+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6])) ||| [([0, 2, 6],), ([0, 2, 6],), ([2, 4, 6],)]
+: 16,
+ ___=___+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6]), AbstractVariable(total [0, 2, 6, 12])) ||| [([0, 2, 6],), ([2, 4, 6],), ([0, 2, 6],)]
+: 3,
+ ___=___+___ ||| (AbstractVariable(n [4, 5, 7]), AbstractVariable(n [4, 5, 7]), AbstractVariable(i [0, 1, 2])) ||| [([4, 4, 5],), ([4, 4, 5],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+return ___
+:
+{return ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([12, 12],)]
+: 196}
+None
+
+template
+___=___*___
+:
+{___=___*___ ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2])) ||| [(['myNaN', 2, 4],), ([1, 2, 3],), ([2, 2, 2],)]
+: 8,
+ ___=___*___ ||| (AbstractVariable(product___2 [0, 2, 4, 6]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2])) ||| [([0, 2, 4],), ([1, 2, 3],), ([2, 2, 2],)]
+: 1}
+None
+
+template
+___=___+1
+:
+{___=___+1 ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [([0, 1, 2],), ([0, 1, 2],)]
+: 8}
+None
+
+template
+___+=___[___-1]*___[___-1]
+:
+{___+=___[___-1]*___[___-1] ||| (AbstractVariable(sumLists [0, 6, 8, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 6, 8],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+___.remove(___[0])
+:
+{___.remove(___[0]) ||| (AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []]), AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []])) ||| [([[2, 2, 2], [2, 2], [2]],), ([[2, 2, 2], [2, 2], [2]],)]
+: 1,
+ ___.remove(___[0]) ||| (AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []]), AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []])) ||| [([[1, 2, 3], [2, 3], [3]],), ([[1, 2, 3], [2, 3], [3]],)]
+: 1}
+None
+
+template
+import operator
+:
+{import operator ||| () ||| []
+: 3}
+None
+
+template
+listB: a list of numbers of the same length as listA
+:
+{listB: a list of numbers of the same length as listA ||| () ||| []
+: 1}
+None
+
+template
+return sum(___*___ for(___,___)in zip(___,___))
+:
+{return sum(___*___ for(___,___)in zip(___,___)) ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 'myNaN'],), (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 'myNaN'],), (['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 'myNaN'],), (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 'myNaN'],), ([[1, 2, 3], 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', [1, 2, 3]],), ([[2, 2, 2], 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', [2, 2, 2]],)]
+: 10}
+None
+
+template
+return sum(___[___]*___[___]for ___ in range(len(___)))
+:
+{return sum(___[___]*___[___]for ___ in range(len(___))) ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 'myNaN'],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 'myNaN'],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 'myNaN'],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 2}
+None
+
+template
+listA: a list of numbers
+:
+{listA: a list of numbers ||| () ||| []
+: 1}
+None
+
+template
+___+=___.pop()
+:
+{___+=___.pop() ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []])) ||| [([0, 2, 6],), ([[6, 4, 2], [6, 4], [6]],)]
+: 1}
+None
+
+template
+else:
+:
+{else: ||| () ||| []
+: 1}
+None
+
+template
+___=___
+:
+{___=___ ||| (AbstractVariable(ans [12]), AbstractVariable(total [0, 2, 6, 12])) ||| [(['myNaN'],), ([12],)]
+: 2,
+ ___=___ ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+: 2,
+ ___=___ ||| (AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN'],), ([[2, 2, 2]],)]
+: 2}
+None
+
+template
+for ___ in xrange(___):
+:
+{for ___ in xrange(___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(length [3])) ||| [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)]
+: 1}
+None
+
+template
+___=[]
+:
+{___=[] ||| (AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []]),) ||| [(['myNaN'],)]
+: 20}
+None
+
+template
+___=___+int(___[___])*int(___[___])
+:
+{___=___+int(___[___])*int(___[___]) ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+___=___[___]*___[___]
+:
+{___=___[___]*___[___] ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 4],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 32,
+ ___=___[___]*___[___] ||| (AbstractVariable(product___2 [0, 2, 4, 6]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [([0, 2, 4],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 3}
+None
+
+template
+while ___!=list():
+:
+{while ___!=list(): ||| (AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []]),) ||| [([[1, 2, 3], [2, 3], [3], []],)]
+: 1}
+None
+
+template
+while ___<len(___):
+:
+{while ___<len(___): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [([0, 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 8,
+ while ___<len(___): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listB [[2, 2, 2]])) ||| [([0, 1, 2, 3],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 1,
+ while ___<len(___): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [([0, 3],), ([[1, 2, 3], [1, 2, 3]],)]
+: 1}
+None
+
+template
+for ___ in range(0,len(___),1):
+:
+{for ___ in range(0,len(___),1): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 1}
+None
+
+template
+for ___ in range(1,len(___)):
+:
+{for ___ in range(1,len(___)): ||| (AbstractVariable(i___3 [1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 2}
+None
+
+template
+return None
+:
+{return None ||| () ||| []
+: 1}
+None
+
+template
+___=___+___[___-1]*___[___-1]
+:
+{___=___+___[___-1]*___[___-1] ||| (AbstractVariable(dot [0, 6, 10, 12]), AbstractVariable(dot [0, 6, 10, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(length__ [3, 2, 1, 0]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(length__ [3, 2, 1, 0])) ||| [([0, 6, 10],), ([0, 6, 10],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([3, 2, 1],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([3, 2, 1],)]
+: 1}
+None
+
+template
+return sum(___[___]*___[___]for ___ in range(0,len(___)))
+:
+{return sum(___[___]*___[___]for ___ in range(0,len(___))) ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(x [0, 1, 2, 0]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(x [0, 1, 2, 0]), AbstractVariable(x [0, 1, 2, 0]), AbstractVariable(listA [[1, 2, 3]])) ||| [([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0],), ([0, 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 0],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 1}
+None
+
+template
+___[___]*___[___]
+:
+{___[___]*___[___] ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+___=___-1
+:
+{___=___-1 ||| (AbstractVariable(length__ [3, 2, 1, 0]), AbstractVariable(length__ [3, 2, 1, 0])) ||| [([3, 2, 1],), ([3, 2, 1],)]
+: 1}
+None
+
+template
+___=___[0]*___[0]
+:
+{___=___[0]*___[0] ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(listA__ [[1, 2, 3], [2, 3], [3], []]), AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []])) ||| [(['myNaN', 2, 4],), ([[1, 2, 3], [2, 3], [3]],), ([[2, 2, 2], [2, 2], [2]],)]
+: 1,
+ ___=___[0]*___[0] ||| (AbstractVariable(product___3 [2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN'],), ([[1, 2, 3]],), ([[2, 2, 2]],)]
+: 2}
+None
+
+template
+___=len(___)
+:
+{___=len(___) ||| (AbstractVariable(length [3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+: 24}
+None
+
+template
+___=[___*___ for(___,___)in zip(___,___)]
+:
+{___=[___*___ for(___,___)in zip(___,___)] ||| (AbstractVariable(listC___2 [[2, 4, 6]]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 'myNaN', 'myNaN', 'myNaN'],), (['myNaN', 1, 2, 3],), (['myNaN', 2, 2, 2],), (['myNaN', 1, 2, 3],), (['myNaN', 2, 2, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 5}
+None
+
+template
+for ___ in xrange(len(___)):
+:
+{for ___ in xrange(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 11}
+None
+
+template
+___+=int(___[___])*int(___[___])
+:
+{___+=int(___[___])*int(___[___]) ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+'''
+:
+{''' ||| () ||| []
+: 2}
+None
+
+template
+___=int(___[___])*int(___[___])
+:
+{___=int(___[___])*int(___[___]) ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 4],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+for ___ in range(___):
+:
+{for ___ in range(___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(length [3])) ||| [(['myNaN', 0, 1, 2],), ([3, 3, 3, 3],)]
+: 3,
+ for ___ in range(___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(length [3])) ||| [([0, 0, 1, 2],), ([3, 3, 3, 3],)]
+: 1}
+None
+
+template
+___+=1
+:
+{___+=1 ||| (AbstractVariable(i___2 [0, 1, 2, 3]),) ||| [([0, 1, 2],)]
+: 19}
+None
+
+template
+for(___,___)in zip(___,___):
+:
+{for(___,___)in zip(___,___): ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 1, 2, 3],), (['myNaN', 2, 2, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 2}
+None
+
+template
+print ___
+:
+{print ___ ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([],)]
+: 4}
+None
+
+template
+import math
+:
+{import math ||| () ||| []
+: 1}
+None
+
+template
+___=int(len(___))
+:
+{___=int(len(___)) ||| (AbstractVariable(length [3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+: 1}
+None
+
+template
+while ___<len(___)and ___<len(___):
+:
+{while ___<len(___)and ___<len(___): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listB [[2, 2, 2]])) ||| [([0, 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2, 3],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 1}
+None
+
+template
+___+=___[___]*___[___]
+:
+{___+=___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 80}
+None
+
+template
+def dotProduct(___,___):
+:
+{def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', [1, 2, 3]],), (['myNaN', [2, 2, 2]],)]
+: 237,
+ def dotProduct(___,___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN'],), (['myNaN'],)]
+: 1}
+None
+
+template
+___=sum(___)
+:
+{___=sum(___) ||| (AbstractVariable(ans [12]), AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]])) ||| [(['myNaN'],), ([[2, 4, 6]],)]
+: 5}
+None
+
+template
+for(___,___)in itertools.izip(___,___):
+:
+{for(___,___)in itertools.izip(___,___): ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 1, 2, 3],), (['myNaN', 2, 2, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 1}
+None
+
+template
+print 'length of A and B need to be the same'
+:
+{print 'length of A and B need to be the same' ||| () ||| []
+: 1}
+None
+
+template
+___=___[___-(___-___)]
+:
+{___=___[___-(___-___)] ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(n [4, 5, 7]), AbstractVariable(n [4, 5, 7]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([4, 4, 5],), ([4, 4, 5],), ([0, 1, 2],)]
+: 1,
+ ___=___[___-(___-___)] ||| (AbstractVariable(b [2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(n [4, 5, 7]), AbstractVariable(n [4, 5, 7]), AbstractVariable(i [0, 1, 2])) ||| [(['myNaN', 2, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([4, 4, 5],), ([4, 4, 5],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+for ___ in range(len(___))and range(len(___)):
+:
+{for ___ in range(len(___))and range(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 1}
+None
+
+template
+___=sum(___*___ for(___,___)in zip(___,___))
+:
+{___=sum(___*___ for(___,___)in zip(___,___)) ||| (AbstractVariable(ans [12]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN'],), (['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],), (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],), (['myNaN', 'myNaN', 'myNaN', 1, 1, 1, 2, 2, 2, 3, 3, 3, 3],), (['myNaN', 'myNaN', 'myNaN', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],), ([[1, 2, 3], 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN'],), ([[2, 2, 2], 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN'],)]
+: 8}
+None
+
+template
+return sum(map(operator.mul,___,___))
+:
+{return sum(map(operator.mul,___,___)) ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [([[1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2]],)]
+: 2}
+None
+
+template
+___.append(___.pop()*___.pop())
+:
+{___.append(___.pop()*___.pop()) ||| (AbstractVariable(listc [[], [6], [6, 4], [6, 4, 2], [6, 4], [6], []]), AbstractVariable(listA__ [[1, 2, 3], [1, 2], [1], []]), AbstractVariable(listB___2 [[2, 2, 2], [2, 2], [2], []])) ||| [([[], [6], [6, 4]],), ([[1, 2, 3], [1, 2], [1]],), ([[2, 2, 2], [2, 2], [2]],)]
+: 1}
+None
+
+template
+___=int(___)+___
+:
+{___=int(___)+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6]), AbstractVariable(total [0, 2, 6, 12])) ||| [([0, 2, 6],), ([2, 4, 6],), ([0, 2, 6],)]
+: 1}
+None
+
+template
+assert len(___)==len(___)
+:
+{assert len(___)==len(___) ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [([[1, 2, 3]],), ([[2, 2, 2]],)]
+: 6}
+None
+
+template
+while ___>0:
+:
+{while ___>0: ||| (AbstractVariable(length__ [3, 2, 1, 0]),) ||| [([3, 2, 1, 0],)]
+: 1}
+None
+
+template
+return sum(___)
+:
+{return sum(___) ||| (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]),) ||| [([[2, 4, 6], [2, 4, 6]],)]
+: 19}
+None
+
+template
+for(___,___)in enumerate(___):
+:
+{for(___,___)in enumerate(___): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(a [1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [([0, 0, 1, 2],), (['myNaN', 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 2}
+None
+
+template
+___=range(len(___))
+:
+{___=range(len(___)) ||| (AbstractVariable(count [[0, 1, 2]]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+: 1}
+None
+
+template
+___=len(___)+1
+:
+{___=len(___)+1 ||| (AbstractVariable(n [4, 5, 7]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+: 1}
+None
+
+template
+return sum([___[___]*___[___]for ___ in range(len(___))])
+:
+{return sum([___[___]*___[___]for ___ in range(len(___))]) ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), (['myNaN', 0, 1, 2, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],), (['myNaN', 0, 1, 2, 2],), (['myNaN', 0, 1, 2, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 4}
+None
+
+template
+___+=___*___[___]
+:
+{___+=___*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(a [1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [([0, 2, 6],), ([1, 2, 3],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 2}
+None
+
+template
+for ___ in ___:
+:
+{for ___ in ___: ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 7,
+ for ___ in ___: ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(count [[0, 1, 2]])) ||| [(['myNaN', 0, 1, 2],), ([[0, 1, 2], [0, 1, 2], [0, 1, 2], [0, 1, 2]],)]
+: 1,
+ for ___ in ___: ||| (AbstractVariable(i__ [0, 1, 2, 4, 6]), AbstractVariable(listC___2 [[2, 4, 6]])) ||| [([2, 2, 4, 6],), ([[2, 4, 6], [2, 4, 6], [2, 4, 6], [2, 4, 6]],)]
+: 1}
+None
+
+template
+___=___[___]*___[___]+___
+:
+{___=___[___]*___[___]+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(total [0, 2, 6, 12])) ||| [([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],), ([0, 2, 6],)]
+: 3}
+None
+
+template
+return sum([___*___ for(___,___)in zip(___,___)])
+:
+{return sum([___*___ for(___,___)in zip(___,___)]) ||| (AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [(['myNaN', 1, 2, 3, 3],), (['myNaN', 2, 2, 2, 2],), (['myNaN', 1, 2, 3, 3],), (['myNaN', 2, 2, 2, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],)]
+: 2}
+None
+
+template
+___=___*___+___
+:
+{___=___*___+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(a [1, 2, 3]), AbstractVariable(b [2]), AbstractVariable(total [0, 2, 6, 12])) ||| [([0, 2, 6],), ([1, 2, 3],), ([2, 2, 2],), ([0, 2, 6],)]
+: 1}
+None
+
+template
+___.append(___*___[___.index(___)])
+:
+{___.append(___*___[___.index(___)]) ||| (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]), AbstractVariable(a [1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(a [1, 2, 3])) ||| [([[], [2], [2, 4]],), ([1, 2, 3],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([1, 2, 3],)]
+: 1}
+None
+
+template
+while ___<___:
+:
+{while ___<___: ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(length [3])) ||| [([0, 1, 2, 3],), ([3, 3, 3, 3],)]
+: 4}
+None
+
+template
+___=[___[___]*___[___]for ___ in range(len(___))]
+:
+{___=[___[___]*___[___]for ___ in range(len(___))] ||| (AbstractVariable(listC___2 [[2, 4, 6]]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i__ [0, 1, 2, 4, 6]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i__ [0, 1, 2, 4, 6]), AbstractVariable(i__ [0, 1, 2, 4, 6]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 'myNaN', 'myNaN', 'myNaN'],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), (['myNaN', 0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],), (['myNaN', 0, 1, 2],), (['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 2}
+None
+
+template
+___.append(___)
+:
+{___.append(___) ||| (AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]), AbstractVariable(product [2, 4, 6])) ||| [([[], [2], [2, 4]],), ([2, 4, 6],)]
+: 3}
+None
+
+template
+import itertools
+:
+{import itertools ||| () ||| []
+: 1}
+None
+
+template
+if len(___)!=len(___):
+:
+{if len(___)!=len(___): ||| (AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(listB [[2, 2, 2]])) ||| [([[1, 2, 3]],), ([[2, 2, 2]],)]
+: 1}
+None
+
+template
+___=___+___*___[___]
+:
+{___=___+___*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(a [1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [([0, 2, 6],), ([0, 2, 6],), ([1, 2, 3],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+___+=___[___]
+:
+{___+=___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listC [[], [2], [2, 4], [2, 4, 6]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([[2], [2, 4], [2, 4, 6]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+for ___ in range(len(___)):
+:
+{for ___ in range(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 70,
+ for ___ in range(len(___)): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 1,
+ for ___ in range(len(___)): ||| (AbstractVariable(x [0, 1, 2, 0]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN'],), ([[1, 2, 3]],)]
+: 1,
+ for ___ in range(len(___)): ||| (AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [([0, 0, 1, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 1}
+None
+
+template
+___=sum(___[___]*___[___]for ___ in range(len(___)))
+:
+{___=sum(___[___]*___[___]for ___ in range(len(___))) ||| (AbstractVariable(ans [12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listA [[1, 2, 3]])) ||| [(['myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN', 'myNaN'],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2],), (['myNaN', 'myNaN', 'myNaN', 0, 0, 0, 1, 1, 1, 2, 2, 2, 2],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 2}
+None
+
+template
+___=___*___[___]
+:
+{___=___*___[___] ||| (AbstractVariable(product [2, 4, 6]), AbstractVariable(a [1, 2, 3]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___2 [0, 1, 2, 3])) ||| [(['myNaN', 2, 4],), ([1, 2, 3],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 1}
+None
+
+template
+while ___ in range(0,len(___)):
+:
+{while ___ in range(0,len(___)): ||| (AbstractVariable(i___2 [0, 1, 2, 3]), AbstractVariable(listA [[1, 2, 3]])) ||| [([0, 1, 2, 3],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]],)]
+: 1}
+None
