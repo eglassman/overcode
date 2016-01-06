@@ -417,6 +417,91 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
     return skipped
 
 ###############################################################################
+## Line computation functions
+###############################################################################
+def compute_lines(sol, tidy_path, all_lines):
+    with open(tidy_path, 'U') as f:
+        renamed_src = f.read()
+
+    #pprint.pprint(sol.getDict())
+
+    #This code renames all variables as placeholders, and saves a mapping
+    #from placeholder to original name and abstract variable object
+    mappings = {}
+    ctr = 0
+    for lvar in sol.local_vars:
+        placeholder = '___' + str(ctr) + '___'
+        try:
+            renamed_src = identifier_renamer.rename_identifier(
+                renamed_src, lvar.local_name, placeholder)
+        except:
+            raise RenamerException('Failed to rename ' + str(sol.solnum))
+
+        ctr += 1
+
+        mappings[placeholder] = (lvar.local_name, lvar.abstract_var)
+    #print mappings
+
+    #This code breaks solutions down into line objects
+    raw_lines = renamed_src.split('\n')
+    line_no = 0 #there is no line zero, but it will get incremented at the start of every loop
+    for raw_line in raw_lines:
+        line_no += 1
+        stripped_line = raw_line.strip()
+
+        #ignore empty lines
+        if stripped_line == '':
+            continue
+        indent = len(raw_line) - len(stripped_line)
+
+        blanks = re.findall(r'___\d___', stripped_line)
+        #print 'blanks',blanks
+        if len(blanks) > 0:
+            local_names, abstract_variables = zip(*[mappings[blank] for blank in blanks])
+        else:
+            local_names = ()
+            abstract_variables = ()
+        #print local_names, abstract_variables
+
+        template = re.sub(r'___\d___', '___', stripped_line)
+
+        line_values = {}
+        for loc_nam in local_names:
+            #print 'line_no: ', line_no, [a for (a,b) in sol.trace['__lineNo__'] if b==line_no] #zip(*sol.trace['__lineNo__'])
+            #print 'line_no: ', line_no, 'loc_nam', loc_nam, [ [d for (c,d) in sol.trace[loc_nam] if c==a and d!='myNaN' ] for (a,b) in sol.trace['__lineNo__'] if b==line_no]
+            line_values[loc_nam] = []
+            for loc_val in [ [d for (c,d) in sol.trace[loc_nam] if c==a ] for (a,b) in sol.trace['__lineNo__'] if b==line_no]:
+                #if loc_val[0]!='myNaN':
+                line_values[loc_nam].append(loc_val[0])
+        #print 'line_values',line_values
+
+        step_values = []
+        for loc_nam in local_names:
+            step_values.append(tuple(line_values[loc_nam]))
+        #print 'step_values', step_values
+        
+        this_line_as_general_line = Line(template, abstract_variables, indent, step_values);
+        this_line_in_solution = (this_line_as_general_line, local_names);
+        
+        sol.lines.append( this_line_in_solution );
+
+        #print 'adding ',this_line_as_general_line,' to all_lines'
+        add_to_setlist(this_line_as_general_line,all_lines)
+
+def compute_all_lines(all_solutions,folderOfData,all_lines):
+    skipped = []
+    for sol in all_solutions:
+        tidy_path = path.join(folderOfData, 'tidyData', sol.solnum + '.py')
+        try:
+            print "Computing lines for", sol.solnum
+            compute_lines(sol, tidy_path,all_lines)
+            print 'length of lines ',len(all_lines)
+        except RenamerException:
+            skipped.append(sol.solnum)
+
+    return skipped
+
+###############################################################################
 ## Rewrite solutions
 ###############################################################################
 def fix_name_clashes(sol):
