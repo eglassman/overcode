@@ -11,6 +11,24 @@ from pipeline_util import ensure_folder_exists
 
 
 ###############################################################################
+## Helper functions
+###############################################################################
+def add_to_setlist(elem,setlist):
+    """Maintains a list of unique items in the order they were added"""
+
+    #print 'adding elem, setlist', elem, setlist
+    if setlist==[]:
+        setlist.append(elem)
+    else:
+        for listelem in setlist:
+            #print 'comparing ',elem, listelem
+            if elem == listelem:
+                #print 'match'
+                return
+        setlist.append(elem)
+
+
+###############################################################################
 ## Classes
 ###############################################################################
 class Solution(object):
