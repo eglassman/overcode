@@ -16,11 +16,9 @@ from pipeline_util import ensure_folder_exists
 class Solution(object):
     """Information about a single solution."""
 
-    def __init__(self, solnum, trace, args, retVars):
+    def __init__(self, solnum, trace):
         self.solnum = solnum
         self.trace = trace
-        self.args = args
-        self.retVars = retVars
         self.local_vars = []
         self.abstract_vars = []
         self.canonicalPYcode = []
@@ -187,20 +185,7 @@ def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formatted
         with open(path.join(pickleSrc, filename), 'r') as f:
             unpickled = pickle.load(f)
 
-        try:
-            sol = Solution(solnum,
-                           unpickled['traces'][0],
-                           unpickled['args'][0],
-                           unpickled['returnVars'][0])
-        except KeyError:
-            sol = Solution(solnum,
-                           unpickled['trace'],
-                           unpickled['args'],
-                           unpickled['returnVars'])
-
-        if formattedSrc: # Legacy, untested
-            with open(path.join(formattedSrc, solNum + formattedExtn), 'r') as f:
-                sol.formatted_code = f.read()
+        sol = Solution(solnum, unpickled['traces'][0])
 
         all_solutions.append(sol)
 

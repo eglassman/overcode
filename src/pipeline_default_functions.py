@@ -1,19 +1,29 @@
-from os import path
 import StringIO
-import subprocess
 
 from external import (
     pythonTidy,
     remove_comments,
 )
 
-def tidy_non_oppia(filename, sourceDir, destDir, testedFunctionName):
+DEBUG_PRINTS = True
+
+def tidy_one(source_path, dest_path, tested_function_name):
+    """
+    Tidy up a single python file - remove comments, normalize spacing, remove
+    shebangs, etc. Also remove debugging print statements and calls to the
+    function being tested.
+
+    source_path: string, filepath to the source to tidy
+    dest_path: string, filepath to store the tidied source. The directory
+        containing this path must exist.
+    tested_function_name: string, the name of the function being tested
+    """
     tidy_up_buffer = StringIO.StringIO()
-    pythonTidy.tidy_up(path.join(sourceDir, filename), tidy_up_buffer)
+    pythonTidy.tidy_up(source_path, tidy_up_buffer)
     new_src = remove_comments.minify(tidy_up_buffer.getvalue())
 
     lines = new_src.split('\n')
-    with open(path.join(destDir, filename), 'w') as f:
+    with open(dest_path, 'w') as f:
         for line in lines:
             if line.strip() == '#!/usr/bin/python':
                 continue
@@ -21,51 +31,45 @@ def tidy_non_oppia(filename, sourceDir, destDir, testedFunctionName):
                 continue
             if line.strip() == 'None':
                 continue
-            # Get rid of calls which don't return anything and were
-            # presumably for debugging
-            if line.split('(')[0] == testedFunctionName:
-                print 'removing: ', line
+
+            # This Is Just To Say
+            # -------------------
+            # I have removed
+            # the function calls
+            # which were not
+            # assigned to variables
+            #
+            # and which
+            # you were probably
+            # using
+            # for debugging.
+            #
+            # Forgive me
+            # They were superfluous
+            # So removable
+            # and so untidy.
+            #
+            # (Not quite by William Carlos Williams)
+
+            # Get rid of calls to the tested function
+            if line.split('(')[0] == tested_function_name:
+                if DEBUG_PRINTS: print 'removing: ', line
                 continue
             # Get rid of print statements with no indent
             if line.startswith('print'):
-                print 'removing: ', line
+                if DEBUG_PRINTS: print 'removing: ', line
                 continue
 
             f.write(line+'\n')
 
+def make_default_finalizer(tested_function_name):
+    """
+    Return a finalizer function that reformats the trace to only contain info
+    about variables over time. Also extracts info about argument names and
+    return variables.
 
-def tidy_oppia(filename, sourceDir, destDir, testedFunctionName):
-    tidy_up_buffer = StringIO.StringIO()
-    pythonTidy.tidy_up(path.join(sourceDir, filename), tidy_up_buffer)
-    new_src = remove_comments.minify(tidy_up_buffer.getvalue())
-
-    lines = new_src.split('\n')
-    with open(path.join(destDir, filename), 'w') as f:
-        # Include a function definition as the first line
-        f.write('def ' + testedFunctionName + '():\n')
-        for line in lines:
-            if line.strip() == '#!/usr/bin/python':
-                continue
-            if line.strip() == '# -*- coding: utf-8 -*-':
-                continue
-            if line.strip() == 'None':
-                continue
-            # Get rid of calls which don't return anything and were
-            # presumably for debugging
-            if line.split('(')[0] == testedFunctionName:
-                print 'removing: ', line
-                continue
-            # Do not remove print statements since oppia solutions print
-            # their results instead of returning them
-
-            # the given solution becomes the body of a function, so indent each line
-            f.write("    "+line+'\n')
-
-
-def make_default_finalizer(testedFunctionName):
-    """Ignores most of the stuff in the trace and returns a tuple of
-    new_trace, argumentNames, returnVarNames. The original trace
-    consists of a list of these:
+    For reference, the original trace consists of a list of dicts, partially
+    described here:
     {
         event: str,
         func_name: str,
@@ -74,7 +78,7 @@ def make_default_finalizer(testedFunctionName):
         line: int,
         ordered_globals: [...],
         stack_to_render: [...],
-        stdout: ''
+        stdout: str
     }
 
     The new trace is a dict like this:
@@ -85,10 +89,12 @@ def make_default_finalizer(testedFunctionName):
     }, 1: {...}, ...}
 
     new_trace[i][Line] = old_trace[i][line] if it exists, -1 otherwise
-    new_trace[i][globals] = dereferenced old_trace[i][globals]
-    new_trace[i][locals] = dereferenced encoded_locals from the last frame of
-                           the old_trace's stack_to_render
+    new_trace[i][globals] = old_trace[i][globals], dereferenced from the heap
+    new_trace[i][locals] = encoded_locals from the last frame of the old_trace's
+        stack_to_render, dereferenced from the heap
 
+    returns: A function of (input code, original trace) that returns
+        a tuple of (new_trace, argument names, return variable names)
     """
     def elena_finalizer(input_code, output_trace):
         def extractValues(dictOfVars,heap):
@@ -117,10 +123,10 @@ def make_default_finalizer(testedFunctionName):
             namesOfReturnVariables = []
             try:
                 dictOfVars = step['stack_to_render'][0]['encoded_locals']
-                if step['event'] == 'call' and step["func_name"] == testedFunctionName:
+                if step['event'] == 'call' and step["func_name"] == tested_function_name:
                     for variableName in dictOfVars.keys():
                         namesOfArguments.append(variableName)
-                if '__return__' in dictOfVars.keys() and step["func_name"] == testedFunctionName:
+                if '__return__' in dictOfVars.keys() and step["func_name"] == tested_function_name:
                     for variableName in dictOfVars.keys():
                         if variableName != '__return__' and dictOfVars[variableName] == dictOfVars['__return__']:
                             namesOfReturnVariables.append(variableName)
@@ -162,7 +168,11 @@ def make_default_finalizer(testedFunctionName):
 
 def extract_var_info_from_trace(trace):
     """
-    returns {
+    Given a trace as produced by elena_finalizer, extract variable values
+    over time.
+
+    returns a dict of this form:
+    {
         __lineNo__: [ (step, line # at that step), ...],
         varname1: [ (step, <value at that step> or 'myNaN'), ...],
         varname2: [...],
@@ -170,7 +180,7 @@ def extract_var_info_from_trace(trace):
     }
 
     where [varname1, varname2, ...] is the set union of all local variable
-    names found in the trace
+    names found in the given trace
     """
 
     numSteps = len(trace)
@@ -193,17 +203,3 @@ def extract_var_info_from_trace(trace):
         # TODO: See above - do we need the step?
         results[var] = [(s, trace[s]['locals'].get(var, 'myNaN')) for s in xrange(numSteps)]
     return results
-
-
-def format_as_html(filename, sourceDir, destDir):
-    sourcePath = path.join(sourceDir, filename)
-    destPath = path.join(destDir, filename + '.html')
-
-    subprocess.call("pygmentize -O style=colorful,linenos=1 -o %s %s" % (destPath, sourcePath), shell=True)
-
-    # Format html code
-    with open(destPath, 'r') as f:
-        htmlCode = f.read()
-    with open(destPath, 'w') as f:
-        f.write(htmlCode.replace("\"","'").replace("\n","<br>"))
-

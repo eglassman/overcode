@@ -51,7 +51,7 @@ if args.run_pre:
     pipeline_preprocessing.preprocess_pipeline_data(
         datadir,
         testcasePath,
-        testedFunctionName=args.funcname
+        args.funcname
     )
 if args.run_pipeline or args.run_old:
     if args.run_old:
