@@ -206,7 +206,10 @@ class Stack(object):
         if self.representative == None:
             return True
         same_output = self.representative.output == sol.output
-        lines_match = set(self.representative.canonical_lines) == set(sol.canonical_lines)
+
+        #We replaced sets with Counters so that multiple instantiation statements of the form ___=0
+        #do not get resolved into one "line" when using line_values as a basis of equality
+        lines_match = Counter(self.representative.canonical_lines) == Counter(sol.canonical_lines)
         print 'checking whether a particular solution belongs in this stack.'
         print 'lines_match?', lines_match, set(self.representative.lines), set(sol.lines)
         return lines_match and same_output
