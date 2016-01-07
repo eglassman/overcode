@@ -10,7 +10,7 @@ import re
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
 
-use_original_line_equality_metric = True
+use_original_line_equality_metric = False
 
 ###############################################################################
 ## Helper functions
@@ -206,12 +206,9 @@ class Stack(object):
         if self.representative == None:
             return True
         same_output = self.representative.output == sol.output
-        if use_original_line_equality_metric:
-            lines_match = set(self.representative.canonical_lines) == set(sol.canonical_lines)
-        else:
-            lines_match = set(self.representative.lines) == set(sol.lines)
-        #print 'checking whether a particular solution belongs in this stack.'
-        #print 'lines_match?', lines_match, set(self.representative.canonical_lines), set(sol.canonical_lines)
+        lines_match = set(self.representative.canonical_lines) == set(sol.canonical_lines)
+        print 'checking whether a particular solution belongs in this stack.'
+        print 'lines_match?', lines_match, set(self.representative.lines), set(sol.lines)
         return lines_match and same_output
 
     def add_solution(self, sol):
