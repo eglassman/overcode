@@ -1,5 +1,6 @@
 import json
 from os import path
+import pipeline_util
 
 def _do_compare(path1, path2, fname, extraction_fn):
     with open(path.join(path1, fname + '.json'), 'r') as f:
@@ -25,12 +26,6 @@ def assertStackMembersEqual(path1, path2):
 
 
 def compare_variables(path1, path2):
-    def make_hashable(seq):
-        if isinstance(seq, list):
-            return tuple(make_hashable(el) for el in seq)
-        else:
-            return seq
-
     def extract_seq_and_name(var):
         return (make_hashable(var['sequence']), var['varName'])
 
