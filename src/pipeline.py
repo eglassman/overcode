@@ -185,7 +185,7 @@ class Line(object):
         return self.template.replace('___', '{}').format(*self.abstract_variables) #todo: print cannon name .canon_name
 
     def __str__(self):
-        return self.template + " ||| " + str(self.abstract_variables) #+ " ||| " + line_values_formatted + "\n" # + " ||| " + str(self.local_names) + "\n"
+        return self.template + " ||| " + str(self.line_values) #+ " ||| " + line_values_formatted + "\n" # + " ||| " + str(self.local_names) + "\n"
     __repr__ = __str__
 
 class Stack(object):
@@ -671,7 +671,7 @@ def create_output(all_stacks, solutions, phrases, variables):
         for i in range(len(rep.lines)):
             #phrase = rep.canonicalPYcode[i]
             #print rep.lines[i]
-            phrase = rep.lines[i][0].render()
+            phrase = str(rep.lines[i][0])  #.render()
             if phrase not in phrases:
                 phrases.append(phrase)
             phraseID = phrases.index(phrase) + 1
