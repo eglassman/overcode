@@ -206,9 +206,12 @@ class Stack(object):
         if self.representative == None:
             return True
         same_output = self.representative.output == sol.output
-        lines_match = set(self.representative.canonical_lines) == set(sol.canonical_lines)
-        print 'checking whether a particular solution belongs in this stack.'
-        print 'lines_match?', lines_match, set(self.representative.canonical_lines), set(sol.canonical_lines)
+        if use_original_line_equality_metric:
+            lines_match = set(self.representative.canonical_lines) == set(sol.canonical_lines)
+        else:
+            lines_match = set(self.representative.lines) == set(sol.lines)
+        #print 'checking whether a particular solution belongs in this stack.'
+        #print 'lines_match?', lines_match, set(self.representative.canonical_lines), set(sol.canonical_lines)
         return lines_match and same_output
 
     def add_solution(self, sol):
@@ -489,7 +492,7 @@ def compute_lines(sol, tidy_path, all_lines):
         this_line_in_solution = (line_object, local_names, indent);
         
         sol.lines.append( this_line_in_solution );
-        sol.canonical_lines.append( (template, abstract_variables) );
+        sol.canonical_lines.append( line_object );
 
         #print 'adding ',this_line_as_general_line,' to all_lines'
         add_to_setlist(line_object,all_lines)
@@ -760,6 +763,7 @@ def run(folderOfData, destFolder):
     all_lines = []
     skipped_by_renamer = compute_all_lines(all_solutions,folderOfData,all_lines)
 
+    print 'printing all_lines:'
     for line in all_lines:
         pprint.pprint(line.getDict())
 
