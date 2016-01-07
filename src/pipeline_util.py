@@ -8,3 +8,9 @@ def ensure_folder_exists(folder):
         if exc.errno == errno.EEXIST and os.path.isdir(folder):
             pass
         else: raise
+
+def make_hashable(seq):
+    if isinstance(seq, (list,tuple)):
+        return tuple(make_hashable(el) for el in seq)
+    else:
+        return seq

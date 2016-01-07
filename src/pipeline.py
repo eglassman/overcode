@@ -5,10 +5,12 @@ import os
 from os import path
 import pickle
 import pprint
+import re
 
 from external import identifier_renamer
-from pipeline_util import ensure_folder_exists
+from pipeline_util import ensure_folder_exists, make_hashable
 
+use_original_line_equality_metric = True
 
 ###############################################################################
 ## Helper functions
@@ -41,8 +43,11 @@ class Solution(object):
         self.retVars = retVars
         self.local_vars = []
         self.abstract_vars = []
-        self.canonicalPYcode = []
-        self.canonicalPYcodeIndents = []
+        self.lines = []
+        self.canonical_lines = []
+
+    def getDict(self):
+        return self.__dict__
 
     def __str__(self):
         return "Solution(" + str(self.solnum) + ")"
@@ -148,27 +153,28 @@ class AbstractVariable(object):
     __str__ = __repr__
 
 class Line(object):
-    """A line of code, with indent recorded, with blanks for variables, and the corresponding abstract variables to fill the blanks."""
+    """A line of code, without indent recorded, with blanks for variables, and the corresponding abstract variables to fill the blanks."""
 
     #Line(template, local_names, abstract_variables, indent)
-    def __init__(self, template, abstract_variables, indent, line_values):
+    def __init__(self, template, abstract_variables, line_values):
         self.template = template
         self.abstract_variables = abstract_variables
         #self.local_names = local_names
-        self.indent = indent
+        #self.indent = indent
         self.line_values = line_values
 
+    def __hash__(self):
+        #print 'self.line_values',self.line_values
+        if use_original_line_equality_metric:
+            return hash((make_hashable(self.abstract_variables),self.template))
+        return hash((make_hashable(self.line_values),self.template))
+
     def __eq__(self, other):
-        """Two Lines are equal if they have the same template and abstract variables."""
+        """Old definition: Two Lines are equal if they have the same template and abstract variables."""
         assert isinstance(other, Line)
-        #print type(other)
-        # print 'comparing', self,other
-        #same = self.abstract_variables == other.abstract_variables and self.template == other.template
-        
-        #same = set(self.line_values) == set(other.line_values) and self.template == other.template
-        same = self.line_values == other.line_values and self.template == other.template
-        
-        return same
+        if use_original_line_equality_metric:
+            return self.abstract_variables == other.abstract_variables and self.template == other.template
+        return self.line_values == other.line_values and self.template == other.template
 
     def getDict(self):
         return self.__dict__
@@ -179,14 +185,7 @@ class Line(object):
         return self.template.replace('___', '{}').format(*self.abstract_variables) #todo: print cannon name .canon_name
 
     def __str__(self):
-        # DEBUGGING STR METHOD ONLY
-
-        for line_val in line_values:
-            print line_val
-
-        raise #this string method should print out a different representation of values
-
-        return self.template + " ||| " + str(self.abstract_variables) + " ||| " + line_values_formatted + "\n" # + " ||| " + str(self.local_names) + "\n"
+        return self.template + " ||| " + str(self.abstract_variables) #+ " ||| " + line_values_formatted + "\n" # + " ||| " + str(self.local_names) + "\n"
     __repr__ = __str__
 
 class Stack(object):
@@ -207,7 +206,9 @@ class Stack(object):
         if self.representative == None:
             return True
         same_output = self.representative.output == sol.output
-        lines_match = set(self.representative.canonicalPYcode) == set(sol.canonicalPYcode)
+        lines_match = set(self.representative.canonical_lines) == set(sol.canonical_lines)
+        print 'checking whether a particular solution belongs in this stack.'
+        print 'lines_match?', lines_match, set(self.representative.canonical_lines), set(sol.canonical_lines)
         return lines_match and same_output
 
     def add_solution(self, sol):
@@ -420,6 +421,10 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
 ## Line computation functions
 ###############################################################################
 def compute_lines(sol, tidy_path, all_lines):
+    """
+    Computes line objects for the solution, adds them to sol object and the all_lines setlist
+    Mutates sol, all_lines
+    """
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
@@ -480,13 +485,14 @@ def compute_lines(sol, tidy_path, all_lines):
             step_values.append(tuple(line_values[loc_nam]))
         #print 'step_values', step_values
         
-        this_line_as_general_line = Line(template, abstract_variables, indent, step_values);
-        this_line_in_solution = (this_line_as_general_line, local_names);
+        line_object = Line(template, abstract_variables, step_values);
+        this_line_in_solution = (line_object, local_names, indent);
         
         sol.lines.append( this_line_in_solution );
+        sol.canonical_lines.append( (template, abstract_variables) );
 
         #print 'adding ',this_line_as_general_line,' to all_lines'
-        add_to_setlist(this_line_as_general_line,all_lines)
+        add_to_setlist(line_object,all_lines)
 
 def compute_all_lines(all_solutions,folderOfData,all_lines):
     skipped = []
@@ -581,14 +587,6 @@ def rewrite_source(sol, tidy_path, canon_path):
             # Who knows what kind of exception this raises? Raise our own
             raise RenamerException('Failed to rename ' + str(sol.solnum))
 
-    # Store canonical code in the Solution
-    for unstrippedLine in renamed_src.split('\n'):
-        strippedLine = unstrippedLine.strip()
-        if not (unstrippedLine == '' or strippedLine == ''):
-            leadingSpace = len(unstrippedLine) - len(strippedLine) #how much was lobbed off?
-            sol.canonicalPYcode.append(strippedLine)
-            sol.canonicalPYcodeIndents.append(leadingSpace)
-
     with open(canon_path, 'w') as f:
         f.write(renamed_src)
 
@@ -666,14 +664,17 @@ def create_output(all_stacks, solutions, phrases, variables):
         solution['variableIDs'] = set()
         solution['lines'] = []
         rep = stack.representative
-        for i in range(len(rep.canonicalPYcode)):
-            phrase = rep.canonicalPYcode[i]
+        print rep.lines
+        for i in range(len(rep.lines)):
+            #phrase = rep.canonicalPYcode[i]
+            #print rep.lines[i]
+            phrase = rep.lines[i][0].render()
             if phrase not in phrases:
                 phrases.append(phrase)
             phraseID = phrases.index(phrase) + 1
             solution['phraseIDs'].add(phraseID)
             lineDict = {}
-            lineDict['indent'] = rep.canonicalPYcodeIndents[i]
+            #lineDict['indent'] = rep.canonicalPYcodeIndents[i]
             lineDict['phraseID'] = phraseID
             solution['lines'].append(lineDict)
         for avar in rep.abstract_vars:
@@ -754,6 +755,13 @@ def run(folderOfData, destFolder):
     skipped_extract_sequences = extract_and_collect_var_seqs(
         all_solutions, all_abstracts)
     find_canon_names(all_abstracts)
+
+    # Collect lines
+    all_lines = []
+    skipped_by_renamer = compute_all_lines(all_solutions,folderOfData,all_lines)
+
+    for line in all_lines:
+        pprint.pprint(line.getDict())
 
     # Canonicalize source and collect phrases
     skipped_rewrite = rewrite_all_solutions(all_solutions, folderOfData)
