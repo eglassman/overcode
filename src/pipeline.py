@@ -18,14 +18,11 @@ use_original_line_equality_metric = False
 def add_to_setlist(elem,setlist):
     """Maintains a list of unique items in the order they were added"""
 
-    #print 'adding elem, setlist', elem, setlist
     if setlist==[]:
         setlist.append(elem)
     else:
         for listelem in setlist:
-            #print 'comparing ',elem, listelem
             if elem == listelem:
-                #print 'match'
                 return
         setlist.append(elem)
 
@@ -153,9 +150,9 @@ class AbstractVariable(object):
     __str__ = __repr__
 
 class Line(object):
-    """A line of code, without indent recorded, with blanks for variables, and the corresponding abstract variables to fill the blanks."""
+    """A line of code, without indent recorded, with blanks for variables, and
+    the corresponding abstract variables to fill the blanks."""
 
-    #Line(template, local_names, abstract_variables, indent)
     def __init__(self, template, abstract_variables, line_values):
         self.template = template
         self.abstract_variables = abstract_variables
@@ -164,13 +161,14 @@ class Line(object):
         self.line_values = line_values
 
     def __hash__(self):
-        #print 'self.line_values',self.line_values
         if use_original_line_equality_metric:
             return hash((make_hashable(self.abstract_variables),self.template))
         return hash((make_hashable(self.line_values),self.template))
 
     def __eq__(self, other):
-        """Old definition: Two Lines are equal if they have the same template and abstract variables."""
+        """Old definition: Two Lines are equal if they have the same template and
+        abstract variables. New definition: two Lines are equal if they have the
+        same template and line values"""
         assert isinstance(other, Line)
         if use_original_line_equality_metric:
             return self.abstract_variables == other.abstract_variables and self.template == other.template
@@ -207,11 +205,12 @@ class Stack(object):
             return True
         same_output = self.representative.output == sol.output
 
-        #We replaced sets with Counters so that multiple instantiation statements of the form ___=0
-        #do not get resolved into one "line" when using line_values as a basis of equality
+        # Use Counters instead of sets so that multiple lines with the same
+        # template and values do not get collapsed into one in a single
+        # solution. For example, two variables both instantiated to 0 will
+        # both have the form ___=0, and the information that there were two
+        # such lines should not be lost.
         lines_match = Counter(self.representative.canonical_lines) == Counter(sol.canonical_lines)
-        print 'checking whether a particular solution belongs in this stack.'
-        print 'lines_match?', lines_match, set(self.representative.lines), set(sol.lines)
         return lines_match and same_output
 
     def add_solution(self, sol):
@@ -423,18 +422,34 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
 ###############################################################################
 ## Line computation functions
 ###############################################################################
+def extract_var_values_at_line(line_number, local_name, trace):
+    values = []
+    # All the steps in the trace where the line being executed is the
+    # line we care about
+    relevant_steps = [step for (step, line_no) in trace['__lineNo__'] if line_no == line_number]
+
+    for relevant_step in relevant_steps:
+        # For each step in the trace, if we care about that step, pick
+        # out the value of the variable we are examining
+        for (step, val) in trace[local_name]:
+            if step == relevant_step:
+                values.append(val)
+                break
+
+    return values
+
 def compute_lines(sol, tidy_path, all_lines):
     """
-    Computes line objects for the solution, adds them to sol object and the all_lines setlist
+    Computes line objects for the solution, adds them to sol object and the
+    all_lines setlist
+
     Mutates sol, all_lines
     """
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
-    #pprint.pprint(sol.getDict())
-
-    #This code renames all variables as placeholders, and saves a mapping
-    #from placeholder to original name and abstract variable object
+    # This code renames all variables as placeholders, and saves a mapping
+    # from placeholder to (original name, abstract variable object)
     mappings = {}
     ctr = 0
     for lvar in sol.local_vars:
@@ -448,45 +463,40 @@ def compute_lines(sol, tidy_path, all_lines):
         ctr += 1
 
         mappings[placeholder] = (lvar.local_name, lvar.abstract_var)
-    #print mappings
 
-    #This code breaks solutions down into line objects
+    # This code breaks solutions down into line objects
+    # renamed_src consists of the solution with variables replaced with
+    # numbered blanks.
     raw_lines = renamed_src.split('\n')
-    line_no = 0 #there is no line zero, but it will get incremented at the start of every loop
-    for raw_line in raw_lines:
-        line_no += 1
+    for (line_no, raw_line) in enumerate(raw_lines, start=1):
         stripped_line = raw_line.strip()
 
-        #ignore empty lines
+        # Ignore empty lines
         if stripped_line == '':
             continue
         indent = len(raw_line) - len(stripped_line)
 
         blanks = re.findall(r'___\d___', stripped_line)
-        #print 'blanks',blanks
         if len(blanks) > 0:
+            # Grab a list of (local name, abstract_var) pairs in the order
+            # they appear and transform it into two ordered lists of local
+            # names and abstract variable objects
             local_names, abstract_variables = zip(*[mappings[blank] for blank in blanks])
         else:
             local_names = ()
             abstract_variables = ()
-        #print local_names, abstract_variables
 
+        # The template is the raw line with numbered blanks replaced with
+        # generic blanks
         template = re.sub(r'___\d___', '___', stripped_line)
 
         line_values = {}
-        for loc_nam in local_names:
-            #print 'line_no: ', line_no, [a for (a,b) in sol.trace['__lineNo__'] if b==line_no] #zip(*sol.trace['__lineNo__'])
-            #print 'line_no: ', line_no, 'loc_nam', loc_nam, [ [d for (c,d) in sol.trace[loc_nam] if c==a and d!='myNaN' ] for (a,b) in sol.trace['__lineNo__'] if b==line_no]
-            line_values[loc_nam] = []
-            for loc_val in [ [d for (c,d) in sol.trace[loc_nam] if c==a ] for (a,b) in sol.trace['__lineNo__'] if b==line_no]:
-                #if loc_val[0]!='myNaN':
-                line_values[loc_nam].append(loc_val[0])
-        #print 'line_values',line_values
+        for loc_name in local_names:
+            line_values[loc_name] = extract_var_values_at_line(line_no, loc_name, sol.trace)
 
-        step_values = []
-        for loc_nam in local_names:
-            step_values.append(tuple(line_values[loc_nam]))
-        #print 'step_values', step_values
+        # Don't just use line_values.values() because we need the names in the
+        # right order
+        step_values = [tuple(line_values[loc_name]) for loc_name in local_names]
         
         line_object = Line(template, abstract_variables, step_values);
         this_line_in_solution = (line_object, local_names, indent);
@@ -494,7 +504,6 @@ def compute_lines(sol, tidy_path, all_lines):
         sol.lines.append( this_line_in_solution );
         sol.canonical_lines.append( line_object );
 
-        #print 'adding ',this_line_as_general_line,' to all_lines'
         add_to_setlist(line_object,all_lines)
 
 def compute_all_lines(all_solutions,folderOfData,all_lines):
@@ -669,8 +678,6 @@ def create_output(all_stacks, solutions, phrases, variables):
         rep = stack.representative
         print rep.lines
         for i in range(len(rep.lines)):
-            #phrase = rep.canonicalPYcode[i]
-            #print rep.lines[i]
             phrase = str(rep.lines[i][0])  #.render()
             if phrase not in phrases:
                 phrases.append(phrase)
@@ -686,10 +693,6 @@ def create_output(all_stacks, solutions, phrases, variables):
                     variables.append(avar)
                 varID = variables.index(avar) + 1
                 solution['variableIDs'].add(varID)
-        # else:
-        #     solution['variableIDs'] = []
-        # if 'fnames' in groupDescription['rep'].keys():
-        #     solution['keywords'] = rep['fnames']
         solution['number'] = rep.solnum
         solution['output'] = rep.output
         solution['members'] = stack.members
