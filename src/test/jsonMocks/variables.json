@@ -12,9 +12,9 @@
         "id": 2, 
         "sequence": [
             0, 
-            2, 
             4, 
-            6
+            14, 
+            32
         ], 
         "varName": "total"
     }, 
@@ -23,8 +23,8 @@
         "sequence": [
             [
                 1, 
-                1, 
-                1
+                2, 
+                3
             ]
         ], 
         "varName": "listA"
@@ -33,9 +33,9 @@
         "id": 4, 
         "sequence": [
             [
-                2, 
-                2, 
-                2
+                4, 
+                5, 
+                6
             ]
         ], 
         "varName": "listB"
@@ -43,9 +43,11 @@
     {
         "id": 5, 
         "sequence": [
-            2
+            4, 
+            10, 
+            18
         ], 
-        "varName": "b"
+        "varName": "product"
     }, 
     {
         "id": 6, 
@@ -57,19 +59,30 @@
     {
         "id": 7, 
         "sequence": [
-            1
+            1, 
+            2, 
+            3
         ], 
         "varName": "a"
     }, 
     {
         "id": 8, 
         "sequence": [
+            4, 
+            5, 
             6
+        ], 
+        "varName": "b"
+    }, 
+    {
+        "id": 9, 
+        "sequence": [
+            32
         ], 
         "varName": "ans"
     }, 
     {
-        "id": 9, 
+        "id": 10, 
         "sequence": [
             0, 
             1, 
@@ -79,7 +92,7 @@
         "varName": "a___2"
     }, 
     {
-        "id": 10, 
+        "id": 11, 
         "sequence": [
             3, 
             0, 
@@ -89,53 +102,53 @@
         "varName": "n"
     }, 
     {
-        "id": 11, 
+        "id": 12, 
         "sequence": [
             [], 
             [
-                2
+                18
             ], 
             [
-                2, 
-                2
+                18, 
+                10
             ], 
             [
-                2, 
-                2, 
-                2
+                18, 
+                10, 
+                4
             ], 
             [
-                2, 
-                2
+                18, 
+                10
             ], 
             [
-                2
+                18
             ], 
             []
         ], 
         "varName": "listc"
     }, 
     {
-        "id": 12, 
+        "id": 13, 
         "sequence": [
             [], 
             [
-                2
+                4
             ], 
             [
-                2, 
-                2
+                4, 
+                10
             ], 
             [
-                2, 
-                2, 
-                2
+                4, 
+                10, 
+                18
             ]
         ], 
         "varName": "AB"
     }, 
     {
-        "id": 13, 
+        "id": 14, 
         "sequence": [
             0
         ], 
