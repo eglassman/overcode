@@ -8,7 +8,7 @@ import pipeline
 from test import comparators
 
 # TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests'
-TEST_DIR_PATH = '../../overcode_data/6.0001_dotprod'
+TEST_DIR_PATH = '../../overcode_data/official_test_data'
 # Set to True to delete the output from the pipeline after the test.
 remove_output = False
 always_preprocess = True
