@@ -25,24 +25,33 @@ parser.add_argument('-o', '--run-old',
 
 args = parser.parse_args()
 
-if args.testcase and args.testcaseIsStr:
-    testcase = args.testcase
-else:
-    if args.testcase:
-        testcasePath = args.testcase
+defaultTestcasePath = path.join(args.basedir, 'testCase.py')
+if args.testcase:
+    if args.testcaseIsStr:
+        with open(defaultTestcasePath, 'w') as f:
+            f.write(args.testcase + '\n')
+        testcasePath = defaultTestcasePath
     else:
-        testcasePath = path.join(args.basedir, 'testCase.py')
+        testcasePath = args.testcase
+else:
+    testcasePath = defaultTestcasePath
+    # testcase = args.testcase
+# else:
+#     if args.testcase:
+#         testcasePath = args.testcase
+#     else:
+#         testcasePath = path.join(args.basedir, 'testCase.py')
 
-    with open(testcasePath, 'r') as f:
-        testcase = f.read()
+    # with open(testcasePath, 'r') as f:
+    #     testcase = f.read()
 
 datadir = path.join(args.basedir, 'data')
 
 if args.run_pre:
     pipeline_preprocessing.preprocess_pipeline_data(
         datadir,
-        testcase,
-        testedFunctionName=args.funcname
+        testcasePath,
+        args.funcname
     )
 if args.run_pipeline or args.run_old:
     if args.run_old:

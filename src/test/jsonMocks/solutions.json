@@ -32,7 +32,7 @@
             "201409172222330000"
         ], 
         "number": "201409170154260000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -83,7 +83,7 @@
             "201409171900070000"
         ], 
         "number": "201409171900070000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -134,7 +134,7 @@
             "201409171902140000"
         ], 
         "number": "201409171902140000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -183,7 +183,7 @@
             "201409171902170000"
         ], 
         "number": "201409171902170000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -223,7 +223,7 @@
             "201409171911530000"
         ], 
         "number": "201409171904110000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             12, 
@@ -231,9 +231,9 @@
         ], 
         "variableIDs": [
             8, 
+            9, 
             3, 
             4, 
-            5, 
             7
         ]
     }, 
@@ -266,7 +266,7 @@
             "201409171938260000"
         ], 
         "number": "201409171904310000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -309,7 +309,7 @@
             "201409171904420000"
         ], 
         "number": "201409171904420000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             16, 
             1, 
@@ -357,7 +357,7 @@
             "201409172147420000"
         ], 
         "number": "201409171904440000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -375,7 +375,7 @@
         ]
     }, 
     {
-        "count": 1, 
+        "count": 2, 
         "lines": [
             {
                 "indent": 0, 
@@ -403,7 +403,7 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 20
+                "phraseID": 9
             }, 
             {
                 "indent": 4, 
@@ -411,19 +411,20 @@
             }
         ], 
         "members": [
-            "201409171904580000"
+            "201409171904580000", 
+            "201409172049230000"
         ], 
         "number": "201409171904580000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             3, 
             5, 
+            9, 
             17, 
             18, 
-            19, 
-            20
+            19
         ], 
         "variableIDs": [
             1, 
@@ -431,7 +432,8 @@
             3, 
             4, 
             5, 
-            7
+            7, 
+            8
         ]
     }, 
     {
@@ -447,7 +449,7 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 21
+                "phraseID": 20
             }, 
             {
                 "indent": 4, 
@@ -455,15 +457,15 @@
             }, 
             {
                 "indent": 4, 
+                "phraseID": 21
+            }, 
+            {
+                "indent": 8, 
                 "phraseID": 22
             }, 
             {
                 "indent": 8, 
                 "phraseID": 23
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 24
             }, 
             {
                 "indent": 4, 
@@ -474,22 +476,22 @@
             "201409171905190000"
         ], 
         "number": "201409171905190000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
             6, 
+            20, 
             21, 
             22, 
-            23, 
-            24
+            23
         ], 
         "variableIDs": [
-            9, 
-            2, 
+            10, 
             3, 
             4, 
+            2, 
             6
         ]
     }, 
@@ -514,7 +516,7 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 25
+                "phraseID": 24
             }, 
             {
                 "indent": 4, 
@@ -525,14 +527,14 @@
             "201409171905480000"
         ], 
         "number": "201409171905480000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             3, 
             5, 
             8, 
-            25
+            24
         ], 
         "variableIDs": [
             1, 
@@ -555,23 +557,23 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 21
+                "phraseID": 20
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 25
             }, 
             {
                 "indent": 4, 
                 "phraseID": 26
             }, 
             {
-                "indent": 4, 
+                "indent": 8, 
+                "phraseID": 22
+            }, 
+            {
+                "indent": 8, 
                 "phraseID": 27
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 23
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 28
             }, 
             {
                 "indent": 4, 
@@ -582,23 +584,23 @@
             "201409171908400000"
         ], 
         "number": "201409171908400000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
-            21, 
-            23, 
+            20, 
+            22, 
+            25, 
             26, 
-            27, 
-            28
+            27
         ], 
         "variableIDs": [
-            9, 
-            2, 
             3, 
+            10, 
+            11, 
             4, 
-            10
+            2
         ]
     }, 
     {
@@ -606,6 +608,10 @@
         "lines": [
             {
                 "indent": 0, 
+                "phraseID": 28
+            }, 
+            {
+                "indent": 4, 
                 "phraseID": 29
             }, 
             {
@@ -617,12 +623,8 @@
                 "phraseID": 31
             }, 
             {
-                "indent": 4, 
-                "phraseID": 32
-            }, 
-            {
                 "indent": 8, 
-                "phraseID": 33
+                "phraseID": 32
             }, 
             {
                 "indent": 4, 
@@ -630,11 +632,11 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 34
+                "phraseID": 33
             }, 
             {
                 "indent": 8, 
-                "phraseID": 35
+                "phraseID": 34
             }, 
             {
                 "indent": 4, 
@@ -645,22 +647,55 @@
             "201409171910380000"
         ], 
         "number": "201409171910380000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             32, 
             33, 
             2, 
-            35, 
             5, 
             34, 
+            28, 
             29, 
             30, 
             31
         ], 
         "variableIDs": [
             2, 
-            11, 
+            12, 
             6
+        ]
+    }, 
+    {
+        "count": 1, 
+        "lines": [
+            {
+                "indent": 0, 
+                "phraseID": 1
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 35
+            }, 
+            {
+                "indent": 4, 
+                "phraseID": 13
+            }
+        ], 
+        "members": [
+            "201409171911280000"
+        ], 
+        "number": "201409171911280000", 
+        "output": 32, 
+        "phraseIDs": [
+            1, 
+            35, 
+            13
+        ], 
+        "variableIDs": [
+            1, 
+            3, 
+            4, 
+            9
         ]
     }, 
     {
@@ -676,39 +711,6 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 13
-            }
-        ], 
-        "members": [
-            "201409171911280000"
-        ], 
-        "number": "201409171911280000", 
-        "output": 6, 
-        "phraseIDs": [
-            1, 
-            36, 
-            13
-        ], 
-        "variableIDs": [
-            8, 
-            1, 
-            3, 
-            4
-        ]
-    }, 
-    {
-        "count": 1, 
-        "lines": [
-            {
-                "indent": 0, 
-                "phraseID": 1
-            }, 
-            {
-                "indent": 4, 
-                "phraseID": 37
-            }, 
-            {
-                "indent": 4, 
                 "phraseID": 2
             }, 
             {
@@ -717,11 +719,11 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 38
+                "phraseID": 37
             }, 
             {
                 "indent": 8, 
-                "phraseID": 39
+                "phraseID": 38
             }, 
             {
                 "indent": 4, 
@@ -732,13 +734,13 @@
             "201409171911310000"
         ], 
         "number": "201409171911310000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
+            36, 
             37, 
             38, 
-            39, 
             11, 
             5
         ], 
@@ -746,8 +748,8 @@
             1, 
             2, 
             3, 
-            12, 
-            4
+            4, 
+            13
         ]
     }, 
     {
@@ -759,11 +761,11 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 40
+                "phraseID": 39
             }, 
             {
                 "indent": 4, 
-                "phraseID": 37
+                "phraseID": 36
             }, 
             {
                 "indent": 4, 
@@ -771,31 +773,31 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 38
+                "phraseID": 37
             }, 
             {
                 "indent": 4, 
-                "phraseID": 41
+                "phraseID": 40
             }
         ], 
         "members": [
             "201409171912030000"
         ], 
         "number": "201409171912030000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             3, 
+            36, 
             37, 
-            38, 
-            40, 
-            41
+            39, 
+            40
         ], 
         "variableIDs": [
             1, 
             3, 
-            12, 
-            4
+            4, 
+            13
         ]
     }, 
     {
@@ -819,7 +821,7 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 42
+                "phraseID": 41
             }, 
             {
                 "indent": 4, 
@@ -830,13 +832,13 @@
             "201409171912480000"
         ], 
         "number": "201409171912480000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
             8, 
-            42, 
+            41, 
             11
         ], 
         "variableIDs": [
@@ -856,22 +858,22 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 43
+                "phraseID": 42
             }
         ], 
         "members": [
             "201409171914330000"
         ], 
         "number": "201409171914330000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
-            43
+            42
         ], 
         "variableIDs": [
+            8, 
             3, 
             4, 
-            5, 
             7
         ]
     }, 
@@ -905,7 +907,7 @@
             "201409172142170000"
         ], 
         "number": "201409171925160000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -933,7 +935,7 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 44
+                "phraseID": 43
             }, 
             {
                 "indent": 4, 
@@ -952,21 +954,21 @@
             "201409171932560000"
         ], 
         "number": "201409171932560000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             3, 
             4, 
             5, 
-            44
+            43
         ], 
         "variableIDs": [
             1, 
             2, 
             3, 
             4, 
-            13
+            14
         ]
     }, 
     {
@@ -1001,7 +1003,7 @@
             "201409171938580000"
         ], 
         "number": "201409171938580000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -1027,7 +1029,7 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 21
+                "phraseID": 20
             }, 
             {
                 "indent": 4, 
@@ -1035,11 +1037,11 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 45
+                "phraseID": 44
             }, 
             {
                 "indent": 8, 
-                "phraseID": 46
+                "phraseID": 45
             }, 
             {
                 "indent": 8, 
@@ -1047,7 +1049,7 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 28
+                "phraseID": 27
             }, 
             {
                 "indent": 4, 
@@ -1058,21 +1060,21 @@
             "201409171945140000"
         ], 
         "number": "201409171945140000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
             10, 
+            44, 
             45, 
-            46, 
-            21, 
-            28
+            20, 
+            27
         ], 
         "variableIDs": [
-            9, 
-            2, 
             3, 
+            2, 
+            10, 
             4, 
             5
         ]
@@ -1090,19 +1092,19 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 21
+                "phraseID": 20
             }, 
             {
                 "indent": 4, 
-                "phraseID": 45
+                "phraseID": 44
+            }, 
+            {
+                "indent": 8, 
+                "phraseID": 22
             }, 
             {
                 "indent": 8, 
                 "phraseID": 23
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 24
             }, 
             {
                 "indent": 4, 
@@ -1113,21 +1115,21 @@
             "201409172003520000"
         ], 
         "number": "201409172003520000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
-            45, 
-            21, 
-            23, 
-            24
+            44, 
+            20, 
+            22, 
+            23
         ], 
         "variableIDs": [
-            9, 
-            2, 
+            10, 
             3, 
-            4
+            4, 
+            2
         ]
     }, 
     {
@@ -1159,7 +1161,7 @@
             "201409172148220000"
         ], 
         "number": "201409172016270000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -1206,7 +1208,7 @@
             "201409172019510000"
         ], 
         "number": "201409172019510000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -1232,7 +1234,7 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 37
+                "phraseID": 36
             }, 
             {
                 "indent": 4, 
@@ -1240,11 +1242,11 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 38
+                "phraseID": 37
             }, 
             {
                 "indent": 4, 
-                "phraseID": 41
+                "phraseID": 40
             }
         ], 
         "members": [
@@ -1252,72 +1254,23 @@
             "201409172138080000"
         ], 
         "number": "201409172025300000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
+            40, 
             1, 
             3, 
-            37, 
-            38, 
-            41
+            36, 
+            37
         ], 
         "variableIDs": [
             1, 
-            3, 
-            12, 
-            4
-        ]
-    }, 
-    {
-        "count": 1, 
-        "lines": [
-            {
-                "indent": 0, 
-                "phraseID": 1
-            }, 
-            {
-                "indent": 4, 
-                "phraseID": 2
-            }, 
-            {
-                "indent": 4, 
-                "phraseID": 47
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 48
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 49
-            }, 
-            {
-                "indent": 4, 
-                "phraseID": 5
-            }
-        ], 
-        "members": [
-            "201409172031390000"
-        ], 
-        "number": "201409172031390000", 
-        "output": 6, 
-        "phraseIDs": [
-            1, 
-            2, 
-            5, 
-            47, 
-            48, 
-            49
-        ], 
-        "variableIDs": [
-            2, 
             3, 
             4, 
-            5, 
-            7
+            13
         ]
     }, 
     {
-        "count": 1, 
+        "count": 2, 
         "lines": [
             {
                 "indent": 0, 
@@ -1329,15 +1282,15 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 50
+                "phraseID": 46
             }, 
             {
                 "indent": 8, 
-                "phraseID": 51
+                "phraseID": 19
             }, 
             {
                 "indent": 8, 
-                "phraseID": 52
+                "phraseID": 9
             }, 
             {
                 "indent": 4, 
@@ -1345,24 +1298,26 @@
             }
         ], 
         "members": [
+            "201409172031390000", 
             "201409172033470000"
         ], 
-        "number": "201409172033470000", 
-        "output": 6, 
+        "number": "201409172031390000", 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
-            50, 
-            51, 
-            52
+            9, 
+            46, 
+            19
         ], 
         "variableIDs": [
             2, 
             3, 
             4, 
             5, 
-            7
+            7, 
+            8
         ]
     }, 
     {
@@ -1382,7 +1337,7 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 53
+                "phraseID": 47
             }, 
             {
                 "indent": 4, 
@@ -1393,13 +1348,13 @@
             "201409172035340000"
         ], 
         "number": "201409172035340000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             3, 
-            53, 
-            5
+            5, 
+            47
         ], 
         "variableIDs": [
             1, 
@@ -1417,7 +1372,7 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 21
+                "phraseID": 20
             }, 
             {
                 "indent": 4, 
@@ -1429,15 +1384,15 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 22
+                "phraseID": 21
             }, 
             {
                 "indent": 8, 
-                "phraseID": 54
+                "phraseID": 48
             }, 
             {
                 "indent": 8, 
-                "phraseID": 24
+                "phraseID": 23
             }, 
             {
                 "indent": 4, 
@@ -1448,83 +1403,23 @@
             "201409172043050000"
         ], 
         "number": "201409172043050000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
-            22, 
+            5, 
             6, 
-            21, 
-            54, 
-            24, 
-            5
-        ], 
-        "variableIDs": [
-            9, 
-            2, 
-            3, 
-            4, 
-            6
-        ]
-    }, 
-    {
-        "count": 1, 
-        "lines": [
-            {
-                "indent": 0, 
-                "phraseID": 1
-            }, 
-            {
-                "indent": 4, 
-                "phraseID": 2
-            }, 
-            {
-                "indent": 4, 
-                "phraseID": 3
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 17
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 55
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 56
-            }, 
-            {
-                "indent": 8, 
-                "phraseID": 20
-            }, 
-            {
-                "indent": 4, 
-                "phraseID": 5
-            }
-        ], 
-        "members": [
-            "201409172049230000"
-        ], 
-        "number": "201409172049230000", 
-        "output": 6, 
-        "phraseIDs": [
-            1, 
-            2, 
-            3, 
-            5, 
-            17, 
+            48, 
             20, 
-            55, 
-            56
+            21, 
+            23
         ], 
         "variableIDs": [
-            1, 
-            2, 
+            10, 
             3, 
             4, 
-            5, 
-            7
+            2, 
+            6
         ]
     }, 
     {
@@ -1559,7 +1454,7 @@
             "201409172138350000"
         ], 
         "number": "201409172138350000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -1589,19 +1484,19 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 21
+                "phraseID": 20
             }, 
             {
                 "indent": 4, 
-                "phraseID": 45
+                "phraseID": 44
             }, 
             {
                 "indent": 8, 
-                "phraseID": 23
+                "phraseID": 22
             }, 
             {
                 "indent": 8, 
-                "phraseID": 28
+                "phraseID": 27
             }, 
             {
                 "indent": 4, 
@@ -1612,21 +1507,21 @@
             "201409172145430000"
         ], 
         "number": "201409172145430000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
-            45, 
-            21, 
-            23, 
-            28
+            44, 
+            20, 
+            22, 
+            27
         ], 
         "variableIDs": [
-            9, 
-            2, 
+            10, 
             3, 
-            4
+            4, 
+            2
         ]
     }, 
     {
@@ -1646,7 +1541,7 @@
             }, 
             {
                 "indent": 8, 
-                "phraseID": 57
+                "phraseID": 49
             }, 
             {
                 "indent": 8, 
@@ -1661,14 +1556,14 @@
             "201409172147020000"
         ], 
         "number": "201409172147020000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             5, 
             15, 
             16, 
-            57
+            49
         ], 
         "variableIDs": [
             1, 
@@ -1709,7 +1604,7 @@
             "201409172228080000"
         ], 
         "number": "201409172228080000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
@@ -1739,7 +1634,7 @@
             }, 
             {
                 "indent": 4, 
-                "phraseID": 58
+                "phraseID": 50
             }, 
             {
                 "indent": 8, 
@@ -1754,12 +1649,12 @@
             "201409172230410000"
         ], 
         "number": "201409172230410000", 
-        "output": 6, 
+        "output": 32, 
         "phraseIDs": [
             1, 
             2, 
             4, 
-            58, 
+            50, 
             5
         ], 
         "variableIDs": [

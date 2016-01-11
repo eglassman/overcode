@@ -33,11 +33,9 @@ def add_to_setlist(elem,setlist):
 class Solution(object):
     """Information about a single solution."""
 
-    def __init__(self, solnum, trace, args, retVars):
+    def __init__(self, solnum, trace):
         self.solnum = solnum
         self.trace = trace
-        self.args = args
-        self.retVars = retVars
         self.local_vars = []
         self.abstract_vars = []
         self.lines = []
@@ -250,14 +248,7 @@ def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formatted
         with open(path.join(pickleSrc, filename), 'r') as f:
             unpickled = pickle.load(f)
 
-        sol = Solution(solnum,
-                       unpickled['trace'],
-                       unpickled['args'],
-                       unpickled['returnVars'])
-
-        if formattedSrc:
-            with open(path.join(formattedSrc, solNum + formattedExtn), 'r') as f:
-                sol.formatted_code = f.read()
+        sol = Solution(solnum, unpickled['traces'][0])
 
         all_solutions.append(sol)
 

@@ -8,9 +8,10 @@ import pipeline
 from test import comparators
 
 # TEST_DIR_PATH = '/Users/elena/publicCodeRepos/overcode_tests'
-TEST_DIR_PATH = '../../overcode_data/6.0001_dotprod'
+TEST_DIR_PATH = '../../overcode_data/dotprod'
 # Set to True to delete the output from the pipeline after the test.
 remove_output = False
+always_preprocess = True
 
 class TestPipeline(unittest.TestCase):
     def setUp(self):
@@ -20,11 +21,15 @@ class TestPipeline(unittest.TestCase):
             with open(fpath, 'r') as f:
                 pass
         except IOError:
-            folderOfData = path.join(TEST_DIR_PATH, 'data')
-            testCasePath = path.join(TEST_DIR_PATH, 'testCase.py')
-            with open(testCasePath, 'r') as f:
-                testCase = f.read()
-            preprocess_pipeline_data(folderOfData, testCase, testedFunctionName='dotProduct')
+            pass
+        else:
+            # Already preprocessed, but if we want to preprocess again anyway,
+            # then do not return.
+            if not always_preprocess:
+                return
+        folderOfData = path.join(TEST_DIR_PATH, 'data')
+        testCasePath = path.join(TEST_DIR_PATH, 'testCase.py')
+        preprocess_pipeline_data(folderOfData, testCasePath, 'dotProduct')
 
     def tearDown(self):
         if remove_output:
