@@ -28,10 +28,16 @@ def compare_variables(path1, path2):
     def make_hashable(seq):
         if isinstance(seq, (list,tuple)):
             return tuple(make_hashable(el) for el in seq)
+        elif isinstance(seq, dict):
+            return make_hashable(seq.items())
         else:
             return seq
     def extract_seq_and_name(var):
-        return (make_hashable(var['sequence']), var['varName'])
+        try:
+            seq = make_hashable(var['sequence']['dotProduct([1, 2, 3], [4, 5, 6])'])
+        except TypeError:
+            seq = make_hashable(var['sequence'])
+        return (seq, var['varName'])
 
     return _do_compare(path1, path2, 'variables', extract_seq_and_name)
 
@@ -76,5 +82,5 @@ if __name__ == '__main__':
     pretty_print(sys.argv[1], sys.argv[2], compare_solutions)
     print "Variables"
     pretty_print(sys.argv[1], sys.argv[2], compare_variables)
-    print "Phrases"
-    pretty_print(sys.argv[1], sys.argv[2], compare_phrases)
+    # print "Phrases"
+    # pretty_print(sys.argv[1], sys.argv[2], compare_phrases)

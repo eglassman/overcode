@@ -38,7 +38,9 @@ class Solution(object):
         self.testcase_to_trace = testcase_to_trace
         self.local_vars = []
         self.abstract_vars = []
+        # a list of (line object, local names, indent) tuples
         self.lines = []
+        # a list of line objects
         self.canonical_lines = []
 
     def getDict(self):
@@ -497,25 +499,24 @@ def compute_lines(sol, tidy_path, all_lines):
         # generic blanks
         template = re.sub(r'___\d___', '___', stripped_line)
 
-        line_values = {}
-        for loc_name in local_names:
-            # TODO: picking the "first" trace to extract values from is very
-            # fragile! This will be fixed.
-            line_values[loc_name] = extract_var_values_at_line(line_no, loc_name, sol.testcase_to_trace.values()[0])
-
-        # Don't just use line_values.values() because we need the names in the
-        # right order
-        step_values = [tuple(line_values[loc_name]) for loc_name in local_names]
+        # line_values is a list of dictionaries, one per blank
+        # Each dictionary maps from a testcase to a sequence of values
+        line_values = []
+        for lname in local_names:
+            values = {}
+            for (testcase, trace) in sol.testcase_to_trace.iteritems():
+                values[testcase] = extract_var_values_at_line(line_no, lname, trace)
+            line_values.append(values)
         
-        line_object = Line(template, abstract_variables, step_values);
+        line_object = Line(template, abstract_variables, line_values);
         this_line_in_solution = (line_object, local_names, indent);
         
-        sol.lines.append( this_line_in_solution );
-        sol.canonical_lines.append( line_object );
+        sol.lines.append(this_line_in_solution);
+        sol.canonical_lines.append(line_object);
 
-        add_to_setlist(line_object,all_lines)
+        add_to_setlist(line_object, all_lines)
 
-def compute_all_lines(all_solutions,folderOfData,all_lines):
+def compute_all_lines(all_solutions, folderOfData, all_lines):
     skipped = []
     for sol in all_solutions:
         tidy_path = path.join(folderOfData, 'tidyData', sol.solnum + '.py')
@@ -685,16 +686,17 @@ def create_output(all_stacks, solutions, phrases, variables):
         solution['variableIDs'] = set()
         solution['lines'] = []
         rep = stack.representative
-        print rep.lines
         for i in range(len(rep.lines)):
-            phrase = str(rep.lines[i][0])  #.render()
+            (line_object, local_names, indent) = rep.lines[i]
+            phrase = str(line_object)  #.render()
             if phrase not in phrases:
                 phrases.append(phrase)
             phraseID = phrases.index(phrase) + 1
             solution['phraseIDs'].add(phraseID)
-            lineDict = {}
-            #lineDict['indent'] = rep.canonicalPYcodeIndents[i]
-            lineDict['phraseID'] = phraseID
+            lineDict = {
+                'indent': indent,
+                'phraseID': phraseID
+            }
             solution['lines'].append(lineDict)
         for avar in rep.abstract_vars:
             if not avar.canon_name.endswith('__'):

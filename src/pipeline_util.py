@@ -12,5 +12,7 @@ def ensure_folder_exists(folder):
 def make_hashable(seq):
     if isinstance(seq, (list,tuple)):
         return tuple(make_hashable(el) for el in seq)
+    elif isinstance(seq, dict):
+        return make_hashable(seq.items())
     else:
         return seq
