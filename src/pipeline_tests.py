@@ -36,12 +36,16 @@ class TestPipeline(unittest.TestCase):
             shutil.rmtree(path.join(TEST_DIR_PATH, 'output'))
 
     def test_finalResults(self):
-        pipeline.run(path.join(TEST_DIR_PATH, 'data'), path.join(TEST_DIR_PATH, 'output'))
+        output_path = path.join(TEST_DIR_PATH, 'output')
+        pipeline.run(path.join(TEST_DIR_PATH, 'data'), output_path)
 
         mocksPath = './test/jsonMocks'
-        comparators.assertStackMembersEqual(mocksPath, path.join(TEST_DIR_PATH, 'output'))
-        # comparators.assertPhrasesEqual(mocksPath, path.join(TEST_DIR_PATH, 'output'))
-        comparators.assertNoMissingVariables(mocksPath, path.join(TEST_DIR_PATH, 'output'))
+        comparators.assertStackMembersEqual(mocksPath, output_path)
+        # The rendering of phrases is inconsistent, so do not compare them for now
+        # comparators.assertPhrasesEqual(mocksPath, output_path)
+        # TODO: un-hardcode this testcase
+        comparators.assertVariablesEqualUnderTestcase(
+            mocksPath, output_path, 'dotProduct([1, 2, 3], [4, 5, 6])')
 
 if __name__ == '__main__':
     unittest.main()

@@ -23,21 +23,27 @@ def assertStackMembersEqual(path1, path2):
     assert not in1not2, "Path1 contains extra stacks"
     assert not in2not1, "Path2 contains extra stacks"
 
+def make_hashable(seq):
+    if isinstance(seq, (list,tuple)):
+        return tuple(make_hashable(el) for el in seq)
+    elif isinstance(seq, dict):
+        return make_hashable(seq.items())
+    else:
+        return seq
 
 def compare_variables(path1, path2):
-    def make_hashable(seq):
-        if isinstance(seq, (list,tuple)):
-            return tuple(make_hashable(el) for el in seq)
-        elif isinstance(seq, dict):
-            return make_hashable(seq.items())
-        else:
-            return seq
+    def extract_seq_and_name(var):
+        return (make_hashable(var['sequence']), var['varName'])
+
+    return _do_compare(path1, path2, 'variables', extract_seq_and_name)
+
+def compare_variables_under_testcase(path1, path2, testcase):
     def extract_seq_and_name(var):
         try:
-            seq = make_hashable(var['sequence']['dotProduct([1, 2, 3], [4, 5, 6])'])
+            # Closures are fun!
+            seq = make_hashable(var['sequence'][testcase])
         except TypeError:
             seq = make_hashable(var['sequence'])
-        return (seq, var['varName'])
 
     return _do_compare(path1, path2, 'variables', extract_seq_and_name)
 
@@ -52,6 +58,11 @@ def assertVariablesEqual(old, new):
     assert not in1not2, "Path1 contains extra variables"
     assert not in2not1, "Path2 contains extra variables"
 
+def assertVariablesEqualUnderTestcase(old, new, testcase):
+    in1not2, in2not1 = compare_variables_under_testcase(old, new, testcase)
+    # Both sets should be empty
+    assert not in1not2, "Path1 contains extra variables"
+    assert not in2not1, "Path2 contains extra variables"
 
 def compare_phrases(path1, path2):
     def extract_code_and_indent(phrase):
@@ -82,5 +93,8 @@ if __name__ == '__main__':
     pretty_print(sys.argv[1], sys.argv[2], compare_solutions)
     print "Variables"
     pretty_print(sys.argv[1], sys.argv[2], compare_variables)
+    # Note, when printing phrases, there are too many casts to a list. For useful
+    # output, remove one, otherwise you get a list of single characters from
+    # casting a string to a list
     # print "Phrases"
     # pretty_print(sys.argv[1], sys.argv[2], compare_phrases)
