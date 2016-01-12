@@ -35,6 +35,7 @@ class Solution(object):
 
     def __init__(self, solnum, testcase_to_trace):
         self.solnum = solnum
+        # a dictionary mapping a testcase string to a trace
         self.testcase_to_trace = testcase_to_trace
         self.local_vars = []
         self.abstract_vars = []
@@ -156,8 +157,7 @@ class Line(object):
     def __init__(self, template, abstract_variables, line_values):
         self.template = template
         self.abstract_variables = abstract_variables
-        #self.local_names = local_names
-        #self.indent = indent
+        # dictionary mapping testcase strings to sequences of values
         self.line_values = line_values
 
     def __hash__(self):
@@ -203,6 +203,9 @@ class Stack(object):
         assert isinstance(sol, Solution)
         if self.representative == None:
             return True
+
+        # This captures having the same output on all test cases, but only
+        # works if the two solutions were run on the same set of tests.
         same_output = self.representative.output == sol.output
 
         # Use Counters instead of sets so that multiple lines with the same
@@ -432,6 +435,16 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
 ## Line computation functions
 ###############################################################################
 def extract_var_values_at_line(line_number, local_name, trace):
+    """
+    Get the values of a particular variable on a single line over time.
+
+    line_number: the line number we want values for
+    local_name: the name of the variable we want values of
+    trace: the trace to extract info from
+
+    returns: a list of values representing the sequence of values of the
+        given variable on a particular line
+    """
     values = []
     # All the steps in the trace where the line being executed is the
     # line we care about
@@ -611,8 +624,6 @@ def rewrite_source(sol, tidy_path, canon_path):
 
     with open(canon_path, 'w') as f:
         f.write(renamed_src)
-
-    # TODO: pygmentize?
 
 def rewrite_all_solutions(all_solutions, folderOfData):
     """
