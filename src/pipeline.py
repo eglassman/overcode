@@ -33,9 +33,9 @@ def add_to_setlist(elem,setlist):
 class Solution(object):
     """Information about a single solution."""
 
-    def __init__(self, solnum, trace):
+    def __init__(self, solnum, testcase_to_trace):
         self.solnum = solnum
-        self.trace = trace
+        self.testcase_to_trace = testcase_to_trace
         self.local_vars = []
         self.abstract_vars = []
         self.lines = []
@@ -225,7 +225,7 @@ class Stack(object):
 ###############################################################################
 ## Load preprocessed data
 ###############################################################################
-def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formattedExtn='.py.html'):
+def populate_from_pickles(all_solutions, pickleSrc):
     """
     Load program traces, args and return variables from pickle files as
     created by the pipeline preprocessor. Create a Solution instance for
@@ -248,7 +248,14 @@ def populate_from_pickles(all_solutions, pickleSrc, formattedSrc=None, formatted
         with open(path.join(pickleSrc, filename), 'r') as f:
             unpickled = pickle.load(f)
 
-        sol = Solution(solnum, unpickled['traces'][0])
+        testcases = unpickled['testcases']
+        traces = unpickled['traces']
+
+        testcase_to_trace = {}
+        for i in range(len(testcases)):
+            testcase_to_trace[testcases[i]] = traces[i]
+
+        sol = Solution(solnum, testcase_to_trace)
 
         all_solutions.append(sol)
 
@@ -362,28 +369,37 @@ def extract_sequences_single_sol(sol, all_abstracts):
     mutates sol and all_abstracts
     """
 
-    if '__return__' not in sol.trace:
-        raise ExtractionException('Solution did not run to completion')
+    output = {}
+    sequences = {}
+    for (testcase, trace) in sol.testcase_to_trace.iteritems():
+        if '__return__' not in trace:
+            raise ExtractionException('Solution did not run to completion')
 
-    # The second-to-last step seems to always have the return value.
-    # Steps in the trace are of the form (step, value), so take just
-    # the value
-    sol.output = sol.trace['__return__'][-2][1]
+        # The second-to-last step seems to always have the return value.
+        # Steps in the trace are of the form (step, value), so take just
+        # the value
+        output[testcase] = trace['__return__'][-2][1]
 
-    for localVarName, localVarData in sol.trace.iteritems():
-        if localVarName.startswith('__'):
-            continue
-        sequence = extract_single_sequence(localVarData)
-        if (len(sequence) == 1 and
-            type(sequence[0]) is str and
-            sequence[0].startswith('__')):
-            # Just a function definition
-            continue
+        for localVarName, localVarData in trace.iteritems():
+            if localVarName.startswith('__'):
+                continue
+            sequence = extract_single_sequence(localVarData)
+            if (len(sequence) == 1 and
+                type(sequence[0]) is str and
+                sequence[0].startswith('__')):
+                # Just a function definition
+                continue
+            if localVarName not in sequences:
+                sequences[localVarName] = {}
+            sequences[localVarName][testcase] = sequence
 
+    sol.output = output
+
+    for localVarName in sequences:
         # Create a new VariableInstance, add it to the solution's local vars,
         # assign it to an abstract variable, and add that to the solution's
         # abstract vars.
-        var = VariableInstance(sequence, sol.solnum, localVarName)
+        var = VariableInstance(sequences[localVarName], sol.solnum, localVarName)
         sol.local_vars.append(var)
         add_to_abstracts(var, all_abstracts)
         sol.abstract_vars.append(var.abstract_var)
@@ -483,7 +499,9 @@ def compute_lines(sol, tidy_path, all_lines):
 
         line_values = {}
         for loc_name in local_names:
-            line_values[loc_name] = extract_var_values_at_line(line_no, loc_name, sol.trace)
+            # TODO: picking the "first" trace to extract values from is very
+            # fragile! This will be fixed.
+            line_values[loc_name] = extract_var_values_at_line(line_no, loc_name, sol.testcase_to_trace.values()[0])
 
         # Don't just use line_values.values() because we need the names in the
         # right order
