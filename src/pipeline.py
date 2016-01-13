@@ -453,10 +453,13 @@ def extract_var_values_at_line(line_number, local_name, trace):
     for relevant_step in relevant_steps:
         # For each step in the trace, if we care about that step, pick
         # out the value of the variable we are examining
-        for (step, val) in trace[local_name]:
-            if step == relevant_step:
-                values.append(val)
-                break
+        try:
+            for (step, val) in trace[local_name]:
+                if step == relevant_step:
+                    values.append(val)
+                    break
+        except KeyError:
+            return "not_initialized"
 
     return values
 
@@ -667,6 +670,7 @@ def stack_solutions(all_solutions, all_stacks):
     mutates all_stacks
     """
     for sol in all_solutions:
+        print "Stacking", sol.solnum
         for stack in all_stacks:
             if stack.should_contain(sol):
                 stack.add_solution(sol)

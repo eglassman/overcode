@@ -181,7 +181,7 @@ def preprocess_pipeline_data(folder_of_data,
         pprint.pprint(skipped_tidy, indent=2)
     if skipped_running:
         print "SKIPPED WHEN EXECUTING:"
-        pprint.pprint(skipped_logger, indent=2)
+        pprint.pprint(skipped_running, indent=2)
     if skipped_pickling:
         print "SKIPPED WHEN PICKLING:"
         pprint.pprint(skipped_pickling, indent=2)

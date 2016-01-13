@@ -142,6 +142,9 @@ def make_default_finalizer(tested_function_name):
             if 'event' in scope and scope['event']=='instruction_limit_reached':
                 print "Exceeded instruction limit"
 
+            if 'event' in scope and scope['event'] == 'uncaught_exception':
+                raise RuntimeError("Uncaught exception!")
+
             if 'line' in scope:
                 progTraceDict[ctr]['Line'] = scope['line']
             else:
