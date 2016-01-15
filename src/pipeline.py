@@ -44,6 +44,8 @@ class Solution(object):
         # a list of line objects
         self.canonical_lines = []
 
+        self.avar_to_templates = {}
+
     def getDict(self):
         return self.__dict__
 
@@ -141,6 +143,9 @@ class AbstractVariable(object):
         assert isinstance(other, AbstractVariable)
         return self.sequence == other.sequence
 
+    def __hash__(self):
+        return hash(make_hashable(self.sequence))
+
     def __repr__(self):
         if self.canon_name:
             inside = str(self.canon_name) + " " + str(self.sequence)
@@ -193,6 +198,8 @@ class Stack(object):
         self.members = []
         self.count = 0
 
+        self.avar_to_templates = {}
+
     def should_contain(self, sol):
         """
         Whether a particular solution belongs in this stack.
@@ -225,6 +232,15 @@ class Stack(object):
             self.representative = sol
         self.members.append(sol.solnum)
         self.count += 1
+
+        for avar in sol.avar_to_templates:
+            if avar in self.avar_to_templates:
+                # for template in sol.avar_to_templates[avar]:
+                #     if template not in self.avar_to_templates[avar]:
+                #         self.avar_to_templates[avar][template] = sol.avar_to_templates
+                self.avar_to_templates[avar] |= sol.avar_to_templates[avar]
+            else:
+                self.avar_to_templates[avar] = sol.avar_to_templates[avar]
 
 
 ###############################################################################
@@ -409,6 +425,9 @@ def extract_sequences_single_sol(sol, all_abstracts):
         add_to_abstracts(var, all_abstracts)
         sol.abstract_vars.append(var.abstract_var)
 
+        if var.abstract_var not in sol.avar_to_templates:
+            sol.avar_to_templates[var.abstract_var] = set()
+
 def extract_and_collect_var_seqs(all_solutions, all_abstracts):
     """
     Extract and collect variable information from all solutions.
@@ -524,11 +543,20 @@ def compute_lines(sol, tidy_path, all_lines):
                 values[testcase] = extract_var_values_at_line(line_no, lname, trace)
             line_values.append(values)
         
-        line_object = Line(template, abstract_variables, line_values);
-        this_line_in_solution = (line_object, local_names, indent);
+        line_object = Line(template, abstract_variables, line_values)
+        this_line_in_solution = (line_object, local_names, indent)
         
-        sol.lines.append(this_line_in_solution);
-        sol.canonical_lines.append(line_object);
+        sol.lines.append(this_line_in_solution)
+        sol.canonical_lines.append(line_object)
+
+        for avar in set(abstract_variables):
+            indices = tuple(i for (i, v) in enumerate(abstract_variables) if v==avar)
+            sol.avar_to_templates[avar].add((template, indices))
+
+        # for (i, avar) in enumerate(abstract_variables):
+        #     if template not in sol.avar_to_templates[avar]:
+        #         sol.avar_to_templates[avar][template] = []
+        #     sol.avar_to_templates[avar][template].append(i)
 
         add_to_setlist(line_object, all_lines)
 
@@ -684,7 +712,7 @@ def stack_solutions(all_solutions, all_stacks):
 ###############################################################################
 ## Populate solutions, phrases, variables
 ###############################################################################
-def create_output(all_stacks, solutions, phrases, variables):
+def create_output(all_stacks, solutions, phrases, variables, avar_template_info):
     """
     Make dictionaries in the expected output format by collecting
     info from the Stacks.
@@ -726,6 +754,14 @@ def create_output(all_stacks, solutions, phrases, variables):
         solution['phraseIDs'] = list(solution['phraseIDs'])
         solution['variableIDs'] = list(solution['variableIDs'])
         solutions.append(solution)
+
+        avar_to_templates = {}
+        for avar in stack.avar_to_templates:
+            avar_to_templates[avar.canon_name] = {
+                'templates': list(stack.avar_to_templates[avar]),
+                'values': avar.sequence
+            }
+        avar_template_info[rep.solnum] = avar_to_templates
 
 def reformat_phrases(phrases):
     """
@@ -786,15 +822,19 @@ def run(folderOfData, destFolder):
     all_abstracts = []
     skipped_extract_sequences = extract_and_collect_var_seqs(
         all_solutions, all_abstracts)
+
+##### TODO: here is where to work.
+# first name only correct solutions as usual
+# then go through incorrects and try to infer names
     find_canon_names(all_abstracts)
 
     # Collect lines
     all_lines = []
     skipped_by_renamer = compute_all_lines(all_solutions,folderOfData,all_lines)
 
-    print 'printing all_lines:'
-    for line in all_lines:
-        pprint.pprint(line.getDict())
+    # print 'printing all_lines:'
+    # for line in all_lines:
+    #     pprint.pprint(line.getDict())
 
     # Canonicalize source and collect phrases
     skipped_rewrite = rewrite_all_solutions(all_solutions, folderOfData)
@@ -807,13 +847,15 @@ def run(folderOfData, destFolder):
     solutions = []
     phrases = []
     variables = []
-    create_output(all_stacks, solutions, phrases, variables)
+    avar_template_info = {}
+    create_output(all_stacks, solutions, phrases, variables, avar_template_info)
     reformat_phrases(phrases)
     reformat_variables(variables)
 
     dumpOutput(solutions, 'solutions.json')
     dumpOutput(phrases, 'phrases.json')
     dumpOutput(variables, 'variables.json')
+    dumpOutput(avar_template_info, 'abstract_var_info.json')
 
     print "skipped when extracting:", skipped_extract_sequences
     print "skipped when rewriting:", skipped_rewrite
