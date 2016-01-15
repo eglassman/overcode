@@ -12,6 +12,20 @@ from pipeline_util import ensure_folder_exists, make_hashable
 
 use_original_line_equality_metric = False
 
+CORRECT_OUTPUT = {
+    "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
+    "dotProduct([-45], [-60])": 2700, 
+    "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
+    "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
+    "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
+    "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
+    "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
+    "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
+    "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
+    "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
+}
+
+
 ###############################################################################
 ## Helper functions
 ###############################################################################
@@ -44,7 +58,8 @@ class Solution(object):
         # a list of line objects
         self.canonical_lines = []
 
-        self.avar_to_templates = {}
+        self.var_obj_to_templates = {}
+        self.correct = None
 
     def getDict(self):
         return self.__dict__
@@ -198,7 +213,7 @@ class Stack(object):
         self.members = []
         self.count = 0
 
-        self.avar_to_templates = {}
+        self.var_obj_to_templates = {}
 
     def should_contain(self, sol):
         """
@@ -233,14 +248,11 @@ class Stack(object):
         self.members.append(sol.solnum)
         self.count += 1
 
-        for avar in sol.avar_to_templates:
-            if avar in self.avar_to_templates:
-                # for template in sol.avar_to_templates[avar]:
-                #     if template not in self.avar_to_templates[avar]:
-                #         self.avar_to_templates[avar][template] = sol.avar_to_templates
-                self.avar_to_templates[avar] |= sol.avar_to_templates[avar]
+        for avar in sol.var_obj_to_templates:
+            if avar in self.var_obj_to_templates:
+                self.var_obj_to_templates[avar] |= sol.var_obj_to_templates[avar]
             else:
-                self.avar_to_templates[avar] = sol.avar_to_templates[avar]
+                self.var_obj_to_templates[avar] = sol.var_obj_to_templates[avar]
 
 
 ###############################################################################
@@ -376,18 +388,18 @@ def extract_single_sequence(column):
 class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
 
-def extract_sequences_single_sol(sol, all_abstracts):
+def extract_sequences_single_sol(sol, correct_abstracts, correct_output):
     """
     For each local variable in a single solution, extract its sequence of
     values, create a VariableInstance, and assign that VariableInstance to
     an AbstractVariable.
 
     sol: instance of Solution
-    all_abstracts: list of AbstractVariable instances. Can be empty.
+    correct_abstracts: list of AbstractVariable instances. Can be empty.
     raises ExtractionException if there is no __return__ value in the
            solution trace
 
-    mutates sol and all_abstracts
+    mutates sol and correct_abstracts
     """
 
     output = {}
@@ -415,6 +427,7 @@ def extract_sequences_single_sol(sol, all_abstracts):
             sequences[localVarName][testcase] = sequence
 
     sol.output = output
+    sol.correct = (output == correct_output)
 
     for localVarName in sequences:
         # Create a new VariableInstance, add it to the solution's local vars,
@@ -422,18 +435,28 @@ def extract_sequences_single_sol(sol, all_abstracts):
         # abstract vars.
         var = VariableInstance(sequences[localVarName], sol.solnum, localVarName)
         sol.local_vars.append(var)
-        add_to_abstracts(var, all_abstracts)
-        sol.abstract_vars.append(var.abstract_var)
 
-        if var.abstract_var not in sol.avar_to_templates:
-            sol.avar_to_templates[var.abstract_var] = set()
+        if sol.correct:
+            add_to_abstracts(var, correct_abstracts)
+            sol.abstract_vars.append(var.abstract_var)
+            var_to_map = var.abstract_var
+        else:
+            var_to_map = var
 
-def extract_and_collect_var_seqs(all_solutions, all_abstracts):
+        if var_to_map not in sol.var_obj_to_templates:
+            sol.var_obj_to_templates[var_to_map] = set()
+
+def extract_and_collect_var_seqs(all_solutions,
+                                 correct_solutions,
+                                 incorrect_solutions,
+                                 correct_abstracts):
     """
     Extract and collect variable information from all solutions.
 
     all_solutions: list of Solution instances
-    all_abstracts: list of existing AbstractVariable instances
+    incorrect_solutions: list for Solution instances that are incorrect and
+        so have not had variables collected yet
+    all_abstracts: list for AbstractVariable instances from correct solutions
     returns: list, solution numbers skipped
 
     mutates all_abstracts and elements of all_solutions
@@ -442,7 +465,11 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
     for sol in all_solutions[:]:
         try:
             print "Collecting variables in", sol.solnum
-            extract_sequences_single_sol(sol, all_abstracts)
+            extract_sequences_single_sol(sol, correct_abstracts, CORRECT_OUTPUT)
+            if sol.correct:
+                correct_solutions.append(sol)
+            else:
+                incorrect_solutions.append(sol)
         except ExtractionException:
             # Since we are iterating through a copy, this will not cause problems
             all_solutions.remove(sol)
@@ -506,7 +533,8 @@ def compute_lines(sol, tidy_path, all_lines):
 
         ctr += 1
 
-        mappings[placeholder] = (lvar.local_name, lvar.abstract_var)
+        var_to_map = lvar.abstract_var if sol.correct else lvar
+        mappings[placeholder] = (lvar.local_name, var_to_map)
 
     # This code breaks solutions down into line objects
     # renamed_src consists of the solution with variables replaced with
@@ -525,10 +553,10 @@ def compute_lines(sol, tidy_path, all_lines):
             # Grab a list of (local name, abstract_var) pairs in the order
             # they appear and transform it into two ordered lists of local
             # names and abstract variable objects
-            local_names, abstract_variables = zip(*[mappings[blank] for blank in blanks])
+            local_names, variable_objects = zip(*[mappings[blank] for blank in blanks])
         else:
             local_names = ()
-            abstract_variables = ()
+            variable_objects = ()
 
         # The template is the raw line with numbered blanks replaced with
         # generic blanks
@@ -543,20 +571,15 @@ def compute_lines(sol, tidy_path, all_lines):
                 values[testcase] = extract_var_values_at_line(line_no, lname, trace)
             line_values.append(values)
         
-        line_object = Line(template, abstract_variables, line_values)
+        line_object = Line(template, variable_objects, line_values)
         this_line_in_solution = (line_object, local_names, indent)
         
         sol.lines.append(this_line_in_solution)
         sol.canonical_lines.append(line_object)
 
-        for avar in set(abstract_variables):
-            indices = tuple(i for (i, v) in enumerate(abstract_variables) if v==avar)
-            sol.avar_to_templates[avar].add((template, indices))
-
-        # for (i, avar) in enumerate(abstract_variables):
-        #     if template not in sol.avar_to_templates[avar]:
-        #         sol.avar_to_templates[avar][template] = []
-        #     sol.avar_to_templates[avar][template].append(i)
+        for var_obj in set(variable_objects):
+            indices = tuple(i for (i, v) in enumerate(variable_objects) if v==var_obj)
+            sol.var_obj_to_templates[var_obj].add((template, indices))
 
         add_to_setlist(line_object, all_lines)
 
@@ -708,6 +731,27 @@ def stack_solutions(all_solutions, all_stacks):
             new_stack.add_solution(sol)
             all_stacks.append(new_stack)
 
+###############################################################################
+## do things with templates
+###############################################################################
+def template_sets_close_enough(set1, set2):
+    in1not2 = set1 - set2
+    in2not1 = set2 - set1
+    return max(len(in1not2), len(in2not1)) == 1
+
+def find_voting_stacks(correct_stacks, incorrect_solutions):
+    correct_template_sets = [
+        set(l.template for l in stack.representative.canonical_lines) for stack in correct_stacks
+    ]
+    for wrong_sol in incorrect_solutions:
+        bad_template_set = set(l.template for l in wrong_sol.canonical_lines)
+        indices = []
+        for i, correct_set in enumerate(correct_template_sets):
+            if template_sets_close_enough(bad_template_set, correct_set):
+                indices.append(i)
+
+        voting_stacks = [correct_stacks[i] for i in indices]
+        wrong_sol.voting_stacks = voting_stacks
 
 ###############################################################################
 ## Populate solutions, phrases, variables
@@ -755,13 +799,38 @@ def create_output(all_stacks, solutions, phrases, variables, avar_template_info)
         solution['variableIDs'] = list(solution['variableIDs'])
         solutions.append(solution)
 
-        avar_to_templates = {}
-        for avar in stack.avar_to_templates:
-            avar_to_templates[avar.canon_name] = {
-                'templates': list(stack.avar_to_templates[avar]),
+        var_obj_to_templates = {}
+        for avar in stack.var_obj_to_templates:
+            var_obj_to_templates[avar.canon_name] = {
+                'templates': list(stack.var_obj_to_templates[avar]),
                 'values': avar.sequence
             }
-        avar_template_info[rep.solnum] = avar_to_templates
+        avar_template_info[rep.solnum] = var_obj_to_templates
+
+def create_template_info_output(stacks, incorrect_solutions, var_template_info):
+    for stack in stacks:
+        var_name_to_templates = {
+            '__correct__': stack.representative.correct,
+            '__members__': stack.members,
+        }
+        for var_obj in stack.var_obj_to_templates:
+            if isinstance(var_obj, AbstractVariable):
+                name = var_obj.canon_name
+            else:
+                name = var_obj.local_name + '_(local)'
+            var_name_to_templates[name] = {
+                'templates': list(stack.var_obj_to_templates[var_obj]),
+                'values': var_obj.sequence
+            }
+        var_template_info[stack.representative.solnum] = var_name_to_templates
+    for sol in incorrect_solutions:
+        var_name_to_templates = { '__correct__': False }
+        for lvar in sol.var_obj_to_templates:
+            var_name_to_templates[lvar.local_name] = {
+                'templates': list(sol.var_obj_to_templates[lvar]),
+                'values': lvar.sequence
+            }
+        var_template_info[sol.solnum] = var_name_to_templates
 
 def reformat_phrases(phrases):
     """
@@ -814,19 +883,23 @@ def run(folderOfData, destFolder):
         with open(filepath, 'w') as f:
             json.dump(data, f, sort_keys=sort_keys, indent=indent, cls=ElenaEncoder)
 
+    # try:
+    #     with open('all_stacks.pickle', 'r') as f:
+    #         all_stacks = pickle.load(f)
+    # except:
     # Load solutions
     all_solutions = []
     populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
 
     # Collect variables into AbstractVariables
-    all_abstracts = []
+    correct_abstracts = []
+    correct_solutions, incorrect_solutions = [], []
     skipped_extract_sequences = extract_and_collect_var_seqs(
-        all_solutions, all_abstracts)
+        all_solutions, correct_solutions, incorrect_solutions, correct_abstracts)
 
-##### TODO: here is where to work.
-# first name only correct solutions as usual
-# then go through incorrects and try to infer names
-    find_canon_names(all_abstracts)
+    find_canon_names(correct_abstracts)
+
+    ########
 
     # Collect lines
     all_lines = []
@@ -837,11 +910,35 @@ def run(folderOfData, destFolder):
     #     pprint.pprint(line.getDict())
 
     # Canonicalize source and collect phrases
-    skipped_rewrite = rewrite_all_solutions(all_solutions, folderOfData)
+    # This is no longer doing anything relevant to the rest of the pipeline.
+    # TODO: store the (former) output of this somewhere for ease of rendering?
+    # this is the only place where name clashes between multiple copies of a
+    # single abs. var. are handled.
+    # skipped_rewrite = rewrite_all_solutions(all_solutions, folderOfData)
 
     # Stack solutions
-    all_stacks = []
-    stack_solutions(all_solutions, all_stacks)
+    correct_stacks = []
+    stack_solutions(correct_solutions, correct_stacks)
+
+    # incorrect_stacks = []
+    # stack_solutions(incorrect_solutions, incorrect_stacks)
+
+    # pprint.pprint([s.members for s in incorrect_stacks], indent=2)
+
+    var_template_info = {}
+    create_template_info_output(correct_stacks, incorrect_solutions, var_template_info)
+    dumpOutput(var_template_info, 'var_template_info.json')
+    # dumpOutput([str(l) for l in all_lines], 'lines.json')
+
+    find_voting_stacks(correct_stacks, incorrect_solutions)
+    voters = {}
+    for sol in incorrect_solutions:
+        voters[sol.solnum] = [s.representative.solnum for s in sol.voting_stacks]
+    dumpOutput(voters, 'voters.json')
+    return
+
+    # with open('all_stacks.pickle', 'w') as f:
+    #     pickle.dump(all_stacks, f)
 
     # Get output
     solutions = []
@@ -857,5 +954,5 @@ def run(folderOfData, destFolder):
     dumpOutput(variables, 'variables.json')
     dumpOutput(avar_template_info, 'abstract_var_info.json')
 
-    print "skipped when extracting:", skipped_extract_sequences
-    print "skipped when rewriting:", skipped_rewrite
+    # print "skipped when extracting:", skipped_extract_sequences
+    # print "skipped when rewriting:", skipped_rewrite
