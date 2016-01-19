@@ -12,17 +12,20 @@ from pipeline_util import ensure_folder_exists, make_hashable
 
 use_original_line_equality_metric = False
 
+# CORRECT_OUTPUT = {
+#     "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
+#     "dotProduct([-45], [-60])": 2700, 
+#     "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
+#     "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
+#     "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
+#     "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
+#     "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
+#     "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
+#     "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
+#     "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
+# }
 CORRECT_OUTPUT = {
-    "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
-    "dotProduct([-45], [-60])": 2700, 
-    "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
-    "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
-    "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
-    "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
-    "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
-    "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
-    "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
-    "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
+    "dotProduct([1, 2, 3], [4, 5, 6])": 32
 }
 
 
@@ -78,6 +81,8 @@ class VariableInstance(object):
         self.abstract_var = None
         self.rename_to = None
 
+        self.templates = set()
+
     def __repr__(self):
         return "Variable(" + self.local_name + ") in solution " + str(self.solnum)
 
@@ -103,6 +108,8 @@ class AbstractVariable(object):
         self.name_ctr = Counter()
         self.canon_name = None
         self.is_unique = None
+
+        self.templates = set()
 
     def should_contain(self, inst):
         """
@@ -579,7 +586,8 @@ def compute_lines(sol, tidy_path, all_lines):
 
         for var_obj in set(variable_objects):
             indices = tuple(i for (i, v) in enumerate(variable_objects) if v==var_obj)
-            sol.var_obj_to_templates[var_obj].add((template, indices))
+            # sol.var_obj_to_templates[var_obj].add((template, indices))
+            var_obj.templates.add((template, indices))
 
         add_to_setlist(line_object, all_lines)
 
@@ -858,6 +866,16 @@ def reformat_variables(variables):
             'sequence': var.sequence
         }
 
+def create_avar_output(correct_abstracts):
+    info = {}
+    for avar in correct_abstracts:
+        avar_info = {
+            'values': avar.sequence,
+            'templates': list(avar.templates) #[{'template': t[0], 'indices': t[1]} for t in avar.templates]
+        }
+        info[avar.canon_name] = avar_info
+    return info
+
 
 ###############################################################################
 ## Dump output
@@ -905,6 +923,12 @@ def run(folderOfData, destFolder):
     all_lines = []
     skipped_by_renamer = compute_all_lines(all_solutions,folderOfData,all_lines)
 
+    # pprint.pprint(correct_abstracts[0].templates, indent=2)
+    # return
+
+    dumpOutput(create_avar_output(correct_abstracts), 'avar_info.json')
+    return
+
     # print 'printing all_lines:'
     # for line in all_lines:
     #     pprint.pprint(line.getDict())
@@ -925,17 +949,17 @@ def run(folderOfData, destFolder):
 
     # pprint.pprint([s.members for s in incorrect_stacks], indent=2)
 
-    var_template_info = {}
-    create_template_info_output(correct_stacks, incorrect_solutions, var_template_info)
-    dumpOutput(var_template_info, 'var_template_info.json')
-    # dumpOutput([str(l) for l in all_lines], 'lines.json')
+    # var_template_info = {}
+    # create_template_info_output(correct_stacks, incorrect_solutions, var_template_info)
+    # dumpOutput(var_template_info, 'var_template_info.json')
+    # # dumpOutput([str(l) for l in all_lines], 'lines.json')
 
-    find_voting_stacks(correct_stacks, incorrect_solutions)
-    voters = {}
-    for sol in incorrect_solutions:
-        voters[sol.solnum] = [s.representative.solnum for s in sol.voting_stacks]
-    dumpOutput(voters, 'voters.json')
-    return
+    # find_voting_stacks(correct_stacks, incorrect_solutions)
+    # voters = {}
+    # for sol in incorrect_solutions:
+    #     voters[sol.solnum] = [s.representative.solnum for s in sol.voting_stacks]
+    # dumpOutput(voters, 'voters.json')
+    # return
 
     # with open('all_stacks.pickle', 'w') as f:
     #     pickle.dump(all_stacks, f)
