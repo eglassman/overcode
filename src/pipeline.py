@@ -12,21 +12,21 @@ from pipeline_util import ensure_folder_exists, make_hashable
 
 use_original_line_equality_metric = False
 
-# CORRECT_OUTPUT = {
-#     "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
-#     "dotProduct([-45], [-60])": 2700, 
-#     "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
-#     "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
-#     "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
-#     "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
-#     "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
-#     "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
-#     "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
-#     "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
-# }
 CORRECT_OUTPUT = {
-    "dotProduct([1, 2, 3], [4, 5, 6])": 32
+    "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
+    "dotProduct([-45], [-60])": 2700, 
+    "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
+    "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
+    "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
+    "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
+    "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
+    "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
+    "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
+    "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
 }
+# CORRECT_OUTPUT = {
+#     "dotProduct([1, 2, 3], [4, 5, 6])": 32
+# }
 
 
 ###############################################################################
@@ -598,7 +598,7 @@ def compute_all_lines(all_solutions, folderOfData, all_lines):
         try:
             print "Computing lines for", sol.solnum
             compute_lines(sol, tidy_path,all_lines)
-            print 'length of lines ',len(all_lines)
+            # print 'length of lines ',len(all_lines)
         except RenamerException:
             skipped.append(sol.solnum)
 
@@ -760,6 +760,76 @@ def find_voting_stacks(correct_stacks, incorrect_solutions):
 
         voting_stacks = [correct_stacks[i] for i in indices]
         wrong_sol.voting_stacks = voting_stacks
+
+def find_matching_var(var_to_match, correct_abstracts):
+    # print "trying to match:",var_to_match.local_name
+    best_diff = float('inf')
+    best_avar = None
+    for avar in correct_abstracts:
+        if avar.should_contain(var_to_match):
+            avar.add_instance(var_to_match)
+            return 'values_match'
+
+        diff = var_to_match.templates - avar.templates
+        if len(diff) == 0:
+            # print "Matches with:", avar
+            var_to_match.maps_to = avar
+            return 'templates_match_perfectly'
+        elif len(diff) < best_diff:
+            best_diff = len(diff)
+            best_avar = avar
+    if best_diff == 1:
+        var_to_match.maps_to = best_avar
+        return 'templates_off_by_1'
+    else:
+        return 'no_match'
+
+def render_template_indices((template, indices), fill_in):
+    buildme = []
+    last_end = 0
+    for i, match in enumerate(re.finditer('___', template)):
+        buildme.append(template[last_end:match.start()])
+        if i in indices:
+            buildme.append(fill_in)
+        else:
+            buildme.append('___')
+        last_end = match.end()
+    buildme.append(template[last_end:])
+    return ''.join(buildme)
+
+def find_all_matching_vars(incorrect_solutions, correct_abstracts):
+    total_num_vars = 0
+    num_perfect = 0
+    num_unmatched = 0
+    output = []
+    for sol in incorrect_solutions:
+        for lvar in sol.local_vars:
+            match_type = find_matching_var(lvar, correct_abstracts)
+
+            result = {
+                'solution': sol.solnum,
+                'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates],
+                'match_type': match_type
+            }
+            total_num_vars += 1
+            if match_type == 'values_match':
+                avar = lvar.abstract_var
+                num_perfect += 1
+            elif match_type == 'no_match':
+                output.append(result)
+                num_unmatched += 1
+                continue
+            else:
+                avar = lvar.maps_to
+            result['maps_to'] = [render_template_indices(t, avar.canon_name) for t in avar.templates],
+            result['values_of_match'] = avar.sequence
+
+            output.append(result)
+    print "Total number of variables:", total_num_vars
+    print "Number of perfect variables:", num_perfect
+    print "Number of unmatched variables:",num_unmatched
+    return output
+
 
 ###############################################################################
 ## Populate solutions, phrases, variables
@@ -926,8 +996,8 @@ def run(folderOfData, destFolder):
     # pprint.pprint(correct_abstracts[0].templates, indent=2)
     # return
 
-    dumpOutput(create_avar_output(correct_abstracts), 'avar_info.json')
-    return
+    # dumpOutput(create_avar_output(correct_abstracts), 'avar_info.json')
+    # return
 
     # print 'printing all_lines:'
     # for line in all_lines:
@@ -943,6 +1013,17 @@ def run(folderOfData, destFolder):
     # Stack solutions
     correct_stacks = []
     stack_solutions(correct_solutions, correct_stacks)
+
+    print "Number of incorrect solutions:",len(incorrect_solutions)
+
+    results = find_all_matching_vars(incorrect_solutions, correct_abstracts)
+    dumpOutput(results, 'var_mappings.json')
+    return
+    # v = incorrect_solutions[0].local_vars[0]
+    # find_matching_var(v, correct_abstracts)
+    # for template, indices in v.templates:
+    #     print render_template_indices(template, indices, v.local_name)
+    # return
 
     # incorrect_stacks = []
     # stack_solutions(incorrect_solutions, incorrect_stacks)
