@@ -8,6 +8,8 @@ import pickle
 import pprint
 import re
 
+import editdistance
+
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
 
@@ -777,18 +779,32 @@ def find_voting_stacks(correct_stacks, incorrect_solutions):
         voting_stacks = [correct_stacks[i] for i in indices]
         wrong_sol.voting_stacks = voting_stacks
 
+def break_ties(var_to_match, best_avars):
+    if len(best_avars) > 1:
+        print "\n**********\n"
+        print "matching for:", var_to_match.local_name
+        pprint.pprint(var_to_match.templates, indent=2)
+
+        print "\nbest avars:"
+        for avar in best_avars:
+            print "avar:",avar.canon_name
+            pprint.pprint(avar.templates, indent=2)
+
+    return best_avars[0]
+
 def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
     # print "\n\nMatching for variable:", var_to_match.local_name
     # pprint.pprint(list(var_to_match.templates), indent=2)
 
     # print "trying to match:",var_to_match.local_name
     # best_shared = 0
-    best_avar = None
+    best_avars = []
     best_info_content = 0
     for avar in correct_abstracts:
         if avar.should_contain(var_to_match):
             avar.add_instance(var_to_match)
-            return ('values_match', None)
+            # return ('values_match', None)
+            return
 
         # print "\navar:", avar.canon_name
         # pprint.pprint(list(avar.templates), indent=2)
@@ -804,16 +820,29 @@ def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
             if len(diff) == 0:
                 # print "Matches with:", avar
                 var_to_match.maps_to = avar
-                return ('templates_match_perfectly', match_info_content)
-            elif match_info_content > best_info_content:
+                return
+                # return ('templates_match_perfectly', match_info_content)
+            elif match_info_content >= best_info_content:
                 best_info_content = match_info_content
-                best_avar = avar
+                best_avars.append(avar)
 
-    if best_avar is not None:
-        var_to_match.maps_to = best_avar
-        return ('templates_differ', best_info_content)
+    if best_avars:
+        if len(best_avars) > 1:
+            results = []
+            for avar in best_avars:
+                ed = editdistance.eval(avar.canon_name, var_to_match.local_name)
+                res = {
+                    'avar_templates': map(str, avar.templates),
+                    'edit_distance': ed,
+                    'avar_name': avar.canon_name,
+                }
+                results.append(res)
+            return results
+        # var_to_match.maps_to = break_ties(var_to_match, best_avars)
+        # return ('templates_differ', best_info_content)
     else:
-        return ('no_match', None)
+        # return ('no_match', None)
+        pass
 
 def render_template_indices((template, indices), fill_in):
     buildme = []
@@ -834,32 +863,40 @@ def find_all_matching_vars(incorrect_solutions, correct_abstracts):
     num_perfect = 0
     num_unmatched = 0
     output = []
+    # output = {}
     for sol in incorrect_solutions:
         for lvar in sol.local_vars:
-            (match_type, info_content) = find_matching_var(
-                lvar, correct_abstracts, scores, threshold)
+            matches = find_matching_var(lvar, correct_abstracts, scores, threshold)
+            if matches:
+                output.append({
+                    'lvar_name': lvar.local_name,
+                    'lvar_templates': map(str, lvar.templates),
+                    'matches': matches
+                })
+            # (match_type, info_content) = find_matching_var(
+            #     lvar, correct_abstracts, scores, threshold)
 
-            result = {
-                'solution': sol.solnum,
-                'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates],
-                'match_type': match_type
-            }
-            total_num_vars += 1
-            if match_type == 'values_match':
-                avar = lvar.abstract_var
-                num_perfect += 1
-                # continue
-            elif match_type == 'no_match':
-                output.append(result)
-                num_unmatched += 1
-                continue
-            else:
-                avar = lvar.maps_to
-                result['info_content'] = info_content
-            result['maps_to'] = [render_template_indices(t, avar.canon_name) for t in avar.templates],
-            result['values_of_match'] = avar.sequence
+            # result = {
+            #     'solution': sol.solnum,
+            #     'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates],
+            #     'match_type': match_type
+            # }
+            # total_num_vars += 1
+            # if match_type == 'values_match':
+            #     avar = lvar.abstract_var
+            #     num_perfect += 1
+            #     # continue
+            # elif match_type == 'no_match':
+            #     output.append(result)
+            #     num_unmatched += 1
+            #     continue
+            # else:
+            #     avar = lvar.maps_to
+            #     result['info_content'] = info_content
+            # result['maps_to'] = [render_template_indices(t, avar.canon_name) for t in avar.templates],
+            # result['values_of_match'] = avar.sequence
 
-            output.append(result)
+            # output.append(result)
     print "Total number of variables:", total_num_vars
     print "Number of perfect variables:", num_perfect
     print "Number of unmatched variables:",num_unmatched
@@ -1051,15 +1088,15 @@ def run(folderOfData, destFolder):
 
     print "Number of incorrect solutions:",len(incorrect_solutions)
 
-    scores, threshold = find_template_info_scores(correct_abstracts)
-    pprint.pprint(dict(scores), indent=2)
+    # scores, threshold = find_template_info_scores(correct_abstracts)
+    # pprint.pprint(dict(scores), indent=2)
     # print sum(scores.values())
 
     # for i in range(2):
     #     for lvar in incorrect_solutions[i].local_vars:
     #         find_matching_var(lvar, correct_abstracts, scores)
     results = find_all_matching_vars(incorrect_solutions, correct_abstracts)
-    dumpOutput(results, 'var_mappings.json')
+    dumpOutput(results, 'ed_test.json')
     return
     # v = incorrect_solutions[0].local_vars[0]
     # find_matching_var(v, correct_abstracts)
