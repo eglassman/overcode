@@ -1,6 +1,7 @@
 import cgi
 from collections import Counter
 import json
+from math import log
 import os
 from os import path
 import pickle
@@ -367,6 +368,21 @@ def find_canon_names(all_abstracts):
         else:
             unique.canon_name = name
 
+def find_template_info_scores(abstracts):
+    counts = Counter()
+    for avar in abstracts:
+        counts.update(avar.templates)
+    total = float(sum(counts.values()))
+
+    # log2(1/p)
+    scores = { template: log(total/count, 2) for template, count in counts.iteritems() }
+
+    # Set a threshold that will separate templates that appear once from those
+    # that appear more than once. The difference in entropy between a template
+    # that appears once and one that appears twice is always 1 because of how
+    # logs work, so just add 0.5 to separate nicely.
+    threshold = log(total/2.0, 2) + 0.5
+    return (scores, threshold)
 
 ###############################################################################
 ## Variable sequence extraction
@@ -761,28 +777,43 @@ def find_voting_stacks(correct_stacks, incorrect_solutions):
         voting_stacks = [correct_stacks[i] for i in indices]
         wrong_sol.voting_stacks = voting_stacks
 
-def find_matching_var(var_to_match, correct_abstracts):
+def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
+    # print "\n\nMatching for variable:", var_to_match.local_name
+    # pprint.pprint(list(var_to_match.templates), indent=2)
+
     # print "trying to match:",var_to_match.local_name
-    best_diff = float('inf')
+    # best_shared = 0
     best_avar = None
+    best_info_content = 0
     for avar in correct_abstracts:
         if avar.should_contain(var_to_match):
             avar.add_instance(var_to_match)
-            return 'values_match'
+            return ('values_match', None)
+
+        # print "\navar:", avar.canon_name
+        # pprint.pprint(list(avar.templates), indent=2)
 
         diff = var_to_match.templates - avar.templates
-        if len(diff) == 0:
-            # print "Matches with:", avar
-            var_to_match.maps_to = avar
-            return 'templates_match_perfectly'
-        elif len(diff) < best_diff:
-            best_diff = len(diff)
-            best_avar = avar
-    if best_diff == 1:
+        shared = var_to_match.templates & avar.templates
+        # Since every template in correct abstract variables is in scores
+        # and we are only looking up the score of templates that are shared
+        # with correct abstract variables, we will never get key errors
+        match_info_content = sum(scores[t] for t in shared)
+
+        if match_info_content > threshold:
+            if len(diff) == 0:
+                # print "Matches with:", avar
+                var_to_match.maps_to = avar
+                return ('templates_match_perfectly', match_info_content)
+            elif match_info_content > best_info_content:
+                best_info_content = match_info_content
+                best_avar = avar
+
+    if best_avar is not None:
         var_to_match.maps_to = best_avar
-        return 'templates_off_by_1'
+        return ('templates_differ', best_info_content)
     else:
-        return 'no_match'
+        return ('no_match', None)
 
 def render_template_indices((template, indices), fill_in):
     buildme = []
@@ -798,13 +829,15 @@ def render_template_indices((template, indices), fill_in):
     return ''.join(buildme)
 
 def find_all_matching_vars(incorrect_solutions, correct_abstracts):
+    scores, threshold = find_template_info_scores(correct_abstracts)
     total_num_vars = 0
     num_perfect = 0
     num_unmatched = 0
     output = []
     for sol in incorrect_solutions:
         for lvar in sol.local_vars:
-            match_type = find_matching_var(lvar, correct_abstracts)
+            (match_type, info_content) = find_matching_var(
+                lvar, correct_abstracts, scores, threshold)
 
             result = {
                 'solution': sol.solnum,
@@ -815,12 +848,14 @@ def find_all_matching_vars(incorrect_solutions, correct_abstracts):
             if match_type == 'values_match':
                 avar = lvar.abstract_var
                 num_perfect += 1
+                # continue
             elif match_type == 'no_match':
                 output.append(result)
                 num_unmatched += 1
                 continue
             else:
                 avar = lvar.maps_to
+                result['info_content'] = info_content
             result['maps_to'] = [render_template_indices(t, avar.canon_name) for t in avar.templates],
             result['values_of_match'] = avar.sequence
 
@@ -1016,6 +1051,13 @@ def run(folderOfData, destFolder):
 
     print "Number of incorrect solutions:",len(incorrect_solutions)
 
+    scores, threshold = find_template_info_scores(correct_abstracts)
+    pprint.pprint(dict(scores), indent=2)
+    # print sum(scores.values())
+
+    # for i in range(2):
+    #     for lvar in incorrect_solutions[i].local_vars:
+    #         find_matching_var(lvar, correct_abstracts, scores)
     results = find_all_matching_vars(incorrect_solutions, correct_abstracts)
     dumpOutput(results, 'var_mappings.json')
     return
