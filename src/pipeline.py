@@ -70,6 +70,18 @@ class Solution(object):
     def getDict(self):
         return self.__dict__
 
+    def difference_metric(self, other):
+        rendered_self = set(l.render() for l in self.canonical_lines)
+        rendered_other = set(l.render() for l in other.canonical_lines)
+        # my_line_total = len(self.canonical_lines)
+        shared_lines = rendered_self & rendered_other
+
+        names_self = set(get_name(v) for v in self.local_vars)
+        names_other = set(get_name(v) for v in other.local_vars)
+        shared_names = names_self & names_other
+
+        return len(shared_lines) + len(shared_names)
+
     def __str__(self):
         return "Solution(" + str(self.solnum) + ")"
     __repr__ = __str__
@@ -778,6 +790,28 @@ def fake_stacks(solutions):
         stacks.append(stack)
     return stacks
 
+# ***********
+def find_closest_stacks(incorrect_stacks, correct_stacks):
+    for wrong_stack in incorrect_stacks:
+        rep = wrong_stack.representative
+        best_metric = 0
+        closest_stacks = []
+        for right_stack in correct_stacks:
+            metric = rep.difference_metric(right_stack.representative)
+            if metric == best_metric:
+                closest_stacks.append(right_stack)
+            elif metric > best_metric:
+                best_metric = metric
+                closest_stacks = [right_stack]
+        wrong_stack.closest_stacks = closest_stacks
+
+    # pprint.pprint(map(lambda l: l.template, incorrect_stacks[1].representative.canonical_lines), indent=2)
+    # for stack in correct_stacks:
+    #     print "\n\n"
+    #     pprint.pprint(map(lambda l: l.template, stack.representative.canonical_lines), indent=2)
+    #     print "METRIC:", incorrect_stacks[1].representative.difference_metric(stack.representative)
+
+
 ###############################################################################
 ## do things with templates
 ###############################################################################
@@ -932,9 +966,10 @@ def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_var
 ###############################################################################
 def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_lines, all_lines):
     stacks_json_format = []
-    for stack in all_stacks:
+    for (i, stack) in enumerate(all_stacks, start=1):
         rep = stack.representative
         stack_json = {
+            'id': i,
             'number': rep.solnum,
             'correct': rep.correct,
             'members': stack.members,
@@ -943,6 +978,9 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             'variableIDs': set(),
             'lines': []
         }
+        if not rep.correct:
+            stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
+
         for (line_object, local_names, indent) in rep.lines:
             # print "line:", line_object
             # print "phrase:", line_object.render()
@@ -1299,6 +1337,7 @@ def run(folderOfData, destFolder):
     all_stacks = correct_stacks + incorrect_fake_stacks
     all_variables = correct_abstracts + incorrect_variables
 
+    find_closest_stacks(incorrect_fake_stacks, correct_stacks)
 
     ordered_phrases = []
     phrase_to_lines = {}
