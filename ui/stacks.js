@@ -122,10 +122,16 @@ var generateCode = function(lines, referencePhraseIDs) {
     } else {
       codeLine = phrase.code;
     }
+
+    var suffix_re = /___(\d+)/g
+    var subscripted_line = codeLine.replace(suffix_re, function(match, digit) {
+      return "<sub>" + digit + "</sub>";
+    });
+
     if (referencePhraseIDs.indexOf(line.phraseID) == -1)
-      code += codeIndent + codeLine + "<br>";
+      code += codeIndent + subscripted_line + "<br>";
     else
-      code += codeIndent + "<span class='dimmed'>" + codeLine + "</span>" + "<br>";
+      code += codeIndent + "<span class='dimmed'>" + subscripted_line + "</span>" + "<br>";
   });
   code += "</code></pre>";
   return code;
