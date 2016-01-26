@@ -36,6 +36,14 @@ span.stackid {
 div.read>pre {
   background-color: #def;
 }
+
+.incorrect-code pre {
+    background-color: #F5EDED;
+}
+.incorrect-code code {
+    background-color: #E8DEDE;
+}
+
 .codeEx {
     display: none;
 }

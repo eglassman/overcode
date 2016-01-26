@@ -325,7 +325,16 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
 
   var stackCode = stackEnter.append("div")
     .attr("class", function(d) {
-      return (d.category == 'done') ? "code read" : "code";
+      var classes = "code";
+      if (d.category == 'done') {
+        classes += " read";
+      }
+      if (!(d.solutions[0].correct)) {
+        classes += " incorrect-code"
+      }
+      return classes
+      // console.log(d.solutions[0].correct)
+      // return (d.category == 'done') ? "code read" : "code";
     });
   stackCode.html(function(d) {
       code = d.id == "miscellaneous" ?
