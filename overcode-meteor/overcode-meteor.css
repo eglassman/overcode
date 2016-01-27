@@ -3,3 +3,6 @@
 .incorrect {
     border: 1px solid red;
 }
+.clicked {
+	border: 1px solid blue;
+}

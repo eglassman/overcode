@@ -9,6 +9,9 @@ Template.solution.helpers({
     },
     "createSpace": function(indent) {
         return " ".repeat(indent);
+    },
+    "clicked": function(stackID){
+        return stackID==Session.get('clickedCorrectStack')
     }
 });
 

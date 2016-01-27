@@ -44,7 +44,7 @@
 </template>
 
 <template name="solution">
-<div class="{{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
+<div class="{{#if correct}}correct{{else}}incorrect{{/if}} {{#if clicked id}}clicked{{/if}}" id="{{id}}">
     ({{count}})
     <pre><code>{{#each lines}}{{createSpace indent}}{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}{{/each}}</code></pre>
