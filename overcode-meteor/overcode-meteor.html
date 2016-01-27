@@ -13,12 +13,8 @@
 </template>
 
 <template name="solution">
-{{log}}
-<p>
-	{{#if correct}} 
-		Correct ({{count}})
-	{{else}}
-		Incorrect ({{count}})
-	{{/if}}
-</p>
+<pre><code>
+{{#each lines}}{{createSpace indent}}{{#with getPhraseFromID phraseID}}{{{code}}}
+{{/with}}{{/each}}
+</code></pre>
 </template>
