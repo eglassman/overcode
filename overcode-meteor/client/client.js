@@ -12,18 +12,21 @@ Template.solution.helpers({
     },
     "clicked": function(stackID){
         return stackID==Session.get('clickedCorrectStack')
+    },
+    "sharedWithClickedStack": function(phraseID){
+        return Session.get('clickedStackPhraseIDs').indexOf(phraseID) >= 0
     }
 });
 
 Template.correctSolutionsList.helpers({
     "solutions": function() {
-        return Stacks.find({}, { sort: ['count', 'desc'] }).fetch();
+        return Stacks.find({}, { sort: {'count': -1} }).fetch();
     }
 });
 
 Template.incorrectSolutionsList.helpers({
     "solutions": function() {
-        return Stacks.find({}, { sort: ['count_closest_stacks', 'asc'] }).fetch();
+        return Stacks.find({}, { sort: {'count_closest_stacks': 1} }).fetch();
     },
     "closestToClickedCorrect": function(closest_stacks){
         // console.log(closest_stacks)
@@ -36,14 +39,14 @@ Template.incorrectSolutionsList.helpers({
 Template.registerHelper('log',function(){
     console.log('template logging',this);
 });
-// Template.registerHelper('solutions',function(){
-//     return Stacks.find({}).fetch();
-// });
 
 Template.solution.events({
     "click .correct": function(event){
-        // console.log('correct solution clicked',event,event.currentTarget)
+        console.log('correct solution clicked',event,event.currentTarget)
         var clickedCorrectStackID = parseInt($(event.currentTarget).prop('id'));
+        var clickedStackPhraseIDs = $(event.currentTarget).data('phraseids');
+        clickedStackPhraseIDs = clickedStackPhraseIDs.split(',').map(function(x){return parseInt(x);});
         Session.set('clickedCorrectStack',clickedCorrectStackID)
+        Session.set('clickedStackPhraseIDs', clickedStackPhraseIDs)
     }
 })

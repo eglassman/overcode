@@ -6,3 +6,6 @@
 .clicked {
 	border: 1px solid blue;
 }
+.dimmed {
+	opacity: 0.5;
+}
