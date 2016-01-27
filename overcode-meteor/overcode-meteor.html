@@ -13,8 +13,10 @@
 </template>
 
 <template name="solution">
-<pre><code>
-{{#each lines}}{{createSpace indent}}{{#with getPhraseFromID phraseID}}{{{code}}}
+<div class="{{#if correct}}correct{{else}}incorrect{{/if}}">
+    ({{count}})
+    <pre><code>{{#each lines}}{{createSpace indent}}{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}{{/each}}
-</code></pre>
+    </code></pre>
+</div>
 </template>

@@ -1,1 +1,5 @@
 /* CSS declarations go here */
+
+.incorrect {
+    border: 1px solid red;
+}
