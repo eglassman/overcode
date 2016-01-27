@@ -795,6 +795,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 17, 
         "lines": [
             {
@@ -831,6 +832,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 18, 
         "lines": [
             {
@@ -878,6 +880,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 19, 
         "lines": [
             {
@@ -920,6 +923,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 20, 
         "lines": [
             {
@@ -962,6 +966,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 21, 
         "lines": [
             {
@@ -1010,6 +1015,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 22, 
         "lines": [
             {
@@ -1082,6 +1088,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 23, 
         "lines": [
             {
@@ -1116,6 +1123,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 24, 
         "lines": [
             {
@@ -1178,6 +1186,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 25, 
         "lines": [
             {
@@ -1243,6 +1252,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 26, 
         "lines": [
             {
@@ -1311,6 +1321,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 27, 
         "lines": [
             {
@@ -1365,6 +1376,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 28, 
         "lines": [
             {
@@ -1412,6 +1424,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 29, 
         "lines": [
             {
@@ -1475,6 +1488,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 30, 
         "lines": [
             {
@@ -1537,6 +1551,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 31, 
         "lines": [
             {
@@ -1568,6 +1583,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 32, 
         "lines": [
             {
@@ -1625,6 +1641,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 33, 
         "lines": [
             {
@@ -1672,6 +1689,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 34, 
         "lines": [
             {
@@ -1734,6 +1752,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 35, 
         "lines": [
             {
@@ -1770,6 +1789,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 36, 
         "lines": [
             {
@@ -1816,6 +1836,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 37, 
         "lines": [
             {
@@ -1863,6 +1884,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 38, 
         "lines": [
             {
@@ -1925,6 +1947,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 39, 
         "lines": [
             {
@@ -2000,6 +2023,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 40, 
         "lines": [
             {
@@ -2047,6 +2071,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 41, 
         "lines": [
             {
@@ -2094,6 +2119,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 42, 
         "lines": [
             {
@@ -2146,6 +2172,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 43, 
         "lines": [
             {
@@ -2204,6 +2231,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 44, 
         "lines": [
             {
@@ -2270,6 +2298,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 14, 
         "id": 45, 
         "lines": [
             {
@@ -2316,6 +2345,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 46, 
         "lines": [
             {
@@ -2374,6 +2404,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 47, 
         "lines": [
             {
@@ -2427,6 +2458,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 48, 
         "lines": [
             {
@@ -2491,6 +2523,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 49, 
         "lines": [
             {
@@ -2543,6 +2576,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 50, 
         "lines": [
             {
@@ -2601,6 +2635,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 51, 
         "lines": [
             {
@@ -2658,6 +2693,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 52, 
         "lines": [
             {
@@ -2703,6 +2739,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 53, 
         "lines": [
             {
@@ -2764,6 +2801,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 54, 
         "lines": [
             {
@@ -2805,6 +2843,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 55, 
         "lines": [
             {
@@ -2854,6 +2893,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 56, 
         "lines": [
             {
@@ -2902,6 +2942,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 57, 
         "lines": [
             {
@@ -2959,6 +3000,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 58, 
         "lines": [
             {
@@ -3022,6 +3064,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 59, 
         "lines": [
             {
@@ -3069,6 +3112,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 60, 
         "lines": [
             {
@@ -3132,6 +3176,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 61, 
         "lines": [
             {
@@ -3185,6 +3230,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 62, 
         "lines": [
             {
@@ -3233,6 +3279,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 63, 
         "lines": [
             {
@@ -3286,6 +3333,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 64, 
         "lines": [
             {
@@ -3345,6 +3393,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 14, 
         "id": 65, 
         "lines": [
             {
@@ -3393,6 +3442,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 66, 
         "lines": [
             {
@@ -3455,6 +3505,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 67, 
         "lines": [
             {
@@ -3506,6 +3557,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 68, 
         "lines": [
             {
@@ -3554,6 +3606,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 69, 
         "lines": [
             {
@@ -3619,6 +3672,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 13, 
         "id": 70, 
         "lines": [
             {
@@ -3666,6 +3720,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 71, 
         "lines": [
             {
@@ -3727,6 +3782,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 72, 
         "lines": [
             {
@@ -3802,6 +3858,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 73, 
         "lines": [
             {
@@ -3868,6 +3925,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 74, 
         "lines": [
             {
@@ -3910,6 +3968,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 13, 
         "id": 75, 
         "lines": [
             {
@@ -3941,6 +4000,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 76, 
         "lines": [
             {
@@ -3999,6 +4059,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 77, 
         "lines": [
             {
@@ -4066,6 +4127,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 78, 
         "lines": [
             {
@@ -4113,6 +4175,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 79, 
         "lines": [
             {
@@ -4171,6 +4234,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 80, 
         "lines": [
             {
@@ -4228,6 +4292,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 81, 
         "lines": [
             {
@@ -4280,6 +4345,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 82, 
         "lines": [
             {
@@ -4331,6 +4397,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 83, 
         "lines": [
             {
@@ -4384,6 +4451,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 84, 
         "lines": [
             {
@@ -4440,6 +4508,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 85, 
         "lines": [
             {
@@ -4491,6 +4560,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 86, 
         "lines": [
             {
@@ -4553,6 +4623,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 87, 
         "lines": [
             {
@@ -4603,6 +4674,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 88, 
         "lines": [
             {
@@ -4650,6 +4722,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 89, 
         "lines": [
             {
@@ -4697,6 +4770,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 90, 
         "lines": [
             {
@@ -4748,6 +4822,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 91, 
         "lines": [
             {
@@ -4796,6 +4871,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 92, 
         "lines": [
             {
@@ -4847,6 +4923,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 93, 
         "lines": [
             {
@@ -4892,6 +4969,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 5, 
         "id": 94, 
         "lines": [
             {
@@ -4954,6 +5032,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 16, 
         "id": 95, 
         "lines": [
             {
@@ -5007,6 +5086,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 96, 
         "lines": [
             {
@@ -5067,6 +5147,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 14, 
         "id": 97, 
         "lines": [
             {
@@ -5126,6 +5207,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 14, 
         "id": 98, 
         "lines": [
             {
@@ -5185,6 +5267,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 14, 
         "id": 99, 
         "lines": [
             {
@@ -5232,6 +5315,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 100, 
         "lines": [
             {
@@ -5278,6 +5362,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 101, 
         "lines": [
             {
@@ -5319,6 +5404,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 102, 
         "lines": [
             {
@@ -5368,6 +5454,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 103, 
         "lines": [
             {
@@ -5420,6 +5507,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 6, 
         "id": 104, 
         "lines": [
             {
@@ -5466,6 +5554,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 6, 
         "id": 105, 
         "lines": [
             {
@@ -5518,6 +5607,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 7, 
         "id": 106, 
         "lines": [
             {
@@ -5565,6 +5655,7 @@ solutions = [
         ], 
         "correct": false, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 107, 
         "lines": [
             {

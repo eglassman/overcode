@@ -15,25 +15,34 @@ Template.solution.helpers({
     }
 });
 
+Template.correctSolutionsList.helpers({
+    "solutions": function() {
+        return Stacks.find({}, { sort: ['count', 'desc'] }).fetch();
+    }
+});
+
 Template.incorrectSolutionsList.helpers({
+    "solutions": function() {
+        return Stacks.find({}, { sort: ['count_closest_stacks', 'asc'] }).fetch();
+    },
     "closestToClickedCorrect": function(closest_stacks){
         // console.log(closest_stacks)
         // return true
         var clickedStack = Session.get('clickedCorrectStack');
         return closest_stacks.indexOf(clickedStack)>=0
     }
-})
+});
 
 Template.registerHelper('log',function(){
     console.log('template logging',this);
 });
-Template.registerHelper('solutions',function(){
-    return Stacks.find({}).fetch();
-});
+// Template.registerHelper('solutions',function(){
+//     return Stacks.find({}).fetch();
+// });
 
 Template.solution.events({
     "click .correct": function(event){
-        console.log('correct solution clicked',event,event.currentTarget)
+        // console.log('correct solution clicked',event,event.currentTarget)
         var clickedCorrectStackID = parseInt($(event.currentTarget).prop('id'));
         Session.set('clickedCorrectStack',clickedCorrectStackID)
     }
