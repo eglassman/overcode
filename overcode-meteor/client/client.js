@@ -2,11 +2,6 @@ Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 Variables = new Mongo.Collection('variables');
 
-Template.solutionsList.helpers({
-	"solutions": function () {
-		return Stacks.find({}).fetch();
-	}
-});
 
 Template.solution.helpers({
     "getPhraseFromID": function(phraseID) {
@@ -19,4 +14,7 @@ Template.solution.helpers({
 
 Template.registerHelper('log',function(){
     console.log('template logging',this);
+});
+Template.registerHelper('solutions',function(){
+    return Stacks.find({}).fetch();
 });

@@ -3,13 +3,42 @@
 </head>
 
 <body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            {{> correctSolutionsList}}
+        </div>
+        <div class="col-xs-6">
+            {{> incorrectSolutionsList}}
+        </div>
+    </div>
+</div>
+
+<h5>All Solutions</h5>
 {{> solutionsList}}
+
 </body>
 
+<template name="correctSolutionsList">
+    {{#each solutions}}
+        {{#if correct}}
+            {{> solution}}
+        {{/if}}
+    {{/each}}
+</template>
+
+<template name="incorrectSolutionsList">
+    {{#each solutions}}
+        {{#unless correct}}
+            {{> solution}}
+        {{/unless}}
+    {{/each}}
+</template>
+
 <template name="solutionsList">
-	{{#each solutions}}
-		{{> solution}}
-	{{/each}}
+    {{#each solutions}}
+        {{> solution}}
+    {{/each}}
 </template>
 
 <template name="solution">
