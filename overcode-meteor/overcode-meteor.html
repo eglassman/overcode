@@ -3,9 +3,22 @@
 </head>
 
 <body>
-
+{{> solutionsList}}
 </body>
 
-<template name="solution">
+<template name="solutionsList">
+	{{#each solutions}}
+		{{> solution}}
+	{{/each}}
+</template>
 
+<template name="solution">
+{{log}}
+<p>
+	{{#if correct}} 
+		Correct ({{count}})
+	{{else}}
+		Incorrect ({{count}})
+	{{/if}}
+</p>
 </template>
