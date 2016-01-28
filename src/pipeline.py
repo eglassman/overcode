@@ -8,8 +8,6 @@ import pickle
 import pprint
 import re
 
-# import editdistance
-
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
 
@@ -46,6 +44,17 @@ def add_to_setlist(elem,setlist):
                 return
         setlist.append(elem)
 
+def get_name(var_obj):
+    """Get the canonicalized name for a variable object."""
+
+    if isinstance(var_obj, AbstractVariable):
+        return var_obj.canon_name
+    if var_obj.abstract_var:
+        return var_obj.abstract_var.canon_name
+    if var_obj.maps_to:
+        return var_obj.maps_to.canon_name
+    return var_obj.local_name
+
 
 ###############################################################################
 ## Classes
@@ -64,7 +73,6 @@ class Solution(object):
         # a list of line objects
         self.canonical_lines = []
 
-        self.var_obj_to_templates = {}
         self.correct = None
 
     def getDict(self):
@@ -195,15 +203,6 @@ class AbstractVariable(object):
 
     __str__ = __repr__
 
-def get_name(var_obj):
-    if isinstance(var_obj, AbstractVariable):
-        return var_obj.canon_name
-    if var_obj.abstract_var:
-        return var_obj.abstract_var.canon_name
-    if var_obj.maps_to:
-        return var_obj.maps_to.canon_name
-    return var_obj.local_name
-
 class Line(object):
     """A line of code, without indent recorded, with blanks for variables, and
     the corresponding abstract variables to fill the blanks."""
@@ -248,8 +247,6 @@ class Stack(object):
         self.members = []
         self.count = 0
 
-        self.var_obj_to_templates = {}
-
     def should_contain(self, sol):
         """
         Whether a particular solution belongs in this stack.
@@ -282,12 +279,6 @@ class Stack(object):
             self.representative = sol
         self.members.append(sol.solnum)
         self.count += 1
-
-        for avar in sol.var_obj_to_templates:
-            if avar in self.var_obj_to_templates:
-                self.var_obj_to_templates[avar] |= sol.var_obj_to_templates[avar]
-            else:
-                self.var_obj_to_templates[avar] = sol.var_obj_to_templates[avar]
 
 
 ###############################################################################
@@ -326,6 +317,7 @@ def populate_from_pickles(all_solutions, pickleSrc):
         sol = Solution(solnum, testcase_to_trace)
 
         all_solutions.append(sol)
+
 
 ###############################################################################
 ## Abstract variable collection
@@ -411,6 +403,7 @@ def find_template_info_scores(abstracts):
     threshold = log(total/2.0, 2) + 0.5
     return (scores, threshold)
 
+
 ###############################################################################
 ## Variable sequence extraction
 ###############################################################################
@@ -489,12 +482,6 @@ def extract_sequences_single_sol(sol, correct_abstracts, correct_output):
         if sol.correct:
             add_to_abstracts(var, correct_abstracts)
             sol.abstract_vars.append(var.abstract_var)
-            var_to_map = var.abstract_var
-        else:
-            var_to_map = var
-
-        if var_to_map not in sol.var_obj_to_templates:
-            sol.var_obj_to_templates[var_to_map] = set()
 
 def extract_and_collect_var_seqs(all_solutions,
                                  correct_solutions,
@@ -526,6 +513,7 @@ def extract_and_collect_var_seqs(all_solutions,
             skipped.append(sol.solnum)
 
     return skipped
+
 
 ###############################################################################
 ## Line computation functions
@@ -629,7 +617,6 @@ def compute_lines(sol, tidy_path, all_lines):
 
         for var_obj in set(variable_objects):
             indices = tuple(i for (i, v) in enumerate(variable_objects) if v==var_obj)
-            # sol.var_obj_to_templates[var_obj].add((template, indices))
             var_obj.templates.add((template, indices))
 
         add_to_setlist(line_object, all_lines)
@@ -646,6 +633,7 @@ def compute_all_lines(all_solutions, folderOfData, all_lines):
             skipped.append(sol.solnum)
 
     return skipped
+
 
 ###############################################################################
 ## Rewrite solutions
@@ -790,7 +778,6 @@ def fake_stacks(solutions):
         stacks.append(stack)
     return stacks
 
-# ***********
 def find_closest_stacks(incorrect_stacks, correct_stacks):
     for wrong_stack in incorrect_stacks:
         rep = wrong_stack.representative
@@ -815,54 +802,16 @@ def find_closest_stacks(incorrect_stacks, correct_stacks):
 ###############################################################################
 ## do things with templates
 ###############################################################################
-def template_sets_close_enough(set1, set2):
-    in1not2 = set1 - set2
-    in2not1 = set2 - set1
-    return max(len(in1not2), len(in2not1)) == 1
-
-def find_voting_stacks(correct_stacks, incorrect_solutions):
-    correct_template_sets = [
-        set(l.template for l in stack.representative.canonical_lines) for stack in correct_stacks
-    ]
-    for wrong_sol in incorrect_solutions:
-        bad_template_set = set(l.template for l in wrong_sol.canonical_lines)
-        indices = []
-        for i, correct_set in enumerate(correct_template_sets):
-            if template_sets_close_enough(bad_template_set, correct_set):
-                indices.append(i)
-
-        voting_stacks = [correct_stacks[i] for i in indices]
-        wrong_sol.voting_stacks = voting_stacks
-
 def break_ties(var_to_match, best_avars):
-    # if len(best_avars) > 1:
-    #     print "\n**********\n"
-    #     print "matching for:", var_to_match.local_name
-    #     pprint.pprint(var_to_match.templates, indent=2)
-
-    #     print "\nbest avars:"
-    #     for avar in best_avars:
-    #         print "avar:",avar.canon_name
-    #         pprint.pprint(avar.templates, indent=2)
-
     return best_avars[0]
 
 def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
-    # print "\n\nMatching for variable:", var_to_match.local_name
-    # pprint.pprint(list(var_to_match.templates), indent=2)
-
-    # print "trying to match:",var_to_match.local_name
-    # best_shared = 0
     best_avars = []
     best_info_content = 0
     for avar in correct_abstracts:
         if avar.should_contain(var_to_match):
             avar.add_instance(var_to_match)
             return ('values_match', None)
-            # return
-
-        # print "\navar:", avar.canon_name
-        # pprint.pprint(list(avar.templates), indent=2)
 
         diff = var_to_match.templates - avar.templates
         shared = var_to_match.templates & avar.templates
@@ -873,31 +822,17 @@ def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
 
         if match_info_content > threshold:
             if len(diff) == 0:
-                # print "Matches with:", avar
                 var_to_match.maps_to = avar
-                # return
                 return ('templates_match_perfectly', match_info_content)
             elif match_info_content >= best_info_content:
                 best_info_content = match_info_content
                 best_avars.append(avar)
 
     if best_avars:
-        # if len(best_avars) > 1:
-        #     results = []
-        #     for avar in best_avars:
-        #         ed = editdistance.eval(avar.canon_name, var_to_match.local_name)
-        #         res = {
-        #             'avar_templates': map(str, avar.templates),
-        #             'edit_distance': ed,
-        #             'avar_name': avar.canon_name,
-        #         }
-        #         results.append(res)
-        #     return results
         var_to_match.maps_to = break_ties(var_to_match, best_avars)
         return ('templates_differ', best_info_content)
     else:
         return ('no_match', None)
-        # pass
 
 def render_template_indices((template, indices), fill_in):
     buildme = []
@@ -914,39 +849,23 @@ def render_template_indices((template, indices), fill_in):
 
 def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_variables):
     scores, threshold = find_template_info_scores(correct_abstracts)
-    # total_num_vars = 0
-    # num_perfect = 0
-    # num_unmatched = 0
     output = []
     for sol in incorrect_solutions:
         for lvar in sol.local_vars:
-            # matches = find_matching_var(lvar, correct_abstracts, scores, threshold)
-            # if matches:
-            #     output.append({
-            #         'lvar_name': lvar.local_name,
-            #         'lvar_templates': map(str, lvar.templates),
-            #         'matches': matches
-            #     })
-
             (match_type, info_content) = find_matching_var(
                 lvar, correct_abstracts, scores, threshold)
             if match_type != 'values_match':
                 incorrect_variables.append(lvar)
 
-            #########
             result = {
                 'solution': sol.solnum,
                 'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates],
                 'match_type': match_type
             }
-            # total_num_vars += 1
             if match_type == 'values_match':
                 avar = lvar.abstract_var
-                # num_perfect += 1
-                # continue
             elif match_type == 'no_match':
                 output.append(result)
-                # num_unmatched += 1
                 continue
             else:
                 avar = lvar.maps_to
@@ -955,9 +874,6 @@ def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_var
             result['values_of_match'] = avar.sequence
 
             output.append(result)
-    # print "Total number of variables:", total_num_vars
-    # print "Number of perfect variables:", num_perfect
-    # print "Number of unmatched variables:",num_unmatched
     return output
 
 
@@ -980,15 +896,9 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
         }
         if not rep.correct:
             stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
+            stack_json['count_closest_stacks'] = len(stack_json['closest_stacks']);
 
         for (line_object, local_names, indent) in rep.lines:
-            # print "line:", line_object
-            # print "phrase:", line_object.render()
-            # print "phrases:"
-            # pprint.pprint(phrases, indent=2)
-            # print "all_lines:"
-            # pprint.pprint(all_lines, indent=2)
-
             phrase = line_object.render()
             line_obj_id = all_lines.index(line_object)
             if phrase not in phrase_to_lines:
@@ -996,21 +906,12 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
                 ordered_phrases.append(phrase)
             phrase_to_lines[phrase].add(line_obj_id)
             phraseID = ordered_phrases.index(phrase) + 1
-            # phrase_and_line = (phrase, line_obj_id)
-            # if phrase_and_line not in phrases:
-            #     phrases.append(phrase_and_line)
-
-            # phraseID = phrases.index(phrase_and_line) + 1
             stack_json['phraseIDs'].add(phraseID)
             stack_json['lines'].append({
                 'indent': indent,
                 'phraseID': phraseID
             })
 
-        # if rep.correct:
-        #     iter_thru = rep.abstract_vars
-        # else:
-        #     iter_thru = rep.local_vars
         if rep.correct:
             for avar in rep.abstract_vars:
                 # if not var.canon_name.endswith('__'):
@@ -1040,17 +941,9 @@ def format_variable_output(all_abstracts):
 
 def format_line_output(all_lines):
     expanded_output = []
-    # rendered_lines = []
     for (i, line) in enumerate(all_lines):
-        # rendered = line.render()
-        # if rendered not in rendered_lines:
-        #     rendered_lines.append(rendered)
-        #     line_id = len(rendered_lines)
-        # else:
-        #     line_id = rendered_lines.index(rendered)
         expanded_output.append({
             'id': i + 1,
-            # 'code': cgi.escape(rendered),
             'expanded_representation': str(line)
         })
     return expanded_output
@@ -1064,158 +957,6 @@ def format_phrase_output(ordered_phrases, phrase_to_lines):
             'id': i + 1
         })
     return phrases_json_format
-
-    # expanded_line_representation = []
-    # phrases_json_format = []
-
-    # current_id = 0
-    # seen_renders = []
-    # for line in all_lines:
-    #     rendered = line.render()
-    #     if line not in seen_renders:
-    #         seen_renders.append(rendered)
-    #         current_id += 1
-    #         phrases_json_format.append({
-    #             'id': current_id,
-    #             'code': cgi.escape(rendered)
-    #         })
-    #     line_id = seen_renders.index(rendered)
-    #     expanded_line_representation.append({
-    #         'corresponding_phrase_id': line_id,
-    #         'code': cgi.escape(rendered),
-    #         'expanded_representation': str(line)
-    #     })
-        # if rendered in seen_renders:
-        #     line_id = seen_renders.index(rendered) + 1
-        # else:
-        #     line_id = current_id
-        #     current_id += 1
-        #     seen_renders.append(rendered)
-        #     phrases_json_format.append({
-        #         'id': line_id,
-        #         'code': rendered
-        #     })
-
-        # phrases_json_format.append({
-        #     'id': i + 1,
-        #     'code': cgi.escape(line.render()), # put the right thing here
-        #     'expanded_representation': str(line)
-        # })
-    # return (phrases_json_format, expanded_line_representation)
-
-######
-def create_output(all_stacks, solutions, lines, variables, avar_template_info):
-    """
-    Make dictionaries in the expected output format by collecting
-    info from the Stacks.
-
-    all_stacks: list of Stack instances
-    solutions, lines, variables: lists to add results to
-
-    mutates solutions, lines, and variables
-    """
-
-    for stack in all_stacks:
-        solution = {}
-        solution['phraseIDs'] = set()
-        solution['variableIDs'] = set()
-        solution['lines'] = []
-        rep = stack.representative
-        for i in range(len(rep.lines)):
-            (line_object, local_names, indent) = rep.lines[i]
-            # phrase = str(line_object)  #.render()
-            # if phrase not in lines:
-            #     lines.append(phrase)
-            phraseID = lines.index(line_object) + 1
-            solution['phraseIDs'].add(phraseID)
-            lineDict = {
-                'indent': indent,
-                'phraseID': phraseID
-            }
-            solution['lines'].append(lineDict)
-
-        for avar in rep.abstract_vars:
-            if not avar.canon_name.endswith('__'):
-                if avar not in variables:
-                    variables.append(avar)
-                varID = variables.index(avar) + 1
-                solution['variableIDs'].add(varID)
-        solution['number'] = rep.solnum
-        solution['output'] = rep.output
-        solution['members'] = stack.members
-        solution['count'] = stack.count
-        solution['phraseIDs'] = list(solution['phraseIDs'])
-        solution['variableIDs'] = list(solution['variableIDs'])
-        solutions.append(solution)
-
-        var_obj_to_templates = {}
-        for avar in stack.var_obj_to_templates:
-            var_obj_to_templates[avar.canon_name] = {
-                'templates': list(stack.var_obj_to_templates[avar]),
-                'values': avar.sequence
-            }
-        avar_template_info[rep.solnum] = var_obj_to_templates
-
-def create_template_info_output(stacks, incorrect_solutions, var_template_info):
-    for stack in stacks:
-        var_name_to_templates = {
-            '__correct__': stack.representative.correct,
-            '__members__': stack.members,
-        }
-        for var_obj in stack.var_obj_to_templates:
-            if isinstance(var_obj, AbstractVariable):
-                name = var_obj.canon_name
-            else:
-                name = var_obj.local_name + '_(local)'
-            var_name_to_templates[name] = {
-                'templates': list(stack.var_obj_to_templates[var_obj]),
-                'values': var_obj.sequence
-            }
-        var_template_info[stack.representative.solnum] = var_name_to_templates
-    for sol in incorrect_solutions:
-        var_name_to_templates = { '__correct__': False }
-        for lvar in sol.var_obj_to_templates:
-            var_name_to_templates[lvar.local_name] = {
-                'templates': list(sol.var_obj_to_templates[lvar]),
-                'values': lvar.sequence
-            }
-        var_template_info[sol.solnum] = var_name_to_templates
-
-def reformat_phrases(phrases):
-    """
-    Put the phrases list into the expected output format.
-    """
-
-    # TODO: feature spans?
-    for i in range(len(phrases)):
-        phrase = phrases[i]
-        phrases[i] = {
-            'id': i+1,
-            'code': cgi.escape(phrase)
-        }
-
-def reformat_variables(variables):
-    """
-    Put the variables list into the expected output format.
-    """
-
-    for i in range(len(variables)):
-        var = variables[i]
-        variables[i] = {
-            'id': i+1,
-            'varName': var.canon_name,
-            'sequence': var.sequence
-        }
-
-def create_avar_output(correct_abstracts):
-    info = {}
-    for avar in correct_abstracts:
-        avar_info = {
-            'values': avar.sequence,
-            'templates': list(avar.templates) #[{'template': t[0], 'indices': t[1]} for t in avar.templates]
-        }
-        info[avar.canon_name] = avar_info
-    return info
 
 
 ###############################################################################
@@ -1232,6 +973,7 @@ class ElenaEncoder(json.JSONEncoder):
           return {'type':'function'}
        return json.JSONEncoder.default(self, obj)
 
+
 ###############################################################################
 ## Run the pipeline!
 ###############################################################################
@@ -1242,10 +984,6 @@ def run(folderOfData, destFolder):
         with open(filepath, 'w') as f:
             json.dump(data, f, sort_keys=sort_keys, indent=indent, cls=ElenaEncoder)
 
-    # try:
-    #     with open('all_stacks.pickle', 'r') as f:
-    #         all_stacks = pickle.load(f)
-    # except:
     # Load solutions
     all_solutions = []
     populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
@@ -1258,82 +996,20 @@ def run(folderOfData, destFolder):
 
     find_canon_names(correct_abstracts)
 
-    ########
-
     # Collect lines
     all_lines = []
-    skipped_by_renamer = compute_all_lines(all_solutions,folderOfData,all_lines)
-
-    # pprint.pprint(correct_abstracts[0].templates, indent=2)
-    # return
-
-    # dumpOutput(create_avar_output(correct_abstracts), 'avar_info.json')
-    # return
-
-    # print 'printing all_lines:'
-    # for line in all_lines:
-    #     pprint.pprint(line.getDict())
-
-    # Canonicalize source and collect phrases
-    # This is no longer doing anything relevant to the rest of the pipeline.
-    # TODO: store the (former) output of this somewhere for ease of rendering?
-    # this is the only place where name clashes between multiple copies of a
-    # single abs. var. are handled.
-    # skipped_rewrite = rewrite_all_solutions(all_solutions, folderOfData)
+    skipped_by_renamer = compute_all_lines(all_solutions, folderOfData, all_lines)
 
     # Stack solutions
     correct_stacks = []
     stack_solutions(correct_solutions, correct_stacks)
 
-    # print "Number of incorrect solutions:",len(incorrect_solutions)
-
-    # scores, threshold = find_template_info_scores(correct_abstracts)
-    # pprint.pprint(dict(scores), indent=2)
-    # print sum(scores.values())
-
-    # for i in range(2):
-    #     for lvar in incorrect_solutions[i].local_vars:
-    #         find_matching_var(lvar, correct_abstracts, scores)
     incorrect_variables = []
-    var_mappings = find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_variables)
+    var_mappings = find_all_matching_vars(
+        incorrect_solutions, correct_abstracts, incorrect_variables)
     dumpOutput(var_mappings, 'var_mappings.json')
-    # return
-    # v = incorrect_solutions[0].local_vars[0]
-    # find_matching_var(v, correct_abstracts)
-    # for template, indices in v.templates:
-    #     print render_template_indices(template, indices, v.local_name)
-    # return
-
-    # incorrect_stacks = []
-    # stack_solutions(incorrect_solutions, incorrect_stacks)
-    # pprint.pprint([s.members for s in incorrect_stacks], indent=2)
-
-    # var_template_info = {}
-    # create_template_info_output(correct_stacks, incorrect_solutions, var_template_info)
-    # dumpOutput(var_template_info, 'var_template_info.json')
-    # # dumpOutput([str(l) for l in all_lines], 'lines.json')
-
-    # find_voting_stacks(correct_stacks, incorrect_solutions)
-    # voters = {}
-    # for sol in incorrect_solutions:
-    #     voters[sol.solnum] = [s.representative.solnum for s in sol.voting_stacks]
-    # dumpOutput(voters, 'voters.json')
-    # return
-
-    # with open('all_stacks.pickle', 'w') as f:
-    #     pickle.dump(all_stacks, f)
-
-    # Get output
-    # solutions = []
-    # phrases = []
-    # variables = []
-    # avar_template_info = {}
-    # create_output(all_stacks, solutions, phrases, variables, avar_template_info)
-    # reformat_phrases(phrases)
-    # reformat_variables(variables)
 
     incorrect_fake_stacks = fake_stacks(incorrect_solutions)
-    # print "fake stacks:", incorrect_fake_stacks
     all_stacks = correct_stacks + incorrect_fake_stacks
     all_variables = correct_abstracts + incorrect_variables
 
@@ -1341,7 +1017,8 @@ def run(folderOfData, destFolder):
 
     ordered_phrases = []
     phrase_to_lines = {}
-    solutions = format_stack_output(all_stacks, all_variables, ordered_phrases, phrase_to_lines, all_lines)
+    solutions = format_stack_output(
+        all_stacks, all_variables, ordered_phrases, phrase_to_lines, all_lines)
     variables = format_variable_output(all_variables)
     expanded_lines = format_line_output(all_lines)
     formatted_phrases = format_phrase_output(ordered_phrases, phrase_to_lines)
@@ -1350,7 +1027,6 @@ def run(folderOfData, destFolder):
     dumpOutput(solutions, 'solutions.json')
     dumpOutput(formatted_phrases, 'phrases.json')
     dumpOutput(variables, 'variables.json')
-    # dumpOutput(avar_template_info, 'abstract_var_info.json')
 
     # print "skipped when extracting:", skipped_extract_sequences
     # print "skipped when rewriting:", skipped_rewrite
