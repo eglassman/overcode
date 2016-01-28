@@ -34,6 +34,7 @@ jquery@1.11.4
 launch-screen@1.0.4
 livedata@1.0.15
 logging@1.0.8
+markdown@1.0.5
 meteor@1.1.10
 meteor-base@1.0.1
 minifiers@1.1.7
@@ -53,6 +54,7 @@ reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
 session@1.1.1
+simple:highlight.js@1.2.0
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 standard-minifiers@1.0.2

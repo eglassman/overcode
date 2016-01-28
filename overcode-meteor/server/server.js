@@ -13,7 +13,8 @@ Meteor.startup(function () {
     });
     
     phrases.forEach(function(phrase) {
-        var subscripted_line = phrase.code.replace(/___(\d+)/g, function(match, digit) {
+        var highlighted_line = hljs.highlight('python', phrase.code).value;
+        var subscripted_line = highlighted_line.replace(/___(\d+)/g, function(match, digit) {
             return "<sub>" + digit + "</sub>";
         });
         phrase.code = subscripted_line;
