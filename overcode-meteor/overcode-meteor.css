@@ -1,11 +1,22 @@
 /* CSS declarations go here */
 
-.incorrect {
-    border: 1px solid red;
+.stack {
+    margin-bottom: 5px;
 }
-.clicked {
-	border: 1px solid blue;
+
+.stack pre {
+    margin-top: 2px;
 }
+
 .dimmed {
 	opacity: 0.5;
+}
+
+.pinned .dimmed {
+    opacity: 1.0;
+}
+
+.incorrect pre {
+    background-color: #f2dede;
+    border-color: #e2b6b6;
 }

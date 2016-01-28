@@ -6,20 +6,22 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-6">
-            {{> pinnedStack}}
+            {{> solutionsList}}
         </div>
         <div class="col-xs-6">
-            {{> solutionsList}}
+            {{> pinnedStack}}
         </div>
     </div>
 </div>
 </body>
 
 <template name="pinnedStack">
-{{#with getStack}}
-    <button class="btn btn-link remove">&times; remove</button>
-    {{> solution}}
-{{/with}}
+    <div class="pinned">
+        {{#with getStack}}
+            {{> solution}}
+            <button class="btn btn-link remove">&times; remove</button>
+        {{/with}}
+    </div>
 </template>
 
 <template name="correctSolutionsList">
@@ -47,7 +49,9 @@
 </template>
 
 <template name="solution">
-<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}} {{#if clicked id}}clicked{{/if}}" id="{{id}}" data-phraseids="{{phraseIDs}}">({{count}})<pre><code>{{#each lines}}{{createSpace indent}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
+<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}} {{#if clicked id}}clicked{{/if}}" id="{{id}}" data-phraseids="{{phraseIDs}}">
+    <span class="badge">{{count}}</span>
+    <pre><code>{{#each lines}}{{createSpace indent}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
 </template>
