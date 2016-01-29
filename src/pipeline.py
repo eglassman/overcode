@@ -7,28 +7,59 @@ from os import path
 import pickle
 import pprint
 import re
+import types
 
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
 
 use_original_line_equality_metric = False
 
-CORRECT_OUTPUT = {
-    "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
-    "dotProduct([-45], [-60])": 2700, 
-    "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
-    "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
-    "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
-    "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
-    "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
-    "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
-    "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
-    "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
-}
+# CORRECT_OUTPUT = {
+#     "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
+#     "dotProduct([-45], [-60])": 2700, 
+#     "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
+#     "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
+#     "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
+#     "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
+#     "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
+#     "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
+#     "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
+#     "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
+# }
 # CORRECT_OUTPUT = {
 #     "dotProduct([1, 2, 3], [4, 5, 6])": 32
 # }
+# CORRECT_OUTPUT = {"is_list_permutation(['1', '2', 'a'], ['2', 'a', '1'])": ('1',
+#                                                            1,
+#                                                            str),
+#  'is_list_permutation([0, 4, 8, 3, 0, 2, 2, 1, 4, 7, 8, 3, 7, 0, 0], [3, 4, 0, 3, 8, 0, 2, 0, 7, 2, 0, 3, 7, 2, 1])': False,
+#  'is_list_permutation([0, 4, 8, 3, 2, 2, 1, 4, 7, 8, 3, 7, 0], [3, 4, 6, 2, 1, 2, 6, 7, 9, 8])': False,
+#  'is_list_permutation([1, 1, 1], [1, 1, 1])': (1, 3, int),
+#  'is_list_permutation([1, 1, 2, 2, 1], [2, 1, 2, 1, 1])': (1, 3, int),
+#  'is_list_permutation([1, 1, 2, 2, 2], [1, 2, 2, 1, 2])': (2, 3, int),
+#  'is_list_permutation([1, 1], [1])': False,
+#  "is_list_permutation([1, 2, '5', 2, 5, 3, 4, 4, 5, 5, 6], [3, 5, 1, '5', 2, 5, 2, 6, 4, 5, 4])": (5,
+#                                                                                                    3,
+#                                                                                                    int),
+#  'is_list_permutation([1, 2, 1], [1, 2, 1])': (1, 2, int),
+#  'is_list_permutation([1, 2, 1], [2, 1, 1])': (1, 2, int),
+#  'is_list_permutation([1, 2, 1], [2, 1, 2])': False,
+#  'is_list_permutation([1, 2, 3], [3, 2, 1])': (1, 1, int),
+#  "is_list_permutation([1], ['1', 1])": False,
+#  'is_list_permutation([1], [1])': (1, 1, int),
+#  'is_list_permutation([1], [])': False,
+#  "is_list_permutation([3, '5', '5', 7, 1, 2], [1, 2, '5', 7, 3, '5'])": ('5',
+#                                                                          2,
+#                                                                          str),
+#  "is_list_permutation([3, '5', 7, 1], [1, 2, 3, '5', 7])": False,
+#  'is_list_permutation([3, 2, 1, 4, 5, 6, 6, 6, 6], [1, 6, 2, 6, 3, 6, 4, 6, 5])': (6,
+#                                                                                    4,
+#                                                                                    int),
+#  "is_list_permutation([], ['1'])": False,
+#  'is_list_permutation([], [])': (None, None, None)}
 
+# CORRECT_OUTPUT = {"myLog(42, 5)": 2, "myLog(4, 16)": 0, "myLog(149, 3)": 4, "myLog(26, 3)": 2, "myLog(27, 3)": 3, "myLog(28, 3)": 3, "myLog(76, 4)": 3, "myLog(12, 13)": 0}
+CORRECT_OUTPUT = {"longest_word('zebra', ['za', 'zaa', 'zea', 'bra', 'arb'])": "arb", "longest_word('aaa', ['aaa', 'aaaa', 'aa', 'a'])": "aaa", "longest_word('xylophone', ['nab', 'baa', 'ban', 'x', 'an', 'a'])": "x", "longest_word('zebra', ['xx', 'yy', 'oo', 'a', 'kk'])": "a", "longest_word('another', ['the', 'another', 'ther', 'tha', 'a'])": "another", "longest_word('abcd', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "cab", "longest_word('a', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "a", "longest_word('abcd', ['dcba', 'dab', 'abcde', 'bcad', 'b'])": "bcad", "longest_word('another', ['ran', 'tao', 'r', 'ona', 'art'])": "art", "longest_word('banana', ['nab', 'baa', 'ban', 'an', 'a'])": "baa", "longest_word('ab', ['aba', 'ba', 'bab'])": "ba", "longest_word('zebra', ['zen', 'zag', 'mag', 'trag', 'zr'])": "zr", "longest_word('xylophone', ['lyx', 'ophxyloen', 'phone', 'one'])": "ophxyloen", "longest_word('taupe', ['ip', 'ap', 'aa', 'ap', 'ar'])": "ap", "longest_word('ana', ['nan', 'an', 'a', 'an'])": "an", "longest_word('aabbccdd', ['dd', 'abbccd', 'aa', 'abcd'])": "abbccd", "longest_word('abcd', ['aaa', 'bbb', 'ccc', 'ddd'])": None, "longest_word('abaca', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "aaa", "longest_word('st', ['a', 's', 't', 'ba'])": "s", "longest_word('pow', ['wow', 'p', 'o', 'w'])": "o", "longest_word('ab', ['ab'])": "ab", "longest_word('banana', ['pqr', 'na', 'bn', 'n', 'a'])": "bn", "longest_word('taupe', ['pa', 'ta', 'ea', 'ae', 'at'])": "ae", "longest_word('stairs', ['ss', 'ai', 'rit', 'riat', 'rat'])": "riat", "longest_word('computer', ['pan', 'pat', 'par', 'on', 'retupmoc'])": "retupmoc"}
 
 ###############################################################################
 ## Helper functions
@@ -234,7 +265,19 @@ class Line(object):
         # Replace all the blanks with '{}' so we can use built-in string formatting
         # to fill in the blanks with the list of ordered names
         names = [get_name(var) for var in self.abstract_variables]
-        return self.template.replace('___', '{}').format(*names) #todo: print cannon name .canon_name
+
+        # Make sure that a pair of curly braces in the actual line, e.g. from
+        # initializing a dictionary, does not cause issues
+        try:
+            step1 = self.template.replace('{}', '_braces_')
+            step2 = step1.replace('___', '{}').format(*names)
+            return step2.replace('_braces_', '{}')
+        except:
+            print "original:", self.template
+            print "replace braces:", step1
+            print "replaces blanks:", step2
+            raise
+
 
     def __str__(self):
         return self.template + " ||| " + str(self.line_values) #+ " ||| " + line_values_formatted + "\n" # + " ||| " + str(self.local_names) + "\n"
@@ -400,7 +443,12 @@ def find_template_info_scores(abstracts):
     # that appear more than once. The difference in entropy between a template
     # that appears once and one that appears twice is always 1 because of how
     # logs work, so just add 0.5 to separate nicely.
-    threshold = log(total/2.0, 2) + 0.5
+    try:
+        threshold = log(total/2.0, 2) + 0.5
+    except ValueError:
+        print "counts:", counts
+        print "total:", total
+        return
     return (scores, threshold)
 
 
@@ -586,7 +634,7 @@ def compute_lines(sol, tidy_path, all_lines):
             continue
         indent = len(raw_line) - len(stripped_line)
 
-        blanks = re.findall(r'___\d___', stripped_line)
+        blanks = re.findall(r'___\d+___', stripped_line)
         if len(blanks) > 0:
             # Grab a list of (local name, abstract_var) pairs in the order
             # they appear and transform it into two ordered lists of local
@@ -598,7 +646,7 @@ def compute_lines(sol, tidy_path, all_lines):
 
         # The template is the raw line with numbered blanks replaced with
         # generic blanks
-        template = re.sub(r'___\d___', '___', stripped_line)
+        template = re.sub(r'___\d+___', '___', stripped_line)
 
         # line_values is a list of dictionaries, one per blank
         # Each dictionary maps from a testcase to a sequence of values
@@ -967,11 +1015,15 @@ def format_phrase_output(ordered_phrases, phrase_to_lines):
 #and http://stackoverflow.com/questions/624926/how-to-detect-whether-a-python-variable-is-a-function
 class ElenaEncoder(json.JSONEncoder):
     def default(self, obj):
-       if isinstance(obj, set):
-          return {'type':'set', 'list':list(obj)}
-       if isinstance(obj, types.FunctionType):
-          return {'type':'function'}
-       return json.JSONEncoder.default(self, obj)
+        if isinstance(obj, set):
+            return {'type':'set', 'list':list(obj)}
+        if isinstance(obj, types.FunctionType):
+            return {'type':'function'}
+        if isinstance(obj, types.TypeType):
+            return {'type': 'type', 'value':str(obj)}
+        if isinstance(obj, types.BuiltinFunctionType):
+            return {'type': 'built-in', 'value':str(obj)}
+        return json.JSONEncoder.default(self, obj)
 
 
 ###############################################################################
@@ -1028,5 +1080,10 @@ def run(folderOfData, destFolder):
     dumpOutput(formatted_phrases, 'phrases.json')
     dumpOutput(variables, 'variables.json')
 
+    print "Number of solutions processed:", len(correct_solutions + incorrect_solutions)
+    print "Number of incorrect solutions:", len(incorrect_solutions)
+    print "Number of correct stacks:", len(correct_stacks)
+    print "Number of phrases:", len(formatted_phrases)
+    print "Number of variables:", len(variables)
     # print "skipped when extracting:", skipped_extract_sequences
     # print "skipped when rewriting:", skipped_rewrite
