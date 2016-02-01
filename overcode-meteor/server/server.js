@@ -1,12 +1,12 @@
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
-Variables = new Mongo.Collection('variables');
+// Variables = new Mongo.Collection('variables');
 
 Meteor.startup(function () {
 
     Stacks.remove({});
     Phrases.remove({});
-    Variables.remove({});
+    // Variables.remove({});
 
     solutions.forEach(function(sol) {
         Stacks.insert(sol);
@@ -21,8 +21,8 @@ Meteor.startup(function () {
         Phrases.insert(phrase);
     });
 
-    variables.forEach(function(variable) {
-        Variables.insert(variable);
-    });
+    // variables.forEach(function(variable) {
+    //     Variables.insert(variable);
+    // });
 });
 

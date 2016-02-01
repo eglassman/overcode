@@ -1,6 +1,6 @@
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
-Variables = new Mongo.Collection('variables');
+// Variables = new Mongo.Collection('variables');
 
 
 Template.solution.helpers({
