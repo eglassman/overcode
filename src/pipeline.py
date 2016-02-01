@@ -59,7 +59,19 @@ use_original_line_equality_metric = False
 #  'is_list_permutation([], [])': (None, None, None)}
 
 # CORRECT_OUTPUT = {"myLog(42, 5)": 2, "myLog(4, 16)": 0, "myLog(149, 3)": 4, "myLog(26, 3)": 2, "myLog(27, 3)": 3, "myLog(28, 3)": 3, "myLog(76, 4)": 3, "myLog(12, 13)": 0}
-CORRECT_OUTPUT = {"longest_word('zebra', ['za', 'zaa', 'zea', 'bra', 'arb'])": "arb", "longest_word('aaa', ['aaa', 'aaaa', 'aa', 'a'])": "aaa", "longest_word('xylophone', ['nab', 'baa', 'ban', 'x', 'an', 'a'])": "x", "longest_word('zebra', ['xx', 'yy', 'oo', 'a', 'kk'])": "a", "longest_word('another', ['the', 'another', 'ther', 'tha', 'a'])": "another", "longest_word('abcd', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "cab", "longest_word('a', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "a", "longest_word('abcd', ['dcba', 'dab', 'abcde', 'bcad', 'b'])": "bcad", "longest_word('another', ['ran', 'tao', 'r', 'ona', 'art'])": "art", "longest_word('banana', ['nab', 'baa', 'ban', 'an', 'a'])": "baa", "longest_word('ab', ['aba', 'ba', 'bab'])": "ba", "longest_word('zebra', ['zen', 'zag', 'mag', 'trag', 'zr'])": "zr", "longest_word('xylophone', ['lyx', 'ophxyloen', 'phone', 'one'])": "ophxyloen", "longest_word('taupe', ['ip', 'ap', 'aa', 'ap', 'ar'])": "ap", "longest_word('ana', ['nan', 'an', 'a', 'an'])": "an", "longest_word('aabbccdd', ['dd', 'abbccd', 'aa', 'abcd'])": "abbccd", "longest_word('abcd', ['aaa', 'bbb', 'ccc', 'ddd'])": None, "longest_word('abaca', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "aaa", "longest_word('st', ['a', 's', 't', 'ba'])": "s", "longest_word('pow', ['wow', 'p', 'o', 'w'])": "o", "longest_word('ab', ['ab'])": "ab", "longest_word('banana', ['pqr', 'na', 'bn', 'n', 'a'])": "bn", "longest_word('taupe', ['pa', 'ta', 'ea', 'ae', 'at'])": "ae", "longest_word('stairs', ['ss', 'ai', 'rit', 'riat', 'rat'])": "riat", "longest_word('computer', ['pan', 'pat', 'par', 'on', 'retupmoc'])": "retupmoc"}
+# CORRECT_OUTPUT = {"longest_word('zebra', ['za', 'zaa', 'zea', 'bra', 'arb'])": "arb", "longest_word('aaa', ['aaa', 'aaaa', 'aa', 'a'])": "aaa", "longest_word('xylophone', ['nab', 'baa', 'ban', 'x', 'an', 'a'])": "x", "longest_word('zebra', ['xx', 'yy', 'oo', 'a', 'kk'])": "a", "longest_word('another', ['the', 'another', 'ther', 'tha', 'a'])": "another", "longest_word('abcd', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "cab", "longest_word('a', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "a", "longest_word('abcd', ['dcba', 'dab', 'abcde', 'bcad', 'b'])": "bcad", "longest_word('another', ['ran', 'tao', 'r', 'ona', 'art'])": "art", "longest_word('banana', ['nab', 'baa', 'ban', 'an', 'a'])": "baa", "longest_word('ab', ['aba', 'ba', 'bab'])": "ba", "longest_word('zebra', ['zen', 'zag', 'mag', 'trag', 'zr'])": "zr", "longest_word('xylophone', ['lyx', 'ophxyloen', 'phone', 'one'])": "ophxyloen", "longest_word('taupe', ['ip', 'ap', 'aa', 'ap', 'ar'])": "ap", "longest_word('ana', ['nan', 'an', 'a', 'an'])": "an", "longest_word('aabbccdd', ['dd', 'abbccd', 'aa', 'abcd'])": "abbccd", "longest_word('abcd', ['aaa', 'bbb', 'ccc', 'ddd'])": None, "longest_word('abaca', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "aaa", "longest_word('st', ['a', 's', 't', 'ba'])": "s", "longest_word('pow', ['wow', 'p', 'o', 'w'])": "o", "longest_word('ab', ['ab'])": "ab", "longest_word('banana', ['pqr', 'na', 'bn', 'n', 'a'])": "bn", "longest_word('taupe', ['pa', 'ta', 'ea', 'ae', 'at'])": "ae", "longest_word('stairs', ['ss', 'ai', 'rit', 'riat', 'rat'])": "riat", "longest_word('computer', ['pan', 'pat', 'par', 'on', 'retupmoc'])": "retupmoc"}
+
+# CORRECT_OUTPUT = {"flatten([[[1]], [[[5]]]])": [1, 5], "flatten([[1], [2, 3]])": [1, 2, 3], "flatten([[1], [1]])": [1, 1], "flatten([1])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9], "flatten([[], []])": [], "flatten([])": [], "flatten([[1]])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]], [[3, 2, 1], [2, 1], [1, [0]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1, 2, 1, 1, 0], "flatten([[3], [2, 1, 0], [4, 5, 6, 7]])": [3, 2, 1, 0, 4, 5, 6, 7]}
+CORRECT_OUTPUT = {'flipDict({0: 1, 2: 1, 3: 3, 6: 3})': {1: [0, 2], 3: [3, 6]},
+ 'flipDict({0: 2, 9: 0, 2: 9, 5: 9})': {0: [9], 2: [0], 9: [2, 5]},
+ 'flipDict({1: 0, 2: 1, 3: 1, 4: 1})': {0: [1], 1: [2, 3, 4]},
+ 'flipDict({1: 1})': {1: [1]},
+ 'flipDict({1: 2, 2: 1})': {1: [2], 2: [1]},
+ 'flipDict({1: 3, 2: 4})': {3: [1], 4: [2]},
+ 'flipDict({1: 6, 2: 3, 3: 2, 4: 1})': {1: [4], 2: [3], 3: [2], 6: [1]},
+ 'flipDict({2: 1, 3: 1})': {1: [2, 3]},
+ 'flipDict({8: 6, 2: 6, 4: 6, 6: 6})': {6: [2, 4, 6, 8]},
+ 'flipDict({})': {}}
 
 ###############################################################################
 ## Helper functions
@@ -479,7 +491,7 @@ def extract_single_sequence(column):
 class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
 
-def extract_sequences_single_sol(sol, correct_abstracts, correct_output):
+def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_output):
     """
     For each local variable in a single solution, extract its sequence of
     values, create a VariableInstance, and assign that VariableInstance to
@@ -507,7 +519,14 @@ def extract_sequences_single_sol(sol, correct_abstracts, correct_output):
         for localVarName, localVarData in trace.iteritems():
             if localVarName.startswith('__'):
                 continue
-            sequence = extract_single_sequence(localVarData)
+            try:
+                sequence = extract_single_sequence(localVarData)
+            except RuntimeError:
+                # Encountered a recursion error when comparing values. There
+                # was some sort of self-referential list? Couldn't figure out
+                # why so just catching the error.
+                raise ExtractionException('Error extracting sequence')
+
             if (len(sequence) == 1 and
                 type(sequence[0]) is str and
                 sequence[0].startswith('__')):
@@ -521,20 +540,21 @@ def extract_sequences_single_sol(sol, correct_abstracts, correct_output):
     sol.correct = (output == correct_output)
 
     for localVarName in sequences:
-        # Create a new VariableInstance, add it to the solution's local vars,
-        # assign it to an abstract variable, and add that to the solution's
-        # abstract vars.
         var = VariableInstance(sequences[localVarName], sol.solnum, localVarName)
         sol.local_vars.append(var)
 
+        # Only collect variables from correct solutions into AbstractVariables.
+        # Incorrect solutions will be handled later.
+        # TODO: split this out and handle variable collection at the same time
+        # for everything?
         if sol.correct:
             add_to_abstracts(var, correct_abstracts)
             sol.abstract_vars.append(var.abstract_var)
 
-def extract_and_collect_var_seqs(all_solutions,
-                                 correct_solutions,
-                                 incorrect_solutions,
-                                 correct_abstracts):
+def extract_output_and_seqs(all_solutions,
+                            correct_solutions,
+                            incorrect_solutions,
+                            correct_abstracts):
     """
     Extract and collect variable information from all solutions.
 
@@ -550,13 +570,15 @@ def extract_and_collect_var_seqs(all_solutions,
     for sol in all_solutions[:]:
         try:
             print "Collecting variables in", sol.solnum
-            extract_sequences_single_sol(sol, correct_abstracts, CORRECT_OUTPUT)
+            extract_output_and_sequences_single_sol(sol, correct_abstracts, CORRECT_OUTPUT)
             if sol.correct:
                 correct_solutions.append(sol)
             else:
                 incorrect_solutions.append(sol)
         except ExtractionException:
-            # Since we are iterating through a copy, this will not cause problems
+            # If we couldn't extract the required info, remove this solution from
+            # the list so we don't keep trying to process it later. Since we are
+            # iterating through a copy, this will not cause problems
             all_solutions.remove(sol)
             skipped.append(sol.solnum)
 
@@ -605,14 +627,14 @@ def compute_lines(sol, tidy_path, all_lines):
     with open(tidy_path, 'U') as f:
         renamed_src = f.read()
 
-    # This code renames all variables as placeholders, and saves a mapping
-    # from placeholder to (original name, abstract variable object)
+    # Rename all variables as placeholders, and saves a mapping
+    # from placeholder to (original name, variable object)
     mappings = {}
     ctr = 0
     for lvar in sol.local_vars:
         placeholder = '___' + str(ctr) + '___'
         try:
-            renamed_src = identifier_renamer.rename_identifier(
+            blanked_source = identifier_renamer.rename_identifier(
                 renamed_src, lvar.local_name, placeholder)
         except:
             raise RenamerException('Failed to rename ' + str(sol.solnum))
@@ -622,10 +644,10 @@ def compute_lines(sol, tidy_path, all_lines):
         var_to_map = lvar.abstract_var if sol.correct else lvar
         mappings[placeholder] = (lvar.local_name, var_to_map)
 
-    # This code breaks solutions down into line objects
-    # renamed_src consists of the solution with variables replaced with
+    # Break solutions down into line objects
+    # blanked_source consists of the solution with variables replaced with
     # numbered blanks.
-    raw_lines = renamed_src.split('\n')
+    raw_lines = blanked_source.split('\n')
     for (line_no, raw_line) in enumerate(raw_lines, start=1):
         stripped_line = raw_line.strip()
 
@@ -636,9 +658,9 @@ def compute_lines(sol, tidy_path, all_lines):
 
         blanks = re.findall(r'___\d+___', stripped_line)
         if len(blanks) > 0:
-            # Grab a list of (local name, abstract_var) pairs in the order
+            # Grab a list of (local name, var_obj) pairs in the order
             # they appear and transform it into two ordered lists of local
-            # names and abstract variable objects
+            # names and variable objects
             local_names, variable_objects = zip(*[mappings[blank] for blank in blanks])
         else:
             local_names = ()
@@ -657,6 +679,7 @@ def compute_lines(sol, tidy_path, all_lines):
                 values[testcase] = extract_var_values_at_line(line_no, lname, trace)
             line_values.append(values)
         
+        # Create the line object, add it to the solution
         line_object = Line(template, variable_objects, line_values)
         this_line_in_solution = (line_object, local_names, indent)
         
@@ -675,8 +698,7 @@ def compute_all_lines(all_solutions, folderOfData, all_lines):
         tidy_path = path.join(folderOfData, 'tidyData', sol.solnum + '.py')
         try:
             print "Computing lines for", sol.solnum
-            compute_lines(sol, tidy_path,all_lines)
-            # print 'length of lines ',len(all_lines)
+            compute_lines(sol, tidy_path, all_lines)
         except RenamerException:
             skipped.append(sol.solnum)
 
@@ -685,6 +707,7 @@ def compute_all_lines(all_solutions, folderOfData, all_lines):
 
 ###############################################################################
 ## Rewrite solutions
+## THIS SECTION IS NO LONGER USED. Keeping it in just in case.
 ###############################################################################
 def fix_name_clashes(sol):
     """
@@ -839,12 +862,6 @@ def find_closest_stacks(incorrect_stacks, correct_stacks):
                 best_metric = metric
                 closest_stacks = [right_stack]
         wrong_stack.closest_stacks = closest_stacks
-
-    # pprint.pprint(map(lambda l: l.template, incorrect_stacks[1].representative.canonical_lines), indent=2)
-    # for stack in correct_stacks:
-    #     print "\n\n"
-    #     pprint.pprint(map(lambda l: l.template, stack.representative.canonical_lines), indent=2)
-    #     print "METRIC:", incorrect_stacks[1].representative.difference_metric(stack.representative)
 
 
 ###############################################################################
@@ -1040,12 +1057,14 @@ def run(folderOfData, destFolder):
     all_solutions = []
     populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
 
-    # Collect variables into AbstractVariables
+    # Extract output and variable sequences from the processed traces, and assign
+    # correct variables to AbstractVariables
     correct_abstracts = []
     correct_solutions, incorrect_solutions = [], []
-    skipped_extract_sequences = extract_and_collect_var_seqs(
+    skipped_extraction = extract_output_and_seqs(
         all_solutions, correct_solutions, incorrect_solutions, correct_abstracts)
 
+    # Assign names to the correct AbstractVariables
     find_canon_names(correct_abstracts)
 
     # Collect lines
@@ -1078,12 +1097,19 @@ def run(folderOfData, destFolder):
     dumpOutput(expanded_lines, 'lines.json')
     dumpOutput(solutions, 'solutions.json')
     dumpOutput(formatted_phrases, 'phrases.json')
-    dumpOutput(variables, 'variables.json')
+
+    try:
+        dumpOutput(variables, 'variables.json')
+    except ValueError:
+        # Circular reference. Try pretty printing instead. This might break
+        # things in the UI.
+        with open(path.join(destFolder, 'variables.json'), 'w') as f:
+            pprint.pprint(variables, f)
 
     print "Number of solutions processed:", len(correct_solutions + incorrect_solutions)
     print "Number of incorrect solutions:", len(incorrect_solutions)
     print "Number of correct stacks:", len(correct_stacks)
     print "Number of phrases:", len(formatted_phrases)
     print "Number of variables:", len(variables)
-    # print "skipped when extracting:", skipped_extract_sequences
+    # print "skipped when extracting:", skipped_extraction
     # print "skipped when rewriting:", skipped_rewrite
