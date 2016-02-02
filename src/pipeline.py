@@ -14,18 +14,18 @@ from pipeline_util import ensure_folder_exists, make_hashable
 
 use_original_line_equality_metric = False
 
-# CORRECT_OUTPUT = {
-#     "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
-#     "dotProduct([-45], [-60])": 2700, 
-#     "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
-#     "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
-#     "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
-#     "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
-#     "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
-#     "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
-#     "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
-#     "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
-# }
+CORRECT_OUTPUT = {
+    "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
+    "dotProduct([-45], [-60])": 2700, 
+    "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
+    "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
+    "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
+    "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
+    "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
+    "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
+    "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
+    "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
+}
 # CORRECT_OUTPUT = {
 #     "dotProduct([1, 2, 3], [4, 5, 6])": 32
 # }
@@ -62,16 +62,16 @@ use_original_line_equality_metric = False
 # CORRECT_OUTPUT = {"longest_word('zebra', ['za', 'zaa', 'zea', 'bra', 'arb'])": "arb", "longest_word('aaa', ['aaa', 'aaaa', 'aa', 'a'])": "aaa", "longest_word('xylophone', ['nab', 'baa', 'ban', 'x', 'an', 'a'])": "x", "longest_word('zebra', ['xx', 'yy', 'oo', 'a', 'kk'])": "a", "longest_word('another', ['the', 'another', 'ther', 'tha', 'a'])": "another", "longest_word('abcd', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "cab", "longest_word('a', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "a", "longest_word('abcd', ['dcba', 'dab', 'abcde', 'bcad', 'b'])": "bcad", "longest_word('another', ['ran', 'tao', 'r', 'ona', 'art'])": "art", "longest_word('banana', ['nab', 'baa', 'ban', 'an', 'a'])": "baa", "longest_word('ab', ['aba', 'ba', 'bab'])": "ba", "longest_word('zebra', ['zen', 'zag', 'mag', 'trag', 'zr'])": "zr", "longest_word('xylophone', ['lyx', 'ophxyloen', 'phone', 'one'])": "ophxyloen", "longest_word('taupe', ['ip', 'ap', 'aa', 'ap', 'ar'])": "ap", "longest_word('ana', ['nan', 'an', 'a', 'an'])": "an", "longest_word('aabbccdd', ['dd', 'abbccd', 'aa', 'abcd'])": "abbccd", "longest_word('abcd', ['aaa', 'bbb', 'ccc', 'ddd'])": None, "longest_word('abaca', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "aaa", "longest_word('st', ['a', 's', 't', 'ba'])": "s", "longest_word('pow', ['wow', 'p', 'o', 'w'])": "o", "longest_word('ab', ['ab'])": "ab", "longest_word('banana', ['pqr', 'na', 'bn', 'n', 'a'])": "bn", "longest_word('taupe', ['pa', 'ta', 'ea', 'ae', 'at'])": "ae", "longest_word('stairs', ['ss', 'ai', 'rit', 'riat', 'rat'])": "riat", "longest_word('computer', ['pan', 'pat', 'par', 'on', 'retupmoc'])": "retupmoc"}
 
 # CORRECT_OUTPUT = {"flatten([[[1]], [[[5]]]])": [1, 5], "flatten([[1], [2, 3]])": [1, 2, 3], "flatten([[1], [1]])": [1, 1], "flatten([1])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9], "flatten([[], []])": [], "flatten([])": [], "flatten([[1]])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]], [[3, 2, 1], [2, 1], [1, [0]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1, 2, 1, 1, 0], "flatten([[3], [2, 1, 0], [4, 5, 6, 7]])": [3, 2, 1, 0, 4, 5, 6, 7]}
-CORRECT_OUTPUT = {'flipDict({0: 1, 2: 1, 3: 3, 6: 3})': {1: [0, 2], 3: [3, 6]},
- 'flipDict({0: 2, 9: 0, 2: 9, 5: 9})': {0: [9], 2: [0], 9: [2, 5]},
- 'flipDict({1: 0, 2: 1, 3: 1, 4: 1})': {0: [1], 1: [2, 3, 4]},
- 'flipDict({1: 1})': {1: [1]},
- 'flipDict({1: 2, 2: 1})': {1: [2], 2: [1]},
- 'flipDict({1: 3, 2: 4})': {3: [1], 4: [2]},
- 'flipDict({1: 6, 2: 3, 3: 2, 4: 1})': {1: [4], 2: [3], 3: [2], 6: [1]},
- 'flipDict({2: 1, 3: 1})': {1: [2, 3]},
- 'flipDict({8: 6, 2: 6, 4: 6, 6: 6})': {6: [2, 4, 6, 8]},
- 'flipDict({})': {}}
+# CORRECT_OUTPUT = {'flipDict({0: 1, 2: 1, 3: 3, 6: 3})': {1: [0, 2], 3: [3, 6]},
+ # 'flipDict({0: 2, 9: 0, 2: 9, 5: 9})': {0: [9], 2: [0], 9: [2, 5]},
+ # 'flipDict({1: 0, 2: 1, 3: 1, 4: 1})': {0: [1], 1: [2, 3, 4]},
+ # 'flipDict({1: 1})': {1: [1]},
+ # 'flipDict({1: 2, 2: 1})': {1: [2], 2: [1]},
+ # 'flipDict({1: 3, 2: 4})': {3: [1], 4: [2]},
+ # 'flipDict({1: 6, 2: 3, 3: 2, 4: 1})': {1: [4], 2: [3], 3: [2], 6: [1]},
+ # 'flipDict({2: 1, 3: 1})': {1: [2, 3]},
+ # 'flipDict({8: 6, 2: 6, 4: 6, 6: 6})': {6: [2, 4, 6, 8]},
+ # 'flipDict({})': {}}
 
 ###############################################################################
 ## Helper functions
@@ -849,19 +849,33 @@ def fake_stacks(solutions):
         stacks.append(stack)
     return stacks
 
-def find_closest_stacks(incorrect_stacks, correct_stacks):
-    for wrong_stack in incorrect_stacks:
-        rep = wrong_stack.representative
+def find_closest_stacks(all_stacks):
+    for stack in all_stacks:
+        rep = stack.representative
         best_metric = 0
         closest_stacks = []
-        for right_stack in correct_stacks:
-            metric = rep.difference_metric(right_stack.representative)
+        for other_stack in all_stacks:
+            if stack == other_stack:
+                continue
+            metric = rep.difference_metric(other_stack.representative)
             if metric == best_metric:
-                closest_stacks.append(right_stack)
+                closest_stacks.append(other_stack)
             elif metric > best_metric:
                 best_metric = metric
-                closest_stacks = [right_stack]
-        wrong_stack.closest_stacks = closest_stacks
+                closest_stacks = [other_stack]
+        stack.closest_stacks = closest_stacks
+    # for wrong_stack in incorrect_stacks:
+    #     rep = wrong_stack.representative
+    #     best_metric = 0
+    #     closest_stacks = []
+    #     for right_stack in correct_stacks:
+    #         metric = rep.difference_metric(right_stack.representative)
+    #         if metric == best_metric:
+    #             closest_stacks.append(right_stack)
+    #         elif metric > best_metric:
+    #             best_metric = metric
+    #             closest_stacks = [right_stack]
+    #     wrong_stack.closest_stacks = closest_stacks
 
 
 ###############################################################################
@@ -959,9 +973,9 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             'variableIDs': set(),
             'lines': []
         }
-        if not rep.correct:
-            stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
-            stack_json['count_closest_stacks'] = len(stack_json['closest_stacks']);
+        # if not rep.correct:
+        stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
+        stack_json['count_closest_stacks'] = len(stack_json['closest_stacks']);
 
         for (line_object, local_names, indent) in rep.lines:
             phrase = line_object.render()
@@ -1084,7 +1098,7 @@ def run(folderOfData, destFolder):
     all_stacks = correct_stacks + incorrect_fake_stacks
     all_variables = correct_abstracts + incorrect_variables
 
-    find_closest_stacks(incorrect_fake_stacks, correct_stacks)
+    find_closest_stacks(all_stacks)
 
     ordered_phrases = []
     phrase_to_lines = {}
