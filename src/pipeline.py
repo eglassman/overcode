@@ -625,6 +625,8 @@ def compute_lines(sol, tidy_path, all_lines):
     Mutates sol, all_lines
     """
     with open(tidy_path, 'U') as f:
+        # It's not renamed yet, but the variable has to have the same name so
+        # that each time through the loop below changes it incrementally
         renamed_src = f.read()
 
     # Rename all variables as placeholders, and saves a mapping
@@ -634,7 +636,10 @@ def compute_lines(sol, tidy_path, all_lines):
     for lvar in sol.local_vars:
         placeholder = '___' + str(ctr) + '___'
         try:
-            blanked_source = identifier_renamer.rename_identifier(
+            # This variable must be named the same as the one on the next
+            # line. Do not change the name of this variable in an effort to
+            # make it more readable. You will break the code and cry.
+            renamed_src = identifier_renamer.rename_identifier(
                 renamed_src, lvar.local_name, placeholder)
         except:
             raise RenamerException('Failed to rename ' + str(sol.solnum))
@@ -645,9 +650,9 @@ def compute_lines(sol, tidy_path, all_lines):
         mappings[placeholder] = (lvar.local_name, var_to_map)
 
     # Break solutions down into line objects
-    # blanked_source consists of the solution with variables replaced with
+    # renamed_src consists of the solution with variables replaced with
     # numbered blanks.
-    raw_lines = blanked_source.split('\n')
+    raw_lines = renamed_src.split('\n')
     for (line_no, raw_line) in enumerate(raw_lines, start=1):
         stripped_line = raw_line.strip()
 
