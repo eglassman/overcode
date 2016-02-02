@@ -1,4 +1,4 @@
-phrases_dotProduct = [
+phrases = [
     {
         "code": "def dotProduct(listA,listB):", 
         "corresponding_lines": [

@@ -1,7 +1,16 @@
-solutions_dotProduct = [
+solutions = [
     {
+        "closest_stacks": [
+            13, 
+            16, 
+            56, 
+            63, 
+            66, 
+            103
+        ], 
         "correct": true, 
         "count": 9, 
+        "count_closest_stacks": 6, 
         "id": 1, 
         "lines": [
             {
@@ -52,8 +61,25 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            1, 
+            6, 
+            13, 
+            14, 
+            15, 
+            16, 
+            56, 
+            59, 
+            61, 
+            63, 
+            66, 
+            81, 
+            84, 
+            103
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 14, 
         "id": 2, 
         "lines": [
             {
@@ -96,8 +122,13 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            43, 
+            46
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 3, 
         "lines": [
             {
@@ -151,8 +182,26 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            1, 
+            7, 
+            8, 
+            13, 
+            16, 
+            24, 
+            33, 
+            56, 
+            63, 
+            66, 
+            85, 
+            91, 
+            92, 
+            103, 
+            107
+        ], 
         "correct": true, 
         "count": 4, 
+        "count_closest_stacks": 15, 
         "id": 4, 
         "lines": [
             {
@@ -198,8 +247,12 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            48
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 5, 
         "lines": [
             {
@@ -264,8 +317,15 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            14, 
+            15, 
+            49, 
+            84
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 4, 
         "id": 6, 
         "lines": [
             {
@@ -313,8 +373,23 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            4, 
+            6, 
+            11, 
+            14, 
+            15, 
+            44, 
+            51, 
+            84, 
+            86, 
+            88, 
+            92, 
+            107
+        ], 
         "correct": true, 
         "count": 2, 
+        "count_closest_stacks": 12, 
         "id": 7, 
         "lines": [
             {
@@ -358,8 +433,23 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            1, 
+            4, 
+            13, 
+            16, 
+            24, 
+            33, 
+            56, 
+            63, 
+            66, 
+            85, 
+            91, 
+            103
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 12, 
         "id": 8, 
         "lines": [
             {
@@ -402,8 +492,19 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            1, 
+            13, 
+            16, 
+            56, 
+            57, 
+            63, 
+            66, 
+            103
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 8, 
         "id": 9, 
         "lines": [
             {
@@ -446,8 +547,13 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            58, 
+            60
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 2, 
         "id": 10, 
         "lines": [
             {
@@ -500,8 +606,12 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            44
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 1, 
         "id": 11, 
         "lines": [
             {
@@ -550,8 +660,55 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            1, 
+            2, 
+            4, 
+            6, 
+            7, 
+            8, 
+            9, 
+            11, 
+            13, 
+            14, 
+            15, 
+            16, 
+            19, 
+            20, 
+            24, 
+            33, 
+            44, 
+            49, 
+            51, 
+            56, 
+            57, 
+            59, 
+            61, 
+            63, 
+            66, 
+            70, 
+            75, 
+            76, 
+            77, 
+            79, 
+            81, 
+            84, 
+            85, 
+            86, 
+            88, 
+            91, 
+            92, 
+            93, 
+            94, 
+            96, 
+            103, 
+            104, 
+            105, 
+            107
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 44, 
         "id": 12, 
         "lines": [
             {
@@ -584,8 +741,17 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            1, 
+            16, 
+            56, 
+            63, 
+            66, 
+            103
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 6, 
         "id": 13, 
         "lines": [
             {
@@ -633,8 +799,14 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            6, 
+            15, 
+            84
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 14, 
         "lines": [
             {
@@ -682,8 +854,14 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            6, 
+            14, 
+            84
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 3, 
         "id": 15, 
         "lines": [
             {
@@ -726,8 +904,17 @@ solutions_dotProduct = [
         ]
     }, 
     {
+        "closest_stacks": [
+            1, 
+            13, 
+            56, 
+            63, 
+            66, 
+            103
+        ], 
         "correct": true, 
         "count": 1, 
+        "count_closest_stacks": 6, 
         "id": 16, 
         "lines": [
             {
@@ -776,26 +963,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            21
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 17, 
         "lines": [
             {
@@ -828,11 +1000,13 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            22, 
+            29, 
+            89
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 18, 
         "lines": [
             {
@@ -876,7 +1050,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            11
+            20
         ], 
         "correct": false, 
         "count": 1, 
@@ -919,7 +1093,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            11
+            19
         ], 
         "correct": false, 
         "count": 1, 
@@ -962,11 +1136,13 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            5, 
+            17, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 21, 
         "lines": [
             {
@@ -1011,7 +1187,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            29
         ], 
         "correct": false, 
         "count": 1, 
@@ -1069,26 +1245,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            52
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 23, 
         "lines": [
             {
@@ -1119,11 +1280,18 @@ solutions_dotProduct = [
             4, 
             8, 
             13, 
-            16
+            16, 
+            33, 
+            56, 
+            63, 
+            66, 
+            85, 
+            91, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 12, 
         "id": 24, 
         "lines": [
             {
@@ -1167,26 +1335,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            26
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 25, 
         "lines": [
             {
@@ -1233,26 +1386,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            27
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 26, 
         "lines": [
             {
@@ -1302,26 +1440,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            26
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 27, 
         "lines": [
             {
@@ -1372,11 +1495,13 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            34, 
+            38, 
+            40
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 28, 
         "lines": [
             {
@@ -1420,7 +1545,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            22
         ], 
         "correct": false, 
         "count": 1, 
@@ -1483,12 +1608,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3, 
-            10
+            32
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 1, 
         "id": 30, 
         "lines": [
             {
@@ -1547,11 +1671,101 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            17, 
+            18, 
+            19, 
+            20, 
+            21, 
+            22, 
+            23, 
+            24, 
+            25, 
+            26, 
+            27, 
+            28, 
+            29, 
+            30, 
+            32, 
+            33, 
+            34, 
+            35, 
+            36, 
+            37, 
+            38, 
+            39, 
+            40, 
+            41, 
+            42, 
+            43, 
+            44, 
+            45, 
+            46, 
+            47, 
+            48, 
+            49, 
+            50, 
+            51, 
+            52, 
+            53, 
+            54, 
+            55, 
+            56, 
+            57, 
+            58, 
+            59, 
+            60, 
+            61, 
+            62, 
+            63, 
+            64, 
+            65, 
+            66, 
+            67, 
+            68, 
+            69, 
+            70, 
+            71, 
+            72, 
+            73, 
+            74, 
+            75, 
+            76, 
+            77, 
+            78, 
+            79, 
+            80, 
+            81, 
+            82, 
+            83, 
+            84, 
+            85, 
+            86, 
+            87, 
+            88, 
+            89, 
+            90, 
+            91, 
+            92, 
+            93, 
+            94, 
+            95, 
+            96, 
+            97, 
+            98, 
+            99, 
+            100, 
+            101, 
+            102, 
+            103, 
+            104, 
+            105, 
+            106, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 106, 
         "id": 31, 
         "lines": [
             {
@@ -1578,12 +1792,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3, 
-            10
+            30
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 1, 
         "id": 32, 
         "lines": [
             {
@@ -1637,11 +1850,18 @@ solutions_dotProduct = [
             4, 
             8, 
             13, 
-            16
+            16, 
+            24, 
+            56, 
+            63, 
+            66, 
+            85, 
+            91, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 12, 
         "id": 33, 
         "lines": [
             {
@@ -1685,11 +1905,13 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            28, 
+            38, 
+            40
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 34, 
         "lines": [
             {
@@ -1733,26 +1955,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            39
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 35, 
         "lines": [
             {
@@ -1785,11 +1992,26 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            56, 
+            58, 
+            59, 
+            61, 
+            62, 
+            63, 
+            64, 
+            66, 
+            80, 
+            81, 
+            82, 
+            83, 
+            84, 
+            103, 
+            106
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 22, 
         "id": 36, 
         "lines": [
             {
@@ -1832,11 +2054,16 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            28, 
+            34, 
+            38, 
+            40, 
+            41, 
+            42
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 6, 
         "id": 37, 
         "lines": [
             {
@@ -1880,11 +2107,13 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            28, 
+            34, 
+            40
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 38, 
         "lines": [
             {
@@ -1928,26 +2157,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            35
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 39, 
         "lines": [
             {
@@ -2019,11 +2233,13 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            28, 
+            34, 
+            38
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 40, 
         "lines": [
             {
@@ -2067,7 +2283,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            42
         ], 
         "correct": false, 
         "count": 1, 
@@ -2115,7 +2331,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            41
         ], 
         "correct": false, 
         "count": 1, 
@@ -2168,11 +2384,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            3, 
+            46
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 43, 
         "lines": [
             {
@@ -2294,11 +2511,56 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            18, 
+            22, 
+            24, 
+            29, 
+            33, 
+            36, 
+            43, 
+            44, 
+            46, 
+            47, 
+            48, 
+            50, 
+            55, 
+            56, 
+            58, 
+            59, 
+            60, 
+            61, 
+            62, 
+            63, 
+            64, 
+            65, 
+            66, 
+            69, 
+            71, 
+            80, 
+            81, 
+            82, 
+            83, 
+            84, 
+            85, 
+            86, 
+            88, 
+            89, 
+            90, 
+            91, 
+            92, 
+            97, 
+            98, 
+            99, 
+            100, 
+            102, 
+            103, 
+            106, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 14, 
+        "count_closest_stacks": 59, 
         "id": 45, 
         "lines": [
             {
@@ -2341,11 +2603,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            3
+            3, 
+            43
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 46, 
         "lines": [
             {
@@ -2400,11 +2663,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            5, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 47, 
         "lines": [
             {
@@ -2519,11 +2783,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            6
+            6, 
+            96
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 49, 
         "lines": [
             {
@@ -2572,11 +2837,21 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            5, 
+            18, 
+            22, 
+            29, 
+            47, 
+            48, 
+            55, 
+            69, 
+            89, 
+            90, 
+            102
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 11, 
         "id": 50, 
         "lines": [
             {
@@ -2674,26 +2949,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            23
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 52, 
         "lines": [
             {
@@ -2720,26 +2980,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            54
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 53, 
         "lines": [
             {
@@ -2782,26 +3027,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            53
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 54, 
         "lines": [
             {
@@ -2839,7 +3069,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            102
         ], 
         "correct": false, 
         "count": 1, 
@@ -2889,11 +3119,14 @@ solutions_dotProduct = [
         "closest_stacks": [
             1, 
             13, 
-            16
+            16, 
+            63, 
+            66, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 6, 
         "id": 56, 
         "lines": [
             {
@@ -3060,11 +3293,18 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            56, 
+            61, 
+            63, 
+            66, 
+            81, 
+            84, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 14, 
         "id": 59, 
         "lines": [
             {
@@ -3172,11 +3412,18 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            56, 
+            59, 
+            63, 
+            66, 
+            81, 
+            84, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 14, 
         "id": 61, 
         "lines": [
             {
@@ -3226,11 +3473,26 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            36, 
+            56, 
+            58, 
+            59, 
+            61, 
+            63, 
+            64, 
+            66, 
+            80, 
+            81, 
+            82, 
+            83, 
+            84, 
+            103, 
+            106
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 22, 
         "id": 62, 
         "lines": [
             {
@@ -3275,11 +3537,14 @@ solutions_dotProduct = [
         "closest_stacks": [
             1, 
             13, 
-            16
+            16, 
+            56, 
+            66, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 6, 
         "id": 63, 
         "lines": [
             {
@@ -3323,17 +3588,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            6, 
-            13, 
-            14, 
-            15, 
-            16
+            83, 
+            106
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 2, 
         "id": 64, 
         "lines": [
             {
@@ -3389,11 +3649,56 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            18, 
+            22, 
+            24, 
+            29, 
+            33, 
+            36, 
+            43, 
+            44, 
+            45, 
+            46, 
+            47, 
+            48, 
+            50, 
+            55, 
+            56, 
+            58, 
+            59, 
+            60, 
+            61, 
+            62, 
+            63, 
+            64, 
+            66, 
+            69, 
+            71, 
+            80, 
+            81, 
+            82, 
+            83, 
+            84, 
+            85, 
+            86, 
+            88, 
+            89, 
+            90, 
+            91, 
+            92, 
+            97, 
+            98, 
+            99, 
+            100, 
+            102, 
+            103, 
+            106, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 14, 
+        "count_closest_stacks": 59, 
         "id": 65, 
         "lines": [
             {
@@ -3438,11 +3743,14 @@ solutions_dotProduct = [
         "closest_stacks": [
             1, 
             13, 
-            16
+            16, 
+            56, 
+            63, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 6, 
         "id": 66, 
         "lines": [
             {
@@ -3486,26 +3794,14 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            68, 
+            70, 
+            72, 
+            73
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 4, 
         "id": 67, 
         "lines": [
             {
@@ -3538,26 +3834,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            72, 
+            73
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 2, 
         "id": 68, 
         "lines": [
             {
@@ -3602,11 +3884,24 @@ solutions_dotProduct = [
         "closest_stacks": [
             3, 
             5, 
-            11
+            11, 
+            18, 
+            22, 
+            29, 
+            43, 
+            44, 
+            46, 
+            47, 
+            48, 
+            50, 
+            55, 
+            89, 
+            90, 
+            102
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 16, 
         "id": 69, 
         "lines": [
             {
@@ -3656,23 +3951,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            4, 
-            6, 
-            7, 
-            8, 
-            9, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            72, 
+            73
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 13, 
+        "count_closest_stacks": 2, 
         "id": 70, 
         "lines": [
             {
@@ -3716,11 +4000,15 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            8
+            8, 
+            64, 
+            83, 
+            100, 
+            106
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 5, 
         "id": 71, 
         "lines": [
             {
@@ -3763,26 +4051,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            73
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 72, 
         "lines": [
             {
@@ -3839,26 +4112,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            72
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 73, 
         "lines": [
             {
@@ -3921,11 +4179,101 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            17, 
+            18, 
+            19, 
+            20, 
+            21, 
+            22, 
+            23, 
+            24, 
+            25, 
+            26, 
+            27, 
+            28, 
+            29, 
+            30, 
+            31, 
+            32, 
+            33, 
+            34, 
+            35, 
+            36, 
+            37, 
+            38, 
+            39, 
+            40, 
+            41, 
+            42, 
+            43, 
+            44, 
+            45, 
+            46, 
+            47, 
+            48, 
+            49, 
+            50, 
+            51, 
+            52, 
+            53, 
+            54, 
+            55, 
+            56, 
+            57, 
+            58, 
+            59, 
+            60, 
+            61, 
+            62, 
+            63, 
+            64, 
+            65, 
+            66, 
+            67, 
+            68, 
+            69, 
+            70, 
+            71, 
+            72, 
+            73, 
+            75, 
+            76, 
+            77, 
+            78, 
+            79, 
+            80, 
+            81, 
+            82, 
+            83, 
+            84, 
+            85, 
+            86, 
+            87, 
+            88, 
+            89, 
+            90, 
+            91, 
+            92, 
+            93, 
+            94, 
+            95, 
+            96, 
+            97, 
+            98, 
+            99, 
+            100, 
+            101, 
+            102, 
+            103, 
+            104, 
+            105, 
+            106, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 106, 
         "id": 74, 
         "lines": [
             {
@@ -3964,11 +4312,42 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            19, 
+            20, 
+            24, 
+            33, 
+            44, 
+            49, 
+            51, 
+            56, 
+            57, 
+            59, 
+            61, 
+            63, 
+            66, 
+            70, 
+            76, 
+            77, 
+            79, 
+            81, 
+            84, 
+            85, 
+            86, 
+            88, 
+            91, 
+            92, 
+            93, 
+            94, 
+            96, 
+            103, 
+            104, 
+            105, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 13, 
+        "count_closest_stacks": 44, 
         "id": 75, 
         "lines": [
             {
@@ -3996,11 +4375,16 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            11
+            11, 
+            19, 
+            20, 
+            44, 
+            77, 
+            79
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 6, 
         "id": 76, 
         "lines": [
             {
@@ -4049,17 +4433,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            6, 
-            13, 
-            14, 
-            15, 
-            16
+            79
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 1, 
         "id": 77, 
         "lines": [
             {
@@ -4108,26 +4486,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            87
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 78, 
         "lines": [
             {
@@ -4165,17 +4528,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            6, 
-            13, 
-            14, 
-            15, 
-            16
+            77
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 1, 
         "id": 79, 
         "lines": [
             {
@@ -4224,17 +4581,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            6, 
-            13, 
-            14, 
-            15, 
-            16
+            81, 
+            84
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 2, 
         "id": 80, 
         "lines": [
             {
@@ -4282,17 +4634,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            6, 
-            13, 
-            14, 
-            15, 
-            16
+            84
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 1, 
         "id": 81, 
         "lines": [
             {
@@ -4341,11 +4687,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            13
+            13, 
+            83
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 82, 
         "lines": [
             {
@@ -4393,11 +4740,14 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            13
+            13, 
+            64, 
+            82, 
+            106
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 4, 
         "id": 83, 
         "lines": [
             {
@@ -4447,11 +4797,12 @@ solutions_dotProduct = [
         "closest_stacks": [
             6, 
             14, 
-            15
+            15, 
+            81
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 4, 
         "id": 84, 
         "lines": [
             {
@@ -4504,11 +4855,19 @@ solutions_dotProduct = [
             4, 
             8, 
             13, 
-            16
+            16, 
+            24, 
+            33, 
+            56, 
+            63, 
+            66, 
+            86, 
+            91, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 13, 
         "id": 85, 
         "lines": [
             {
@@ -4556,11 +4915,15 @@ solutions_dotProduct = [
             7, 
             11, 
             14, 
-            15
+            15, 
+            44, 
+            84, 
+            85, 
+            88
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 9, 
         "id": 86, 
         "lines": [
             {
@@ -4604,26 +4967,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            78
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 1, 
         "id": 87, 
         "lines": [
             {
@@ -4670,11 +5018,14 @@ solutions_dotProduct = [
             7, 
             11, 
             14, 
-            15
+            15, 
+            44, 
+            84, 
+            86
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 8, 
         "id": 88, 
         "lines": [
             {
@@ -4718,11 +5069,13 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            18, 
+            22, 
+            29
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 89, 
         "lines": [
             {
@@ -4766,11 +5119,21 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            5, 
+            18, 
+            22, 
+            29, 
+            47, 
+            48, 
+            50, 
+            55, 
+            69, 
+            89, 
+            102
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 11, 
         "id": 90, 
         "lines": [
             {
@@ -4818,11 +5181,18 @@ solutions_dotProduct = [
             4, 
             8, 
             13, 
-            16
+            16, 
+            24, 
+            33, 
+            56, 
+            63, 
+            66, 
+            85, 
+            103
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 12, 
         "id": 91, 
         "lines": [
             {
@@ -4867,11 +5237,12 @@ solutions_dotProduct = [
     {
         "closest_stacks": [
             4, 
-            7
+            7, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 92, 
         "lines": [
             {
@@ -4915,15 +5286,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            6, 
-            7, 
-            11, 
-            14, 
-            15
+            94
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 1, 
         "id": 93, 
         "lines": [
             {
@@ -4961,15 +5328,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            6, 
-            7, 
-            11, 
-            14, 
-            15
+            93
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 5, 
+        "count_closest_stacks": 1, 
         "id": 94, 
         "lines": [
             {
@@ -5013,26 +5376,17 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            9, 
-            10, 
-            11, 
-            12, 
-            13, 
-            14, 
-            15, 
-            16
+            53, 
+            54, 
+            64, 
+            71, 
+            83, 
+            100, 
+            106
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 16, 
+        "count_closest_stacks": 7, 
         "id": 95, 
         "lines": [
             {
@@ -5080,13 +5434,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            6, 
-            14, 
-            15
+            49
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 1, 
         "id": 96, 
         "lines": [
             {
@@ -5130,24 +5482,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            10, 
-            11, 
-            13, 
-            14, 
-            15, 
-            16
+            98
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 14, 
+        "count_closest_stacks": 1, 
         "id": 97, 
         "lines": [
             {
@@ -5190,24 +5529,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            3, 
-            4, 
-            5, 
-            6, 
-            7, 
-            8, 
-            10, 
-            11, 
-            13, 
-            14, 
-            15, 
-            16
+            97
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 14, 
+        "count_closest_stacks": 1, 
         "id": 98, 
         "lines": [
             {
@@ -5263,11 +5589,56 @@ solutions_dotProduct = [
             13, 
             14, 
             15, 
-            16
+            16, 
+            18, 
+            22, 
+            24, 
+            29, 
+            33, 
+            36, 
+            43, 
+            44, 
+            45, 
+            46, 
+            47, 
+            48, 
+            50, 
+            55, 
+            56, 
+            58, 
+            59, 
+            60, 
+            61, 
+            62, 
+            63, 
+            64, 
+            65, 
+            66, 
+            69, 
+            71, 
+            80, 
+            81, 
+            82, 
+            83, 
+            84, 
+            85, 
+            86, 
+            88, 
+            89, 
+            90, 
+            91, 
+            92, 
+            97, 
+            98, 
+            100, 
+            102, 
+            103, 
+            106, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 14, 
+        "count_closest_stacks": 59, 
         "id": 99, 
         "lines": [
             {
@@ -5311,11 +5682,17 @@ solutions_dotProduct = [
     {
         "closest_stacks": [
             4, 
-            7
+            7, 
+            64, 
+            71, 
+            83, 
+            92, 
+            106, 
+            107
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 8, 
         "id": 100, 
         "lines": [
             {
@@ -5358,11 +5735,22 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            5, 
+            18, 
+            22, 
+            29, 
+            47, 
+            48, 
+            50, 
+            55, 
+            69, 
+            89, 
+            90, 
+            102
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 12, 
         "id": 101, 
         "lines": [
             {
@@ -5400,7 +5788,7 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            5
+            55
         ], 
         "correct": false, 
         "count": 1, 
@@ -5450,11 +5838,14 @@ solutions_dotProduct = [
         "closest_stacks": [
             1, 
             13, 
-            16
+            16, 
+            56, 
+            63, 
+            66
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 6, 
         "id": 103, 
         "lines": [
             {
@@ -5498,16 +5889,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            4, 
-            8, 
-            9, 
-            13, 
-            16
+            105
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 6, 
+        "count_closest_stacks": 1, 
         "id": 104, 
         "lines": [
             {
@@ -5545,16 +5931,11 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            4, 
-            8, 
-            9, 
-            13, 
-            16
+            104
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 6, 
+        "count_closest_stacks": 1, 
         "id": 105, 
         "lines": [
             {
@@ -5597,17 +5978,12 @@ solutions_dotProduct = [
     }, 
     {
         "closest_stacks": [
-            1, 
-            2, 
-            6, 
-            13, 
-            14, 
-            15, 
-            16
+            64, 
+            83
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 7, 
+        "count_closest_stacks": 2, 
         "id": 106, 
         "lines": [
             {
@@ -5651,11 +6027,12 @@ solutions_dotProduct = [
     {
         "closest_stacks": [
             4, 
-            7
+            7, 
+            92
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 107, 
         "lines": [
             {

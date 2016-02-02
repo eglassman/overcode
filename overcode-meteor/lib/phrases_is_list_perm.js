@@ -1,4 +1,4 @@
-phrases = [
+phrases_is_list_perm = [
     {
         "code": "def is_list_permutation(L1,L2):", 
         "corresponding_lines": [

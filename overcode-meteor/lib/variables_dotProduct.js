@@ -1,4 +1,4 @@
-variables_dotProduct = [
+variables = [
     {
         "id": 1, 
         "sequence": {

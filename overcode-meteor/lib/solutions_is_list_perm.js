@@ -1,4 +1,4 @@
-solutions = [
+solutions_is_list_permutation = [
     {
         "correct": true, 
         "count": 1, 
