@@ -23,15 +23,22 @@ Template.solution.helpers({
     }
 });
 
-Template.solutionsList.helpers({
-    "solutions": function() {
+Template.filteredSolutions.helpers({
+    "filteredSolutions": function() {
         var clickedStack = Session.get('clickedStack');
         if (clickedStack === undefined) {
-            return Stacks.find({}, { sort: {'count': -1} }).fetch();
+            // return Stacks.find({}, { sort: {'count': -1} }).fetch();
+            return;
         }
         return Stacks.find({
-            id: { $in: clickedStack.closest_stacks.concat([clickedStack.id]) }
+            id: { $in: clickedStack.closest_stacks }
         });
+    }
+});
+
+Template.solutionsList.helpers({
+    "solutions": function() {
+        return Stacks.find({}, {sort: {'count': -1}}).fetch();
     }
 });
 
@@ -61,6 +68,13 @@ Template.incorrectSolutionsList.helpers({
         }
         return closest_stacks.indexOf(clickedStack)>=0
     }
+});
+
+Template.body.onRendered(function() {
+    console.log('body rendered');
+
+    console.log('window height:', window.innerHeight);
+    $('.filtered, .unfiltered').height(window.innerHeight);
 });
 
 Template.registerHelper('log',function(){

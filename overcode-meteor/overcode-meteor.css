@@ -8,7 +8,26 @@
     margin-top: 2px;
 }
 
-.dimmed {
+.stack-wrapper {
+    margin-right: -15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+.unfiltered .clicked {
+    background-color: #ECF3F9;
+}
+
+.filtered {
+    background-color: #ECF3F9;
+}
+
+.filtered, .unfiltered {
+    overflow-y: scroll;
+}
+
+.filtered .dimmed {
 	opacity: 0.5;
 }
 

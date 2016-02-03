@@ -5,11 +5,13 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-6">
+        <!-- TODO: scroll these separately -->
+        <div class="col-xs-6 unfiltered">
             {{> solutionsList}}
         </div>
-        <div class="col-xs-6">
-            {{> pinnedStack}}
+        <div class="col-xs-6 filtered">
+            <!-- {{> pinnedStack}} -->
+            {{> filteredSolutions}}
         </div>
     </div>
 </div>
@@ -50,12 +52,20 @@
     {{/each}}
 </template>
 
+<template name="filteredSolutions">
+    {{#each filteredSolutions}}
+        {{> solution}}
+    {{/each}}
+</template>
+
 <template name="solution">
-<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}} {{#if clicked id}}clicked{{/if}}" id="{{id}}" data-phraseids="{{phraseIDs}}" data-closest-stacks="{{closest_stacks}}">
+<div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
+<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}" data-phraseids="{{phraseIDs}}" data-closest-stacks="{{closest_stacks}}">
     <span class="badge">{{count}}</span>
     <span class="text-muted pull-right">id: {{id}}</span>
     <pre><code>{{#each lines}}{{createSpace indent}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
+</div>
 </div>
 </template>
 

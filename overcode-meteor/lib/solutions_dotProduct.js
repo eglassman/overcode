@@ -1,4 +1,4 @@
-solutions = [
+solutions_dotProduct = [
     {
         "closest_stacks": [
             13, 

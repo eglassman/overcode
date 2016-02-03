@@ -1,4 +1,4 @@
-solutions_is_list_permutation = [
+solutions_is_list_perm = [
     {
         "correct": true, 
         "count": 1, 
