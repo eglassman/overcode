@@ -7,8 +7,32 @@ Template.solution.helpers({
     "getPhraseFromID": function(phraseID) {
         return Phrases.findOne({ id: phraseID });
     },
-    "createSpace": function(indent) {
-        return " ".repeat(indent);
+    "createSpace": function() {
+        // this is { phraseID, indent }
+        return " ".repeat(this.indent);
+    },
+    "hasDifferentIndent": function() {
+        // whether or not this line appears in the reference solution
+        // with different indentation (in other words, whether the indent
+        // should be visually distinguished)
+
+        // this is { phraseID, indent }
+        var clickedStack = Session.get('clickedStack');
+        if (clickedStack === undefined) {
+            return false;
+        }
+        var is_shared = false;
+        var matches_exactly = false;
+        clickedStack.lines.forEach(function(l) {
+            if (l.phraseID == this.phraseID) {
+                is_shared = true;
+                if (l.indent == this.indent) {
+                    matches_exactly = true;
+                }
+            }
+        }, this); // second argument is bound to this within the callback
+
+        return is_shared && !matches_exactly
     },
     "clicked": function(stackID){
         var clickedStack = Session.get('clickedStack');
@@ -27,7 +51,6 @@ Template.filteredSolutions.helpers({
     "filteredSolutions": function() {
         var clickedStack = Session.get('clickedStack');
         if (clickedStack === undefined) {
-            // return Stacks.find({}, { sort: {'count': -1} }).fetch();
             return;
         }
         return Stacks.find({
@@ -71,9 +94,6 @@ Template.incorrectSolutionsList.helpers({
 });
 
 Template.body.onRendered(function() {
-    console.log('body rendered');
-
-    console.log('window height:', window.innerHeight);
     $('.filtered, .unfiltered').height(window.innerHeight);
 });
 

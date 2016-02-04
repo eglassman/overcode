@@ -63,7 +63,7 @@
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}" data-phraseids="{{phraseIDs}}" data-closest-stacks="{{closest_stacks}}">
     <span class="badge">{{count}}</span>
     <span class="text-muted pull-right">id: {{id}}</span>
-    <pre><code>{{#each lines}}{{createSpace indent}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
+    <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{createSpace}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
 </div>

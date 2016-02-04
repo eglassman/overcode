@@ -35,6 +35,10 @@
     opacity: 1.0;
 }
 
+.different-indent {
+    text-decoration: underline;
+}
+
 .incorrect pre {
     background-color: #f2dede;
     border-color: #e2b6b6;
