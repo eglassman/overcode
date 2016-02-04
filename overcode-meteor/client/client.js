@@ -93,11 +93,19 @@ Template.incorrectSolutionsList.helpers({
     }
 });
 
-Template.body.onRendered(function() {
-    $('.filtered, .unfiltered').height(window.innerHeight);
-    $(window).on('resize', function() {
-        $('.filtered, .unfiltered').height(window.innerHeight);
+var setColumnHeights = function() {
+    $('.filtered, .unfiltered').css({
+        'height': window.innerHeight,
+        // TODO: instead of a hardcoded 100px buffer, set this dynamically
+        // to be the height of the last stack. Tried to do so but ran into
+        // problems with the stacks not being rendered(? or something) yet.
+        'padding-bottom': window.innerHeight - 100
     });
+};
+
+Template.body.onRendered(function() {
+    setColumnHeights();
+    $(window).on('resize', setColumnHeights);
 });
 
 Template.registerHelper('log',function(){
