@@ -4920,11 +4920,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            131
+            131, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 62, 
         "lines": [
             {
@@ -4984,11 +4985,15 @@ solutions = [
         "closest_stacks": [
             109, 
             110, 
-            126
+            126, 
+            31, 
+            33, 
+            34, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 7, 
         "id": 63, 
         "lines": [
             {
@@ -5085,11 +5090,13 @@ solutions = [
         "closest_stacks": [
             74, 
             94, 
-            95
+            95, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 5, 
         "id": 64, 
         "lines": [
             {
@@ -5153,11 +5160,17 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            63
+            63, 
+            11, 
+            24, 
+            25, 
+            44, 
+            50, 
+            60
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 7, 
         "id": 65, 
         "lines": [
             {
@@ -5319,11 +5332,13 @@ solutions = [
             81, 
             108, 
             117, 
-            141
+            141, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 67, 
         "lines": [
             {
@@ -5393,11 +5408,14 @@ solutions = [
         "closest_stacks": [
             73, 
             96, 
-            140
+            140, 
+            31, 
+            33, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 6, 
         "id": 68, 
         "lines": [
             {
@@ -5439,11 +5457,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            87
+            87, 
+            10
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 69, 
         "lines": [
             {
@@ -5540,11 +5559,13 @@ solutions = [
             89, 
             99, 
             127, 
-            143
+            143, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 70, 
         "lines": [
             {
@@ -5731,11 +5752,13 @@ solutions = [
             62, 
             89, 
             100, 
-            131
+            131, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 72, 
         "lines": [
             {
@@ -5794,11 +5817,14 @@ solutions = [
     {
         "closest_stacks": [
             96, 
-            140
+            140, 
+            31, 
+            33, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 5, 
         "id": 73, 
         "lines": [
             {
@@ -5847,11 +5873,13 @@ solutions = [
         "closest_stacks": [
             64, 
             94, 
-            95
+            95, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 5, 
         "id": 74, 
         "lines": [
             {
@@ -5924,11 +5952,13 @@ solutions = [
             93, 
             129, 
             133, 
-            134
+            134, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 75, 
         "lines": [
             {
@@ -5987,11 +6017,12 @@ solutions = [
     {
         "closest_stacks": [
             95, 
-            112
+            112, 
+            1
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 76, 
         "lines": [
             {
@@ -6108,11 +6139,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            100
+            100, 
+            1
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 77, 
         "lines": [
             {
@@ -6271,11 +6303,13 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            125
+            125, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 79, 
         "lines": [
             {
@@ -6622,11 +6656,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            91
+            91, 
+            7
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 83, 
         "lines": [
             {
@@ -6846,11 +6881,15 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            142
+            142, 
+            31, 
+            33, 
+            34, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 5, 
         "id": 86, 
         "lines": [
             {
@@ -6941,11 +6980,20 @@ solutions = [
     {
         "closest_stacks": [
             69, 
-            137
+            137, 
+            4, 
+            8, 
+            10, 
+            13, 
+            16, 
+            21, 
+            32, 
+            41, 
+            54
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 11, 
         "id": 87, 
         "lines": [
             {
@@ -7128,11 +7176,13 @@ solutions = [
     {
         "closest_stacks": [
             70, 
-            72
+            72, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 4, 
         "id": 89, 
         "lines": [
             {
@@ -7264,11 +7314,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            83
+            83, 
+            7
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 91, 
         "lines": [
             {
@@ -7469,11 +7520,12 @@ solutions = [
     {
         "closest_stacks": [
             133, 
-            134
+            134, 
+            1
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 93, 
         "lines": [
             {
@@ -7533,11 +7585,13 @@ solutions = [
         "closest_stacks": [
             64, 
             74, 
-            95
+            95, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 5, 
         "id": 94, 
         "lines": [
             {
@@ -7609,11 +7663,12 @@ solutions = [
         "closest_stacks": [
             64, 
             74, 
-            94
+            94, 
+            1
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 4, 
         "id": 95, 
         "lines": [
             {
@@ -7691,11 +7746,14 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            140
+            140, 
+            31, 
+            33, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 4, 
         "id": 96, 
         "lines": [
             {
@@ -7753,11 +7811,12 @@ solutions = [
     {
         "closest_stacks": [
             76, 
-            112
+            112, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 97, 
         "lines": [
             {
@@ -7948,11 +8007,13 @@ solutions = [
             64, 
             74, 
             94, 
-            95
+            95, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 98, 
         "lines": [
             {
@@ -8040,11 +8101,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            131
+            131, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 99, 
         "lines": [
             {
@@ -8427,11 +8489,12 @@ solutions = [
     {
         "closest_stacks": [
             132, 
-            146
+            146, 
+            11
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 104, 
         "lines": [
             {
@@ -8557,11 +8620,20 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            87
+            87, 
+            4, 
+            8, 
+            13, 
+            16, 
+            21, 
+            32, 
+            37, 
+            41, 
+            54
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 10, 
         "id": 106, 
         "lines": [
             {
@@ -8752,11 +8824,13 @@ solutions = [
             67, 
             81, 
             117, 
-            141
+            141, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 108, 
         "lines": [
             {
@@ -8814,11 +8888,24 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            110
+            110, 
+            2, 
+            5, 
+            13, 
+            22, 
+            23, 
+            26, 
+            27, 
+            32, 
+            34, 
+            36, 
+            37, 
+            48, 
+            52
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 14, 
         "id": 109, 
         "lines": [
             {
@@ -8989,11 +9076,24 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            99
+            99, 
+            2, 
+            5, 
+            13, 
+            22, 
+            23, 
+            26, 
+            27, 
+            32, 
+            34, 
+            36, 
+            37, 
+            48, 
+            52
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 14, 
         "id": 111, 
         "lines": [
             {
@@ -9058,11 +9158,13 @@ solutions = [
             64, 
             74, 
             94, 
-            95
+            95, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 112, 
         "lines": [
             {
@@ -9290,11 +9392,18 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            116
+            116, 
+            11, 
+            20, 
+            24, 
+            25, 
+            44, 
+            50, 
+            60
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 8, 
         "id": 115, 
         "lines": [
             {
@@ -9359,11 +9468,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            115
+            115, 
+            50
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 116, 
         "lines": [
             {
@@ -9445,11 +9555,13 @@ solutions = [
             67, 
             81, 
             108, 
-            141
+            141, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 117, 
         "lines": [
             {
@@ -9509,11 +9621,25 @@ solutions = [
         "closest_stacks": [
             83, 
             91, 
-            104
+            104, 
+            2, 
+            3, 
+            9, 
+            19, 
+            20, 
+            23, 
+            26, 
+            29, 
+            30, 
+            33, 
+            42, 
+            47, 
+            48, 
+            51
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 17, 
         "id": 118, 
         "lines": [
             {
@@ -9571,11 +9697,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            90
+            90, 
+            7
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 119, 
         "lines": [
             {
@@ -9712,11 +9839,17 @@ solutions = [
         "closest_stacks": [
             87, 
             115, 
-            116
+            116, 
+            11, 
+            24, 
+            25, 
+            44, 
+            50, 
+            60
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 9, 
         "id": 121, 
         "lines": [
             {
@@ -9901,11 +10034,14 @@ solutions = [
     {
         "closest_stacks": [
             90, 
-            126
+            126, 
+            7, 
+            11, 
+            50
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 5, 
         "id": 124, 
         "lines": [
             {
@@ -9983,11 +10119,13 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            79
+            79, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 125, 
         "lines": [
             {
@@ -10345,11 +10483,13 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            131
+            131, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 129, 
         "lines": [
             {
@@ -10483,11 +10623,17 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            65
+            65, 
+            11, 
+            24, 
+            25, 
+            44, 
+            50, 
+            60
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 7, 
         "id": 130, 
         "lines": [
             {
@@ -10515,11 +10661,12 @@ solutions = [
         "closest_stacks": [
             62, 
             99, 
-            129
+            129, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 4, 
         "id": 131, 
         "lines": [
             {
@@ -10615,11 +10762,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            104
+            104, 
+            11
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 132, 
         "lines": [
             {
@@ -10710,11 +10858,12 @@ solutions = [
     {
         "closest_stacks": [
             93, 
-            134
+            134, 
+            1
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 133, 
         "lines": [
             {
@@ -10778,11 +10927,12 @@ solutions = [
     {
         "closest_stacks": [
             93, 
-            133
+            133, 
+            1
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 3, 
         "id": 134, 
         "lines": [
             {
@@ -10908,11 +11058,17 @@ solutions = [
         "closest_stacks": [
             97, 
             115, 
-            118
+            118, 
+            11, 
+            24, 
+            25, 
+            44, 
+            50, 
+            60
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 3, 
+        "count_closest_stacks": 9, 
         "id": 136, 
         "lines": [
             {
@@ -10959,11 +11115,14 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            66
+            66, 
+            4, 
+            8, 
+            54
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 4, 
         "id": 137, 
         "lines": [
             {
@@ -11092,11 +11251,14 @@ solutions = [
     {
         "closest_stacks": [
             63, 
-            126
+            126, 
+            10, 
+            33, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 5, 
         "id": 139, 
         "lines": [
             {
@@ -11166,11 +11328,14 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            96
+            96, 
+            31, 
+            33, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 4, 
         "id": 140, 
         "lines": [
             {
@@ -11257,11 +11422,13 @@ solutions = [
             67, 
             81, 
             108, 
-            117
+            117, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 4, 
+        "count_closest_stacks": 6, 
         "id": 141, 
         "lines": [
             {
@@ -11340,11 +11507,13 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            86
+            86, 
+            33, 
+            54
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 142, 
         "lines": [
             {
@@ -11457,11 +11626,13 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            70
+            70, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 143, 
         "lines": [
             {
@@ -11547,11 +11718,17 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            141
+            141, 
+            1, 
+            22, 
+            24, 
+            25, 
+            44, 
+            60
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 7, 
         "id": 144, 
         "lines": [
             {
@@ -11696,11 +11873,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            104
+            104, 
+            11
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 146, 
         "lines": [
             {
@@ -11767,11 +11945,12 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            83
+            83, 
+            7
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 2, 
         "id": 147, 
         "lines": [
             {
@@ -11865,11 +12044,17 @@ solutions = [
     {
         "closest_stacks": [
             115, 
-            116
+            116, 
+            11, 
+            24, 
+            25, 
+            44, 
+            50, 
+            60
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 8, 
         "id": 148, 
         "lines": [
             {
@@ -12050,11 +12235,13 @@ solutions = [
     }, 
     {
         "closest_stacks": [
-            151
+            151, 
+            33, 
+            48
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 1, 
+        "count_closest_stacks": 3, 
         "id": 150, 
         "lines": [
             {
@@ -12111,11 +12298,13 @@ solutions = [
     {
         "closest_stacks": [
             129, 
-            131
+            131, 
+            1, 
+            22
         ], 
         "correct": false, 
         "count": 1, 
-        "count_closest_stacks": 2, 
+        "count_closest_stacks": 4, 
         "id": 151, 
         "lines": [
             {
