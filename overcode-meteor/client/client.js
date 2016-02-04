@@ -95,6 +95,9 @@ Template.incorrectSolutionsList.helpers({
 
 Template.body.onRendered(function() {
     $('.filtered, .unfiltered').height(window.innerHeight);
+    $(window).on('resize', function() {
+        $('.filtered, .unfiltered').height(window.innerHeight);
+    });
 });
 
 Template.registerHelper('log',function(){
