@@ -1,8 +1,18 @@
+var fs = Npm.require('fs');
+var path = Npm.require('path');
+
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 // Variables = new Mongo.Collection('variables');
 
+var DATA_DIR_NAME = 'template_test'
+var results_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'output/')
+
 Meteor.startup(function () {
+    var solutions_path = path.join(results_path, 'solutions.json');
+    var phrases_path = path.join(results_path, 'phrases.json');
+    var solutions = JSON.parse(fs.readFileSync(solutions_path));
+    var phrases = JSON.parse(fs.readFileSync(phrases_path));
 
     Stacks.remove({});
     Phrases.remove({});
