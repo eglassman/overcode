@@ -3,13 +3,17 @@ Phrases = new Mongo.Collection('phrases');
 // Variables = new Mongo.Collection('variables');
 
 
-Template.solution.helpers({
-    "getPhraseFromID": function(phraseID) {
-        return Phrases.findOne({ id: phraseID });
-    },
+Template.indentation.helpers({
     "createSpace": function() {
         // this is { phraseID, indent }
-        return " ".repeat(this.indent);
+        var diff = this.indentDiff !== undefined ? Math.abs(this.indentDiff / 4) : 0;
+        // console.log(diff)
+        var space = " ".repeat(this.indent - diff);
+        if (this.indentDiff !== undefined) {
+            var character = this.indentDiff > 0 ? "&rarr;" : "&larr;"
+            space += character.repeat(diff);
+        }
+        return space
     },
     "hasDifferentIndent": function() {
         // whether or not this line appears in the reference solution
@@ -23,16 +27,29 @@ Template.solution.helpers({
         }
         var is_shared = false;
         var matches_exactly = false;
+        var indentation_difference;
         clickedStack.lines.forEach(function(l) {
             if (l.phraseID == this.phraseID) {
                 is_shared = true;
                 if (l.indent == this.indent) {
                     matches_exactly = true;
+                } else if ( !matches_exactly && (indentation_difference === undefined)) {
+                    indentation_difference = l.indent - this.indent;
                 }
             }
         }, this); // second argument is bound to this within the callback
 
-        return is_shared && !matches_exactly
+        if (is_shared && !matches_exactly) {
+            this.indentDiff = indentation_difference;
+            return true;
+        }
+        return false;
+    }
+})
+
+Template.solution.helpers({
+    "getPhraseFromID": function(phraseID) {
+        return Phrases.findOne({ id: phraseID });
     },
     "clicked": function(stackID){
         var clickedStack = Session.get('clickedStack');

@@ -36,7 +36,12 @@
 }
 
 .filtered .different-indent {
-    text-decoration: underline;
+    /*text-decoration: underline;*/
+    /*font-weight: bold;*/
+}
+
+.unfiltered .different-indent {
+    display: hidden;
 }
 
 .incorrect pre {
