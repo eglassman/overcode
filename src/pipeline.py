@@ -122,6 +122,10 @@ class Solution(object):
         return self.__dict__
 
     def difference_metric(self, other):
+        """A number representing how similar this solution is with another.
+        Higher numbers => more similar. Currently, the number of rendered
+        phrases shared between the two solutions, plus the number of variable
+        names shared."""
         rendered_self = set(l.render() for l in self.canonical_lines)
         rendered_other = set(l.render() for l in other.canonical_lines)
         # my_line_total = len(self.canonical_lines)
@@ -910,15 +914,37 @@ def break_ties(var_to_match, best_avars):
     return best_avars[0]
 
 def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
+    """Actually apply our heuristic to determine which AbstractVariable,
+    if any, should be associated with the given incorrect variable.
+
+    var_to_match: VariableInstance, the variable to find an association for
+    correct_abstracts: list of correct AbstractVariables
+    scores: dictionary mapping template-index pairs to information values
+    threshold: the amount of information a match requires to be considered
+
+    (scores and threshold are both found from find_template_info_scores.)
+
+    mutates var_to_match if an associated AbstractVariable is found.
+
+    returns (match type, info content) where match type is one of 'no_match',
+        'templates_differ', 'templates_match_perfectly', 'values_match'
+    """
     best_avars = []
     best_info_content = 0
     for avar in correct_abstracts:
+        # See if var_to_match has exactly the same values as a correct
+        # AbstractVariable
         if avar.should_contain(var_to_match):
             avar.add_instance(var_to_match)
             return ('values_match', None)
 
+        # set of template-index pairs var_to_match appears in that the
+        # AbstractVariable under consideration does not
         diff = var_to_match.templates_with_indices - avar.templates_with_indices
+        # set of template-index pairs shared between var_to_match and the
+        # AbstractVariable under consideration
         shared = var_to_match.templates_with_indices & avar.templates_with_indices
+
         # Since every template in correct abstract variables is in scores
         # and we are only looking up the score of templates that are shared
         # with correct abstract variables, we will never get key errors
@@ -926,19 +952,37 @@ def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
 
         if match_info_content > threshold:
             if len(diff) == 0:
+                # All templates in var_to_match are shared by the AbstractVariable
                 var_to_match.maps_to = avar
                 return ('templates_match_perfectly', match_info_content)
             elif match_info_content >= best_info_content:
+                # This is (one of) the best match(es) we've seen
                 best_info_content = match_info_content
                 best_avars.append(avar)
 
     if best_avars:
+        # multiple AbstractVariables are tied for best match based on the
+        # information content. Pick the "best" one (at the moment, it's
+        # just arbitrary - the first one is picked). Using string edit
+        # distance here instead was discussed.
         var_to_match.maps_to = break_ties(var_to_match, best_avars)
         return ('templates_differ', best_info_content)
     else:
         return ('no_match', None)
 
 def render_template_indices((template, indices), fill_in):
+    """Helper function that takes a template and a set of indices, and
+    returns the template with the specified blanks filled in with the given
+    string.
+
+    examples:
+    render_template_indices(("for ___ in ___:", (0,)), "i")
+    >>> "for i in ___:"
+
+    render_template_indices(("___=___[___]*___[___]", (2, 4)), "index")
+    >>> "___=___[index]*___[index]"
+
+    """
     buildme = []
     last_end = 0
     for i, match in enumerate(re.finditer('___', template)):
@@ -952,15 +996,52 @@ def render_template_indices((template, indices), fill_in):
     return ''.join(buildme)
 
 def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_variables):
+    """Associate a correct AbstractVariable with every local variable in an
+    incorrect solution, if there is an unambiguous match that is close enough.
+    This association determines what name to use when rendering the incorrect
+    variable.
+
+    incorrect_solutions: list of Solutions
+    correct_abstracts: list of AbstractVariables from correct solutions
+    incorrect_variables: list to populate with VariableInstances that don't
+        belong to any AbstractVariable. Can be empty.
+
+    The returned list is dumped into a json file and isonly used for debugging,
+    but is described below anyway.
+
+    returns a list of dictionaries, one per incorrect variable, of the
+    following form:
+    {
+        solution: solnum
+        original: list of templates in which the incorrect variable appears in
+            the original incorrect solution, with the appropriate blanks filled
+            in with the local name
+        match_type: one of 'values_match', 'templates_match_perfectly',
+            'templates_differ', or 'no_match'
+        maps_to: list of templates of the abstract variable with which the
+            incorrect variable is associated, with the appropriate blanks
+            filled in. If there is no match, this field is absent.
+        values_of_match: dictionary mapping testcases to value sequences of
+            the associated abstract variable. If there is no match, this field
+            is absent.
+        info_content: information content of the match if it is based on
+            templates (templates_match_perfectly or templates_differ). Absent
+            otherwise.
+    }
+    """
+
+    # Find the information given by the presence of any given template
     scores, threshold = find_template_info_scores(correct_abstracts)
     output = []
     for sol in incorrect_solutions:
         for lvar in sol.local_vars:
+            # Find the actual match
             (match_type, info_content) = find_matching_var(
                 lvar, correct_abstracts, scores, threshold)
             if match_type != 'values_match':
                 incorrect_variables.append(lvar)
 
+            ### Everything below here is only used to generate the output.
             result = {
                 'solution': sol.solnum,
                 'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates_with_indices],
@@ -1114,17 +1195,22 @@ def run(folderOfData, destFolder):
     correct_stacks = []
     stack_solutions(correct_solutions, correct_stacks)
 
+    # Determine how to name variables in incorrect solutions by matching them
+    # to variables in correct solutions
     incorrect_variables = []
     var_mappings = find_all_matching_vars(
         incorrect_solutions, correct_abstracts, incorrect_variables)
     dumpOutput(var_mappings, 'var_mappings.json')
 
+    # Turn every incorrect solution into a singleton stack
     incorrect_fake_stacks = fake_stacks(incorrect_solutions)
     all_stacks = correct_stacks + incorrect_fake_stacks
     all_variables = correct_abstracts + incorrect_variables
 
+    # For every stack, find the other stacks that are closest
     find_closest_stacks(all_stacks, correct_stacks)
 
+    # Generate the output for json files
     ordered_phrases = []
     phrase_to_lines = {}
     solutions = format_stack_output(
@@ -1141,7 +1227,8 @@ def run(folderOfData, destFolder):
         dumpOutput(variables, 'variables.json')
     except ValueError:
         # Circular reference. Try pretty printing instead. This might break
-        # things in the UI.
+        # things in the UI (though currently variables are not used so it's
+        # safe, for now)
         with open(path.join(destFolder, 'variables.json'), 'w') as f:
             pprint.pprint(variables, f)
 
