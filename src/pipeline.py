@@ -148,7 +148,7 @@ class VariableInstance(object):
         self.rename_to = None
 
         self.maps_to = None
-        self.templates = set()
+        self.templates_with_indices = set()
 
     def __repr__(self):
         return "Variable(" + self.local_name + ") in solution " + str(self.solnum)
@@ -176,7 +176,7 @@ class AbstractVariable(object):
         self.canon_name = None
         self.is_unique = None
 
-        self.templates = set()
+        self.templates_with_indices = set()
 
     def should_contain(self, inst):
         """
@@ -445,7 +445,7 @@ def find_canon_names(all_abstracts):
 def find_template_info_scores(abstracts):
     counts = Counter()
     for avar in abstracts:
-        counts.update(avar.templates)
+        counts.update(avar.templates_with_indices)
     total = float(sum(counts.values()))
 
     # log2(1/p)
@@ -691,9 +691,12 @@ def compute_lines(sol, tidy_path, all_lines):
         sol.lines.append(this_line_in_solution)
         sol.canonical_lines.append(line_object)
 
+        # Record the template-index pairs that variables occur in
         for var_obj in set(variable_objects):
+            # Find the positions in the template that each variable appears
             indices = tuple(i for (i, v) in enumerate(variable_objects) if v==var_obj)
-            var_obj.templates.add((template, indices))
+            # Add the (template, indices) pair to that variable's set
+            var_obj.templates_with_indices.add((template, indices))
 
         add_to_setlist(line_object, all_lines)
 
@@ -914,8 +917,8 @@ def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
             avar.add_instance(var_to_match)
             return ('values_match', None)
 
-        diff = var_to_match.templates - avar.templates
-        shared = var_to_match.templates & avar.templates
+        diff = var_to_match.templates_with_indices - avar.templates_with_indices
+        shared = var_to_match.templates_with_indices & avar.templates_with_indices
         # Since every template in correct abstract variables is in scores
         # and we are only looking up the score of templates that are shared
         # with correct abstract variables, we will never get key errors
@@ -960,7 +963,7 @@ def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_var
 
             result = {
                 'solution': sol.solnum,
-                'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates],
+                'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates_with_indices],
                 'match_type': match_type
             }
             if match_type == 'values_match':
@@ -971,7 +974,7 @@ def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_var
             else:
                 avar = lvar.maps_to
                 result['info_content'] = info_content
-            result['maps_to'] = [render_template_indices(t, avar.canon_name) for t in avar.templates],
+            result['maps_to'] = [render_template_indices(t, avar.canon_name) for t in avar.templates_with_indices],
             result['values_of_match'] = avar.sequence
 
             output.append(result)
@@ -1107,7 +1110,7 @@ def run(folderOfData, destFolder):
     all_lines = []
     skipped_by_renamer = compute_all_lines(all_solutions, folderOfData, all_lines)
 
-    # Stack solutions
+    # Stack correct solutions
     correct_stacks = []
     stack_solutions(correct_solutions, correct_stacks)
 
