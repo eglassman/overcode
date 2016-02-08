@@ -112,7 +112,7 @@ Template.registerHelper('log',function(){
     console.log('template logging',this);
 });
 
-Template.solution.events({
+Template.solutionsList.events({
     "click .stack": function(event){
         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
         var clickedStack = Stacks.findOne({id: clickedStackID});
