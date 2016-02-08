@@ -137,3 +137,14 @@ Template.pinnedStack.events({
         Session.set('clickedStack', undefined);
     }
 });
+
+Template.solutionUnfiltered.events({
+    "click .showRaw": function(event) {
+        // var solnum = this.members[0];
+        // console.log(this);
+        Meteor.call('getRawCode', this.members, function(err, result) {
+            console.log('got result:', result);
+            // TODO: how do I actually render this???
+        });
+    }
+})

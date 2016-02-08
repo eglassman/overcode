@@ -6,7 +6,26 @@ Phrases = new Mongo.Collection('phrases');
 // Variables = new Mongo.Collection('variables');
 
 var DATA_DIR_NAME = 'template_test'
-var results_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'output/')
+var results_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'output/');
+var data_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'data/');
+
+Meteor.methods({
+    "getRawCode": function(members) {
+        console.log('asked for code for:', members);
+        var results = [];
+        for (var i = 0; i < members.length; i++) {
+            // TODO: do this asynchronously in parallel rather than
+            // synchrounously in series - probably want to use the npm 'async'
+            // package.
+            var solnum = members[i];
+            var file_path = path.join(data_path, solnum + '.py');
+            var raw = fs.readFileSync(file_path);
+            results.push(raw.toString());
+        }
+        // console.log(results);
+        return results
+    }
+});
 
 Meteor.startup(function () {
     var solutions_path = path.join(results_path, 'solutions.json');
