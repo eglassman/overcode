@@ -419,9 +419,6 @@ def find_canon_names(all_abstracts):
     # Create a map from names to a list of (number of solutions using
     # that name, associated AbstractVariable instance) pairs
     for abstract in all_abstracts:
-        if abstract.is_unique:
-            uniques.append(abstract)
-            continue
         name = abstract.most_common_name()
         count = len(abstract.solutions)
         if name not in name_dict:
@@ -437,14 +434,6 @@ def find_canon_names(all_abstracts):
             count, abstract = name_dict[name][i]
             append = '' if i == 0 else '___' + str(i + 1)
             abstract.canon_name = name + append
-
-    # Unique variables just get double underscores if they clash
-    for unique in uniques:
-        name = unique.most_common_name()
-        if name in name_dict:
-            unique.canon_name = name + '__'
-        else:
-            unique.canon_name = name
 
 def find_template_info_scores(abstracts):
     counts = Counter()
