@@ -1,6 +1,6 @@
-var addOutputChoice = function(output) {
-  $('#output-select').append($('<option>', { value: output, text: output }));
-}
+// var addOutputChoice = function(output) {
+//   $('#output-select').append($('<option>', { value: output, text: output }));
+// }
 
 var initializeStacks = function() {
   // allStacks = [];
@@ -17,15 +17,15 @@ var initializeStacks = function() {
                   category: 'unread',
                   originalStacks: [i+1]
                 };
-    // allStacks.push(stack);
-    if (solution.output in stacksByOutput) {
-      stacksByOutput[solution.output].push(stack);
-    } else {
-      stacksByOutput[solution.output] = [stack]
-      addOutputChoice(solution.output)
-    }
+    allStacks.push(stack);
+    // if (solution.output in stacksByOutput) {
+    //   stacksByOutput[solution.output].push(stack);
+    // } else {
+    //   stacksByOutput[solution.output] = [stack]
+    //   addOutputChoice(solution.output)
+    // }
   });
-  console.log('stacksByOutput:', stacksByOutput);
+  // console.log('stacksByOutput:', stacksByOutput);
 }
 
 var stackCopy = function(stack) {
@@ -39,18 +39,18 @@ var stackCopy = function(stack) {
         };
 };
 
-var getCurrentStack = function() {
-  var current_output = $('#output-select').val()
-  current_stack = stacksByOutput[current_output]
-  if (current_stack === undefined) {
-    var everything = []
-    $.each(stacksByOutput, function(out) {
-      everything = everything.concat(stacksByOutput[out])
-    });
-    return everything
-  }
-  return current_stack !== undefined ? current_stack : [];
-}
+// var getCurrentStack = function() {
+//   var current_output = $('#output-select').val()
+//   current_stack = stacksByOutput[current_output]
+//   if (current_stack === undefined) {
+//     var everything = []
+//     $.each(stacksByOutput, function(out) {
+//       everything = everything.concat(stacksByOutput[out])
+//     });
+//     return everything
+//   }
+//   return current_stack !== undefined ? current_stack : [];
+// }
 
 var generateRewriteRule = function(downStack,upStack) {
   var diff1, diff2;
@@ -122,10 +122,16 @@ var generateCode = function(lines, referencePhraseIDs) {
     } else {
       codeLine = phrase.code;
     }
+
+    var suffix_re = /___(\d+)/g
+    var subscripted_line = codeLine.replace(suffix_re, function(match, digit) {
+      return "<sub>" + digit + "</sub>";
+    });
+
     if (referencePhraseIDs.indexOf(line.phraseID) == -1)
-      code += codeIndent + codeLine + "<br>";
+      code += codeIndent + subscripted_line + "<br>";
     else
-      code += codeIndent + "<span class='dimmed'>" + codeLine + "</span>" + "<br>";
+      code += codeIndent + "<span class='dimmed'>" + subscripted_line + "</span>" + "<br>";
   });
   code += "</code></pre>";
   return code;
@@ -278,8 +284,8 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       d.category = 'done';
       $(this).addClass("read");
 
-      // allStacks.forEach(function(s) {
-      getCurrentStack().forEach(function(s) {
+      allStacks.forEach(function(s) {
+      // getCurrentStack().forEach(function(s) {
         if (d.originalStacks.indexOf(s.id) != -1)
           s.category = d.category;
       });
@@ -319,7 +325,16 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
 
   var stackCode = stackEnter.append("div")
     .attr("class", function(d) {
-      return (d.category == 'done') ? "code read" : "code";
+      var classes = "code";
+      if (d.category == 'done') {
+        classes += " read";
+      }
+      if (!(d.solutions[0].correct)) {
+        classes += " incorrect-code"
+      }
+      return classes
+      // console.log(d.solutions[0].correct)
+      // return (d.category == 'done') ? "code read" : "code";
     });
   stackCode.html(function(d) {
       code = d.id == "miscellaneous" ?
@@ -348,8 +363,8 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     d.category = 'done';
     $(this).addClass("read");
 
-    // allStacks.forEach(function(s) {
-    getCurrentStack().forEach(function(s) {
+    allStacks.forEach(function(s) {
+    // getCurrentStack().forEach(function(s) {
       if (d.originalStacks.indexOf(s.id) != -1)
         s.category = d.category;
     });

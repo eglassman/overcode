@@ -1,16 +1,77 @@
 import cgi
 from collections import Counter
 import json
+from math import log
 import os
 from os import path
 import pickle
 import pprint
 import re
+import types
 
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
 
 use_original_line_equality_metric = False
+
+# CORRECT_OUTPUT = {
+#     "dotProduct([-22, -54, 20, 23, 76, 0], [48, 62, -4, 89, -41, 15])": -5553, 
+#     "dotProduct([-45], [-60])": 2700, 
+#     "dotProduct([-62, 4, 73, -46, 79, -56], [77, -80, 3, 99, 59, 7])": -5160, 
+#     "dotProduct([-7, 96, -5, -45, -50, 5, -98, -16, -58], [88, -79, -47, 4, -19, -14, -47, -75, 35])": -3489, 
+#     "dotProduct([-90, -29, 36, -74, -24, 10, -16, 16, -28], [68, 39, -5, 7, 67, 91, 48, -60, -67])": -8499, 
+#     "dotProduct([31, 98, -78, -50, 55, -4], [-94, -23, -56, 31, 77, -84])": 2221, 
+#     "dotProduct([4, 69, -97], [-91, -71, -93])": 3758, 
+#     "dotProduct([68, 33, 56, 20, 4], [18, 93, -15, -57, -82])": 1985, 
+#     "dotProduct([69, 57, -64, -4, -5, -32, 30, 33], [-13, -16, -73, 26, -11, 98, 100, -8])": 2414, 
+#     "dotProduct([72, 18, 18, -57, -91, 61], [37, 8, 11, 30, 2, -64])": -2790
+# }
+# CORRECT_OUTPUT = {
+#     "dotProduct([1, 2, 3], [4, 5, 6])": 32
+# }
+# CORRECT_OUTPUT = {"is_list_permutation(['1', '2', 'a'], ['2', 'a', '1'])": ('1',
+#                                                            1,
+#                                                            str),
+#  'is_list_permutation([0, 4, 8, 3, 0, 2, 2, 1, 4, 7, 8, 3, 7, 0, 0], [3, 4, 0, 3, 8, 0, 2, 0, 7, 2, 0, 3, 7, 2, 1])': False,
+#  'is_list_permutation([0, 4, 8, 3, 2, 2, 1, 4, 7, 8, 3, 7, 0], [3, 4, 6, 2, 1, 2, 6, 7, 9, 8])': False,
+#  'is_list_permutation([1, 1, 1], [1, 1, 1])': (1, 3, int),
+#  'is_list_permutation([1, 1, 2, 2, 1], [2, 1, 2, 1, 1])': (1, 3, int),
+#  'is_list_permutation([1, 1, 2, 2, 2], [1, 2, 2, 1, 2])': (2, 3, int),
+#  'is_list_permutation([1, 1], [1])': False,
+#  "is_list_permutation([1, 2, '5', 2, 5, 3, 4, 4, 5, 5, 6], [3, 5, 1, '5', 2, 5, 2, 6, 4, 5, 4])": (5,
+#                                                                                                    3,
+#                                                                                                    int),
+#  'is_list_permutation([1, 2, 1], [1, 2, 1])': (1, 2, int),
+#  'is_list_permutation([1, 2, 1], [2, 1, 1])': (1, 2, int),
+#  'is_list_permutation([1, 2, 1], [2, 1, 2])': False,
+#  'is_list_permutation([1, 2, 3], [3, 2, 1])': (1, 1, int),
+#  "is_list_permutation([1], ['1', 1])": False,
+#  'is_list_permutation([1], [1])': (1, 1, int),
+#  'is_list_permutation([1], [])': False,
+#  "is_list_permutation([3, '5', '5', 7, 1, 2], [1, 2, '5', 7, 3, '5'])": ('5',
+#                                                                          2,
+#                                                                          str),
+#  "is_list_permutation([3, '5', 7, 1], [1, 2, 3, '5', 7])": False,
+#  'is_list_permutation([3, 2, 1, 4, 5, 6, 6, 6, 6], [1, 6, 2, 6, 3, 6, 4, 6, 5])': (6,
+#                                                                                    4,
+#                                                                                    int),
+#  "is_list_permutation([], ['1'])": False,
+#  'is_list_permutation([], [])': (None, None, None)}
+
+# CORRECT_OUTPUT = {"myLog(42, 5)": 2, "myLog(4, 16)": 0, "myLog(149, 3)": 4, "myLog(26, 3)": 2, "myLog(27, 3)": 3, "myLog(28, 3)": 3, "myLog(76, 4)": 3, "myLog(12, 13)": 0}
+# CORRECT_OUTPUT = {"longest_word('zebra', ['za', 'zaa', 'zea', 'bra', 'arb'])": "arb", "longest_word('aaa', ['aaa', 'aaaa', 'aa', 'a'])": "aaa", "longest_word('xylophone', ['nab', 'baa', 'ban', 'x', 'an', 'a'])": "x", "longest_word('zebra', ['xx', 'yy', 'oo', 'a', 'kk'])": "a", "longest_word('another', ['the', 'another', 'ther', 'tha', 'a'])": "another", "longest_word('abcd', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "cab", "longest_word('a', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "a", "longest_word('abcd', ['dcba', 'dab', 'abcde', 'bcad', 'b'])": "bcad", "longest_word('another', ['ran', 'tao', 'r', 'ona', 'art'])": "art", "longest_word('banana', ['nab', 'baa', 'ban', 'an', 'a'])": "baa", "longest_word('ab', ['aba', 'ba', 'bab'])": "ba", "longest_word('zebra', ['zen', 'zag', 'mag', 'trag', 'zr'])": "zr", "longest_word('xylophone', ['lyx', 'ophxyloen', 'phone', 'one'])": "ophxyloen", "longest_word('taupe', ['ip', 'ap', 'aa', 'ap', 'ar'])": "ap", "longest_word('ana', ['nan', 'an', 'a', 'an'])": "an", "longest_word('aabbccdd', ['dd', 'abbccd', 'aa', 'abcd'])": "abbccd", "longest_word('abcd', ['aaa', 'bbb', 'ccc', 'ddd'])": None, "longest_word('abaca', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "aaa", "longest_word('st', ['a', 's', 't', 'ba'])": "s", "longest_word('pow', ['wow', 'p', 'o', 'w'])": "o", "longest_word('ab', ['ab'])": "ab", "longest_word('banana', ['pqr', 'na', 'bn', 'n', 'a'])": "bn", "longest_word('taupe', ['pa', 'ta', 'ea', 'ae', 'at'])": "ae", "longest_word('stairs', ['ss', 'ai', 'rit', 'riat', 'rat'])": "riat", "longest_word('computer', ['pan', 'pat', 'par', 'on', 'retupmoc'])": "retupmoc"}
+
+CORRECT_OUTPUT = {"flatten([[[1]], [[[5]]]])": [1, 5], "flatten([[1], [2, 3]])": [1, 2, 3], "flatten([[1], [1]])": [1, 1], "flatten([1])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9], "flatten([[], []])": [], "flatten([])": [], "flatten([[1]])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]], [[3, 2, 1], [2, 1], [1, [0]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1, 2, 1, 1, 0], "flatten([[3], [2, 1, 0], [4, 5, 6, 7]])": [3, 2, 1, 0, 4, 5, 6, 7]}
+# CORRECT_OUTPUT = {'flipDict({0: 1, 2: 1, 3: 3, 6: 3})': {1: [0, 2], 3: [3, 6]},
+ # 'flipDict({0: 2, 9: 0, 2: 9, 5: 9})': {0: [9], 2: [0], 9: [2, 5]},
+ # 'flipDict({1: 0, 2: 1, 3: 1, 4: 1})': {0: [1], 1: [2, 3, 4]},
+ # 'flipDict({1: 1})': {1: [1]},
+ # 'flipDict({1: 2, 2: 1})': {1: [2], 2: [1]},
+ # 'flipDict({1: 3, 2: 4})': {3: [1], 4: [2]},
+ # 'flipDict({1: 6, 2: 3, 3: 2, 4: 1})': {1: [4], 2: [3], 3: [2], 6: [1]},
+ # 'flipDict({2: 1, 3: 1})': {1: [2, 3]},
+ # 'flipDict({8: 6, 2: 6, 4: 6, 6: 6})': {6: [2, 4, 6, 8]},
+ # 'flipDict({})': {}}
 
 ###############################################################################
 ## Helper functions
@@ -25,6 +86,17 @@ def add_to_setlist(elem,setlist):
             if elem == listelem:
                 return
         setlist.append(elem)
+
+def get_name(var_obj):
+    """Get the canonicalized name for a variable object."""
+
+    if isinstance(var_obj, AbstractVariable):
+        return var_obj.canon_name
+    if var_obj.abstract_var:
+        return var_obj.abstract_var.canon_name
+    if var_obj.maps_to:
+        return var_obj.maps_to.canon_name
+    return var_obj.local_name
 
 
 ###############################################################################
@@ -44,8 +116,26 @@ class Solution(object):
         # a list of line objects
         self.canonical_lines = []
 
+        self.correct = None
+
     def getDict(self):
         return self.__dict__
+
+    def difference_metric(self, other):
+        """A number representing how similar this solution is with another.
+        Higher numbers => more similar. Currently, the number of rendered
+        phrases shared between the two solutions, plus the number of variable
+        names shared."""
+        rendered_self = set(l.render() for l in self.canonical_lines)
+        rendered_other = set(l.render() for l in other.canonical_lines)
+        # my_line_total = len(self.canonical_lines)
+        shared_lines = rendered_self & rendered_other
+
+        names_self = set(get_name(v) for v in self.local_vars)
+        names_other = set(get_name(v) for v in other.local_vars)
+        shared_names = names_self & names_other
+
+        return len(shared_lines) + len(shared_names)
 
     def __str__(self):
         return "Solution(" + str(self.solnum) + ")"
@@ -60,6 +150,9 @@ class VariableInstance(object):
         self.local_name = local_name
         self.abstract_var = None
         self.rename_to = None
+
+        self.maps_to = None
+        self.templates_with_indices = set()
 
     def __repr__(self):
         return "Variable(" + self.local_name + ") in solution " + str(self.solnum)
@@ -86,6 +179,8 @@ class AbstractVariable(object):
         self.name_ctr = Counter()
         self.canon_name = None
         self.is_unique = None
+
+        self.templates_with_indices = set()
 
     def should_contain(self, inst):
         """
@@ -138,8 +233,13 @@ class AbstractVariable(object):
 
     def __eq__(self, other):
         """Two AbstractVariables are equal if they have the same sequence."""
-        assert isinstance(other, AbstractVariable)
+        assert isinstance(other, (AbstractVariable, VariableInstance))
+        if isinstance(other, VariableInstance):
+            return False
         return self.sequence == other.sequence
+
+    def __hash__(self):
+        return hash(make_hashable(self.sequence))
 
     def __repr__(self):
         if self.canon_name:
@@ -180,7 +280,20 @@ class Line(object):
     def render(self):
         # Replace all the blanks with '{}' so we can use built-in string formatting
         # to fill in the blanks with the list of ordered names
-        return self.template.replace('___', '{}').format(*self.abstract_variables) #todo: print cannon name .canon_name
+        names = [get_name(var) for var in self.abstract_variables]
+
+        # Make sure that a pair of curly braces in the actual line, e.g. from
+        # initializing a dictionary, does not cause issues
+        try:
+            step1 = self.template.replace('{}', '_braces_')
+            step2 = step1.replace('___', '{}').format(*names)
+            return step2.replace('_braces_', '{}')
+        except:
+            print "original:", self.template
+            print "replace braces:", step1
+            print "replaces blanks:", step2
+            raise
+
 
     def __str__(self):
         return self.template + " ||| " + str(self.line_values) #+ " ||| " + line_values_formatted + "\n" # + " ||| " + str(self.local_names) + "\n"
@@ -264,6 +377,7 @@ def populate_from_pickles(all_solutions, pickleSrc):
 
         all_solutions.append(sol)
 
+
 ###############################################################################
 ## Abstract variable collection
 ###############################################################################
@@ -332,6 +446,27 @@ def find_canon_names(all_abstracts):
         else:
             unique.canon_name = name
 
+def find_template_info_scores(abstracts):
+    counts = Counter()
+    for avar in abstracts:
+        counts.update(avar.templates_with_indices)
+    total = float(sum(counts.values()))
+
+    # log2(1/p)
+    scores = { template: log(total/count, 2) for template, count in counts.iteritems() }
+
+    # Set a threshold that will separate templates that appear once from those
+    # that appear more than once. The difference in entropy between a template
+    # that appears once and one that appears twice is always 1 because of how
+    # logs work, so just add 0.5 to separate nicely.
+    try:
+        threshold = log(total/2.0, 2) + 0.5
+    except ValueError:
+        print "counts:", counts
+        print "total:", total
+        return
+    return (scores, threshold)
+
 
 ###############################################################################
 ## Variable sequence extraction
@@ -360,18 +495,18 @@ def extract_single_sequence(column):
 class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
 
-def extract_sequences_single_sol(sol, all_abstracts):
+def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_output):
     """
     For each local variable in a single solution, extract its sequence of
     values, create a VariableInstance, and assign that VariableInstance to
     an AbstractVariable.
 
     sol: instance of Solution
-    all_abstracts: list of AbstractVariable instances. Can be empty.
+    correct_abstracts: list of AbstractVariable instances. Can be empty.
     raises ExtractionException if there is no __return__ value in the
            solution trace
 
-    mutates sol and all_abstracts
+    mutates sol and correct_abstracts
     """
 
     output = {}
@@ -388,7 +523,14 @@ def extract_sequences_single_sol(sol, all_abstracts):
         for localVarName, localVarData in trace.iteritems():
             if localVarName.startswith('__'):
                 continue
-            sequence = extract_single_sequence(localVarData)
+            try:
+                sequence = extract_single_sequence(localVarData)
+            except RuntimeError:
+                # Encountered a recursion error when comparing values. There
+                # was some sort of self-referential list? Couldn't figure out
+                # why so just catching the error.
+                raise ExtractionException('Error extracting sequence')
+
             if (len(sequence) == 1 and
                 type(sequence[0]) is str and
                 sequence[0].startswith('__')):
@@ -399,22 +541,31 @@ def extract_sequences_single_sol(sol, all_abstracts):
             sequences[localVarName][testcase] = sequence
 
     sol.output = output
+    sol.correct = (output == correct_output)
 
     for localVarName in sequences:
-        # Create a new VariableInstance, add it to the solution's local vars,
-        # assign it to an abstract variable, and add that to the solution's
-        # abstract vars.
         var = VariableInstance(sequences[localVarName], sol.solnum, localVarName)
         sol.local_vars.append(var)
-        add_to_abstracts(var, all_abstracts)
-        sol.abstract_vars.append(var.abstract_var)
 
-def extract_and_collect_var_seqs(all_solutions, all_abstracts):
+        # Only collect variables from correct solutions into AbstractVariables.
+        # Incorrect solutions will be handled later.
+        # TODO: split this out and handle variable collection at the same time
+        # for everything?
+        if sol.correct:
+            add_to_abstracts(var, correct_abstracts)
+            sol.abstract_vars.append(var.abstract_var)
+
+def extract_output_and_seqs(all_solutions,
+                            correct_solutions,
+                            incorrect_solutions,
+                            correct_abstracts):
     """
     Extract and collect variable information from all solutions.
 
     all_solutions: list of Solution instances
-    all_abstracts: list of existing AbstractVariable instances
+    incorrect_solutions: list for Solution instances that are incorrect and
+        so have not had variables collected yet
+    all_abstracts: list for AbstractVariable instances from correct solutions
     returns: list, solution numbers skipped
 
     mutates all_abstracts and elements of all_solutions
@@ -423,13 +574,20 @@ def extract_and_collect_var_seqs(all_solutions, all_abstracts):
     for sol in all_solutions[:]:
         try:
             print "Collecting variables in", sol.solnum
-            extract_sequences_single_sol(sol, all_abstracts)
+            extract_output_and_sequences_single_sol(sol, correct_abstracts, CORRECT_OUTPUT)
+            if sol.correct:
+                correct_solutions.append(sol)
+            else:
+                incorrect_solutions.append(sol)
         except ExtractionException:
-            # Since we are iterating through a copy, this will not cause problems
+            # If we couldn't extract the required info, remove this solution from
+            # the list so we don't keep trying to process it later. Since we are
+            # iterating through a copy, this will not cause problems
             all_solutions.remove(sol)
             skipped.append(sol.solnum)
 
     return skipped
+
 
 ###############################################################################
 ## Line computation functions
@@ -471,15 +629,20 @@ def compute_lines(sol, tidy_path, all_lines):
     Mutates sol, all_lines
     """
     with open(tidy_path, 'U') as f:
+        # It's not renamed yet, but the variable has to have the same name so
+        # that each time through the loop below changes it incrementally
         renamed_src = f.read()
 
-    # This code renames all variables as placeholders, and saves a mapping
-    # from placeholder to (original name, abstract variable object)
+    # Rename all variables as placeholders, and saves a mapping
+    # from placeholder to (original name, variable object)
     mappings = {}
     ctr = 0
     for lvar in sol.local_vars:
         placeholder = '___' + str(ctr) + '___'
         try:
+            # This variable must be named the same as the one on the next
+            # line. Do not change the name of this variable in an effort to
+            # make it more readable. You will break the code and cry.
             renamed_src = identifier_renamer.rename_identifier(
                 renamed_src, lvar.local_name, placeholder)
         except:
@@ -487,9 +650,10 @@ def compute_lines(sol, tidy_path, all_lines):
 
         ctr += 1
 
-        mappings[placeholder] = (lvar.local_name, lvar.abstract_var)
+        var_to_map = lvar.abstract_var if sol.correct else lvar
+        mappings[placeholder] = (lvar.local_name, var_to_map)
 
-    # This code breaks solutions down into line objects
+    # Break solutions down into line objects
     # renamed_src consists of the solution with variables replaced with
     # numbered blanks.
     raw_lines = renamed_src.split('\n')
@@ -501,19 +665,19 @@ def compute_lines(sol, tidy_path, all_lines):
             continue
         indent = len(raw_line) - len(stripped_line)
 
-        blanks = re.findall(r'___\d___', stripped_line)
+        blanks = re.findall(r'___\d+___', stripped_line)
         if len(blanks) > 0:
-            # Grab a list of (local name, abstract_var) pairs in the order
+            # Grab a list of (local name, var_obj) pairs in the order
             # they appear and transform it into two ordered lists of local
-            # names and abstract variable objects
-            local_names, abstract_variables = zip(*[mappings[blank] for blank in blanks])
+            # names and variable objects
+            local_names, variable_objects = zip(*[mappings[blank] for blank in blanks])
         else:
             local_names = ()
-            abstract_variables = ()
+            variable_objects = ()
 
         # The template is the raw line with numbered blanks replaced with
         # generic blanks
-        template = re.sub(r'___\d___', '___', stripped_line)
+        template = re.sub(r'___\d+___', '___', stripped_line)
 
         # line_values is a list of dictionaries, one per blank
         # Each dictionary maps from a testcase to a sequence of values
@@ -524,11 +688,19 @@ def compute_lines(sol, tidy_path, all_lines):
                 values[testcase] = extract_var_values_at_line(line_no, lname, trace)
             line_values.append(values)
         
-        line_object = Line(template, abstract_variables, line_values);
-        this_line_in_solution = (line_object, local_names, indent);
+        # Create the line object, add it to the solution
+        line_object = Line(template, variable_objects, line_values)
+        this_line_in_solution = (line_object, local_names, indent)
         
-        sol.lines.append(this_line_in_solution);
-        sol.canonical_lines.append(line_object);
+        sol.lines.append(this_line_in_solution)
+        sol.canonical_lines.append(line_object)
+
+        # Record the template-index pairs that variables occur in
+        for var_obj in set(variable_objects):
+            # Find the positions in the template that each variable appears
+            indices = tuple(i for (i, v) in enumerate(variable_objects) if v==var_obj)
+            # Add the (template, indices) pair to that variable's set
+            var_obj.templates_with_indices.add((template, indices))
 
         add_to_setlist(line_object, all_lines)
 
@@ -538,15 +710,16 @@ def compute_all_lines(all_solutions, folderOfData, all_lines):
         tidy_path = path.join(folderOfData, 'tidyData', sol.solnum + '.py')
         try:
             print "Computing lines for", sol.solnum
-            compute_lines(sol, tidy_path,all_lines)
-            print 'length of lines ',len(all_lines)
+            compute_lines(sol, tidy_path, all_lines)
         except RenamerException:
             skipped.append(sol.solnum)
 
     return skipped
 
+
 ###############################################################################
 ## Rewrite solutions
+## THIS SECTION IS NO LONGER USED. Keeping it in just in case.
 ###############################################################################
 def fix_name_clashes(sol):
     """
@@ -680,78 +853,295 @@ def stack_solutions(all_solutions, all_stacks):
             new_stack.add_solution(sol)
             all_stacks.append(new_stack)
 
+def fake_stacks(solutions):
+    stacks = []
+    for sol in solutions:
+        stack = Stack()
+        stack.add_solution(sol)
+        stacks.append(stack)
+    return stacks
+
+def find_closest_stacks(all_stacks, correct_stacks):
+    stacks_needing_correct = []
+    for stack in all_stacks:
+        rep = stack.representative
+        best_metric = 0
+        closest_stacks = []
+        # An incorrect stack's closest_stacks should always include a correct
+        # stack, even if it's not as close as other incorrect stacks.
+        needs_correct = not rep.correct
+        for other_stack in all_stacks:
+            if stack == other_stack:
+                continue
+            other_rep = other_stack.representative
+            metric = rep.difference_metric(other_rep)
+            if metric == best_metric:
+                closest_stacks.append(other_stack)
+                if (not rep.correct) and other_rep.correct:
+                    # Found a correct stack that's closest to this incorrect
+                    # stack
+                    needs_correct = False
+            elif metric > best_metric:
+                best_metric = metric
+                closest_stacks = [other_stack]
+                # Resetting list of closest stacks. If this stack is incorrect,
+                # we need to find a correct stack if the closest one we just
+                # added is also incorrect
+                needs_correct = (not rep.correct) and (not other_rep.correct)
+        stack.closest_stacks = closest_stacks
+        if needs_correct:
+            stacks_needing_correct.append(stack)
+
+    # Find a closest correct solution for stacks that need it
+    for wrong_stack in stacks_needing_correct:
+        rep = wrong_stack.representative
+        best_metric = 0
+        closest_stacks = []
+        for right_stack in correct_stacks:
+            metric = rep.difference_metric(right_stack.representative)
+            if metric == best_metric:
+                closest_stacks.append(right_stack)
+            elif metric > best_metric:
+                best_metric = metric
+                closest_stacks = [right_stack]
+        wrong_stack.closest_stacks.extend(closest_stacks)
+
+
+###############################################################################
+## do things with templates
+###############################################################################
+def break_ties(var_to_match, best_avars):
+    return best_avars[0]
+
+def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
+    """Actually apply our heuristic to determine which AbstractVariable,
+    if any, should be associated with the given incorrect variable.
+
+    var_to_match: VariableInstance, the variable to find an association for
+    correct_abstracts: list of correct AbstractVariables
+    scores: dictionary mapping template-index pairs to information values
+    threshold: the amount of information a match requires to be considered
+
+    (scores and threshold are both found from find_template_info_scores.)
+
+    mutates var_to_match if an associated AbstractVariable is found.
+
+    returns (match type, info content) where match type is one of 'no_match',
+        'templates_differ', 'templates_match_perfectly', 'values_match'
+    """
+    best_avars = []
+    best_info_content = 0
+    for avar in correct_abstracts:
+        # See if var_to_match has exactly the same values as a correct
+        # AbstractVariable
+        if avar.should_contain(var_to_match):
+            avar.add_instance(var_to_match)
+            return ('values_match', None)
+
+        # set of template-index pairs var_to_match appears in that the
+        # AbstractVariable under consideration does not
+        diff = var_to_match.templates_with_indices - avar.templates_with_indices
+        # set of template-index pairs shared between var_to_match and the
+        # AbstractVariable under consideration
+        shared = var_to_match.templates_with_indices & avar.templates_with_indices
+
+        # Since every template in correct abstract variables is in scores
+        # and we are only looking up the score of templates that are shared
+        # with correct abstract variables, we will never get key errors
+        match_info_content = sum(scores[t] for t in shared)
+
+        if match_info_content > threshold:
+            if len(diff) == 0:
+                # All templates in var_to_match are shared by the AbstractVariable
+                var_to_match.maps_to = avar
+                return ('templates_match_perfectly', match_info_content)
+            elif match_info_content >= best_info_content:
+                # This is (one of) the best match(es) we've seen
+                best_info_content = match_info_content
+                best_avars.append(avar)
+
+    if best_avars:
+        # multiple AbstractVariables are tied for best match based on the
+        # information content. Pick the "best" one (at the moment, it's
+        # just arbitrary - the first one is picked). Using string edit
+        # distance here instead was discussed.
+        var_to_match.maps_to = break_ties(var_to_match, best_avars)
+        return ('templates_differ', best_info_content)
+    else:
+        return ('no_match', None)
+
+def render_template_indices((template, indices), fill_in):
+    """Helper function that takes a template and a set of indices, and
+    returns the template with the specified blanks filled in with the given
+    string.
+
+    examples:
+    render_template_indices(("for ___ in ___:", (0,)), "i")
+    >>> "for i in ___:"
+
+    render_template_indices(("___=___[___]*___[___]", (2, 4)), "index")
+    >>> "___=___[index]*___[index]"
+
+    """
+    buildme = []
+    last_end = 0
+    for i, match in enumerate(re.finditer('___', template)):
+        buildme.append(template[last_end:match.start()])
+        if i in indices:
+            buildme.append(fill_in)
+        else:
+            buildme.append('___')
+        last_end = match.end()
+    buildme.append(template[last_end:])
+    return ''.join(buildme)
+
+def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_variables):
+    """Associate a correct AbstractVariable with every local variable in an
+    incorrect solution, if there is an unambiguous match that is close enough.
+    This association determines what name to use when rendering the incorrect
+    variable.
+
+    incorrect_solutions: list of Solutions
+    correct_abstracts: list of AbstractVariables from correct solutions
+    incorrect_variables: list to populate with VariableInstances that don't
+        belong to any AbstractVariable. Can be empty.
+
+    The returned list is dumped into a json file and isonly used for debugging,
+    but is described below anyway.
+
+    returns a list of dictionaries, one per incorrect variable, of the
+    following form:
+    {
+        solution: solnum
+        original: list of templates in which the incorrect variable appears in
+            the original incorrect solution, with the appropriate blanks filled
+            in with the local name
+        match_type: one of 'values_match', 'templates_match_perfectly',
+            'templates_differ', or 'no_match'
+        maps_to: list of templates of the abstract variable with which the
+            incorrect variable is associated, with the appropriate blanks
+            filled in. If there is no match, this field is absent.
+        values_of_match: dictionary mapping testcases to value sequences of
+            the associated abstract variable. If there is no match, this field
+            is absent.
+        info_content: information content of the match if it is based on
+            templates (templates_match_perfectly or templates_differ). Absent
+            otherwise.
+    }
+    """
+
+    # Find the information given by the presence of any given template
+    scores, threshold = find_template_info_scores(correct_abstracts)
+    output = []
+    for sol in incorrect_solutions:
+        for lvar in sol.local_vars:
+            # Find the actual match
+            (match_type, info_content) = find_matching_var(
+                lvar, correct_abstracts, scores, threshold)
+            if match_type != 'values_match':
+                incorrect_variables.append(lvar)
+
+            ### Everything below here is only used to generate the output.
+            result = {
+                'solution': sol.solnum,
+                'original': [render_template_indices(t, lvar.local_name) for t in lvar.templates_with_indices],
+                'match_type': match_type
+            }
+            if match_type == 'values_match':
+                avar = lvar.abstract_var
+            elif match_type == 'no_match':
+                output.append(result)
+                continue
+            else:
+                avar = lvar.maps_to
+                result['info_content'] = info_content
+            result['maps_to'] = [render_template_indices(t, avar.canon_name) for t in avar.templates_with_indices],
+            result['values_of_match'] = avar.sequence
+
+            output.append(result)
+    return output
+
 
 ###############################################################################
 ## Populate solutions, phrases, variables
 ###############################################################################
-def create_output(all_stacks, solutions, phrases, variables):
-    """
-    Make dictionaries in the expected output format by collecting
-    info from the Stacks.
-
-    all_stacks: list of Stack instances
-    solutions, phrases, variables: lists to add results to
-
-    mutates solutions, phrases, and variables
-    """
-
-    for stack in all_stacks:
-        solution = {}
-        solution['phraseIDs'] = set()
-        solution['variableIDs'] = set()
-        solution['lines'] = []
+def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_lines, all_lines):
+    stacks_json_format = []
+    for (i, stack) in enumerate(all_stacks, start=1):
         rep = stack.representative
-        for i in range(len(rep.lines)):
-            (line_object, local_names, indent) = rep.lines[i]
-            phrase = str(line_object)  #.render()
-            if phrase not in phrases:
-                phrases.append(phrase)
-            phraseID = phrases.index(phrase) + 1
-            solution['phraseIDs'].add(phraseID)
-            lineDict = {
+        stack_json = {
+            'id': i,
+            'number': rep.solnum,
+            'correct': rep.correct,
+            'members': stack.members,
+            'count': stack.count,
+            'phraseIDs': set(),
+            'variableIDs': set(),
+            'lines': []
+        }
+        # if not rep.correct:
+        stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
+        stack_json['count_closest_stacks'] = len(stack_json['closest_stacks']);
+
+        for (line_object, local_names, indent) in rep.lines:
+            phrase = line_object.render()
+            line_obj_id = all_lines.index(line_object)
+            if phrase not in phrase_to_lines:
+                phrase_to_lines[phrase] = set()
+                ordered_phrases.append(phrase)
+            phrase_to_lines[phrase].add(line_obj_id)
+            phraseID = ordered_phrases.index(phrase) + 1
+            stack_json['phraseIDs'].add(phraseID)
+            stack_json['lines'].append({
                 'indent': indent,
                 'phraseID': phraseID
-            }
-            solution['lines'].append(lineDict)
-        for avar in rep.abstract_vars:
-            if not avar.canon_name.endswith('__'):
-                if avar not in variables:
-                    variables.append(avar)
-                varID = variables.index(avar) + 1
-                solution['variableIDs'].add(varID)
-        solution['number'] = rep.solnum
-        solution['output'] = rep.output
-        solution['members'] = stack.members
-        solution['count'] = stack.count
-        solution['phraseIDs'] = list(solution['phraseIDs'])
-        solution['variableIDs'] = list(solution['variableIDs'])
-        solutions.append(solution)
+            })
 
-def reformat_phrases(phrases):
-    """
-    Put the phrases list into the expected output format.
-    """
+        if rep.correct:
+            for avar in rep.abstract_vars:
+                # if not var.canon_name.endswith('__'):
+                varID = all_abstracts.index(avar) + 1
+                stack_json['variableIDs'].add(varID)
+        else:
+            for lvar in rep.local_vars:
+                var = lvar.abstract_var if lvar.abstract_var else lvar
+                # if not var.canon_name.endswith('__'):
+                varID = all_abstracts.index(var) + 1
+                stack_json['variableIDs'].add(varID)
 
-    # TODO: feature spans?
-    for i in range(len(phrases)):
-        phrase = phrases[i]
-        phrases[i] = {
-            'id': i+1,
-            'code': cgi.escape(phrase)
-        }
+        stack_json['phraseIDs'] = list(stack_json['phraseIDs'])
+        stack_json['variableIDs'] = list(stack_json['variableIDs'])
+        stacks_json_format.append(stack_json)
+    return stacks_json_format
 
-def reformat_variables(variables):
-    """
-    Put the variables list into the expected output format.
-    """
-
-    for i in range(len(variables)):
-        var = variables[i]
-        variables[i] = {
-            'id': i+1,
-            'varName': var.canon_name,
+def format_variable_output(all_abstracts):
+    variables_json_format = []
+    for (i, var) in enumerate(all_abstracts):
+        variables_json_format.append({
+            'id': i + 1,
+            'varName': get_name(var),
             'sequence': var.sequence
-        }
+        })
+    return variables_json_format
+
+def format_line_output(all_lines):
+    expanded_output = []
+    for (i, line) in enumerate(all_lines):
+        expanded_output.append({
+            'id': i + 1,
+            'expanded_representation': str(line)
+        })
+    return expanded_output
+
+def format_phrase_output(ordered_phrases, phrase_to_lines):
+    phrases_json_format = []
+    for (i, phrase) in enumerate(ordered_phrases):
+        phrases_json_format.append({
+            'code': cgi.escape(phrase),
+            'corresponding_lines': list(phrase_to_lines[phrase]),
+            'id': i + 1
+        })
+    return phrases_json_format
 
 
 ###############################################################################
@@ -762,11 +1152,16 @@ def reformat_variables(variables):
 #and http://stackoverflow.com/questions/624926/how-to-detect-whether-a-python-variable-is-a-function
 class ElenaEncoder(json.JSONEncoder):
     def default(self, obj):
-       if isinstance(obj, set):
-          return {'type':'set', 'list':list(obj)}
-       if isinstance(obj, types.FunctionType):
-          return {'type':'function'}
-       return json.JSONEncoder.default(self, obj)
+        if isinstance(obj, set):
+            return {'type':'set', 'list':list(obj)}
+        if isinstance(obj, types.FunctionType):
+            return {'type':'function'}
+        if isinstance(obj, types.TypeType):
+            return {'type': 'type', 'value':str(obj)}
+        if isinstance(obj, types.BuiltinFunctionType):
+            return {'type': 'built-in', 'value':str(obj)}
+        return json.JSONEncoder.default(self, obj)
+
 
 ###############################################################################
 ## Run the pipeline!
@@ -782,38 +1177,65 @@ def run(folderOfData, destFolder):
     all_solutions = []
     populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
 
-    # Collect variables into AbstractVariables
-    all_abstracts = []
-    skipped_extract_sequences = extract_and_collect_var_seqs(
-        all_solutions, all_abstracts)
-    find_canon_names(all_abstracts)
+    # Extract output and variable sequences from the processed traces, and assign
+    # correct variables to AbstractVariables
+    correct_abstracts = []
+    correct_solutions, incorrect_solutions = [], []
+    skipped_extraction = extract_output_and_seqs(
+        all_solutions, correct_solutions, incorrect_solutions, correct_abstracts)
+
+    # Assign names to the correct AbstractVariables
+    find_canon_names(correct_abstracts)
 
     # Collect lines
     all_lines = []
-    skipped_by_renamer = compute_all_lines(all_solutions,folderOfData,all_lines)
+    skipped_by_renamer = compute_all_lines(all_solutions, folderOfData, all_lines)
 
-    print 'printing all_lines:'
-    for line in all_lines:
-        pprint.pprint(line.getDict())
+    # Stack correct solutions
+    correct_stacks = []
+    stack_solutions(correct_solutions, correct_stacks)
 
-    # Canonicalize source and collect phrases
-    skipped_rewrite = rewrite_all_solutions(all_solutions, folderOfData)
+    # Determine how to name variables in incorrect solutions by matching them
+    # to variables in correct solutions
+    incorrect_variables = []
+    var_mappings = find_all_matching_vars(
+        incorrect_solutions, correct_abstracts, incorrect_variables)
+    dumpOutput(var_mappings, 'var_mappings.json')
 
-    # Stack solutions
-    all_stacks = []
-    stack_solutions(all_solutions, all_stacks)
+    # Turn every incorrect solution into a singleton stack
+    incorrect_fake_stacks = fake_stacks(incorrect_solutions)
+    all_stacks = correct_stacks + incorrect_fake_stacks
+    all_variables = correct_abstracts + incorrect_variables
 
-    # Get output
-    solutions = []
-    phrases = []
-    variables = []
-    create_output(all_stacks, solutions, phrases, variables)
-    reformat_phrases(phrases)
-    reformat_variables(variables)
+    # For every stack, find the other stacks that are closest
+    find_closest_stacks(all_stacks, correct_stacks)
 
+    # Generate the output for json files
+    ordered_phrases = []
+    phrase_to_lines = {}
+    solutions = format_stack_output(
+        all_stacks, all_variables, ordered_phrases, phrase_to_lines, all_lines)
+    variables = format_variable_output(all_variables)
+    expanded_lines = format_line_output(all_lines)
+    formatted_phrases = format_phrase_output(ordered_phrases, phrase_to_lines)
+
+    dumpOutput(expanded_lines, 'lines.json')
     dumpOutput(solutions, 'solutions.json')
-    dumpOutput(phrases, 'phrases.json')
-    dumpOutput(variables, 'variables.json')
+    dumpOutput(formatted_phrases, 'phrases.json')
 
-    print "skipped when extracting:", skipped_extract_sequences
-    print "skipped when rewriting:", skipped_rewrite
+    try:
+        dumpOutput(variables, 'variables.json')
+    except ValueError:
+        # Circular reference. Try pretty printing instead. This might break
+        # things in the UI (though currently variables are not used so it's
+        # safe, for now)
+        with open(path.join(destFolder, 'variables.json'), 'w') as f:
+            pprint.pprint(variables, f)
+
+    print "Number of solutions processed:", len(correct_solutions + incorrect_solutions)
+    print "Number of incorrect solutions:", len(incorrect_solutions)
+    print "Number of correct stacks:", len(correct_stacks)
+    print "Number of phrases:", len(formatted_phrases)
+    print "Number of variables:", len(variables)
+    # print "skipped when extracting:", skipped_extraction
+    # print "skipped when rewriting:", skipped_rewrite

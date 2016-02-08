@@ -3,14 +3,14 @@ var baseDir;
 var miscBottom = true;
 hljs.initHighlightingOnLoad();
 
-var allPhrases, allSolutions/*, allStacks*/, allVariables;
+var allPhrases, allSolutions, allStacks, allVariables;
 var rules;
-var stacksByOutput = {
-  // 0: [],
-  // 12: [],
-  // null: [], // Why, Javascript?
-  // 36: []
-}
+// var stacksByOutput = {
+//   // 0: [],
+//   // 12: [],
+//   // null: [], // Why, Javascript?
+//   // 36: []
+// }
 
 var mergedPhrases = [], mergedVariables = [];
 var mergedStacks = [], filteredStacks = [];
@@ -87,7 +87,7 @@ $(function() {
 // Load initial phrases and representative solutions
 var loadData = function(e) {
   // first, empty everything
-  /*allStacks = []; */allPhrases = []; allVariables = []; allSolutions = [];
+  allStacks = []; allPhrases = []; allVariables = []; allSolutions = [];
   filterPhrases = [];
   filterVariables = [];
   mergedPhrases = []; mergedStacks = []; mergedVariables = [];
@@ -120,8 +120,8 @@ var loadData = function(e) {
 
         // fill allStacks as single-solution stacks
         initializeStacks();
-        // numTotalSolutions = allStacks.reduce(function(prev, stack) {
-        numTotalSolutions = getCurrentStack().reduce(function(prev, stack) {
+        numTotalSolutions = allStacks.reduce(function(prev, stack) {
+        // numTotalSolutions = getCurrentStack().reduce(function(prev, stack) {
           return prev + stackCount(stack);
         }, 0);
 
@@ -267,7 +267,11 @@ var drawVariables = function() {
       .html(function(d) { return d.varName; });
   variableEnter.append("small")
       .attr("class", "sequence text-muted")
-      .html(function(d) { /*console.log(d.sequence);*/ return d.sequence.join(' &rarr; ');}); //return d.varNameAndSeq.replace(/^.*?:/, "");
+      .html(function(d) {
+        var testcases = Object.getOwnPropertyNames(d.sequence);
+        // console.log(testcases)
+        return d.sequence[testcases[0]].join(' &rarr; ');
+      }); //return d.varNameAndSeq.replace(/^.*?:/, "");
   variableEnter.on("click", function(d) {
     logAction("clickVariableForFiltering", [d.id, d.varName]);
     filterVariables.push(d);

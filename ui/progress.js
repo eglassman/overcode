@@ -1,6 +1,6 @@
 var updateProgress = function() {
-  // numDoneSolutions = allStacks.reduce(function(prev, stack) {
-  numDoneSolutions = getCurrentStack().reduce(function(prev, stack) {
+  numDoneSolutions = allStacks.reduce(function(prev, stack) {
+  // numDoneSolutions = getCurrentStack().reduce(function(prev, stack) {
     if (stack.category == 'done')
       return prev + stackCount(stack)
     else
