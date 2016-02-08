@@ -17,6 +17,7 @@
 </div>
 </body>
 
+<!-- unused -->
 <template name="pinnedStack">
     <div class="pinned">
         {{#with getStack}}
@@ -48,17 +49,17 @@
 
 <template name="solutionsList">
     {{#each solutions}}
-        {{> solution}}
+        {{> solutionUnfiltered}}
     {{/each}}
 </template>
 
 <template name="filteredSolutions">
     {{#each filteredSolutions}}
-        {{> solution}}
+        {{> solutionFiltered}}
     {{/each}}
 </template>
 
-<template name="solution">
+<!-- <template name="solution">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}" data-phraseids="{{phraseIDs}}" data-closest-stacks="{{closest_stacks}}">
     <span class="badge">{{count}}</span>
@@ -67,5 +68,25 @@
 {{/with}}</span>{{/each}}</code></pre>
 </div>
 </div>
+</template> -->
+
+<template name="solutionFiltered">
+<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
+    <span class="badge">{{count}}</span>
+    <span class="text-muted pull-right">id: {{id}}</span>
+    <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{createSpace}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
+{{/with}}</span>{{/each}}</code></pre>
+</div>
 </template>
 
+<template name="solutionUnfiltered">
+<div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
+<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
+    <span class="badge">{{count}}</span>
+    <span class="text-muted pull-right">id: {{id}}</span>
+    <pre><code>{{#each lines}}{{createSpace}}{{#with getPhraseFromID phraseID}}{{{code}}}
+{{/with}}{{/each}}</code></pre>
+</div>
+<button class="btn btn-link btn-sm showRaw">Show raw solution</button>
+</div>
+</template>

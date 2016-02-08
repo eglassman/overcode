@@ -3,14 +3,24 @@ Phrases = new Mongo.Collection('phrases');
 // Variables = new Mongo.Collection('variables');
 
 
-Template.solution.helpers({
-    "getPhraseFromID": function(phraseID) {
-        return Phrases.findOne({ id: phraseID });
-    },
-    "createSpace": function() {
-        // this is { phraseID, indent }
-        return " ".repeat(this.indent);
-    },
+var getPhraseFromID = function(phraseID) {
+    return Phrases.findOne({ id: phraseID });
+};
+
+var createSpace = function() {
+    // this is { phraseID, indent }
+    return " ".repeat(this.indent);
+};
+
+var clicked = function(stackID){
+    var clickedStack = Session.get('clickedStack');
+    return clickedStack !== undefined && stackID == clickedStack.id
+}
+
+Template.solutionFiltered.helpers({
+    "getPhraseFromID": getPhraseFromID,
+    "createSpace": createSpace,
+    "clicked": clicked,
     "hasDifferentIndent": function() {
         // whether or not this line appears in the reference solution
         // with different indentation (in other words, whether the indent
@@ -34,10 +44,6 @@ Template.solution.helpers({
 
         return is_shared && !matches_exactly
     },
-    "clicked": function(stackID){
-        var clickedStack = Session.get('clickedStack');
-        return clickedStack !== undefined && stackID == clickedStack.id
-    },
     "sharedWithClickedStack": function(phraseID){
         var clickedStack = Session.get('clickedStack');
         if (clickedStack === undefined) {
@@ -45,6 +51,12 @@ Template.solution.helpers({
         }
         return clickedStack.phraseIDs.indexOf(phraseID) >= 0
     }
+});
+
+Template.solutionUnfiltered.helpers({
+    "getPhraseFromID": getPhraseFromID,
+    "createSpace": createSpace,
+    "clicked": clicked,
 });
 
 Template.filteredSolutions.helpers({
