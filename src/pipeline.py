@@ -61,7 +61,7 @@ use_original_line_equality_metric = False
 # CORRECT_OUTPUT = {"myLog(42, 5)": 2, "myLog(4, 16)": 0, "myLog(149, 3)": 4, "myLog(26, 3)": 2, "myLog(27, 3)": 3, "myLog(28, 3)": 3, "myLog(76, 4)": 3, "myLog(12, 13)": 0}
 # CORRECT_OUTPUT = {"longest_word('zebra', ['za', 'zaa', 'zea', 'bra', 'arb'])": "arb", "longest_word('aaa', ['aaa', 'aaaa', 'aa', 'a'])": "aaa", "longest_word('xylophone', ['nab', 'baa', 'ban', 'x', 'an', 'a'])": "x", "longest_word('zebra', ['xx', 'yy', 'oo', 'a', 'kk'])": "a", "longest_word('another', ['the', 'another', 'ther', 'tha', 'a'])": "another", "longest_word('abcd', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "cab", "longest_word('a', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "a", "longest_word('abcd', ['dcba', 'dab', 'abcde', 'bcad', 'b'])": "bcad", "longest_word('another', ['ran', 'tao', 'r', 'ona', 'art'])": "art", "longest_word('banana', ['nab', 'baa', 'ban', 'an', 'a'])": "baa", "longest_word('ab', ['aba', 'ba', 'bab'])": "ba", "longest_word('zebra', ['zen', 'zag', 'mag', 'trag', 'zr'])": "zr", "longest_word('xylophone', ['lyx', 'ophxyloen', 'phone', 'one'])": "ophxyloen", "longest_word('taupe', ['ip', 'ap', 'aa', 'ap', 'ar'])": "ap", "longest_word('ana', ['nan', 'an', 'a', 'an'])": "an", "longest_word('aabbccdd', ['dd', 'abbccd', 'aa', 'abcd'])": "abbccd", "longest_word('abcd', ['aaa', 'bbb', 'ccc', 'ddd'])": None, "longest_word('abaca', ['aaa', 'cab', 'bat', 'a', 'cabs'])": "aaa", "longest_word('st', ['a', 's', 't', 'ba'])": "s", "longest_word('pow', ['wow', 'p', 'o', 'w'])": "o", "longest_word('ab', ['ab'])": "ab", "longest_word('banana', ['pqr', 'na', 'bn', 'n', 'a'])": "bn", "longest_word('taupe', ['pa', 'ta', 'ea', 'ae', 'at'])": "ae", "longest_word('stairs', ['ss', 'ai', 'rit', 'riat', 'rat'])": "riat", "longest_word('computer', ['pan', 'pat', 'par', 'on', 'retupmoc'])": "retupmoc"}
 
-CORRECT_OUTPUT = {"flatten([[[1]], [[[5]]]])": [1, 5], "flatten([[1], [2, 3]])": [1, 2, 3], "flatten([[1], [1]])": [1, 1], "flatten([1])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9], "flatten([[], []])": [], "flatten([])": [], "flatten([[1]])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]], [[3, 2, 1], [2, 1], [1, [0]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1, 2, 1, 1, 0], "flatten([[3], [2, 1, 0], [4, 5, 6, 7]])": [3, 2, 1, 0, 4, 5, 6, 7]}
+# CORRECT_OUTPUT = {"flatten([[[1]], [[[5]]]])": [1, 5], "flatten([[1], [2, 3]])": [1, 2, 3], "flatten([[1], [1]])": [1, 1], "flatten([1])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9], "flatten([[], []])": [], "flatten([])": [], "flatten([[1]])": [1], "flatten([[1, [2, 3]], [[4, 5, 6], [7, [8, 9]]], [[3, 2, 1], [2, 1], [1, [0]]]])": [1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1, 2, 1, 1, 0], "flatten([[3], [2, 1, 0], [4, 5, 6, 7]])": [3, 2, 1, 0, 4, 5, 6, 7]}
 # CORRECT_OUTPUT = {'flipDict({0: 1, 2: 1, 3: 3, 6: 3})': {1: [0, 2], 3: [3, 6]},
  # 'flipDict({0: 2, 9: 0, 2: 9, 5: 9})': {0: [9], 2: [0], 9: [2, 5]},
  # 'flipDict({1: 0, 2: 1, 3: 1, 4: 1})': {0: [1], 1: [2, 3, 4]},
@@ -547,7 +547,8 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_outp
 def extract_output_and_seqs(all_solutions,
                             correct_solutions,
                             incorrect_solutions,
-                            correct_abstracts):
+                            correct_abstracts,
+                            correct_output):
     """
     Extract and collect variable information from all solutions.
 
@@ -563,7 +564,7 @@ def extract_output_and_seqs(all_solutions,
     for sol in all_solutions[:]:
         try:
             print "Collecting variables in", sol.solnum
-            extract_output_and_sequences_single_sol(sol, correct_abstracts, CORRECT_OUTPUT)
+            extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_output)
             if sol.correct:
                 correct_solutions.append(sol)
             else:
@@ -1155,7 +1156,7 @@ class ElenaEncoder(json.JSONEncoder):
 ###############################################################################
 ## Run the pipeline!
 ###############################################################################
-def run(folderOfData, destFolder):
+def run(folderOfData, destFolder, correct_output):
     ensure_folder_exists(destFolder)
     def dumpOutput(data, filename, sort_keys=True, indent=4):
         filepath = path.join(destFolder, filename)
@@ -1171,7 +1172,11 @@ def run(folderOfData, destFolder):
     correct_abstracts = []
     correct_solutions, incorrect_solutions = [], []
     skipped_extraction = extract_output_and_seqs(
-        all_solutions, correct_solutions, incorrect_solutions, correct_abstracts)
+        all_solutions,
+        correct_solutions,
+        incorrect_solutions,
+        correct_abstracts,
+        correct_output)
 
     # Assign names to the correct AbstractVariables
     find_canon_names(correct_abstracts)

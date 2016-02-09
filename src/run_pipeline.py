@@ -1,6 +1,7 @@
 import argparse
 import json
 from os import path
+import pprint
 
 import pipeline_preprocessing
 import pipeline_old
@@ -34,15 +35,6 @@ if args.testcase:
         testcasePath = args.testcase
 else:
     testcasePath = defaultTestcasePath
-    # testcase = args.testcase
-# else:
-#     if args.testcase:
-#         testcasePath = args.testcase
-#     else:
-#         testcasePath = path.join(args.basedir, 'testCase.py')
-
-    # with open(testcasePath, 'r') as f:
-    #     testcase = f.read()
 
 datadir = path.join(args.basedir, 'data')
 
@@ -52,6 +44,14 @@ if args.run_pre:
         testcasePath,
         args.funcname
     )
+
+with open(path.join(args.basedir, 'correctOutput.py'), 'r') as f:
+    raw_correct_output = f.read()
+if pprint.isreadable(raw_correct_output):
+    correctOutput = eval(raw_correct_output)
+else:
+    raise ValueError("No readable correct output found")
+
 if args.run_pipeline or args.run_old:
     if args.run_old:
         outputPath = path.join(args.basedir, 'output_old')
@@ -59,16 +59,16 @@ if args.run_pipeline or args.run_old:
         key = args.run_old
     else:
         outputPath = path.join(args.basedir, 'output')
-        pipeline.run(datadir, outputPath)
+        pipeline.run(datadir, outputPath, correctOutput)
         key = args.run_pipeline
 
     # write config
-    configPath = '../ui/config.json'
-    with open(configPath, 'r') as f:
-        conf = json.load(f)
+    # configPath = '../ui/config.json'
+    # with open(configPath, 'r') as f:
+    #     conf = json.load(f)
 
-    unqualifiedBasedir = path.basename(args.basedir.rstrip('/'))
-    conf['base_dirs'][key] = unqualifiedBasedir
+    # unqualifiedBasedir = path.basename(args.basedir.rstrip('/'))
+    # conf['base_dirs'][key] = unqualifiedBasedir
 
-    with open(configPath, 'w') as f:
-        json.dump(conf, f, indent=4)
+    # with open(configPath, 'w') as f:
+    #     json.dump(conf, f, indent=4)
