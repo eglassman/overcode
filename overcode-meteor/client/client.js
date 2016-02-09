@@ -7,11 +7,6 @@ var getPhraseFromID = function(phraseID) {
     return Phrases.findOne({ id: phraseID });
 };
 
-var createSpace = function() {
-    // this is { phraseID, indent }
-    return " ".repeat(this.indent);
-};
-
 var clicked = function(stackID){
     var clickedStack = Session.get('clickedStack');
     return clickedStack !== undefined && stackID == clickedStack.id
@@ -19,8 +14,16 @@ var clicked = function(stackID){
 
 Template.solutionFiltered.helpers({
     "getPhraseFromID": getPhraseFromID,
-    "createSpace": createSpace,
     "clicked": clicked,
+    "createSpace": function() {
+        var diff = this.indentDiff !== undefined ? Math.abs(this.indentDiff / 4) : 0;
+        var space = " ".repeat(this.indent - diff);
+        if (this.indentDiff !== undefined) {
+            var character = this.indentDiff > 0 ? "&rarr;" : "&larr;"
+            space += character.repeat(diff);
+        }
+        return space
+    },
     "hasDifferentIndent": function() {
         // whether or not this line appears in the reference solution
         // with different indentation (in other words, whether the indent
@@ -33,16 +36,23 @@ Template.solutionFiltered.helpers({
         }
         var is_shared = false;
         var matches_exactly = false;
+        var indentation_difference;
         clickedStack.lines.forEach(function(l) {
             if (l.phraseID == this.phraseID) {
                 is_shared = true;
                 if (l.indent == this.indent) {
                     matches_exactly = true;
+                } else if ( !matches_exactly && (indentation_difference === undefined)) {
+                    indentation_difference = l.indent - this.indent;
                 }
             }
         }, this); // second argument is bound to this within the callback
 
-        return is_shared && !matches_exactly
+        if (is_shared && !matches_exactly) {
+            this.indentDiff = indentation_difference;
+            return true;
+        }
+        return false;
     },
     "sharedWithClickedStack": function(phraseID){
         var clickedStack = Session.get('clickedStack');
@@ -55,8 +65,11 @@ Template.solutionFiltered.helpers({
 
 Template.solutionUnfiltered.helpers({
     "getPhraseFromID": getPhraseFromID,
-    "createSpace": createSpace,
     "clicked": clicked,
+    "createSpace": function() {
+        // this is { phraseID, indent }
+        return " ".repeat(this.indent);
+    }
 });
 
 Template.filteredSolutions.helpers({
