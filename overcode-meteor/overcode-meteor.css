@@ -25,6 +25,10 @@
     background-color: #ECF3F9;
 }
 
+.clicked .dimmed {
+    opacity: 1.0;
+}
+
 .filtered {
     background-color: #ECF3F9;
 }

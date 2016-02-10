@@ -12,6 +12,14 @@ var clicked = function(stackID){
     return clickedStack !== undefined && stackID == clickedStack.id
 }
 
+var sharedWithClickedStack = function(phraseID){
+    var clickedStack = Session.get('clickedStack');
+    if (clickedStack === undefined) {
+        return false;
+    }
+    return clickedStack.phraseIDs.indexOf(phraseID) >= 0
+};
+
 Template.solutionFiltered.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
@@ -54,13 +62,7 @@ Template.solutionFiltered.helpers({
         }
         return false;
     },
-    "sharedWithClickedStack": function(phraseID){
-        var clickedStack = Session.get('clickedStack');
-        if (clickedStack === undefined) {
-            return false;
-        }
-        return clickedStack.phraseIDs.indexOf(phraseID) >= 0
-    }
+    "sharedWithClickedStack": sharedWithClickedStack
 });
 
 Template.solutionUnfiltered.helpers({
@@ -69,7 +71,8 @@ Template.solutionUnfiltered.helpers({
     "createSpace": function() {
         // this is { phraseID, indent }
         return " ".repeat(this.indent);
-    }
+    },
+    "sharedWithClickedStack": sharedWithClickedStack
 });
 
 Template.filteredSolutions.helpers({
