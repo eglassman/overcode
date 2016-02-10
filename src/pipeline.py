@@ -1126,7 +1126,7 @@ def format_phrase_output(ordered_phrases, phrase_to_lines):
     phrases_json_format = []
     for (i, phrase) in enumerate(ordered_phrases):
         phrases_json_format.append({
-            'code': cgi.escape(phrase),
+            'code': phrase,
             'corresponding_lines': list(phrase_to_lines[phrase]),
             'id': i + 1
         })
