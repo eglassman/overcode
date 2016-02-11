@@ -20,7 +20,7 @@ var sharedWithClickedStack = function(phraseID){
     return clickedStack.phraseIDs.indexOf(phraseID) >= 0
 };
 
-Template.solutionFiltered.helpers({
+Template.solutionNotClickable.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
     "createSpace": function() {
@@ -65,7 +65,7 @@ Template.solutionFiltered.helpers({
     "sharedWithClickedStack": sharedWithClickedStack
 });
 
-Template.solutionUnfiltered.helpers({
+Template.solutionClickable.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
     "createSpace": function() {
@@ -99,30 +99,28 @@ Template.pinnedStack.helpers({
     }
 });
 
-// unused
+var getAllSolutions = function() {
+    return Stacks.find({}).fetch();
+}
+
 Template.correctSolutionsList.helpers({
-    "solutions": function() {
-        return Stacks.find({}, { sort: {'count': -1} }).fetch();
-    }
+    "solutions": getAllSolutions
 });
 
-// unused
 Template.incorrectSolutionsList.helpers({
-    "solutions": function() {
-        return Stacks.find({}, { sort: {'count_closest_stacks': 1} }).fetch();
-    },
-    "closestToClickedCorrect": function(closest_stacks){
-        // TODO: update to get object out of session directly
-        var clickedStack = Session.get('clickedStackID');
-        if (clickedStack === undefined) {
-            return true;
-        }
-        return closest_stacks.indexOf(clickedStack)>=0
-    }
+    "solutions": getAllSolutions,
+    // "closestToClickedCorrect": function(closest_stacks){
+    //     // TODO: update to get object out of session directly
+    //     var clickedStack = Session.get('clickedStackID');
+    //     if (clickedStack === undefined) {
+    //         return true;
+    //     }
+    //     return closest_stacks.indexOf(clickedStack)>=0
+    // }
 });
 
 var setColumnHeights = function() {
-    $('.filtered, .unfiltered').css({
+    $('.solution-list').css({
         'height': window.innerHeight,
         // TODO: instead of a hardcoded 100px buffer, set this dynamically
         // to be the height of the last stack. Tried to do so but ran into
@@ -140,13 +138,19 @@ Template.registerHelper('log',function(){
     console.log('template logging',this);
 });
 
+var setClickedStack = function(event) {
+    var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+    var clickedStack = Stacks.findOne({id: clickedStackID});
+    Session.set('clickedStack', clickedStack);
+}
+
 Template.solutionsList.events({
-    "click .stack": function(event){
-        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
-        var clickedStack = Stacks.findOne({id: clickedStackID});
-        Session.set('clickedStack', clickedStack);
-    }
+    "click .stack": setClickedStack
 });
+
+Template.correctSolutionsList.events({
+    "click .stack": setClickedStack
+})
 
 Template.pinnedStack.events({
     "click .remove": function(event) {
@@ -154,7 +158,7 @@ Template.pinnedStack.events({
     }
 });
 
-Template.solutionUnfiltered.events({
+Template.solutionClickable.events({
     "click .showRaw": function(event) {
         // var solnum = this.members[0];
         // console.log(this);

@@ -6,12 +6,14 @@
 <div class="container">
     <div class="row">
         <!-- TODO: scroll these separately -->
-        <div class="col-xs-6 unfiltered">
-            {{> solutionsList}}
+        <div class="col-xs-6 solution-list">
+            {{> incorrectSolutionsList}}
+            <!-- {{> solutionsList}} -->
         </div>
-        <div class="col-xs-6 filtered">
+        <div class="col-xs-6 solution-list">
+            {{> correctSolutionsList}}
             <!-- {{> pinnedStack}} -->
-            {{> filteredSolutions}}
+            <!-- {{> filteredSolutions}} -->
         </div>
     </div>
 </div>
@@ -27,35 +29,31 @@
     </div>
 </template>
 
-<!-- unused -->
 <template name="correctSolutionsList">
     {{#each solutions}}
         {{#if correct}}
-            {{> solution}}
+            {{> solutionClickable}}
         {{/if}}
     {{/each}}
 </template>
 
-<!-- unused -->
 <template name="incorrectSolutionsList">
     {{#each solutions}}
         {{#unless correct}}
-            {{#if closestToClickedCorrect closest_stacks}}
-                {{> solution}}
-            {{/if}}
+            {{> solutionNotClickable}}
         {{/unless}}
     {{/each}}
 </template>
 
 <template name="solutionsList">
     {{#each solutions}}
-        {{> solutionUnfiltered}}
+        {{> solutionClickable}}
     {{/each}}
 </template>
 
 <template name="filteredSolutions">
     {{#each filteredSolutions}}
-        {{> solutionFiltered}}
+        {{> solutionNotClickable}}
     {{/each}}
 </template>
 
@@ -70,7 +68,7 @@
 </div>
 </template> -->
 
-<template name="solutionFiltered">
+<template name="solutionNotClickable">
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
     <span class="badge">{{count}}</span>
     <span class="text-muted pull-right">id: {{id}}</span>
@@ -79,7 +77,7 @@
 </div>
 </template>
 
-<template name="solutionUnfiltered">
+<template name="solutionClickable">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
     <span class="badge">{{count}}</span>
@@ -87,6 +85,6 @@
     <pre><code>{{#each lines}}{{createSpace}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
-<button class="btn btn-link btn-sm showRaw">Show raw solution</button>
+<!-- <button class="btn btn-link btn-sm showRaw">Show raw solution</button> -->
 </div>
 </template>

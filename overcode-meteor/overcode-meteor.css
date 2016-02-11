@@ -29,11 +29,11 @@
     opacity: 1.0;
 }
 
-.filtered {
+.blue {
     background-color: #ECF3F9;
 }
 
-.filtered, .unfiltered {
+.solution-list {
     overflow-y: scroll;
 }
 
