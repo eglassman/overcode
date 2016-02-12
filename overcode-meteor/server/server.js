@@ -5,7 +5,7 @@ Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 // Variables = new Mongo.Collection('variables');
 
-var DATA_DIR_NAME = 'template_test'
+var DATA_DIR_NAME = 'flatten'
 var results_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'output/');
 var data_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'data/');
 

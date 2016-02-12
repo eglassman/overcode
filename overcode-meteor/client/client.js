@@ -103,20 +103,25 @@ var getAllSolutions = function() {
     return Stacks.find({}).fetch();
 }
 
+var getIncorrectsInOrder = function() {
+    var clickedStack = Session.get('clickedStack');
+    if (clickedStack === undefined) {
+        return getAllSolutions();
+    }
+
+    var field_name = 'correct_stack_distances.' + clickedStack.id;
+    var sort_dict = {};
+    sort_dict[field_name] = -1;
+    console.log("sorting by:", sort_dict);
+    return Stacks.find({ correct: false }, { sort: sort_dict });
+}
+
 Template.correctSolutionsList.helpers({
     "solutions": getAllSolutions
 });
 
 Template.incorrectSolutionsList.helpers({
-    "solutions": getAllSolutions,
-    // "closestToClickedCorrect": function(closest_stacks){
-    //     // TODO: update to get object out of session directly
-    //     var clickedStack = Session.get('clickedStackID');
-    //     if (clickedStack === undefined) {
-    //         return true;
-    //     }
-    //     return closest_stacks.indexOf(clickedStack)>=0
-    // }
+    "solutions": getIncorrectsInOrder
 });
 
 var setColumnHeights = function() {

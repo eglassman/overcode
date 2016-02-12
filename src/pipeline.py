@@ -71,12 +71,16 @@ class Solution(object):
         rendered_other = set(l.render() for l in other.canonical_lines)
         # my_line_total = len(self.canonical_lines)
         shared_lines = rendered_self & rendered_other
+        num_lines_total = len(rendered_self) + len(rendered_other)
+        shared_lines_percent = float(len(shared_lines)) / num_lines_total
 
         names_self = set(get_name(v) for v in self.local_vars)
         names_other = set(get_name(v) for v in other.local_vars)
         shared_names = names_self & names_other
+        num_names_total = len(names_self) + len(names_other)
+        shared_names_percent = float(len(shared_names)) / num_names_total
 
-        return len(shared_lines) + len(shared_names)
+        return shared_lines_percent + shared_names_percent
 
     def __str__(self):
         return "Solution(" + str(self.solnum) + ")"
@@ -837,6 +841,15 @@ def find_closest_stacks(all_stacks, correct_stacks):
                 closest_stacks = [right_stack]
         wrong_stack.closest_stacks.extend(closest_stacks)
 
+def find_sort_metrics(incorrect_stacks, correct_stacks):
+    for wrong_stack in incorrect_stacks:
+        wrong_rep = wrong_stack.representative
+        metrics = []
+        for right_stack in correct_stacks:
+            right_rep = right_stack.representative
+            metric = wrong_rep.difference_metric(right_rep)
+            metrics.append((right_stack, metric))
+        wrong_stack.correct_stack_distances = metrics
 
 ###############################################################################
 ## do things with templates
@@ -1011,8 +1024,14 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             'lines': []
         }
         # if not rep.correct:
-        stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
-        stack_json['count_closest_stacks'] = len(stack_json['closest_stacks']);
+        # stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
+        # stack_json['count_closest_stacks'] = len(stack_json['closest_stacks']);
+        if not rep.correct:
+            id_to_metric = {}
+            for (right_stack, metric) in stack.correct_stack_distances:
+                right_id = all_stacks.index(right_stack) + 1
+                id_to_metric[right_id] = metric
+            stack_json['correct_stack_distances'] = id_to_metric
 
         for (line_object, local_names, indent) in rep.lines:
             phrase = line_object.render()
@@ -1143,7 +1162,8 @@ def run(folderOfData, destFolder, correct_output):
     all_variables = correct_abstracts + incorrect_variables
 
     # For every stack, find the other stacks that are closest
-    find_closest_stacks(all_stacks, correct_stacks)
+    # find_closest_stacks(all_stacks, correct_stacks)
+    find_sort_metrics(incorrect_fake_stacks, correct_stacks)
 
     # Generate the output for json files
     ordered_phrases = []
