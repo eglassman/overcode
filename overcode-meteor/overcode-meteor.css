@@ -1,7 +1,11 @@
 /* CSS declarations go here */
 
+.heading {
+    border-bottom: 1px solid #ddd;
+}
+
 .stack {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .stack pre {
@@ -15,6 +19,21 @@
     padding-bottom: 5px;
     padding-top: 5px;
     padding-left: 15px;
+}
+
+/*.separator {
+    border-top: 1px solid darkgray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}*/
+.closest {
+    width: 85%;
+    text-align: center;
+    display: inline-block;
+}
+
+.closer-to {
+    cursor: pointer;
 }
 
 .showRaw {

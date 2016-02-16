@@ -103,6 +103,40 @@ var getAllSolutions = function() {
     return Stacks.find({}).fetch();
 }
 
+var findCrossoverInfo = function(orderedIncorrects) {
+    var clickedStack = Session.get('clickedStack');
+    for (var i = 0; i < orderedIncorrects.length; i++) {
+        var this_stack = orderedIncorrects[i];
+        var stack_to_dist = this_stack.correct_stack_distances;
+        var current_metric = stack_to_dist[clickedStack.id]
+        for (var key in stack_to_dist) {
+            if (!stack_to_dist.hasOwnProperty(key)) continue;
+            if (stack_to_dist[key] > current_metric) {
+                // console.log('checking stack', this_stack, 'current metric:', current_metric);
+                // crossover_index = i;
+                // console.log('found better key:', key, 'setting index to:', crossover_index);
+                // break;
+                return { index: i, betterKey: key };
+            }
+        }
+    }
+    return null;
+}
+
+var findClosestStack = function(stack) {
+    var stack_to_dist = stack.correct_stack_distances;
+    var best_metric = 0;
+    var best_stack;
+    for (var key in stack_to_dist) {
+        if (!stack_to_dist.hasOwnProperty(key)) continue;
+        if (stack_to_dist[key] > best_metric) {
+            best_metric = stack_to_dist[key];
+            best_stack = key;
+        }
+    }
+    return best_stack;
+}
+
 var getIncorrectsInOrder = function() {
     var clickedStack = Session.get('clickedStack');
     if (clickedStack === undefined) {
@@ -112,8 +146,23 @@ var getIncorrectsInOrder = function() {
     var field_name = 'correct_stack_distances.' + clickedStack.id;
     var sort_dict = {};
     sort_dict[field_name] = -1;
-    console.log("sorting by:", sort_dict);
-    return Stacks.find({ correct: false }, { sort: sort_dict });
+
+    var orderedIncorrects = Stacks.find({ correct: false }, { sort: sort_dict }).fetch();
+
+    // find crossover point
+    // var crossover_info = findCrossoverInfo(orderedIncorrects);
+    // var separator = { isSeparator: true, betterKey: crossover_info.betterKey };
+    // if (crossover_info !== null) {
+    //     orderedIncorrects.splice(crossover_info.index, 0, separator);
+    // }
+    orderedIncorrects.forEach(function(s) {
+        var closest = findClosestStack(s);
+        if (closest !== undefined && closest != clickedStack.id) {
+            s.closest = closest;
+        }
+    })
+    // console.log(orderedIncorrects);
+    return orderedIncorrects;
 }
 
 Template.correctSolutionsList.helpers({
@@ -143,19 +192,24 @@ Template.registerHelper('log',function(){
     console.log('template logging',this);
 });
 
-var setClickedStack = function(event) {
-    var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+var setClickedStack = function(clickedStackID) {
     var clickedStack = Stacks.findOne({id: clickedStackID});
     Session.set('clickedStack', clickedStack);
-}
+};
 
 Template.solutionsList.events({
-    "click .stack": setClickedStack
+    "click .stack": function(event) {
+        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+        setClickedStack(clickedStackID);
+    }
 });
 
 Template.correctSolutionsList.events({
-    "click .stack": setClickedStack
-})
+    "click .stack": function(event) {
+        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+        setClickedStack(clickedStackID);
+    }
+});
 
 Template.pinnedStack.events({
     "click .remove": function(event) {
@@ -172,4 +226,11 @@ Template.solutionClickable.events({
             // TODO: how do I actually render this???
         });
     }
-})
+});
+
+Template.solutionNotClickable.events({
+    "click .closer-to": function(event) {
+        var clickedStack = $(event.currentTarget).data('closer');
+        setClickedStack(clickedStack);
+    }
+});
