@@ -38,28 +38,28 @@ Template.solutionNotClickable.helpers({
         // should be visually distinguished)
 
         // this is { phraseID, indent }
-        var clickedStack = Session.get('clickedStack');
-        if (clickedStack === undefined) {
-            return false;
-        }
-        var is_shared = false;
-        var matches_exactly = false;
-        var indentation_difference;
-        clickedStack.lines.forEach(function(l) {
-            if (l.phraseID == this.phraseID) {
-                is_shared = true;
-                if (l.indent == this.indent) {
-                    matches_exactly = true;
-                } else if ( !matches_exactly && (indentation_difference === undefined)) {
-                    indentation_difference = l.indent - this.indent;
-                }
-            }
-        }, this); // second argument is bound to this within the callback
+        // var clickedStack = Session.get('clickedStack');
+        // if (clickedStack === undefined) {
+        //     return false;
+        // }
+        // var is_shared = false;
+        // var matches_exactly = false;
+        // var indentation_difference;
+        // clickedStack.lines.forEach(function(l) {
+        //     if (l.phraseID == this.phraseID) {
+        //         is_shared = true;
+        //         if (l.indent == this.indent) {
+        //             matches_exactly = true;
+        //         } else if ( !matches_exactly && (indentation_difference === undefined)) {
+        //             indentation_difference = l.indent - this.indent;
+        //         }
+        //     }
+        // }, this); // second argument is bound to this within the callback
 
-        if (is_shared && !matches_exactly) {
-            this.indentDiff = indentation_difference;
-            return true;
-        }
+        // if (is_shared && !matches_exactly) {
+        //     this.indentDiff = indentation_difference;
+        //     return true;
+        // }
         return false;
     },
     "sharedWithClickedStack": sharedWithClickedStack
@@ -75,17 +75,17 @@ Template.solutionClickable.helpers({
     "sharedWithClickedStack": sharedWithClickedStack
 });
 
-Template.filteredSolutions.helpers({
-    "filteredSolutions": function() {
-        var clickedStack = Session.get('clickedStack');
-        if (clickedStack === undefined) {
-            return;
-        }
-        return Stacks.find({
-            id: { $in: clickedStack.closest_stacks }
-        });
-    }
-});
+// Template.filteredSolutions.helpers({
+//     "filteredSolutions": function() {
+//         var clickedStack = Session.get('clickedStack');
+//         if (clickedStack === undefined) {
+//             return;
+//         }
+//         return Stacks.find({
+//             id: { $in: clickedStack.closest_stacks }
+//         });
+//     }
+// });
 
 Template.solutionsList.helpers({
     "solutions": function() {
@@ -93,35 +93,35 @@ Template.solutionsList.helpers({
     }
 });
 
-Template.pinnedStack.helpers({
-    "getStack": function() {
-        return Session.get('clickedStack');
-    }
-});
+// Template.pinnedStack.helpers({
+//     "getStack": function() {
+//         return Session.get('clickedStack');
+//     }
+// });
 
 var getAllSolutions = function() {
     return Stacks.find({}).fetch();
 }
 
-var findCrossoverInfo = function(orderedIncorrects) {
-    var clickedStack = Session.get('clickedStack');
-    for (var i = 0; i < orderedIncorrects.length; i++) {
-        var this_stack = orderedIncorrects[i];
-        var stack_to_dist = this_stack.correct_stack_distances;
-        var current_metric = stack_to_dist[clickedStack.id]
-        for (var key in stack_to_dist) {
-            if (!stack_to_dist.hasOwnProperty(key)) continue;
-            if (stack_to_dist[key] > current_metric) {
-                // console.log('checking stack', this_stack, 'current metric:', current_metric);
-                // crossover_index = i;
-                // console.log('found better key:', key, 'setting index to:', crossover_index);
-                // break;
-                return { index: i, betterKey: key };
-            }
-        }
-    }
-    return null;
-}
+// var findCrossoverInfo = function(orderedIncorrects) {
+//     var clickedStack = Session.get('clickedStack');
+//     for (var i = 0; i < orderedIncorrects.length; i++) {
+//         var this_stack = orderedIncorrects[i];
+//         var stack_to_dist = this_stack.correct_stack_distances;
+//         var current_metric = stack_to_dist[clickedStack.id]
+//         for (var key in stack_to_dist) {
+//             if (!stack_to_dist.hasOwnProperty(key)) continue;
+//             if (stack_to_dist[key] > current_metric) {
+//                 // console.log('checking stack', this_stack, 'current metric:', current_metric);
+//                 // crossover_index = i;
+//                 // console.log('found better key:', key, 'setting index to:', crossover_index);
+//                 // break;
+//                 return { index: i, betterKey: key };
+//             }
+//         }
+//     }
+//     return null;
+// }
 
 var findClosestStack = function(stack) {
     var stack_to_dist = stack.correct_stack_distances;
@@ -197,25 +197,25 @@ var setClickedStack = function(clickedStackID) {
     Session.set('clickedStack', clickedStack);
 };
 
-Template.solutionsList.events({
-    "click .stack": function(event) {
-        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
-        setClickedStack(clickedStackID);
-    }
-});
+// Template.solutionsList.events({
+//     "click .stack": function(event) {
+//         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+//         setClickedStack(clickedStackID);
+//     }
+// });
 
-Template.correctSolutionsList.events({
-    "click .stack": function(event) {
-        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
-        setClickedStack(clickedStackID);
-    }
-});
+// Template.correctSolutionsList.events({
+//     "click .stack": function(event) {
+//         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+//         setClickedStack(clickedStackID);
+//     }
+// });
 
-Template.pinnedStack.events({
-    "click .remove": function(event) {
-        Session.set('clickedStack', undefined);
-    }
-});
+// Template.pinnedStack.events({
+//     "click .remove": function(event) {
+//         Session.set('clickedStack', undefined);
+//     }
+// });
 
 Template.solutionClickable.events({
     "click .showRaw": function(event) {
