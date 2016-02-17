@@ -20,7 +20,7 @@ var sharedWithClickedStack = function(phraseID){
     return clickedStack.phraseIDs.indexOf(phraseID) >= 0
 };
 
-Template.solutionNotClickable.helpers({
+Template.solutionIncorrect.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
     "createSpace": function() {
@@ -65,7 +65,7 @@ Template.solutionNotClickable.helpers({
     "sharedWithClickedStack": sharedWithClickedStack
 });
 
-Template.solutionClickable.helpers({
+Template.solutionCorrect.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
     "createSpace": function() {
@@ -138,12 +138,12 @@ var findClosestStack = function(stack) {
 }
 
 var getIncorrectsInOrder = function() {
-    var clickedStack = Session.get('clickedStack');
-    if (clickedStack === undefined) {
+    var pinnedCorrectStack = Session.get('pinnedCorrectStack');
+    if (pinnedCorrectStack === undefined) {
         return getAllSolutions();
     }
 
-    var field_name = 'correct_stack_distances.' + clickedStack.id;
+    var field_name = 'correct_stack_distances.' + pinnedCorrectStack.id;
     var sort_dict = {};
     sort_dict[field_name] = -1;
 
@@ -157,7 +157,7 @@ var getIncorrectsInOrder = function() {
     // }
     orderedIncorrects.forEach(function(s) {
         var closest = findClosestStack(s);
-        if (closest !== undefined && closest != clickedStack.id) {
+        if (closest !== undefined && closest != pinnedCorrectStack.id) {
             s.closest = closest;
         }
     })
@@ -165,8 +165,24 @@ var getIncorrectsInOrder = function() {
     return orderedIncorrects;
 }
 
+var getCorrectsInOrder = function() {
+    var pinnedIncorrectStack = Session.get('pinnedIncorrectStack');
+    if (pinnedIncorrectStack === undefined || pinnedIncorrectStack.correct) {
+        return Stacks.find({ correct: true }).fetch();
+    }
+
+    var distances = pinnedIncorrectStack.correct_stack_distances;
+    var correct_stacks = Stacks.find({ correct: true }).fetch();
+    correct_stacks.sort(function(s1, s2) {
+        return distances[s2.id] - distances[s1.id]
+    });
+    // console.log('correct stacks in order:', closest_stacks);
+
+    return correct_stacks;
+}
+
 Template.correctSolutionsList.helpers({
-    "solutions": getAllSolutions
+    "solutions": getCorrectsInOrder//getAllSolutions
 });
 
 Template.incorrectSolutionsList.helpers({
@@ -193,7 +209,9 @@ Template.registerHelper('log',function(){
 });
 
 var setClickedStack = function(clickedStackID) {
-    var clickedStack = Stacks.findOne({id: clickedStackID});
+    var clickedStack = Stacks.findOne({ id: clickedStackID });
+    var whichStack = clickedStack.correct ? 'pinnedCorrectStack': 'pinnedIncorrectStack';
+    Session.set(whichStack, clickedStack);
     Session.set('clickedStack', clickedStack);
 };
 
@@ -217,7 +235,7 @@ var setClickedStack = function(clickedStackID) {
 //     }
 // });
 
-Template.solutionClickable.events({
+Template.solutionCorrect.events({
     "click .showRaw": function(event) {
         // var solnum = this.members[0];
         // console.log(this);
@@ -225,12 +243,20 @@ Template.solutionClickable.events({
             console.log('got result:', result);
             // TODO: how do I actually render this???
         });
+    },
+    "click .stack": function(event) {
+        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+        setClickedStack(clickedStackID);
     }
 });
 
-Template.solutionNotClickable.events({
+Template.solutionIncorrect.events({
     "click .closer-to": function(event) {
         var clickedStack = $(event.currentTarget).data('closer');
         setClickedStack(clickedStack);
+    },
+    "click .stack": function(event) {
+        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+        setClickedStack(clickedStackID);
     }
 });

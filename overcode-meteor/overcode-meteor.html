@@ -31,7 +31,7 @@
 <template name="correctSolutionsList">
     {{#each solutions}}
         {{#if correct}}
-            {{> solutionClickable}}
+            {{> solutionCorrect}}
         {{/if}}
     {{/each}}
 </template>
@@ -42,7 +42,7 @@
             {{> separator}}
         {{else}}
             {{#unless correct}}
-                {{> solutionNotClickable}}
+                {{> solutionIncorrect}}
             {{/unless}}
         {{/if}}
     {{/each}}
@@ -50,13 +50,13 @@
 
 <template name="solutionsList">
     {{#each solutions}}
-        {{> solutionClickable}}
+        {{> solutionCorrect}}
     {{/each}}
 </template>
 
 <template name="filteredSolutions">
     {{#each filteredSolutions}}
-        {{> solutionNotClickable}}
+        {{> solutionIncorrect}}
     {{/each}}
 </template>
 
@@ -75,19 +75,21 @@
 </div>
 </template> -->
 
-<template name="solutionNotClickable">
+<template name="solutionIncorrect">
+<div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
     <span class="badge">{{count}}</span>
-    {{#if closest}}
+    <!-- {{#if closest}}
         <span class="closest text-muted">Closer to <a class="closer-to" data-closer={{closest}}>stack {{closest}}</a></span>
-    {{/if}}
+    {{/if}} -->
     <span class="text-muted pull-right">id: {{id}}</span>
     <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
+</div>
 </template>
 
-<template name="solutionClickable">
+<template name="solutionCorrect">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
     <span class="badge">{{count}}</span>
