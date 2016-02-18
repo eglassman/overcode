@@ -87,11 +87,11 @@ Template.solutionCorrect.helpers({
 //     }
 // });
 
-Template.solutionsList.helpers({
-    "solutions": function() {
-        return Stacks.find({}, {sort: {'count': -1}}).fetch();
-    }
-});
+// Template.solutionsList.helpers({
+//     "solutions": function() {
+//         return Stacks.find({}, {sort: {'count': -1}}).fetch();
+//     }
+// });
 
 // Template.pinnedStack.helpers({
 //     "getStack": function() {

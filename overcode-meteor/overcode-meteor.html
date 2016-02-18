@@ -7,26 +7,23 @@
     <div class="row">
         <div class="col-xs-6 solution-list">
             {{> incorrectSolutionsList}}
-            <!-- {{> solutionsList}} -->
         </div>
         <div class="col-xs-6 solution-list">
             {{> correctSolutionsList}}
-            <!-- {{> pinnedStack}} -->
-            <!-- {{> filteredSolutions}} -->
         </div>
     </div>
 </div>
 </body>
 
 <!-- unused -->
-<template name="pinnedStack">
+<!-- <template name="pinnedStack">
     <div class="pinned">
         {{#with getStack}}
             {{> solution}}
             <button class="btn btn-link remove">&times; remove</button>
         {{/with}}
     </div>
-</template>
+</template> -->
 
 <template name="correctSolutionsList">
     {{#each solutions}}
@@ -48,21 +45,21 @@
     {{/each}}
 </template>
 
-<template name="solutionsList">
+<!-- <template name="solutionsList">
     {{#each solutions}}
         {{> solutionCorrect}}
     {{/each}}
-</template>
+</template> -->
 
-<template name="filteredSolutions">
+<!-- <template name="filteredSolutions">
     {{#each filteredSolutions}}
         {{> solutionIncorrect}}
     {{/each}}
-</template>
+</template> -->
 
-<template name="separator">
+<!-- <template name="separator">
     <div class="separator"><span class="text-muted">Closer to stack {{betterKey}}</span></div>
-</template>
+</template> -->
 
 <!-- <template name="solution">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
@@ -75,6 +72,7 @@
 </div>
 </template> -->
 
+<!-- these could probably be merged again -->
 <template name="solutionIncorrect">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
