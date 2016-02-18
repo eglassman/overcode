@@ -7,6 +7,7 @@ from os import path
 import pickle
 import pprint
 import re
+import string
 import types
 
 from external import identifier_renamer
@@ -33,6 +34,8 @@ def get_name(var_obj):
 
     if isinstance(var_obj, AbstractVariable):
         return var_obj.canon_name
+    if var_obj.clash_resolution_name:
+        return var_obj.clash_resolution_name
     if var_obj.abstract_var:
         return var_obj.abstract_var.canon_name
     if var_obj.maps_to:
@@ -94,7 +97,7 @@ class VariableInstance(object):
         self.solnum = solnum
         self.local_name = local_name
         self.abstract_var = None
-        self.rename_to = None
+        self.clash_resolution_name = None
 
         self.maps_to = None
         self.templates_with_indices = set()
@@ -563,6 +566,9 @@ def compute_lines(sol, tidy_path, all_lines):
 
     Mutates sol, all_lines
     """
+    if sol.correct:
+        fix_name_clashes(sol)
+
     with open(tidy_path, 'U') as f:
         # It's not renamed yet, but the variable has to have the same name so
         # that each time through the loop below changes it incrementally
@@ -585,7 +591,10 @@ def compute_lines(sol, tidy_path, all_lines):
 
         ctr += 1
 
-        var_to_map = lvar.abstract_var if sol.correct else lvar
+        if sol.correct and lvar.clash_resolution_name is None:
+            var_to_map = lvar.abstract_var
+        else:
+            var_to_map = lvar
         mappings[placeholder] = (lvar.local_name, var_to_map)
 
     # Break solutions down into line objects
@@ -654,7 +663,7 @@ def compute_all_lines(all_solutions, folderOfData, all_lines):
 
 ###############################################################################
 ## Rewrite solutions
-## THIS SECTION IS NO LONGER USED. Keeping it in just in case.
+## The rewriting parts are no longer used; fix_name_clashes is, however
 ###############################################################################
 def fix_name_clashes(sol):
     """
@@ -670,17 +679,20 @@ def fix_name_clashes(sol):
     print 'Fixing clash in', sol.solnum
 
     # Multiple instances of a single abstract variable
-    for var in sol.abstract_vars:
+    for var in set(sol.abstract_vars):
         indices = [i for i, v in enumerate(sol.abstract_vars) if v == var]
         if len(indices) == 1:
             continue
-        for ind in indices:
+        for (modifier, ind) in enumerate(indices):
             abs_var = sol.abstract_vars[ind]
             local_var = sol.local_vars[ind]
             if not abs_var.canon_name == local_var.local_name:
                 # If canon and local names are both i, don't rename to i_i__
-                new_name = abs_var.canon_name + '_' + local_var.local_name + '__'
-                local_var.rename_to = new_name
+                # new_name = abs_var.canon_name + '_' + local_var.local_name + '__'
+                suffix = string.ascii_uppercase[modifier]
+                new_name = abs_var.canon_name + suffix
+                local_var.clash_resolution_name = new_name
+                print "local var", local_var.local_name, "clash resolution:", new_name
 
 class RenamerException(Exception):
     """A problem occurred while calling identifier_renamer."""
@@ -707,8 +719,8 @@ def rewrite_source(sol, tidy_path, canon_path):
     # TODO: can this be abstracted? It's bothering me :(
     # First pass: local to <canon>_temp
     for lvar in sol.local_vars:
-        if lvar.rename_to:
-            shared_name = lvar.rename_to
+        if lvar.clash_resolution_name:
+            shared_name = lvar.clash_resolution_name
         else:
             shared_name = lvar.abstract_var.canon_name
 
@@ -721,8 +733,8 @@ def rewrite_source(sol, tidy_path, canon_path):
 
     # Second pass: <canon>_temp to <canon>
     for lvar in sol.local_vars:
-        if lvar.rename_to:
-            shared_name = lvar.rename_to
+        if lvar.clash_resolution_name:
+            shared_name = lvar.clash_resolution_name
         else:
             shared_name = lvar.abstract_var.canon_name
 
@@ -880,7 +892,7 @@ def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
         # AbstractVariable
         if avar.should_contain(var_to_match):
             avar.add_instance(var_to_match)
-            return ('values_match', None)
+            return ('values_match', avar, None)
 
         # set of template-index pairs var_to_match appears in that the
         # AbstractVariable under consideration does not
@@ -898,7 +910,7 @@ def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
             if len(diff) == 0:
                 # All templates in var_to_match are shared by the AbstractVariable
                 var_to_match.maps_to = avar
-                return ('templates_match_perfectly', match_info_content)
+                return ('templates_match_perfectly', avar, match_info_content)
             elif match_info_content >= best_info_content:
                 # This is (one of) the best match(es) we've seen
                 best_info_content = match_info_content
@@ -909,10 +921,11 @@ def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
         # information content. Pick the "best" one (at the moment, it's
         # just arbitrary - the first one is picked). Using string edit
         # distance here instead was discussed.
-        var_to_match.maps_to = break_ties(var_to_match, best_avars)
-        return ('templates_differ', best_info_content)
+        best = break_ties(var_to_match, best_avars)
+        var_to_match.maps_to = best
+        return ('templates_differ', best, best_info_content)
     else:
-        return ('no_match', None)
+        return ('no_match', None, None)
 
 def render_template_indices((template, indices), fill_in):
     """Helper function that takes a template and a set of indices, and
@@ -978,12 +991,22 @@ def find_all_matching_vars(incorrect_solutions, correct_abstracts, incorrect_var
     scores, threshold = find_template_info_scores(correct_abstracts)
     output = []
     for sol in incorrect_solutions:
+        seen_names = Counter()
         for lvar in sol.local_vars:
             # Find the actual match
-            (match_type, info_content) = find_matching_var(
+            (match_type, matched_var, info_content) = find_matching_var(
                 lvar, correct_abstracts, scores, threshold)
             if match_type != 'values_match':
                 incorrect_variables.append(lvar)
+
+            if matched_var:
+                name = get_name(matched_var)
+                if name in seen_names:
+                    print "Fixing clash when fuzzy renaming", sol.solnum
+                    modifier = seen_names[name]
+                    suffix = string.ascii_uppercase[modifier]
+                    lvar.clash_resolution_name = name + suffix
+                seen_names.update([name])
 
             ### Everything below here is only used to generate the output.
             result = {
