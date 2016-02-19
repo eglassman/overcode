@@ -260,3 +260,17 @@ Template.solutionIncorrect.events({
         setClickedStack(clickedStackID);
     }
 });
+
+Template.body.events({
+    "submit .grade": function(event) {
+        event.preventDefault();
+
+        // console.log('submitted', event.target);
+        var form = $(event.target);
+        var score = form.find('.score-input').val();
+        var comment = form.find('.comment-input').val();
+        console.log('score:', score, 'comment', comment);
+        // add a 'grade' attribute to Stacks
+        // write to a csv as a side effect of grade updates
+    }
+})

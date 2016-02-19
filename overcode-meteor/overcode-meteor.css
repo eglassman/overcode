@@ -21,6 +21,23 @@
     padding-left: 15px;
 }
 
+.id-label {
+    display: inline-block;
+    width: 9%;
+}
+
+.grade {
+    display: inline-block;
+    width: 90%;
+}
+
+.score-input {
+    width: 14% !important;
+}
+.comment-input {
+    width: 85% !important;
+}
+
 /*.separator {
     border-top: 1px solid darkgray;
     margin-top: 10px;

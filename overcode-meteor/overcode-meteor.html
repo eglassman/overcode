@@ -75,12 +75,18 @@
 <!-- these could probably be merged again -->
 <template name="solutionIncorrect">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
+<span class="text-muted id-label">id: {{id}}</span>
+<form class="grade form-inline">
+    <input type="text" class="score-input form-control" name="score" placeholder="Score"/>
+    <input type="text" class="comment-input form-control" name="comment" placeholder="Comments"/>
+    <!-- Hacky hack to let enter key submit -->
+    <input type="submit" style="display:none"/>
+</form>
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
-    <span class="badge">{{count}}</span>
+    <!-- <span class="badge">{{count}}</span> -->
     <!-- {{#if closest}}
         <span class="closest text-muted">Closer to <a class="closer-to" data-closer={{closest}}>stack {{closest}}</a></span>
     {{/if}} -->
-    <span class="text-muted pull-right">id: {{id}}</span>
     <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
@@ -90,8 +96,8 @@
 <template name="solutionCorrect">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
-    <span class="badge">{{count}}</span>
-    <span class="text-muted pull-right">id: {{id}}</span>
+    <!-- <span class="badge">{{count}}</span> -->
+    <span class="text-muted">id: {{id}}</span>
     <pre><code>{{#each lines}}{{createSpace}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
