@@ -76,9 +76,9 @@
 <template name="solutionIncorrect">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
-<form class="grade form-inline">
-    <input type="text" class="score-input form-control" name="score" placeholder="Score"/>
-    <input type="text" class="comment-input form-control" name="comment" placeholder="Comments"/>
+<form class="grade form-inline" data-record-id="{{_id}}">
+    <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
+    <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
     <!-- Hacky hack to let enter key submit -->
     <input type="submit" style="display:none"/>
 </form>
