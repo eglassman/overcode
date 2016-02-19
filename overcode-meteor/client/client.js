@@ -1,7 +1,5 @@
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
-// Variables = new Mongo.Collection('variables');
-
 
 var getPhraseFromID = function(phraseID) {
     return Phrases.findOne({ id: phraseID });
@@ -65,16 +63,6 @@ Template.solution.helpers({
     "sharedWithClickedStack": sharedWithClickedStack
 });
 
-// Template.solutionCorrect.helpers({
-//     "getPhraseFromID": getPhraseFromID,
-//     "clicked": clicked,
-//     "createSpace": function() {
-//         // this is { phraseID, indent }
-//         return " ".repeat(this.indent);
-//     },
-//     "sharedWithClickedStack": sharedWithClickedStack
-// });
-
 // Template.filteredSolutions.helpers({
 //     "filteredSolutions": function() {
 //         var clickedStack = Session.get('clickedStack');
@@ -93,35 +81,10 @@ Template.solution.helpers({
 //     }
 // });
 
-// Template.pinnedStack.helpers({
-//     "getStack": function() {
-//         return Session.get('clickedStack');
-//     }
-// });
 
 var getAllSolutions = function() {
     return Stacks.find({}).fetch();
 }
-
-// var findCrossoverInfo = function(orderedIncorrects) {
-//     var clickedStack = Session.get('clickedStack');
-//     for (var i = 0; i < orderedIncorrects.length; i++) {
-//         var this_stack = orderedIncorrects[i];
-//         var stack_to_dist = this_stack.correct_stack_distances;
-//         var current_metric = stack_to_dist[clickedStack.id]
-//         for (var key in stack_to_dist) {
-//             if (!stack_to_dist.hasOwnProperty(key)) continue;
-//             if (stack_to_dist[key] > current_metric) {
-//                 // console.log('checking stack', this_stack, 'current metric:', current_metric);
-//                 // crossover_index = i;
-//                 // console.log('found better key:', key, 'setting index to:', crossover_index);
-//                 // break;
-//                 return { index: i, betterKey: key };
-//             }
-//         }
-//     }
-//     return null;
-// }
 
 var findClosestStack = function(stack) {
     var stack_to_dist = stack.correct_stack_distances;
@@ -149,19 +112,13 @@ var getIncorrectsInOrder = function() {
 
     var orderedIncorrects = Stacks.find({ correct: false }, { sort: sort_dict }).fetch();
 
-    // find crossover point
-    // var crossover_info = findCrossoverInfo(orderedIncorrects);
-    // var separator = { isSeparator: true, betterKey: crossover_info.betterKey };
-    // if (crossover_info !== null) {
-    //     orderedIncorrects.splice(crossover_info.index, 0, separator);
-    // }
-    orderedIncorrects.forEach(function(s) {
-        var closest = findClosestStack(s);
-        if (closest !== undefined && closest != pinnedCorrectStack.id) {
-            s.closest = closest;
-        }
-    })
-    // console.log(orderedIncorrects);
+    // find the closest correct stack
+    // orderedIncorrects.forEach(function(s) {
+    //     var closest = findClosestStack(s);
+    //     if (closest !== undefined && closest != pinnedCorrectStack.id) {
+    //         s.closest = closest;
+    //     }
+    // });
     return orderedIncorrects;
 }
 
@@ -176,13 +133,12 @@ var getCorrectsInOrder = function() {
     correct_stacks.sort(function(s1, s2) {
         return distances[s2.id] - distances[s1.id]
     });
-    // console.log('correct stacks in order:', closest_stacks);
 
     return correct_stacks;
 }
 
 Template.correctSolutionsList.helpers({
-    "solutions": getCorrectsInOrder//getAllSolutions
+    "solutions": getCorrectsInOrder
 });
 
 Template.incorrectSolutionsList.helpers({
@@ -215,26 +171,6 @@ var setClickedStack = function(clickedStackID) {
     Session.set('clickedStack', clickedStack);
 };
 
-// Template.solutionsList.events({
-//     "click .stack": function(event) {
-//         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
-//         setClickedStack(clickedStackID);
-//     }
-// });
-
-// Template.correctSolutionsList.events({
-//     "click .stack": function(event) {
-//         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
-//         setClickedStack(clickedStackID);
-//     }
-// });
-
-// Template.pinnedStack.events({
-//     "click .remove": function(event) {
-//         Session.set('clickedStack', undefined);
-//     }
-// });
-
 // Template.solutionCorrect.events({
 //     "click .showRaw": function(event) {
 //         // var solnum = this.members[0];
@@ -251,10 +187,10 @@ var setClickedStack = function(clickedStackID) {
 // });
 
 Template.solution.events({
-    "click .closer-to": function(event) {
-        var clickedStack = $(event.currentTarget).data('closer');
-        setClickedStack(clickedStack);
-    },
+    // "click .closer-to": function(event) {
+    //     var clickedStack = $(event.currentTarget).data('closer');
+    //     setClickedStack(clickedStack);
+    // },
     "click .stack": function(event) {
         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
         setClickedStack(clickedStackID);
@@ -265,15 +201,11 @@ Template.body.events({
     "submit .grade": function(event) {
         event.preventDefault();
 
-        // console.log('submitted', event.target);
         var form = $(event.target);
         var score = form.find('.score-input').val();
         var comment = form.find('.comment-input').val();
         var _id = form.data('record-id');
-        // console.log('score:', score, 'comment', comment);
 
         Stacks.update(_id, { $set: { score: score, comment: comment }});
-        // add a 'grade' attribute to Stacks
-        // write to a csv as a side effect of grade updates
     }
-})
+});

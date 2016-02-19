@@ -1,5 +1,3 @@
-/* CSS declarations go here */
-
 .heading {
     border-bottom: 1px solid #ddd;
 }
@@ -26,11 +24,6 @@
     width: 14%;
 }
 
-/*.grade {
-    display: inline-block;
-    width: 90%;
-}*/
-
 .score-input {
     width: 14% !important;
 }
@@ -38,11 +31,6 @@
     width: 85% !important;
 }
 
-/*.separator {
-    border-top: 1px solid darkgray;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}*/
 .closest {
     width: 85%;
     text-align: center;

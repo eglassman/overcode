@@ -15,16 +15,6 @@
 </div>
 </body>
 
-<!-- unused -->
-<!-- <template name="pinnedStack">
-    <div class="pinned">
-        {{#with getStack}}
-            {{> solution}}
-            <button class="btn btn-link remove">&times; remove</button>
-        {{/with}}
-    </div>
-</template> -->
-
 <template name="correctSolutionsList">
     {{#each solutions}}
         {{#if correct}}
@@ -57,22 +47,6 @@
     {{/each}}
 </template> -->
 
-<!-- <template name="separator">
-    <div class="separator"><span class="text-muted">Closer to stack {{betterKey}}</span></div>
-</template> -->
-
-<!-- <template name="solution">
-<div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
-<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}" data-phraseids="{{phraseIDs}}" data-closest-stacks="{{closest_stacks}}">
-    <span class="badge">{{count}}</span>
-    <span class="text-muted pull-right">id: {{id}}</span>
-    <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{createSpace}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
-{{/with}}</span>{{/each}}</code></pre>
-</div>
-</div>
-</template> -->
-
-<!-- these could probably be merged again -->
 <template name="solution">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
@@ -80,11 +54,10 @@
 <form class="grade form-inline" data-record-id="{{_id}}">
     <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
     <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
-    <!-- Hacky hack to let enter key submit -->
+    <!-- Hack: needed for the enter key to submit the form -->
     <input type="submit" style="display:none"/>
 </form>
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
-    <!-- <span class="badge">{{count}}</span> -->
     <!-- {{#if closest}}
         <span class="closest text-muted">Closer to <a class="closer-to" data-closer={{closest}}>stack {{closest}}</a></span>
     {{/if}} -->
@@ -93,16 +66,3 @@
 </div>
 </div>
 </template>
-
-
-<!-- <template name="solution"> -->
-<!-- <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}"> -->
-<!-- <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}"> -->
-    <!-- <span class="badge">{{count}}</span> -->
-    <!-- <span class="text-muted">id: {{id}}</span> -->
-    <!-- <pre><code>{{#each lines}}{{createSpace}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}} -->
-<!-- {{/with}}</span>{{/each}}</code></pre> -->
-<!-- </div> -->
-<!-- <button class="btn btn-link btn-sm showRaw">Show raw solution</button> -->
-<!-- </div> -->
-<!-- </template> -->
