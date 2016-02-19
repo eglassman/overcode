@@ -42,6 +42,14 @@ def get_name(var_obj):
         return var_obj.maps_to.canon_name
     return var_obj.local_name
 
+def compare_output(actual, correct_output):
+    total = 0
+    num_correct = 0
+    for test in correct_output:
+        total += 1
+        if actual[test] == correct_output[test]:
+            num_correct += 1
+    return num_correct == total, num_correct, total
 
 ###############################################################################
 ## Classes
@@ -478,7 +486,10 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_outp
             sequences[localVarName][testcase] = sequence
 
     sol.output = output
-    sol.correct = (output == correct_output)
+    is_correct, num_passed_tests, total_num_tests = compare_output(output, correct_output)
+    sol.correct = is_correct
+    sol.num_passed_tests = num_passed_tests
+    sol.total_num_tests = total_num_tests
 
     for localVarName in sequences:
         var = VariableInstance(sequences[localVarName], sol.solnum, localVarName)
@@ -1040,6 +1051,8 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             'id': i,
             'number': rep.solnum,
             'correct': rep.correct,
+            'num_passed_tests': rep.num_passed_tests,
+            'total_num_tests': rep.total_num_tests,
             'members': stack.members,
             'count': stack.count,
             'phraseIDs': set(),

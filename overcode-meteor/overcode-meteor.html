@@ -28,7 +28,7 @@
 <template name="correctSolutionsList">
     {{#each solutions}}
         {{#if correct}}
-            {{> solutionCorrect}}
+            {{> solution}}
         {{/if}}
     {{/each}}
 </template>
@@ -39,7 +39,7 @@
             {{> separator}}
         {{else}}
             {{#unless correct}}
-                {{> solutionIncorrect}}
+                {{> solution}}
             {{/unless}}
         {{/if}}
     {{/each}}
@@ -47,13 +47,13 @@
 
 <!-- <template name="solutionsList">
     {{#each solutions}}
-        {{> solutionCorrect}}
+        {{> solution}}
     {{/each}}
 </template> -->
 
 <!-- <template name="filteredSolutions">
     {{#each filteredSolutions}}
-        {{> solutionIncorrect}}
+        {{> solution}}
     {{/each}}
 </template> -->
 
@@ -73,9 +73,10 @@
 </template> -->
 
 <!-- these could probably be merged again -->
-<template name="solutionIncorrect">
+<template name="solution">
 <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
+<span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
 <form class="grade form-inline" data-record-id="{{_id}}">
     <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
     <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
@@ -93,14 +94,15 @@
 </div>
 </template>
 
-<template name="solutionCorrect">
-<div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
-<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
+
+<!-- <template name="solution"> -->
+<!-- <div class="stack-wrapper {{#if clicked id}}clicked{{/if}}"> -->
+<!-- <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}"> -->
     <!-- <span class="badge">{{count}}</span> -->
-    <span class="text-muted">id: {{id}}</span>
-    <pre><code>{{#each lines}}{{createSpace}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
-{{/with}}</span>{{/each}}</code></pre>
-</div>
+    <!-- <span class="text-muted">id: {{id}}</span> -->
+    <!-- <pre><code>{{#each lines}}{{createSpace}}<span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}} -->
+<!-- {{/with}}</span>{{/each}}</code></pre> -->
+<!-- </div> -->
 <!-- <button class="btn btn-link btn-sm showRaw">Show raw solution</button> -->
-</div>
-</template>
+<!-- </div> -->
+<!-- </template> -->

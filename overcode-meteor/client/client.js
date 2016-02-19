@@ -20,7 +20,7 @@ var sharedWithClickedStack = function(phraseID){
     return clickedStack.phraseIDs.indexOf(phraseID) >= 0
 };
 
-Template.solutionIncorrect.helpers({
+Template.solution.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
     "createSpace": function() {
@@ -65,15 +65,15 @@ Template.solutionIncorrect.helpers({
     "sharedWithClickedStack": sharedWithClickedStack
 });
 
-Template.solutionCorrect.helpers({
-    "getPhraseFromID": getPhraseFromID,
-    "clicked": clicked,
-    "createSpace": function() {
-        // this is { phraseID, indent }
-        return " ".repeat(this.indent);
-    },
-    "sharedWithClickedStack": sharedWithClickedStack
-});
+// Template.solutionCorrect.helpers({
+//     "getPhraseFromID": getPhraseFromID,
+//     "clicked": clicked,
+//     "createSpace": function() {
+//         // this is { phraseID, indent }
+//         return " ".repeat(this.indent);
+//     },
+//     "sharedWithClickedStack": sharedWithClickedStack
+// });
 
 // Template.filteredSolutions.helpers({
 //     "filteredSolutions": function() {
@@ -235,22 +235,22 @@ var setClickedStack = function(clickedStackID) {
 //     }
 // });
 
-Template.solutionCorrect.events({
-    "click .showRaw": function(event) {
-        // var solnum = this.members[0];
-        // console.log(this);
-        Meteor.call('getRawCode', this.members, function(err, result) {
-            console.log('got result:', result);
-            // TODO: how do I actually render this???
-        });
-    },
-    "click .stack": function(event) {
-        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
-        setClickedStack(clickedStackID);
-    }
-});
+// Template.solutionCorrect.events({
+//     "click .showRaw": function(event) {
+//         // var solnum = this.members[0];
+//         // console.log(this);
+//         Meteor.call('getRawCode', this.members, function(err, result) {
+//             console.log('got result:', result);
+//             // TODO: how do I actually render this???
+//         });
+//     },
+//     "click .stack": function(event) {
+//         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+//         setClickedStack(clickedStackID);
+//     }
+// });
 
-Template.solutionIncorrect.events({
+Template.solution.events({
     "click .closer-to": function(event) {
         var clickedStack = $(event.currentTarget).data('closer');
         setClickedStack(clickedStack);

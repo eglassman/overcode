@@ -23,13 +23,13 @@
 
 .id-label {
     display: inline-block;
-    width: 9%;
+    width: 14%;
 }
 
-.grade {
+/*.grade {
     display: inline-block;
     width: 90%;
-}
+}*/
 
 .score-input {
     width: 14% !important;
