@@ -28,7 +28,7 @@
     width: 14% !important;
 }
 .comment-input {
-    width: 85% !important;
+    width: 80% !important;
 }
 
 .closest {
@@ -45,8 +45,12 @@
     padding: 0px;
 }
 
-.clicked {
+/*.clicked {
     background-color: #ECF3F9;
+}*/
+
+span.glyphicon {
+    font-size: 1.2em;
 }
 
 .clicked .dimmed {

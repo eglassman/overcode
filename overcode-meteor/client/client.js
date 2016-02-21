@@ -197,6 +197,15 @@ Template.solution.events({
     }
 });
 
+var gradeUpdateCallback = function(err, object) {
+    if (err){
+        //console.warn(err.message);  // returns error if no matching object found
+        alert('Error syncing grade: ',err)
+    } else {
+        console.log('success',object);
+    }
+};
+
 Template.body.events({
     "submit .grade": function(event) {
         event.preventDefault();
@@ -206,6 +215,10 @@ Template.body.events({
         var comment = form.find('.comment-input').val();
         var _id = form.data('record-id');
 
-        Stacks.update(_id, { $set: { score: score, comment: comment }});
+        Stacks.update(
+            _id, 
+            { $set: { score: score, comment: comment, gradestatus: 'check' }},
+            gradeUpdateCallback
+        );
     }
 });

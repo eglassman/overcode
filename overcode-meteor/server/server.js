@@ -6,8 +6,8 @@ Phrases = new Mongo.Collection('phrases');
 // Variables = new Mongo.Collection('variables');
 
 var DATA_DIR_NAME = 'flatten'
-var results_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'output/');
-var data_path = path.join('/Users/staceyterman/overcode_data/', DATA_DIR_NAME, 'data/');
+var results_path = path.join('/Users/elena/publicCodeRepos/overcode_data/', DATA_DIR_NAME, 'output/');
+var data_path = path.join('/Users/elena/publicCodeRepos/overcode_data/', DATA_DIR_NAME, 'data/');
 
 Meteor.methods({
     "getRawCode": function(members) {
@@ -38,6 +38,7 @@ Meteor.startup(function () {
     // Variables.remove({});
 
     solutions.forEach(function(sol) {
+        sol['gradestatus'] = 'unchecked';
         Stacks.insert(sol);
     });
     
