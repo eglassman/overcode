@@ -6,8 +6,13 @@ Phrases = new Mongo.Collection('phrases');
 // Variables = new Mongo.Collection('variables');
 
 var DATA_DIR_NAME = 'flatten'
-var results_path = path.join('/Users/elena/publicCodeRepos/overcode_data/', DATA_DIR_NAME, 'output/');
-var data_path = path.join('/Users/elena/publicCodeRepos/overcode_data/', DATA_DIR_NAME, 'data/');
+var ELENA_PATH = '/Users/elena/publicCodeRepos/'
+var STACEY_PATH = '/Users/staceyterman/'
+
+var base_path = STACEY_PATH
+
+var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output/');
+var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
 
 Meteor.methods({
     "getRawCode": function(members) {

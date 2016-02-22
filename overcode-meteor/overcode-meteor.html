@@ -66,7 +66,7 @@
     <!-- {{#if closest}}
         <span class="closest text-muted">Closer to <a class="closer-to" data-closer={{closest}}>stack {{closest}}</a></span>
     {{/if}} -->
-    <pre>{{#if clicked id}}<span class="glyphicon glyphicon-pushpin"></span>{{/if}}<code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
+    <pre>{{#if clicked id}}<span class="glyphicon glyphicon-pushpin pull-right"></span>{{/if}}<code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
 </div>

@@ -199,7 +199,7 @@ Template.solution.events({
 
 var gradeUpdateCallback = function(err, object) {
     if (err){
-        //console.warn(err.message);  // returns error if no matching object found
+        // returns error if no matching object found
         alert('Error syncing grade: ',err)
     } else {
         console.log('success',object);
@@ -215,9 +215,10 @@ Template.body.events({
         var comment = form.find('.comment-input').val();
         var _id = form.data('record-id');
 
+        var gradestatus = score === '' ? 'unchecked' : 'check';
         Stacks.update(
             _id, 
-            { $set: { score: score, comment: comment, gradestatus: 'check' }},
+            { $set: { score: score, comment: comment, gradestatus: gradestatus }},
             gradeUpdateCallback
         );
     }
