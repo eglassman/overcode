@@ -9,6 +9,7 @@
 .stack pre {
     margin-top: 2px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .stack-wrapper {

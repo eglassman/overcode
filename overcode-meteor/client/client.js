@@ -5,9 +5,9 @@ var getPhraseFromID = function(phraseID) {
     return Phrases.findOne({ id: phraseID });
 };
 
-var clicked = function(stackID){
+var clicked = function(){
     var clickedStack = Session.get('clickedStack');
-    return clickedStack !== undefined && stackID == clickedStack.id
+    return clickedStack !== undefined && this.id == clickedStack.id
 }
 
 var sharedWithClickedStack = function(phraseID){

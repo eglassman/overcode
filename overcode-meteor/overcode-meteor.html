@@ -48,25 +48,21 @@
 </template> -->
 
 <template name="solution">
-<div class="stack-wrapper {{#if clicked id}}clicked{{/if}}">
+<div class="stack-wrapper {{#if clicked}}clicked{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
 <form class="grade form-inline" data-record-id="{{_id}}">
-    <!-- <div class="form-group"> -->
     <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
-    <!-- </div> -->
-    <!-- <div class="form-group"> -->
     <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
-    <!-- </div> -->
     <span class="glyphicon glyphicon-{{gradestatus}}"></span>
     <!-- Hack: needed for the enter key to submit the form -->
     <input type="submit" style="display:none"/>
 </form>
-<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
+<div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}" title="Click to pin">
     <!-- {{#if closest}}
         <span class="closest text-muted">Closer to <a class="closer-to" data-closer={{closest}}>stack {{closest}}</a></span>
     {{/if}} -->
-    <pre>{{#if clicked id}}<span class="glyphicon glyphicon-pushpin pull-right"></span>{{/if}}<code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
+    <pre>{{#if clicked}}<div class="pin-button pull-right {{#unless clicked}}not-toggled{{/unless}}"><span class="glyphicon glyphicon-pushpin"></span></div>{{/if}}<code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
 </div>
