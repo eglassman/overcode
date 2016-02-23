@@ -167,6 +167,13 @@ Template.registerHelper('log',function(){
 var setClickedStack = function(clickedStackID) {
     var clickedStack = Stacks.findOne({ id: clickedStackID });
     var whichStack = clickedStack.correct ? 'pinnedCorrectStack': 'pinnedIncorrectStack';
+
+    var previousClickedStack = Session.get('clickedStack');
+    if (previousClickedStack !== undefined && previousClickedStack.id === clickedStack.id) {
+        Session.set('clickedStack', undefined);
+        return;
+    }
+
     Session.set(whichStack, clickedStack);
     Session.set('clickedStack', clickedStack);
 };
@@ -191,8 +198,8 @@ Template.solution.events({
     //     var clickedStack = $(event.currentTarget).data('closer');
     //     setClickedStack(clickedStack);
     // },
-    "click .stack": function(event) {
-        var clickedStackID = parseInt($(event.currentTarget).prop('id'));
+    "click .pin-button": function(event) {
+        var clickedStackID = parseInt($(event.currentTarget).data('id'));
         setClickedStack(clickedStackID);
     }
 });

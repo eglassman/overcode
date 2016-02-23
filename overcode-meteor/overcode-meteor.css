@@ -9,7 +9,6 @@
 .stack pre {
     margin-top: 2px;
     margin-bottom: 5px;
-    cursor: pointer;
 }
 
 .stack-wrapper {
@@ -29,7 +28,7 @@
     width: 12% !important;
 }
 .comment-input {
-    width: 83% !important;
+    width: 82% !important;
 }
 
 .closest {
@@ -68,6 +67,14 @@ span.glyphicon {
 
 .dimmed {
 	opacity: 0.5;
+}
+
+.pin-button {
+    cursor: pointer;
+}
+
+.not-toggled {
+    opacity: 0.3;
 }
 
 .incorrect pre {
