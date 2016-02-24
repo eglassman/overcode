@@ -201,6 +201,25 @@ Template.solution.events({
     "click .pin-button": function(event) {
         var clickedStackID = parseInt($(event.currentTarget).data('id'));
         setClickedStack(clickedStackID);
+    },
+    "change .score-input": function(event) {
+        var score_input = $(event.target);
+        var score = score_input.val();
+        // var comment = form.find('.comment-input').val();
+        var _id = score_input.data('record-id');
+
+        var gradestatus = score === '' ? 'unchecked' : 'check';
+        Stacks.update(
+            _id,
+            { $set: { score: score, gradestatus: gradestatus }},
+            gradeUpdateCallback
+        );
+    },
+    "change .comment-input": function(event) {
+        var comment_input = $(event.target);
+        var comment = comment_input.val();
+        var _id = comment_input.data('record-id');
+        Stacks.update(_id, { $set: {comment: comment }}, gradeUpdateCallback);
     }
 });
 
@@ -209,24 +228,24 @@ var gradeUpdateCallback = function(err, object) {
         // returns error if no matching object found
         alert('Error syncing grade: ',err)
     } else {
-        console.log('success',object);
+        // console.log('success',object);
     }
 };
 
-Template.body.events({
-    "submit .grade": function(event) {
-        event.preventDefault();
+// Template.body.events({
+//     "submit .grade": function(event) {
+//         event.preventDefault();
 
-        var form = $(event.target);
-        var score = form.find('.score-input').val();
-        var comment = form.find('.comment-input').val();
-        var _id = form.data('record-id');
+//         var form = $(event.target);
+//         var score = form.find('.score-input').val();
+//         var comment = form.find('.comment-input').val();
+//         var _id = form.data('record-id');
 
-        var gradestatus = score === '' ? 'unchecked' : 'check';
-        Stacks.update(
-            _id, 
-            { $set: { score: score, comment: comment, gradestatus: gradestatus }},
-            gradeUpdateCallback
-        );
-    }
-});
+//         var gradestatus = score === '' ? 'unchecked' : 'check';
+//         Stacks.update(
+//             _id, 
+//             { $set: { score: score, comment: comment, gradestatus: gradestatus }},
+//             gradeUpdateCallback
+//         );
+//     }
+// });
