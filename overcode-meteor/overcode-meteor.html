@@ -25,13 +25,9 @@
 
 <template name="incorrectSolutionsList">
     {{#each solutions}}
-        {{#if isSeparator}}
-            {{> separator}}
-        {{else}}
-            {{#unless correct}}
-                {{> solution}}
-            {{/unless}}
-        {{/if}}
+        {{#unless correct}}
+            {{> solution}}
+        {{/unless}}
     {{/each}}
 </template>
 

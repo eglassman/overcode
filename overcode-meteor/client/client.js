@@ -83,7 +83,7 @@ Template.solution.helpers({
 
 
 var getAllSolutions = function() {
-    return Stacks.find({}).fetch();
+    return Stacks.find({}, { sort: { id: 1 }}).fetch();
 }
 
 var findClosestStack = function(stack) {
@@ -101,34 +101,27 @@ var findClosestStack = function(stack) {
 }
 
 var getIncorrectsInOrder = function() {
-    var pinnedCorrectStack = Session.get('pinnedCorrectStack');
-    if (pinnedCorrectStack === undefined) {
+    var clickedStack = Session.get('clickedStack');
+    if (clickedStack === undefined) {
         return getAllSolutions();
     }
+    var distances = clickedStack.stack_distances;
 
-    var field_name = 'correct_stack_distances.' + pinnedCorrectStack.id;
-    var sort_dict = {};
-    sort_dict[field_name] = -1;
+    var orderedIncorrects = Stacks.find({ correct: false }).fetch();
+    orderedIncorrects.sort(function(s1, s2) {
+        return distances[s2.id] - distances[s1.id]
+    });
 
-    var orderedIncorrects = Stacks.find({ correct: false }, { sort: sort_dict }).fetch();
-
-    // find the closest correct stack
-    // orderedIncorrects.forEach(function(s) {
-    //     var closest = findClosestStack(s);
-    //     if (closest !== undefined && closest != pinnedCorrectStack.id) {
-    //         s.closest = closest;
-    //     }
-    // });
     return orderedIncorrects;
 }
 
 var getCorrectsInOrder = function() {
-    var pinnedIncorrectStack = Session.get('pinnedIncorrectStack');
-    if (pinnedIncorrectStack === undefined || pinnedIncorrectStack.correct) {
-        return Stacks.find({ correct: true }).fetch();
+    var clickedStack = Session.get('clickedStack');
+    if (clickedStack === undefined) {
+        return getAllSolutions();
     }
+    var distances = clickedStack.stack_distances;
 
-    var distances = pinnedIncorrectStack.correct_stack_distances;
     var correct_stacks = Stacks.find({ correct: true }).fetch();
     correct_stacks.sort(function(s1, s2) {
         return distances[s2.id] - distances[s1.id]
@@ -166,15 +159,12 @@ Template.registerHelper('log',function(){
 
 var setClickedStack = function(clickedStackID) {
     var clickedStack = Stacks.findOne({ id: clickedStackID });
-    var whichStack = clickedStack.correct ? 'pinnedCorrectStack': 'pinnedIncorrectStack';
 
     var previousClickedStack = Session.get('clickedStack');
     if (previousClickedStack !== undefined && previousClickedStack.id === clickedStack.id) {
         Session.set('clickedStack', undefined);
         return;
     }
-
-    Session.set(whichStack, clickedStack);
     Session.set('clickedStack', clickedStack);
 };
 

@@ -874,6 +874,21 @@ def find_sort_metrics(incorrect_stacks, correct_stacks):
             metrics.append((right_stack, metric))
         wrong_stack.correct_stack_distances = metrics
 
+def find_sort_metrics_all(all_stacks):
+    for stack1 in all_stacks:
+        rep1 = stack1.representative
+
+        metrics = []
+        for stack2 in all_stacks:
+            # if stack2 == stack1:
+            #     continue
+            rep2 = stack2.representative
+            metric = rep1.difference_metric(rep2)
+            metrics.append((stack2, metric))
+
+        stack1.stack_distances = metrics
+
+
 ###############################################################################
 ## do things with templates
 ###############################################################################
@@ -1062,12 +1077,17 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
         # if not rep.correct:
         # stack_json['closest_stacks'] = [all_stacks.index(s) + 1 for s in stack.closest_stacks]
         # stack_json['count_closest_stacks'] = len(stack_json['closest_stacks']);
-        if not rep.correct:
-            id_to_metric = {}
-            for (right_stack, metric) in stack.correct_stack_distances:
-                right_id = all_stacks.index(right_stack) + 1
-                id_to_metric[right_id] = metric
-            stack_json['correct_stack_distances'] = id_to_metric
+        # if not rep.correct:
+        #     id_to_metric = {}
+        #     for (right_stack, metric) in stack.correct_stack_distances:
+        #         right_id = all_stacks.index(right_stack) + 1
+        #         id_to_metric[right_id] = metric
+        #     stack_json['correct_stack_distances'] = id_to_metric
+        id_to_metric = {}
+        for (s, metric) in stack.stack_distances:
+            s_id = all_stacks.index(s) + 1
+            id_to_metric[s_id] = metric
+        stack_json['stack_distances'] = id_to_metric
 
         for (line_object, local_names, indent) in rep.lines:
             phrase = line_object.render()
@@ -1199,7 +1219,8 @@ def run(folderOfData, destFolder, correct_output):
 
     # For every stack, find the other stacks that are closest
     # find_closest_stacks(all_stacks, correct_stacks)
-    find_sort_metrics(incorrect_fake_stacks, correct_stacks)
+    # find_sort_metrics(incorrect_fake_stacks, correct_stacks)
+    find_sort_metrics_all(all_stacks)
 
     # Generate the output for json files
     ordered_phrases = []
