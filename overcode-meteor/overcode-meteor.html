@@ -5,6 +5,11 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-xs-12">
+            {{> gradedCount}}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-xs-6 solution-list">
             {{> incorrectSolutionsList}}
         </div>
@@ -14,6 +19,10 @@
     </div>
 </div>
 </body>
+
+<template name="gradedCount">
+Graded: {{numGraded}}/{{totalNum}}
+</template>
 
 <template name="correctSolutionsList">
     {{#each solutions}}
@@ -50,7 +59,7 @@
 <form class="grade form-inline">
     <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}" data-record-id="{{_id}}"/>
     <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}" data-record-id="{{_id}}"/>
-    <span class="glyphicon glyphicon-{{gradestatus}}"></span>
+    <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
     <!-- Hack: needed for the enter key to submit the form -->
     <!-- <input type="submit" style="display:none"/> -->
 </form>

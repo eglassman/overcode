@@ -43,7 +43,7 @@ Meteor.startup(function () {
     // Variables.remove({});
 
     solutions.forEach(function(sol) {
-        sol['gradestatus'] = 'unchecked';
+        sol.graded = false;
         Stacks.insert(sol);
     });
     

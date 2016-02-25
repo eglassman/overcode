@@ -81,6 +81,14 @@ Template.solution.helpers({
 //     }
 // });
 
+Template.gradedCount.helpers({
+    'numGraded': function() {
+        return Stacks.find({ graded: true }).count();
+    },
+    'totalNum': function() {
+        return Stacks.find({}).count();
+    }
+});
 
 var getAllSolutions = function() {
     return Stacks.find({}, { sort: { id: 1 }}).fetch();
@@ -198,10 +206,10 @@ Template.solution.events({
         // var comment = form.find('.comment-input').val();
         var _id = score_input.data('record-id');
 
-        var gradestatus = score === '' ? 'unchecked' : 'check';
+        // var gradestatus = score === '' ? 'unchecked' : 'check';
         Stacks.update(
             _id,
-            { $set: { score: score, gradestatus: gradestatus }},
+            { $set: { score: score, graded: score !== '' }},
             gradeUpdateCallback
         );
     },
