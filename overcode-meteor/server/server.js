@@ -3,7 +3,8 @@ var path = Npm.require('path');
 
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
-// Variables = new Mongo.Collection('variables');
+
+var RELOAD = false;
 
 var DATA_DIR_NAME = 'flatten'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
@@ -27,8 +28,28 @@ Meteor.methods({
             var raw = fs.readFileSync(file_path);
             results.push(raw.toString());
         }
-        // console.log(results);
         return results
+    },
+    "writeGrade": function(grade_object) {
+        var grade_file_path = '/Users/staceyterman/overcode_github/grade.txt';
+
+        var stack = Stacks.findOne({ id: grade_object.id });
+        for (var i = 0; i < stack.members.length; i++) {
+            var sol_id = stack.members[i];
+
+            var d = new Date();
+            var timestamp = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+            var str_to_write = timestamp + ', ' + 'row_number:' + sol_id + ', ';
+
+            if (grade_object.score !== undefined) {
+                str_to_write += 'score:' + grade_object.score;
+            } else {
+                str_to_write += 'comment:' + grade_object.comment;
+            }
+            str_to_write += '\n'
+
+            fs.appendFile(grade_file_path, str_to_write);
+        }
     }
 });
 
@@ -38,26 +59,23 @@ Meteor.startup(function () {
     var solutions = JSON.parse(fs.readFileSync(solutions_path));
     var phrases = JSON.parse(fs.readFileSync(phrases_path));
 
-    Stacks.remove({});
-    Phrases.remove({});
-    // Variables.remove({});
+    if (RELOAD) {
+        Stacks.remove({});
+        Phrases.remove({});
 
-    solutions.forEach(function(sol) {
-        sol.graded = false;
-        Stacks.insert(sol);
-    });
-    
-    phrases.forEach(function(phrase) {
-        var highlighted_line = hljs.highlight('python', phrase.code).value;
-        var subscripted_line = highlighted_line.replace(/___(\d+)/g, function(match, digit) {
-            return "<sub>" + digit + "</sub>";
+        solutions.forEach(function(sol) {
+            sol.graded = false;
+            Stacks.insert(sol);
         });
-        phrase.code = subscripted_line;
-        Phrases.insert(phrase);
-    });
 
-    // variables.forEach(function(variable) {
-    //     Variables.insert(variable);
-    // });
+        phrases.forEach(function(phrase) {
+            var highlighted_line = hljs.highlight('python', phrase.code).value;
+            var subscripted_line = highlighted_line.replace(/___(\d+)/g, function(match, digit) {
+                return "<sub>" + digit + "</sub>";
+            });
+            phrase.code = subscripted_line;
+            Phrases.insert(phrase);
+        });
+    }
 });
 

@@ -56,12 +56,10 @@ Graded: {{numGraded}}/{{totalNum}}
 <div class="stack-wrapper {{#if clicked}}clicked{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
-<form class="grade form-inline">
-    <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}" data-record-id="{{_id}}"/>
-    <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}" data-record-id="{{_id}}"/>
+<form class="grade form-inline"  data-record-id="{{_id}}" data-id="{{id}}">
+    <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
+    <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
     <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
-    <!-- Hack: needed for the enter key to submit the form -->
-    <!-- <input type="submit" style="display:none"/> -->
 </form>
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
     <!-- {{#if closest}}

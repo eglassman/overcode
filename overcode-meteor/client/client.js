@@ -191,6 +191,27 @@ var setClickedStack = function(clickedStackID) {
 //     }
 // });
 
+var update_grade = function(input, score_or_comment) {
+    var form = input.parent();
+    var input_value = input.val();
+    var _id = form.data('record-id');
+    var stack_id = form.data('id');
+
+    var grade_obj = { id: stack_id };
+    var set_options;
+    if (score_or_comment == 'score') {
+        grade_obj.score = input_value
+        set_options = { score: input_value, graded: input_value !== '' };
+    } else {
+        grade_obj.comment = input_value
+        set_options = { comment: input_value };
+    }
+
+    Stacks.update(_id, { $set: set_options }, function(err, num_updated) {
+        grade_update_callback(err, grade_obj);
+    });
+}
+
 Template.solution.events({
     // "click .closer-to": function(event) {
     //     var clickedStack = $(event.currentTarget).data('closer');
@@ -202,32 +223,21 @@ Template.solution.events({
     },
     "change .score-input": function(event) {
         var score_input = $(event.target);
-        var score = score_input.val();
-        // var comment = form.find('.comment-input').val();
-        var _id = score_input.data('record-id');
-
-        // var gradestatus = score === '' ? 'unchecked' : 'check';
-        Stacks.update(
-            _id,
-            { $set: { score: score, graded: score !== '' }},
-            gradeUpdateCallback
-        );
+        update_grade(score_input, 'score');
     },
     "change .comment-input": function(event) {
         var comment_input = $(event.target);
-        var comment = comment_input.val();
-        var _id = comment_input.data('record-id');
-        Stacks.update(_id, { $set: {comment: comment }}, gradeUpdateCallback);
+        update_grade(comment_input, 'comment');
     }
 });
 
-var gradeUpdateCallback = function(err, object) {
+var grade_update_callback = function(err, object) {
     if (err){
         // returns error if no matching object found
         alert('Error syncing grade: ',err)
-    } else {
-        // console.log('success',object);
+        return;
     }
+    Meteor.call('writeGrade', object);
 };
 
 // Template.body.events({
@@ -243,7 +253,7 @@ var gradeUpdateCallback = function(err, object) {
 //         Stacks.update(
 //             _id, 
 //             { $set: { score: score, comment: comment, gradestatus: gradestatus }},
-//             gradeUpdateCallback
+//             grade_update_callback
 //         );
 //     }
 // });
