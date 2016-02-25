@@ -29,6 +29,10 @@ Meteor.methods({
         }
         // console.log(results);
         return results
+    },
+    "writeGrade": function(grade_object) {
+        console.log('grade object:', grade_object);
+        // fs.appendFile('grade.txt', grade_object.grade);
     }
 });
 
