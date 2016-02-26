@@ -1,5 +1,13 @@
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
+RubricEntries = new Mongo.Collection('rubricEntries');
+
+Template.rubric.helpers({
+    'rubricEntries': function() {
+        return RubricEntries.find({});
+    }
+});
+
 
 var getPhraseFromID = function(phraseID) {
     return Phrases.findOne({ id: phraseID });
@@ -230,20 +238,16 @@ Template.solution.events({
     }
 });
 
-// Template.body.events({
-//     "submit .grade": function(event) {
-//         event.preventDefault();
+Template.rubric.events({
+    "click .add-deduction": function(event) {
+        event.preventDefault();
 
-//         var form = $(event.target);
-//         var score = form.find('.score-input').val();
-//         var comment = form.find('.comment-input').val();
-//         var _id = form.data('record-id');
+        var form = $(event.target).parent();
+        // console.log('form:', form);
+        var point_value = form.children('.deduction-value-input').val();
+        var text = form.children('.deduction-text-input').val();
 
-//         var gradestatus = score === '' ? 'unchecked' : 'check';
-//         Stacks.update(
-//             _id, 
-//             { $set: { score: score, comment: comment, gradestatus: gradestatus }},
-//             grade_update_callback
-//         );
-//     }
-// });
+        console.log('deduction:', point_value, text);
+        RubricEntries.insert({ pointValue: point_value, text: text });
+    }
+});

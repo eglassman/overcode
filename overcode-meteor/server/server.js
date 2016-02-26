@@ -3,6 +3,7 @@ var path = Npm.require('path');
 
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
+RubricEntries = new Mongo.Collection('rubricEntries');
 
 var RELOAD = false;
 
@@ -45,6 +46,9 @@ Meteor.startup(function () {
     var phrases_path = path.join(results_path, 'phrases.json');
     var solutions = JSON.parse(fs.readFileSync(solutions_path));
     var phrases = JSON.parse(fs.readFileSync(phrases_path));
+
+    RubricEntries.remove({});
+    RubricEntries.insert({ pointValue: -3, text: 'append instead of extend' });
 
     if (RELOAD) {
         Stacks.remove({});

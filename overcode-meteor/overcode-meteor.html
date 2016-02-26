@@ -7,6 +7,7 @@
     <div class="row">
         <div class="col-xs-12">
             {{> gradedCount}}
+            {{> rubric}}
         </div>
     </div>
     <div class="row">
@@ -86,3 +87,25 @@ Graded: {{numGraded}}/{{totalNum}}
 </div>
 </div>
 </template>
+
+<template name="rubric">
+<div>
+    <ul>
+        {{#each rubricEntries}}
+        <li>
+            {{> rubricRow}}
+        </li>
+        {{/each}}
+    </ul>
+    <form class="new-deduction form-inline">
+        <input type="text" class="form-control deduction-value-input"/>
+        <input type="text" class="form-control deduction-text-input" placeholder="New deduction"/>
+        <button class="add-deduction btn btn-default btn-sm">Add</button>
+    </form>
+</div>
+</template>
+
+<template name="rubricRow">
+    <input type="checkbox"/>{{pointValue}} {{text}}
+</template>
+

@@ -87,3 +87,7 @@ span.glyphicon {
     background-color: #f2dede;
     border-color: #e2b6b6;
 }
+
+.new-deduction input {
+    height:80%;
+}
