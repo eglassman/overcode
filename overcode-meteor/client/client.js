@@ -193,24 +193,31 @@ var setClickedStack = function(clickedStackID) {
 
 var update_grade = function(input, score_or_comment) {
     var form = input.parent();
-    var input_value = input.val();
     var _id = form.data('record-id');
     var stack_id = form.data('id');
 
-    var grade_obj = { id: stack_id };
-    var set_options;
-    if (score_or_comment == 'score') {
-        grade_obj.score = input_value
-        set_options = { score: input_value, graded: input_value !== '' };
-    } else {
-        grade_obj.comment = input_value
-        set_options = { comment: input_value };
-    }
+    var score = form.children('.score-input').val();
+    var comment = form.children('.comment-input').val();
 
-    Stacks.update(_id, { $set: set_options }, function(err, num_updated) {
+    var grade_obj = { id: stack_id, score: score, comment: comment };
+
+    Stacks.update(_id, { $set: {
+        score: score,
+        graded: score !== '',
+        comment: comment
+    }}, function(err, num_updated) {
         grade_update_callback(err, grade_obj);
     });
 }
+
+var grade_update_callback = function(err, object) {
+    if (err){
+        // returns error if no matching object found
+        alert('Error syncing grade: ',err)
+        return;
+    }
+    Meteor.call('writeGrade', object);
+};
 
 Template.solution.events({
     // "click .closer-to": function(event) {
@@ -230,15 +237,6 @@ Template.solution.events({
         update_grade(comment_input, 'comment');
     }
 });
-
-var grade_update_callback = function(err, object) {
-    if (err){
-        // returns error if no matching object found
-        alert('Error syncing grade: ',err)
-        return;
-    }
-    Meteor.call('writeGrade', object);
-};
 
 // Template.body.events({
 //     "submit .grade": function(event) {
