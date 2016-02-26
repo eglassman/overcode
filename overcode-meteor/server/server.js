@@ -39,14 +39,15 @@ Meteor.methods({
 
             var d = new Date();
             var timestamp = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-            var str_to_write = timestamp + ', ' + 'row_number:' + sol_id + ', ';
 
-            if (grade_object.score !== undefined) {
-                str_to_write += 'score:' + grade_object.score;
-            } else {
-                str_to_write += 'comment:' + grade_object.comment;
-            }
-            str_to_write += '\n'
+            var fields = [
+                sol_id,
+                grade_object.score || '',
+                grade_object.comment || '',
+                timestamp,
+            ];
+
+            var str_to_write = fields.join(',') + '\n';
 
             fs.appendFile(grade_file_path, str_to_write);
         }
