@@ -176,21 +176,6 @@ var setClickedStack = function(clickedStackID) {
     Session.set('clickedStack', clickedStack);
 };
 
-// Template.solutionCorrect.events({
-//     "click .showRaw": function(event) {
-//         // var solnum = this.members[0];
-//         // console.log(this);
-//         Meteor.call('getRawCode', this.members, function(err, result) {
-//             console.log('got result:', result);
-//             // TODO: how do I actually render this???
-//         });
-//     },
-//     "click .stack": function(event) {
-//         var clickedStackID = parseInt($(event.currentTarget).prop('id'));
-//         setClickedStack(clickedStackID);
-//     }
-// });
-
 var update_grade = function(input, score_or_comment) {
     var form = input.parent();
     var _id = form.data('record-id');

@@ -39,8 +39,9 @@ def extract_solutions_from_file(filename, output_base):
             total_num_attempts += attempts
             total_num_lines += len(student_response.split('\n'))
 
-            extra_info = ("# attempts: %s" % attempts + "\n" +
-                "# grade: %s" % grade + "\n\n")
+            extra_info = ("# student id: %s\n" % student_id +
+                "# attempts: %s\n" % attempts +
+                "# grade: %s\n\n" % grade)
             with open(os.path.join(output_base, str(i-1) + '.py'), 'w') as sol_file:
                 sol_file.write(extra_info + student_response)
 

@@ -4,7 +4,7 @@ var path = Npm.require('path');
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 
-var RELOAD = false;
+var RELOAD = true;
 
 var DATA_DIR_NAME = 'flatten'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
@@ -16,20 +16,6 @@ var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output
 var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
 
 Meteor.methods({
-    "getRawCode": function(members) {
-        console.log('asked for code for:', members);
-        var results = [];
-        for (var i = 0; i < members.length; i++) {
-            // TODO: do this asynchronously in parallel rather than
-            // synchrounously in series - probably want to use the npm 'async'
-            // package.
-            var solnum = members[i];
-            var file_path = path.join(data_path, solnum + '.py');
-            var raw = fs.readFileSync(file_path);
-            results.push(raw.toString());
-        }
-        return results
-    },
     "writeGrade": function(grade_object) {
         var grade_file_path = '/Users/staceyterman/overcode_github/grade.txt';
 
@@ -66,6 +52,16 @@ Meteor.startup(function () {
 
         solutions.forEach(function(sol) {
             sol.graded = false;
+            var raw_solutions = [];
+            for (var i = 0; i < sol.members.length; i++) {
+                // TODO: make asynchronous? would need to be wrapped with fancy
+                // meteor magic
+                var solnum = sol.members[i];
+                var file_path = path.join(data_path, solnum + '.py');
+                var raw = fs.readFileSync(file_path);
+                raw_solutions.push(raw.toString());
+            }
+            sol.rawSolutions = raw_solutions;
             Stacks.insert(sol);
         });
 
