@@ -258,28 +258,32 @@ Template.rubric.events({
         }
     },
     "change .deduction-checkbox": function(event) {
-        // console.log('checkbox clicked', $(event.target));
         var checkbox = $(event.target);
         var checked = checkbox.prop('checked');
 
         var parent_row = $(checkbox.parents('.row').get(0));
-        // console.log('parent row:', parent_row);
         var deduction_value = parent_row.find('.deduction-value').text().trim();
         var deduction_text = parent_row.find('.deduction-text').text().trim();
 
-        // console.log('val:', deduction_value, 'text:', deduction_text);
-        // console.log('checked?', checkbox.prop('checked'));
+        var item_text = deduction_value + ' ' + deduction_text;
 
         var grade_form = parent_row.parents('.grade');
-        // console.log('grade form:', grade_form);
         var comment_box = grade_form.find('.comment-input');
-        // console.log('comment box:', comment_box);
         var old_comment = comment_box.val();
 
         if (checked) {
-            // Adding a comment
-            var new_text = deduction_value + ' ' + deduction_text + '; ';
+            // Adding a deduction
+            var new_text = old_comment ? '; ': '';
+            new_text += item_text;
             comment_box.val(old_comment + new_text);
+            comment_box.trigger('change');
+        } else {
+            // removing a deduction
+            var new_text1 = old_comment.replace('; ' + item_text, '');
+            var new_text2 = new_text1.replace(item_text, '');
+
+            comment_box.val(new_text2);
+            comment_box.trigger('change');
         }
 
     }

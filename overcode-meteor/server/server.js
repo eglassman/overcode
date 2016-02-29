@@ -21,7 +21,6 @@ Meteor.methods({
         var grade_file_path = '/Users/staceyterman/overcode_github/logging/grade.txt';
 
         var stack = Stacks.findOne({ id: grade_object.id });
-        console.log('grade_object:', grade_object);
         for (var i = 0; i < stack.members.length; i++) {
             var sol_id = stack.members[i];
 
