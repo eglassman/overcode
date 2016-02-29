@@ -52,6 +52,15 @@
     left: 15px;
 }
 
+.rubric .row {
+    margin-left: 0px;
+}
+
+.rubric .row div {
+    padding-left: 4px;
+    padding-right: 0px;
+}
+
 .new-deduction .form-group div {
     padding-left: 3px;
     padding-right: 0px;

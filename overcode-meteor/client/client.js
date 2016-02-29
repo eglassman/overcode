@@ -242,16 +242,45 @@ Template.rubric.events({
     "click .add-deduction": function(event) {
         event.preventDefault();
 
-        var form = $(event.target).parent();
-        var point_input = form.children('.deduction-value-input');
-        var text_input = form.children('.deduction-text-input');
+        var form = $(event.target).parents('.form-group');
+        console.log('form group:', form);
+        var point_input = form.find('.deduction-value-input');
+        var text_input = form.find('.deduction-text-input');
         var point_value = point_input.val();
         var text = text_input.val();
+
+        // console.log('point value:', point_value, 'text:', text);
 
         if (point_value && text) {
             RubricEntries.insert({ pointValue: point_value, text: text });
             point_input.val('');
             text_input.val('');
         }
+    },
+    "change .deduction-checkbox": function(event) {
+        // console.log('checkbox clicked', $(event.target));
+        var checkbox = $(event.target);
+        var checked = checkbox.prop('checked');
+
+        var parent_row = $(checkbox.parents('.row').get(0));
+        // console.log('parent row:', parent_row);
+        var deduction_value = parent_row.find('.deduction-value').text().trim();
+        var deduction_text = parent_row.find('.deduction-text').text().trim();
+
+        // console.log('val:', deduction_value, 'text:', deduction_text);
+        // console.log('checked?', checkbox.prop('checked'));
+
+        var grade_form = parent_row.parents('.grade');
+        // console.log('grade form:', grade_form);
+        var comment_box = grade_form.find('.comment-input');
+        // console.log('comment box:', comment_box);
+        var old_comment = comment_box.val();
+
+        if (checked) {
+            // Adding a comment
+            var new_text = deduction_value + ' ' + deduction_text + '; ';
+            comment_box.val(old_comment + new_text);
+        }
+
     }
 });

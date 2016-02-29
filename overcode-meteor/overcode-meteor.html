@@ -3,7 +3,7 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
             {{> gradedCount}}
@@ -109,7 +109,7 @@ Graded: {{numGraded}}/{{totalNum}}
                 <input type="text" class="form-control input-sm deduction-value-input"/>
             </div>
             <div class="col-xs-8">
-                <input type="text" class="col-xs-8 form-control input-sm deduction-text-input" placeholder="New deduction"/>
+                <input type="text" class="form-control input-sm deduction-text-input" placeholder="New item"/>
             </div>
             <div class="col-xs-2">
                 <button class="col-xs-2 add-deduction btn btn-default btn-sm">Add</button>
@@ -120,6 +120,16 @@ Graded: {{numGraded}}/{{totalNum}}
 </template>
 
 <template name="rubricRow">
-    <input type="checkbox"/>{{pointValue}} {{text}}
+    <div class="row">
+        <div class="col-xs-1">
+            <input type="checkbox" class="deduction-checkbox"/>
+        </div>
+        <div class="col-xs-1 deduction-value">
+            {{pointValue}}
+        </div>
+        <div class="col-xs-10 deduction-text">
+            {{text}}
+        </div>
+    </div>
 </template>
 
