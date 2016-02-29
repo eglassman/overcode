@@ -62,12 +62,20 @@ Graded: {{numGraded}}/{{totalNum}}
         <div class="col-xs-2 score-column">
             <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
         </div>
-        <div class="col-xs-9 comment-column">
+        <div class="col-xs-7 comment-column">
             <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
         </div>
-    <div class="col-xs-1 graded-checkbox-column">
-        <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
-    </div>
+        <div class="col-xs-2 dropdown-column">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Rubric <span class="caret"></span>
+                </button>
+                {{> rubric}}
+            </div>
+        </div>
+        <div class="col-xs-1 graded-checkbox-column">
+            <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
+        </div>
     </div>
 </form>
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
@@ -89,20 +97,26 @@ Graded: {{numGraded}}/{{totalNum}}
 </template>
 
 <template name="rubric">
-<div>
-    <ul>
-        {{#each rubricEntries}}
-        <li>
-            {{> rubricRow}}
-        </li>
-        {{/each}}
-    </ul>
-    <form class="new-deduction form-inline">
-        <input type="text" class="form-control deduction-value-input"/>
-        <input type="text" class="form-control deduction-text-input" placeholder="New deduction"/>
-        <button class="add-deduction btn btn-default btn-sm">Add</button>
-    </form>
-</div>
+<ul class="rubric dropdown-menu dropdown-menu-right">
+    {{#each rubricEntries}}
+    <li>
+        {{> rubricRow}}
+    </li>
+    {{/each}}
+    <li><form class="new-deduction form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-2">
+                <input type="text" class="form-control input-sm deduction-value-input"/>
+            </div>
+            <div class="col-xs-8">
+                <input type="text" class="col-xs-8 form-control input-sm deduction-text-input" placeholder="New deduction"/>
+            </div>
+            <div class="col-xs-2">
+                <button class="col-xs-2 add-deduction btn btn-default btn-sm">Add</button>
+            </div>
+        </div>
+    </form></li>
+</ul>
 </template>
 
 <template name="rubricRow">

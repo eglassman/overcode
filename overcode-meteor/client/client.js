@@ -243,11 +243,15 @@ Template.rubric.events({
         event.preventDefault();
 
         var form = $(event.target).parent();
-        // console.log('form:', form);
-        var point_value = form.children('.deduction-value-input').val();
-        var text = form.children('.deduction-text-input').val();
+        var point_input = form.children('.deduction-value-input');
+        var text_input = form.children('.deduction-text-input');
+        var point_value = point_input.val();
+        var text = text_input.val();
 
-        console.log('deduction:', point_value, text);
-        RubricEntries.insert({ pointValue: point_value, text: text });
+        if (point_value && text) {
+            RubricEntries.insert({ pointValue: point_value, text: text });
+            point_input.val('');
+            text_input.val('');
+        }
     }
 });
