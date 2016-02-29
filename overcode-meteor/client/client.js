@@ -221,9 +221,9 @@ Template.solution.events({
         var comment_input = $(event.target);
         update_grade(comment_input, 'comment');
     },
-    "dblclick .stack-wrapper": function(event) {
-        var wrapper = $(event.currentTarget);
-        wrapper.find('.raw-solution').toggleClass('hidden');
+    "dblclick .stack": function(event) {
+        var stack = $(event.currentTarget);
+        stack.parent().find('.raw-solution').toggleClass('hidden');
     }
 });
 
