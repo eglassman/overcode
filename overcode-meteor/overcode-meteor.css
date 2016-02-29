@@ -42,6 +42,25 @@
     padding-right: 0px;
 }
 
+.rubric {
+    width: 300px;
+}
+
+.new-deduction .form-group {
+    width: calc(100% - 3px);
+    position: relative;
+    left: 15px;
+}
+
+.new-deduction .form-group div {
+    padding-left: 3px;
+    padding-right: 0px;
+}
+
+.add-deduction {
+    width: 100%;
+}
+
 .closest {
     width: 85%;
     text-align: center;
