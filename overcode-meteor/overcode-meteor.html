@@ -56,10 +56,18 @@ Graded: {{numGraded}}/{{totalNum}}
 <div class="stack-wrapper {{#if clicked}}clicked{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
-<form class="grade form-inline"  data-record-id="{{_id}}" data-id="{{id}}">
-    <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
-    <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
-    <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
+<form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
+    <div class="form-group">
+        <div class="col-xs-2 score-column">
+            <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
+        </div>
+        <div class="col-xs-9 comment-column">
+            <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
+        </div>
+    <div class="col-xs-1 graded-checkbox-column">
+        <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
+    </div>
+    </div>
 </form>
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
     <!-- {{#if closest}}

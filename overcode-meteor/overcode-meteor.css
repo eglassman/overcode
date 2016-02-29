@@ -24,11 +24,16 @@
     width: 14%;
 }
 
-.score-input {
-    width: 12% !important;
+.grade .form-group {
+    margin-bottom: 2px;
 }
-.comment-input {
-    width: 82% !important;
+
+.score-column {
+    padding-right: 3px;
+}
+
+.comment-column {
+    padding: 0px;
 }
 
 .closest {
