@@ -4,7 +4,7 @@ var path = Npm.require('path');
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 
-var RELOAD = true;
+var RELOAD = false;
 
 var DATA_DIR_NAME = 'flatten'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
@@ -17,7 +17,7 @@ var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
 
 Meteor.methods({
     "writeGrade": function(grade_object) {
-        var grade_file_path = '/Users/staceyterman/overcode_github/grade.txt';
+        var grade_file_path = '/Users/staceyterman/overcode_github/logging/grade.txt';
 
         var stack = Stacks.findOne({ id: grade_object.id });
         for (var i = 0; i < stack.members.length; i++) {
