@@ -177,12 +177,12 @@ var setClickedStack = function(clickedStackID) {
 };
 
 var update_grade = function(input, score_or_comment) {
-    var form = input.parent();
+    var form = input.parents('.grade');
     var _id = form.data('record-id');
     var stack_id = form.data('id');
 
-    var score = form.children('.score-input').val();
-    var comment = form.children('.comment-input').val();
+    var score = form.find('.score-input').val();
+    var comment = form.find('.comment-input').val();
 
     var grade_obj = { id: stack_id, score: score, comment: comment };
 
