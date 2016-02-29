@@ -220,6 +220,10 @@ Template.solution.events({
     "change .comment-input": function(event) {
         var comment_input = $(event.target);
         update_grade(comment_input, 'comment');
+    },
+    "dblclick .stack-wrapper": function(event) {
+        var wrapper = $(event.currentTarget);
+        wrapper.find('.raw-solution').toggleClass('hidden');
     }
 });
 
