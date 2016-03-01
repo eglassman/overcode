@@ -284,13 +284,13 @@ Template.rubric.events({
 
         if (checked) {
             // Adding a deduction
-            var new_text = old_comment ? '; ': '';
+            var new_text = old_comment && !old_comment.endsWith('; ') ? '; ': '';
             new_text += item_text;
             comment_box.val(old_comment + new_text);
             comment_box.trigger('change');
         } else {
             // removing a deduction
-            var new_text1 = old_comment.replace('; ' + item_text, '');
+            var new_text1 = old_comment.replace(item_text + '; ', '');
             var new_text2 = new_text1.replace(item_text, '');
 
             comment_box.val(new_text2);
