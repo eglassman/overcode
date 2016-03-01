@@ -154,6 +154,17 @@ Template.incorrectSolutionsList.helpers({
     "solutions": getIncorrectsInOrder
 });
 
+Template.rubricRow.helpers({
+    "shouldBeChecked": function() {
+        var stack_data = Template.parentData(1);
+        if (!stack_data || stack_data.comment === undefined) {
+            return false;
+        }
+        var deduction_string = this.pointValue + ' ' + this.text
+        return stack_data.comment.indexOf(deduction_string) !== -1
+    }
+});
+
 var setColumnHeights = function() {
     $('.solution-list').css({
         'height': window.innerHeight,

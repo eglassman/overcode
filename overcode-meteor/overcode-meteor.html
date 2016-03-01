@@ -122,7 +122,11 @@ Graded: {{numGraded}}/{{totalNum}}
 <template name="rubricRow">
     <div class="row">
         <div class="col-xs-1">
-            <input type="checkbox" class="deduction-checkbox"/>
+            {{#if shouldBeChecked}}
+                <input type="checkbox" class="deduction-checkbox" checked/>
+            {{else}}
+                <input type="checkbox" class="deduction-checkbox"/>
+            {{/if}}
         </div>
         <div class="col-xs-1 deduction-value">
             {{pointValue}}
