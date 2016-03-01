@@ -221,9 +221,12 @@ Template.solution.events({
         var comment_input = $(event.target);
         update_grade(comment_input, 'comment');
     },
-    "dblclick .stack": function(event) {
-        var stack = $(event.currentTarget);
-        stack.parent().find('.raw-solution').toggleClass('hidden');
+    "click .show-raw": function(event) {
+        var button = $(event.currentTarget);
+        button.parents('.stack-wrapper').find('.raw-solution').toggleClass('hidden');
+        button.toggleClass('not-shown shown');
+        var btn_text = (button.hasClass('shown') ? 'Hide' : 'Show') + ' raw solution(s)';
+        button.text(btn_text);
     }
 });
 

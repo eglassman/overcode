@@ -2,10 +2,6 @@
     border-bottom: 1px solid #ddd;
 }
 
-.stack {
-    margin-bottom: 15px;
-}
-
 .stack pre {
     margin-top: 2px;
     margin-bottom: 5px;
@@ -13,15 +9,20 @@
 
 .stack-wrapper {
     margin-right: -15px;
+    margin-bottom: 5px;
     padding-right: 15px;
     padding-bottom: 5px;
     padding-top: 5px;
     padding-left: 15px;
 }
 
+.show-raw-wrapper {
+    margin-top: -5px;
+}
+
 .id-label {
     display: inline-block;
-    width: 14%;
+    width: 15%;
 }
 
 .grade .form-group {
