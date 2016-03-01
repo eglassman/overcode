@@ -46,8 +46,12 @@
     width: 300px;
 }
 
+.dropdown-toggle {
+    width: 100%;
+}
+
 .new-deduction .form-group {
-    width: calc(100% - 3px);
+    width: calc(100% - 3px); /* Who knew you could do this? Really cool! */
     position: relative;
     left: 15px;
 }
