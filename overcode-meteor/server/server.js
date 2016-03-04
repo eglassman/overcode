@@ -7,7 +7,7 @@ RubricEntries = new Mongo.Collection('rubricEntries');
 
 var RELOAD = false;
 
-var DATA_DIR_NAME = 'flatten'
+var DATA_DIR_NAME = '6.0001_quiz/q4'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
 
@@ -18,7 +18,7 @@ var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
 
 Meteor.methods({
     "writeGrade": function(grade_object) {
-        var grade_file_path = '/Users/staceyterman/overcode_github/logging/grade.txt';
+        var grade_file_path = '/Users/staceyterman/overcode_github/logging/grade_q4.txt';
 
         var stack = Stacks.findOne({ id: grade_object.id });
         for (var i = 0; i < stack.members.length; i++) {
@@ -47,10 +47,10 @@ Meteor.startup(function () {
     var solutions = JSON.parse(fs.readFileSync(solutions_path));
     var phrases = JSON.parse(fs.readFileSync(phrases_path));
 
-    RubricEntries.remove({});
-    RubricEntries.insert({ pointValue: -3, text: 'append instead of extend' });
+    // RubricEntries.insert({ pointValue: -3, text: 'append instead of extend' });
 
     if (RELOAD) {
+        RubricEntries.remove({});
         Stacks.remove({});
         Phrases.remove({});
 

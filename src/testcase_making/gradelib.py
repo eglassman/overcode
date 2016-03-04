@@ -43,6 +43,14 @@ required_operator = required_keyword
 def InvokeStudentFunctionTest(fn_name, args, environment=None, output_writer=None, short_desc=None, detailed_desc=None,compare=None):
     return { 'args': args, 'fn_name': fn_name }
 
+def invoke_student_function(fn_name, args, environment=None, output_writer=None):
+    print "here"
+    return { 'args': args, 'fn_name': fn_name }
+
+def Test(test_fn, short_description, detailed_description='', compare=None):
+    print "calling test"
+    return test_fn
+
 # Fake grader
 class Grader(object):
     def __init__(self):

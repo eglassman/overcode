@@ -18,7 +18,14 @@ def extract_solutions_from_file(filename, output_base):
             if i == 0:
                 # header row
                 continue
-            username, time, grade, attempts, student_response = row
+
+            print row
+            print
+            try:
+                username, time, grade, attempts, student_response = row
+            except ValueError:
+                print "bad row:",i, row
+                raise
 
             if grade == "1.0":
                 num_correct += 1
@@ -41,7 +48,7 @@ def extract_solutions_from_file(filename, output_base):
 
             extra_info = ("# student id: %s\n" % student_id +
                 "# attempts: %s\n" % attempts +
-                "# grade: %s\n\n" % grade)
+                "# auto-assigned grade: %s\n\n" % grade)
             with open(os.path.join(output_base, str(i-1) + '.py'), 'w') as sol_file:
                 sol_file.write(extra_info + student_response)
 

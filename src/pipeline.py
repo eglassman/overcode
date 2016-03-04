@@ -241,9 +241,11 @@ class Line(object):
         # Make sure that a pair of curly braces in the actual line, e.g. from
         # initializing a dictionary, does not cause issues
         try:
-            step1 = self.template.replace('{}', '_braces_')
-            step2 = step1.replace('___', '{}').format(*names)
-            return step2.replace('_braces_', '{}')
+            step1 = self.template.replace('{', '_left_brace_')
+            step2 = step1.replace('}', '_right_brace_')
+            step3 = step2.replace('___', '{}').format(*names)
+            step4 = step3.replace('_left_brace_', '{');
+            return step4.replace('_right_brace_', '}')
         except:
             print "original:", self.template
             print "replace braces:", step1
