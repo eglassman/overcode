@@ -1,0 +1,337 @@
+101,25,,9:28:55
+106,25,,9:44:2
+101,25,,10:35:58
+101,25,,10:36:2
+106,25,,10:36:5
+106,2525,,10:36:7
+106,25,,10:36:11
+171,25,,10:37:51
+175,25,,10:38:9
+24,25,,10:38:9
+17,25,,10:38:27
+99,25,,10:39:53
+98,25,,10:40:21
+96,25,,10:42:21
+95,25,,10:42:56
+69,25,,10:43:29
+9,25,,10:43:48
+89,25,,10:44:57
+80,25,,10:45:12
+88,25,,10:45:13
+86,25,,10:45:25
+135,25,,10:45:30
+130,25,,10:45:40
+74,25,,10:45:49
+85,25,,10:47:22
+66,25,,10:47:41
+51,25,,10:47:44
+126,25,,10:47:58
+154,25,,10:48:27
+141,25,,10:48:29
+190,25,,10:48:41
+94,25,,10:48:41
+79,25,,10:48:50
+6,25,,10:48:53
+25,25,,10:49:1
+167,25,,10:49:10
+184,25,,10:49:23
+82,25,,10:49:32
+149,25,,10:49:45
+50,25,,10:49:59
+115,25,,10:50:36
+78,25,,10:50:51
+142,25,,10:51:19
+40,25,,10:51:26
+84,25,,10:51:56
+128,25,,10:51:59
+46,25,,10:52:6
+26,25,,10:53:34
+138,25,,10:53:42
+107,25,,10:53:51
+32,25,,10:54:25
+116,25,,10:54:43
+67,25,,10:54:57
+119,25,,10:56:3
+158,25,,10:56:35
+134,,-2 hardcoding,10:56:45
+134,23,-2 hardcoding,10:56:54
+4,25,,10:57:40
+109,25,,10:57:43
+18,25,,10:57:58
+73,25,,10:59:12
+191,25,,11:0:4
+174,25,,11:0:27
+53,25,,11:0:28
+189,25,,11:0:45
+112,25,,11:0:57
+44,25,,11:1:8
+123,25,,11:1:21
+52,25,,11:1:41
+21,25,,11:1:47
+145,25,,11:2:29
+136,25,,11:2:35
+125,25,,11:2:43
+117,25,,11:2:56
+70,25,,11:3:0
+111,25,,11:3:17
+47,25,,11:3:30
+155,25,,11:3:47
+83,25,,11:4:5
+58,25,,11:4:23
+77,25,,11:4:25
+42,25,,11:4:38
+65,,-2 hardcoding,11:4:44
+15,25,,11:4:48
+122,25,,11:4:51
+65,23,-2 hardcoding,11:4:53
+57,25,,11:5:3
+22,25,,11:5:19
+64,25,,11:5:20
+55,25,,11:5:27
+45,25,,11:6:3
+43,25,,11:6:54
+3,25,,11:7:18
+161,25,,11:7:43
+187,25,,11:7:50
+180,25,,11:8:7
+151,25,,11:8:45
+127,25,,11:9:21
+188,25,,11:9:27
+147,25,,11:10:40
+78,25,,11:11:12
+1,,-2 hardcoding,11:12:43
+150,25,,11:13:10
+1,,,11:19:36
+1,,+2 for only checking the base case,11:19:51
+1,2,+2 for only checking the base case,11:19:56
+177,,-5 not returning smaller value after check,11:21:43
+177,20,-5 not returning smaller value after check,11:21:48
+10,,-2 not handling special 0/1 boundary in equal case,11:26:10
+10,23,-2 not handling special 0/1 boundary in equal case,11:26:12
+87,,-10 not handling the higher test cases (top 5 in mitx),11:29:39
+87,15,-10 not handling the higher test cases (top 5 in mitx),11:29:43
+146,,-10 not handling the higher test cases (top 5 in mitx),11:29:45
+146,15,-10 not handling the higher test cases (top 5 in mitx),11:29:53
+16,,-2 not handling special 0/1 boundary in equal case,11:30:58
+156,,-2 not handling special 0/1 boundary in equal case,11:31:3
+16,23,-2 not handling special 0/1 boundary in equal case,11:31:5
+156,23,-2 not handling special 0/1 boundary in equal case,11:31:6
+173,,-10 not handling the higher test cases (top 5 in mitx),11:31:47
+28,,-2 not handling special 0/1 boundary in equal case,11:31:49
+173,15,-10 not handling the higher test cases (top 5 in mitx),11:31:51
+28,23,-2 not handling special 0/1 boundary in equal case,11:31:52
+36,23,,11:32:14
+36,23,-2 not handling special 0/1 boundary in equal case,11:32:19
+68,,-10 Getting the check wrong,11:33:58
+68,15,-10 Getting the check wrong,11:34:7
+13,,-2 not handling special 0/1 boundary in equal case,11:34:24
+13,23,-2 not handling special 0/1 boundary in equal case,11:34:30
+152,,-2 not handling special 0/1 boundary in equal case,11:35:12
+152,23,-2 not handling special 0/1 boundary in equal case,11:35:16
+177,20,-5 ,11:36:14
+177,20,,11:36:18
+177,20,-5 returning wrong after check,11:36:22
+108,,Fails 2 tests here but passes everything on MITx,11:38:0
+71,5,,11:38:35
+71,5,+2 for only checking the base case,11:38:37
+71,5,+2 for only checking the base case, +3 for having the while statement,11:38:50
+12,,Fails 2 tests here but passes everything on MITx,11:39:8
+139,,-2 assign return of sort to another variable,11:42:56
+139,,-2 assign return of sort to another variable; -5 returning wrong after check,11:48:36
+178,15,,11:48:56
+178,15,-10 Incorrect while loop statement,11:49:11
+139,,-2 assign return of sort to another variable; -5 returning wrong after check; -5 not handing ties,11:49:28
+139,,-2 assign return of sort to another variable; -5 not handing ties,11:49:31
+139,,-2 assign return of sort to another variable; -5 not handing ties; -5 returning wrong after check,11:49:31
+139,,-2 assign return of sort to another variable; -5 not handing ties; ,11:49:33
+139,18,-2 assign return of sort to another variable; -5 not handing ties; ,11:49:45
+165,2,,11:50:44
+153,,-10 not handling the higher test cases (top 5 in mitx),11:54:37
+153,, ,11:55:43
+153,, ; -5 returning wrong after check,11:55:48
+153,, ; ,11:55:51
+153,, ; -5 not handing ties,11:55:52
+153,, ; -5 not handing ties,,11:56:35
+153,,-5 not handing ties,,11:56:40
+153,,-5 not handing ties, -5 for i = base+1 (should be exp+1),11:57:16
+153,15,-5 not handing ties, -5 for i = base+1 (should be exp+1),11:57:34
+76,,-5 not handing ties,12:0:28
+76,20,-5 not handing ties,12:0:37
+186,,-10 Incorrect while loop statement,12:1:23
+186,15,-10 Incorrect while loop statement,12:1:27
+186,15,,12:1:44
+186,15,-10 not handling the higher test cases (top 5 in mitx),12:1:45
+11,,-2 starting exponent one off,12:3:42
+41,,-2 starting exponent one off,12:5:34
+41,23,-2 starting exponent one off,12:5:34
+11,,-2 starting exponent one off; -5 not handling n=1,12:7:3
+11,18,-2 starting exponent one off; -5 not handling n=1,12:7:15
+110,2,,12:10:3
+110,2,+2 for only checking the base case,12:10:14
+8,,-10 Getting the check wrong,12:32:0
+8,15,-10 Getting the check wrong,12:32:4
+172,,-5 not handing ties,12:34:49
+172,20,-5 not handing ties,12:34:52
+23,,+2 for only checking the base case,12:36:40
+23,2,+2 for only checking the base case,12:36:48
+23,2,+2 for only checking the base case, no logic behind while loop,12:36:58
+179,,+5 loop condition very arbitrary,12:37:40
+179,5,+5 loop condition very arbitrary,12:37:45
+92,,-10 Getting the check wrong,12:41:5
+92,,-10 Getting the check wrong; -7 indentation error,12:41:35
+92,,-10 Getting the check wrong; -7 indentation error; +2 for only checking the base case,12:41:40
+92,,-10 Getting the check wrong; -7 indentation error,12:41:53
+92,8,-10 Getting the check wrong; -7 indentation error,12:41:57
+34,2,,12:45:35
+34,,,12:45:45
+34,5,,12:46:16
+34,5,while loop that does something, base case. ,12:46:31
+159,,-5 not handing ties,12:47:46
+159,20,-5 not handing ties,12:47:51
+124,,+5 loop condition very arbitrary,12:47:53
+124,5,+5 loop condition very arbitrary,12:48:0
+56,3,,12:48:53
+56,3,+2 for only checking the base case,12:49:5
+56,3,+2 for only checking the base case, +1 for trying to handle ties,12:49:13
+170,,+2 for only checking the base case,12:52:20
+170,2,+2 for only checking the base case,12:52:23
+93,,+2 for only checking the base case,12:53:3
+93,2,+2 for only checking the base case,12:53:9
+48,,-5 returning wrong after check,12:55:11
+48,,,12:55:16
+48,,-5 not handing ties,12:55:27
+54,,-5 not handing ties,12:56:30
+48,,-5 not handing ties; -10 not handling the lower test cases (5-10 tests in mitx last grader),12:57:38
+48,10,-5 not handing ties; -10 not handling the lower test cases (5-10 tests in mitx last grader),12:57:44
+2,,-10 not handling the lower test cases (5-10 tests in mitx last grader),12:58:42
+2,,-10 not handling the lower test cases (5-10 tests in mitx last grader); -5 not handing ties,12:58:47
+54,20,-5 not handing ties,12:58:58
+2,10,-10 not handling the lower test cases (5-10 tests in mitx last grader); -5 not handing ties,12:59:5
+163,,-10 Getting the check wrong,12:59:31
+163,15,-10 Getting the check wrong,12:59:45
+192,,-10 not handling the lower test cases (5-10 tests in mitx last grader),12:59:50
+192,,-10 not handling the lower test cases (5-10 tests in mitx last grader); -5 not handing ties,12:59:54
+192,10,-10 not handling the lower test cases (5-10 tests in mitx last grader); -5 not handing ties,13:0:6
+59,,-2 not handling special 0/1 boundary in equal case,13:0:16
+59,23,-2 not handling special 0/1 boundary in equal case,13:0:30
+7,,-5 not handing ties,13:1:47
+7,20,-5 not handing ties,13:2:4
+90,,-5 not handing ties,13:2:15
+90,20,-5 not handing ties,13:2:21
+160,,-5 not handing ties,13:3:32
+160,20,-5 not handing ties,13:3:40
+133,,+5 loop condition very arbitrary,13:8:26
+133,5,+5 loop condition very arbitrary,13:8:31
+103,,WE'RE GRADING THIS BACK OFF,13:10:8
+38,,-5 not handing ties,13:10:57
+38,20,-5 not handing ties,13:11:1
+72,,-5 not handing ties,13:11:20
+72,20,-5 not handing ties,13:11:42
+137,,-5 not handing ties,13:12:44
+137,20,-5 not handing ties,13:12:48
+5,,-5 not handing ties,13:14:4
+5,20,-5 not handing ties,13:14:8
+185,,-5 not handing ties,13:14:47
+185,20,-5 not handing ties,13:14:52
+103,,WE'RE GRADING THIS BACK OFF; -2 hardcoding the range value,13:15:16
+103,,WE'RE GRADING THIS BACK OFF; ,13:15:19
+103,,,13:15:21
+39,16,,13:15:24
+10,,-5 not handing ties,13:15:27
+39,16,-5 not handing ties,13:15:29
+10,20,-5 not handing ties,13:15:30
+39,16,-5 not handing ties; -2 hardcoding,13:15:38
+176,,-5 not handing ties,13:16:7
+176,20,-5 not handing ties,13:16:12
+105,,we're grading this,13:16:15
+103,,-5 not handing ties,13:16:27
+103,,-5 not handing ties; -2 hardcoding,13:16:31
+181,,-5 not handing ties,13:16:43
+181,20,-5 not handing ties,13:16:49
+103,,-5 not handing ties; -2 hardcoding, -2 for abs(exp-1),13:16:59
+103,16,-5 not handing ties; -2 hardcoding, -2 for abs(exp-1),13:16:59
+39,16,,13:16:59
+39,,,13:16:59
+35,,-5 not handing ties,13:17:3
+35,20,-5 not handing ties,13:17:9
+39,,we're grading this,13:17:20
+113,,111,13:17:41
+39,,,13:18:10
+39,5,,13:18:18
+39,5,Know to take the difference, checks all exps up to base. ,13:18:40
+20,,-2 failing when base == n,13:18:54
+20,23,-2 failing when base == n,13:19:3
+140,,-5 not handing ties,13:19:34
+140,20,-5 not handing ties,13:19:59
+105,,,13:20:37
+113,,,13:20:38
+113,,222,13:20:45
+113,,222; -2 hardcoding,13:20:50
+183,,-5 not handing ties,13:20:55
+105,5,,13:20:57
+113,,-2 hardcoding,13:20:58
+105,5,Calculates the exponent,13:21:3
+29,,-2 failing when base == n,13:21:3
+113,,-2 hardcoding; -5 not handing ties,13:21:4
+29,,-2 failing when base == n; -10 not handling the higher test cases (top 5 in mitx),13:21:13
+131,,-5 not handing ties,13:21:41
+131,20,-5 not handing ties,13:21:47
+113,18,-2 hardcoding; -5 not handing ties,13:22:7
+29,13,-2 failing when base == n; -10 not handling the higher test cases (top 5 in mitx),13:22:12
+63,,MINE,13:22:34
+33,,-5 not handing ties,13:23:19
+33,20,-5 not handing ties,13:23:27
+183,20,-5 not handing ties,13:23:48
+49,,123,13:24:16
+49,,,13:24:26
+168,,123,13:24:39
+97,,-2 failing when base == n,13:26:18
+97,23,-2 failing when base == n,13:26:22
+63,,MINE; -5 not handing ties,13:26:31
+63,,,13:26:33
+63,10,MINE; -5 not handing ties,13:26:38
+63,10,-5 not handing ties,13:26:44
+63,20,-5 not handing ties,13:26:51
+62,,MINE,13:27:0
+49,,-5 not handing ties,13:28:8
+49,20,-5 not handing ties,13:28:11
+168,,,13:29:13
+168,,-5 not handing ties,13:29:19
+168,,,13:29:19
+168,,,13:29:20
+168,,-5 not handing ties,13:29:22
+168,20,-5 not handing ties,13:29:32
+62,,MINE; +2 for only checking the base case,13:29:34
+62,2,MINE; +2 for only checking the base case,13:29:37
+62,2,+2 for only checking the base case,13:29:44
+100,,MINE,13:29:54
+164,,1234,13:31:16
+75,,-2 not handling 1/2 boundary in equal case,13:32:10
+75,23,-2 not handling 1/2 boundary in equal case,13:32:20
+100,,,13:32:52
+100,5,,13:33:8
+100,,,13:33:58
+108,,,13:34:16
+100,,-10 Getting the check wrong,13:34:17
+108,,-10 not handling the lower test cases (5-10 tests in mitx last grader),13:34:20
+100,15,-10 Getting the check wrong,13:34:23
+108,15,-10 not handling the lower test cases (5-10 tests in mitx last grader),13:34:43
+165,2,only base ,13:34:49
+165,0,only base ,13:34:50
+165,0,nothing correct,13:34:58
+164,,MINE,13:35:22
+165,2,nothing correct,13:37:11
+165,2,sometimes, very rarely correct,13:37:18
+12,,,13:38:46
+12,,-2 failing when base == n,13:38:48
+12,23,-2 failing when base == n,13:38:54
+164,2,MINE,13:39:19
+164,2,,13:39:22
+164,2,+2 for only checking the base case,13:39:28
+27,,-5 not handing ties,13:39:59
+27,,,13:41:19
+27,7,,13:44:23
+27,7,gets some things right,13:44:30
+14,,-10 Incorrect while loop statement,13:50:53
+14,,-10 Incorrect while loop statement; -2 use if instead of elif,13:52:9
+14,13,-10 Incorrect while loop statement; -2 use if instead of elif,13:52:13

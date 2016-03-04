@@ -1,0 +1,21 @@
+{"_id":"2E8ZnPZtwFPsTFx8d","pointValue":"-3","text":"KeyError (tries to access value for nonexistent key)"}
+{"_id":"2fYucWiDiqThu2mZZ","pointValue":"-2","text":"Cannot handle empty dictionary"}
+{"_id":"7qbrQ3zmxphgPzE6Q","pointValue":"-3","text":"Doesn't return"}
+{"_id":"Cehs4mP8AFTu6B9oJ","pointValue":"-2","text":"Cannot handle empty list"}
+{"_id":"Co75CcazmK7G2sics","pointValue":"+5","text":"Correct general structure"}
+{"_id":"EaqufZgaHdbuScpzJ","pointValue":"-3","text":"Incrementing key instead of value"}
+{"_id":"FkzhsHsCWxmkiaYcn","pointValue":"-3","text":"Not same keys as original dict"}
+{"_id":"NXikg3ipYdgkrkRfE","pointValue":"-3","text":"Doesn't access dictionary correctly (i.e. d(key) )"}
+{"_id":"YuFqb9saqrbeBbD6C","pointValue":"-5","text":"Mutates the dict"}
+{"_id":"aJ3dginEYckiymRgW","pointValue":"-3","text":"List indexing errors"}
+{"_id":"dDeupJm4wiGaipQ5A","pointValue":"-3","text":"Incorrect method call (missing parentheses)"}
+{"_id":"eD2MR6NCtMtLeAEPG","pointValue":"-3","text":"Mutates the dict (nicer)"}
+{"_id":"izsqhYseLay7yZvDf","pointValue":"-10","text":"HARD CODING IS BAD"}
+{"_id":"nWmFFEZokqtSc9gLq","pointValue":"-3","text":"checks for value in list, not key"}
+{"_id":"noXnaWvvuwsX3xLAM","pointValue":"-5","text":"Updates all values for each key"}
+{"_id":"p3RYReWpFmwSyEv2p","pointValue":"-1","text":"Returns wrong dictionary"}
+{"_id":"qxjthWaTTagwmH4bp","pointValue":"-2","text":"incorrectly indented return"}
+{"_id":"snSYv4S8EyCjokrMs","pointValue":"-3","text":"Incorrectly updating values (general)"}
+{"_id":"sqa7Cj5YgGqcruhiX","pointValue":"-3","text":"Double counting repeated items in list"}
+{"_id":"tERHXajx65TdSFL4g","pointValue":"-1","text":"Leaving print statement"}
+{"_id":"teTT9q8QLiwLEqLjB","pointValue":"-5","text":"incorrectly updating values (worse than usual)"}

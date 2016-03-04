@@ -1,0 +1,21 @@
+{"_id":"35c9tsCT3HYEiimnj","pointValue":"-2","text":"starting exponent one off"}
+{"_id":"78Ta4BZgrcykM55iB","pointValue":"-2","text":"not handling special 0/1 boundary in equal case"}
+{"_id":"7DYQ6v26MW727FDJA","pointValue":"-2 ","text":"hardcoding the range value"}
+{"_id":"9irPWW9XWzifvqnBv","pointValue":"-2","text":"not handling 1/2 boundary in equal case"}
+{"_id":"BJ5r2ybjRxxTMoaCt","pointValue":"-7","text":"indentation error"}
+{"_id":"BkN5GKYi4MYPo9WtB","pointValue":"-2","text":"use if instead of elif"}
+{"_id":"Bx6oyuHJbegGxt2pZ","pointValue":"+2","text":"for only checking the base case"}
+{"_id":"CKhiAJkWmjRd47Bzy","pointValue":"-2","text":"print vs return error"}
+{"_id":"CaAgzsCn7cupRmzqn","pointValue":"-10","text":"not handling the higher test cases (top 5 in mitx)"}
+{"_id":"HoAdugzLniArYy6PF","pointValue":"-10","text":"Incorrect while loop statement"}
+{"_id":"HzWNXdyvWbeDZAw7q","pointValue":"-2","text":"failing when base == n"}
+{"_id":"LwERYYym9KHvg4jmb","pointValue":"-2","text":"hardcoding"}
+{"_id":"N6kJGR88nP5ucvvq6","pointValue":"+5","text":"loop condition very arbitrary"}
+{"_id":"PhMx8CnL8rrcSLToQ","pointValue":"-5","text":"returning wrong after check"}
+{"_id":"QuJtcbnDtnAWjnSNt","pointValue":"-1","text":"if casting answer to float"}
+{"_id":"acWaTfdjpxSfhxnzZ","pointValue":"-5","text":"not handing ties"}
+{"_id":"dB2EnkyDRvjA7fg6P","pointValue":"-10","text":"not handling the lower test cases (5-10 tests in mitx last grader)"}
+{"_id":"fL4mK2DDPrdt4pJJ3","pointValue":"-10","text":"Getting the check wrong "}
+{"_id":"genH9uQNWrDCmTGaq","pointValue":"-5","text":"not handling n=1"}
+{"_id":"kGDAx83FMWt9bM6QG","pointValue":"-2","text":"missing abs value while checking for difference between higher and lower base**exponent"}
+{"_id":"kzYquCmh4iDWdyunF","pointValue":"-2","text":"assign return of sort to another variable"}

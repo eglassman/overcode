@@ -1,0 +1,8 @@
+{"_id":"8jA8umhcmf6GE35ha","pointValue":"-3","text":"Missing base case = 0"}
+{"_id":"9BbNQwFgRZ5TdSfye","pointValue":"-1","text":"exp = 2 is not a base case"}
+{"_id":"9Fg9NHWQL4sefwxnH","pointValue":"-1","text":"Hardcoded solution for base =0"}
+{"_id":"BqqLJexFLoWPuc4EC","pointValue":"-1","text":"Your code does not return the right result for base = 0"}
+{"_id":"CRCxsuvGvsvsjJu29","pointValue":"-1","text":"Hardcoded solution for base =1"}
+{"_id":"X2H4SKT4nkZ84StFu","pointValue":"-5","text":"You should not change the spec of the method"}
+{"_id":"YeqaA2ntn8CSEAvac","pointValue":"-10","text":"Solution was not recursive"}
+{"_id":"gktxgB3EX9TsPEC5J","pointValue":"-3","text":"You shouldn't change the spec"}
