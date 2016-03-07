@@ -317,6 +317,31 @@ def populate_from_pickles(all_solutions, pickleSrc):
     """
 
     print "Loading data"
+
+    answer_path = path.join(pickleSrc, 'answer.pickle')
+    if path.isfile(answer_path):
+        with open(answer_path, 'r') as f:
+            unpickled = pickle.load(f)
+
+        testcases = unpickled['testcases']
+        traces = unpickled['traces']
+
+        testcase_to_trace = {}
+        for i in range(len(testcases)):
+            testcase_to_trace[testcases[i]] = traces[i]
+
+        correct = {}
+        for (testcase, trace) in testcase_to_trace.iteritems():
+            if '__return__' not in trace:
+                raise ExtractionException('Solution did not run to completion')
+
+            # The second-to-last step seems to always have the return value.
+            # Steps in the trace are of the form (step, value), so take just
+            # the value
+            correct[testcase] = trace['__return__'][-2][1]
+        # print "ANSWER IS:", correct
+
+
     for filename in os.listdir(pickleSrc):
         solnum = filename.split('.')[0]
         # print solnum
@@ -334,6 +359,8 @@ def populate_from_pickles(all_solutions, pickleSrc):
         sol = Solution(solnum, testcase_to_trace)
 
         all_solutions.append(sol)
+
+    return correct
 
 
 ###############################################################################
@@ -488,7 +515,20 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_outp
             sequences[localVarName][testcase] = sequence
 
     sol.output = output
+
+    ######
+
+    print "OUTPUT FOR SOL:", sol.solnum
+    print output
+    # raise ExtractionException('stop here');
+
+    ######
+
     is_correct, num_passed_tests, total_num_tests = compare_output(output, correct_output)
+
+    print "CORRECT:", correct_output
+    print "is correct?", is_correct
+
     sol.correct = is_correct
     sol.num_passed_tests = num_passed_tests
     sol.total_num_tests = total_num_tests
@@ -1174,7 +1214,7 @@ class ElenaEncoder(json.JSONEncoder):
 ###############################################################################
 ## Run the pipeline!
 ###############################################################################
-def run(folderOfData, destFolder, correct_output):
+def run(folderOfData, destFolder):
     ensure_folder_exists(destFolder)
     def dumpOutput(data, filename, sort_keys=True, indent=4):
         filepath = path.join(destFolder, filename)
@@ -1183,7 +1223,10 @@ def run(folderOfData, destFolder, correct_output):
 
     # Load solutions
     all_solutions = []
-    populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
+    correct_output = populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
+
+    with open('correct.py', 'w') as f:
+        pprint.pprint(correct_output, f)
 
     # Extract output and variable sequences from the processed traces, and assign
     # correct variables to AbstractVariables

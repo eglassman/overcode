@@ -42,7 +42,8 @@ if args.run_pipeline or args.run_old:
 
     if args.run_pipeline:
         outputPath = path.join(args.basedir, 'output')
-        pipeline.run(datadir, outputPath, correctOutput)
+        # pipeline.run(datadir, outputPath, correctOutput)
+        pipeline.run(datadir, outputPath)
     else:
         # The old, original pipeline. Here there be dragons.
         outputPath = path.join(args.basedir, 'output_old')

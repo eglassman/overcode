@@ -1,5 +1,7 @@
 import StringIO
 
+import pprint
+
 from external import (
     pythonTidy,
     remove_comments,
@@ -97,6 +99,10 @@ def make_default_finalizer(tested_function_name):
         a tuple of (new_trace, argument names, return variable names)
     """
     def elena_finalizer(input_code, output_trace):
+
+        with open('trace.txt', 'w') as f:
+            pprint.pprint(output_trace, f)
+
         def extractValues(dictOfVars,heap):
             dictToReturn = {}
             for varname, varencoded in dictOfVars.iteritems():

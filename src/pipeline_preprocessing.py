@@ -12,7 +12,15 @@ from pipeline_default_functions import extract_var_info_from_trace
 from pipeline_default_functions import tidy_one
 from pipeline_default_functions import make_default_finalizer
 
-STOP_ON_ERROR = False
+from affixes import prefix, postfix
+
+#####################################################
+
+from definitions import *
+
+#####################################################
+
+STOP_ON_ERROR = True
 
 def tidy(source_dir, dest_dir, tested_function_name):
     """
@@ -83,9 +91,14 @@ def do_logger_run(source, testcases, finalizer):
     all_traces = []
     for i, test_case in enumerate(testcases):
         print ".",
-        source_with_test = source + '\n\n' + test_case
+        source_with_test = prefix + source + postfix + '\n\n' + test_case
         trace = logger_wrapper(source_with_test, finalizer)
         munged_trace = extract_var_info_from_trace(trace)
+
+        # with open('trace.txt', 'w') as f:
+        #     pprint.pprint(trace, f)
+
+
         all_traces.append(munged_trace)
     print
 
@@ -107,6 +120,9 @@ def do_pickle(sol_id, all_traces, testcases, dest_dir):
         # If something goes wrong, clean up, then pass the exception back up
         # the stack
         os.remove(pickle_path)
+
+        with open('failed_pickle.txt', 'w') as f:
+                pprint.pprint(to_pickle, f);
         raise
 
 def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
@@ -163,8 +179,17 @@ def preprocess_pipeline_data(folder_of_data,
     formatPath = path.join(folder_of_data, 'tidyDataHTML')
     picklePath = path.join(folder_of_data, 'pickleFiles')
 
+    tested_function_names = ['test1', 'test2_xx']
+
+    testCases = []
     with open(testcase_path, 'r') as f:
-        testCases = [line.strip() for line in f if line.startswith(tested_function_name)]
+        for line in f:
+            testcase = line.strip()
+            function_name = line.split('(')[0]
+            # print "function name:", function_name,"\n"
+            if function_name in tested_function_names:
+                testCases.append(testcase)
+        # testCases = [line.strip() for line in f if line.startswith(tested_function_name)]
 
     if testCases == []:
         raise ValueError("No test cases matching the given function name")

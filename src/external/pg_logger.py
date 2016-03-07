@@ -121,7 +121,7 @@ ALLOWED_STDLIB_MODULE_IMPORTS = ('math', 'random', 'datetime',
 # logistical problems with doing so that I can't overcome at the moment,
 # especially getting setHTML, setCSS, and setJS to work in the imported
 # modules.)
-CUSTOM_MODULE_IMPORTS = ()
+CUSTOM_MODULE_IMPORTS = ('definitions',)
 # Note: commented out by Stacey because we are only using the backend, not
 # the frontend, and this means I can have a nice directory structure
 #('callback_module',
