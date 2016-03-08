@@ -423,6 +423,8 @@ def find_canon_names(all_abstracts):
 def find_template_info_scores(abstracts):
     counts = Counter()
     for avar in abstracts:
+        print avar.templates_with_indices
+        print
         counts.update(avar.templates_with_indices)
     total = float(sum(counts.values()))
 
@@ -436,6 +438,7 @@ def find_template_info_scores(abstracts):
     try:
         threshold = log(total/2.0, 2) + 0.5
     except ValueError:
+        print "abs:", abstracts
         print "counts:", counts
         print "total:", total
         return

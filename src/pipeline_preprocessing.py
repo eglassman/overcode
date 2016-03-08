@@ -95,8 +95,8 @@ def do_logger_run(source, testcases, finalizer):
         trace = logger_wrapper(source_with_test, finalizer)
         munged_trace = extract_var_info_from_trace(trace)
 
-        # with open('trace.txt', 'w') as f:
-        #     pprint.pprint(trace, f)
+        with open('trace_unmunged.txt', 'w') as f:
+            pprint.pprint(trace, f)
 
 
         all_traces.append(munged_trace)
@@ -113,6 +113,11 @@ def do_pickle(sol_id, all_traces, testcases, dest_dir):
 
     # Dump out
     pickle_path = path.join(dest_dir, sol_id + '.pickle')
+
+    if sol_id == "answer":
+        with open('traces.txt', 'w') as f:
+            pprint.pprint(to_pickle, f)
+
     try:
         with open(pickle_path, 'w') as f:
             pickle.dump(to_pickle, f)

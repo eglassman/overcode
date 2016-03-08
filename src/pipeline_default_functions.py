@@ -64,7 +64,7 @@ def tidy_one(source_path, dest_path, tested_function_name):
 
             f.write(line+'\n')
 
-def make_default_finalizer(tested_function_name):
+def make_default_finalizer(tested_function_names):
     """
     Return a finalizer function that reformats the trace to only contain info
     about variables over time. Also extracts info about argument names and
@@ -129,10 +129,10 @@ def make_default_finalizer(tested_function_name):
             namesOfReturnVariables = []
             try:
                 dictOfVars = step['stack_to_render'][0]['encoded_locals']
-                if step['event'] == 'call' and step["func_name"] == tested_function_name:
+                if step['event'] == 'call': #and step["func_name"] in tested_function_names:
                     for variableName in dictOfVars.keys():
                         namesOfArguments.append(variableName)
-                if '__return__' in dictOfVars.keys() and step["func_name"] == tested_function_name:
+                if '__return__' in dictOfVars.keys():# and step["func_name"] in tested_function_names:
                     for variableName in dictOfVars.keys():
                         if variableName != '__return__' and dictOfVars[variableName] == dictOfVars['__return__']:
                             namesOfReturnVariables.append(variableName)
@@ -144,6 +144,8 @@ def make_default_finalizer(tested_function_name):
         argAndReturnVarInfo = {}
         ctr = 0
         for scope in output_trace:
+            if 'func_name' in scope:
+                print "func_name:", scope['func_name']
             progTraceDict[ctr] = {}
             if 'event' in scope and scope['event']=='instruction_limit_reached':
                 print "Exceeded instruction limit"
@@ -163,6 +165,8 @@ def make_default_finalizer(tested_function_name):
             if 'stack_to_render' in scope:
                 if scope['stack_to_render']:  #if its not an empty list
                     progTraceDict[ctr]['locals'] = extractValues(scope['stack_to_render'][-1]['encoded_locals'],scope['heap'])
+                    print "\t",
+                    print "locals:", progTraceDict[ctr]['locals']
             ctr += 1
         namesOfArguments_accumulated = []
         namesOfReturnVariables_accumulated = []
