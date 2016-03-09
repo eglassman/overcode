@@ -58,6 +58,15 @@ def tidy(source_dir, dest_dir, tested_function_name):
             skipped.append(sol_id)
     return skipped
 
+def augment(source_dir, dest_dir):
+    ensure_folder_exists(dest_dir)
+
+    for filename in os.listdir(source_dir):
+        with open(path.join(source_dir, filename), 'r') as f:
+            source = f.read()
+        with open(path.join(dest_dir, filename), 'w') as f:
+            f.write(prefix + source)
+
 def logger_wrapper(source, finalizer):
     """
     Call pg_logger on the given source with the given finalizer. Only return
@@ -157,12 +166,18 @@ def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
         original_runMe = f.read()
 
     for filename in os.listdir(source_dir):
+        if not filename.endswith('.py'):
+            continue
+
         sol_id = filename.split('.')[0]
+
         if sol_id == 'runMe':
             continue
+
         # with open(path.join(source_dir, filename), 'r') as f:
         #     source = f.read()
-        source = original_runMe.replace('__change_me__', sol_id)
+        submission_path = path.join(source_dir, filename)
+        source = original_runMe.replace('__change_me__', submission_path)
         testcases=['pass']
 
         # Execute
@@ -188,6 +203,7 @@ def preprocess_pipeline_data(folder_of_data,
                              testcase_path,
                              tested_function_name):
     tidyDataPath = path.join(folder_of_data, 'tidyData')
+    augmentedPath = path.join(folder_of_data, 'augmentedData')
     formatPath = path.join(folder_of_data, 'tidyDataHTML')
     picklePath = path.join(folder_of_data, 'pickleFiles')
 
@@ -208,9 +224,11 @@ def preprocess_pipeline_data(folder_of_data,
 
     skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
 
+    augment(tidyDataPath, augmentedPath)
+
     finalizer = make_default_finalizer(tested_function_name)
     skipped_running, skipped_pickling = execute_and_pickle(
-        tidyDataPath, picklePath, testCases, finalizer)
+        augmentedPath, picklePath, testCases, finalizer)
 
     print "Solutions skipped:", len(skipped_tidy) + len(skipped_running) + len(skipped_pickling)
     if skipped_tidy:
