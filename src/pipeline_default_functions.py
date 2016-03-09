@@ -143,9 +143,14 @@ def make_default_finalizer(tested_function_names):
         progTraceDict = {}
         argAndReturnVarInfo = {}
         ctr = 0
+        printed = False
         for scope in output_trace:
-            if 'func_name' in scope:
-                print "func_name:", scope['func_name']
+            if not printed and 'stdout' in scope and scope['stdout']:
+                print "stdout:", scope['stdout']
+                printed = True
+
+            # if 'func_name' in scope:
+            #     print "func_name:", scope['func_name']
             progTraceDict[ctr] = {}
             if 'event' in scope and scope['event']=='instruction_limit_reached':
                 print "Exceeded instruction limit"
@@ -165,8 +170,8 @@ def make_default_finalizer(tested_function_names):
             if 'stack_to_render' in scope:
                 if scope['stack_to_render']:  #if its not an empty list
                     progTraceDict[ctr]['locals'] = extractValues(scope['stack_to_render'][-1]['encoded_locals'],scope['heap'])
-                    print "\t",
-                    print "locals:", progTraceDict[ctr]['locals']
+                    # print "\t",
+                    # print "locals:", progTraceDict[ctr]['locals']
             ctr += 1
         namesOfArguments_accumulated = []
         namesOfReturnVariables_accumulated = []

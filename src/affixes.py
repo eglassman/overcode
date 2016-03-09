@@ -1,4 +1,5 @@
-prefix = "from definitions import *\n"
+prefix = """from definitions import *\n
+"""
 
 
 prefix_xx = r"""
@@ -98,8 +99,15 @@ class SoberDrunk(Drunk):
 
 """
 
+postfix = ''
 
-postfix = r"""
+postfix_xx = r"""
+
+# print sys.modules[__name__]
+#_m = sys.modules[__name__]
+# print _m.NewField
+#print dir(sys.modules[NewField.__module__])
+pprint.pprint(sys.modules)
 
 def test1():
     a = NewField()

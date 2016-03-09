@@ -153,10 +153,17 @@ def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
     ensure_folder_exists(dest_dir)
     skipped_running, skipped_pickling = [], []
 
+    with open(path.join(source_dir, 'runMe.py'), 'r') as f:
+        original_runMe = f.read()
+
     for filename in os.listdir(source_dir):
         sol_id = filename.split('.')[0]
-        with open(path.join(source_dir, filename), 'r') as f:
-            source = f.read()
+        if sol_id == 'runMe':
+            continue
+        # with open(path.join(source_dir, filename), 'r') as f:
+        #     source = f.read()
+        source = original_runMe.replace('__change_me__', sol_id)
+        testcases=['pass']
 
         # Execute
         print "Running logger on", sol_id

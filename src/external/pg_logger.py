@@ -135,6 +135,7 @@ CUSTOM_MODULE_IMPORTS = ('definitions',)
 #                          'matrix',
 #                          'htmlFrame')
 
+GOOD_IMPORT_RE = r'^s\d+$'
 
 # PREEMPTIVELY import all of these modules, so that when the user's
 # script imports them, it won't try to do a file read (since they've
@@ -154,7 +155,8 @@ def __restricted_import__(*args):
   # subclass str and bypass the 'in' test on the next line
   args = [e for e in args if type(e) is str]
 
-  if args[0] in ALLOWED_STDLIB_MODULE_IMPORTS + CUSTOM_MODULE_IMPORTS:
+  if args[0] in ALLOWED_STDLIB_MODULE_IMPORTS + CUSTOM_MODULE_IMPORTS or \
+      re.match(GOOD_IMPORT_RE, args[0]):
     imported_mod = BUILTIN_IMPORT(*args)
 
     if args[0] in CUSTOM_MODULE_IMPORTS:
