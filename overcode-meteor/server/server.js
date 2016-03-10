@@ -68,6 +68,11 @@ Meteor.startup(function () {
                 raw_solutions.push(raw.toString());
             }
             sol.rawSolutions = raw_solutions;
+            var simulation_of_test_results = [];
+            for (i = 0; i < 25; i++) {
+                simulation_of_test_results.push(Math.random()>0.5);
+            }
+            sol.simulation_of_test_results = simulation_of_test_results;
             Stacks.insert(sol);
         });
 
