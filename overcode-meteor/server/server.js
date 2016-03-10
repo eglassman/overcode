@@ -5,20 +5,22 @@ Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 RubricEntries = new Mongo.Collection('rubricEntries');
 
-var RELOAD = false;
+var RELOAD = true; //false;
 
-var DATA_DIR_NAME = '6.0001_quiz/q4'
+var DATA_DIR_NAME = 'flatten'
+//var LOGGING_DIR_NAME = 'logging'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
 
-var base_path = STACEY_PATH
+var base_path = ELENA_PATH //STACEY_PATH
 
 var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output/');
 var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
+var logging_path = path.join(base_path, 'overcode/logging/log.txt');
 
 Meteor.methods({
     "writeGrade": function(grade_object) {
-        var grade_file_path = '/Users/staceyterman/overcode_github/logging/grade_q4.txt';
+        var grade_file_path = logging_path;
 
         var stack = Stacks.findOne({ id: grade_object.id });
         for (var i = 0; i < stack.members.length; i++) {
