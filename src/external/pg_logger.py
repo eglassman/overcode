@@ -121,7 +121,7 @@ ALLOWED_STDLIB_MODULE_IMPORTS = ('math', 'random', 'datetime',
 # logistical problems with doing so that I can't overcome at the moment,
 # especially getting setHTML, setCSS, and setJS to work in the imported
 # modules.)
-CUSTOM_MODULE_IMPORTS = ('definitions',)
+CUSTOM_MODULE_IMPORTS = ('definitions', 'gradelib')
 # Note: commented out by Stacey because we are only using the backend, not
 # the frontend, and this means I can have a nice directory structure
 #('callback_module',
@@ -134,8 +134,7 @@ CUSTOM_MODULE_IMPORTS = ('definitions',)
 # #                         'GChartWrapper',
 #                          'matrix',
 #                          'htmlFrame')
-
-GOOD_IMPORT_RE = r'^s\d+$'
+GOOD_IMPORT_RE = r'^grade_\w+$'
 
 # PREEMPTIVELY import all of these modules, so that when the user's
 # script imports them, it won't try to do a file read (since they've

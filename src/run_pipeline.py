@@ -9,6 +9,7 @@ import pipeline
 
 parser = argparse.ArgumentParser()
 parser.add_argument('basedir', help='Path to the base directory')
+parser.add_argument('grader_path', help='Path to the grader for this problem')
 parser.add_argument('-n', '--funcname', default='test',
     help='The name of the tested function')
 parser.add_argument('-p', '--run-pipeline', action='store_true',
@@ -23,22 +24,22 @@ args = parser.parse_args()
 datadir = path.join(args.basedir, 'data')
 
 # preprocess
-testcasePath = path.join(args.basedir, 'testCase.py')
+# testcasePath = path.join(args.basedir, 'testCase.py')
 if args.run_pre:
     pipeline_preprocessing.preprocess_pipeline_data(
         datadir,
-        testcasePath,
+        args.grader_path,
         args.funcname
     )
 
 if args.run_pipeline or args.run_old:
-    # read correct output
-    with open(path.join(args.basedir, 'correctOutput.py'), 'r') as f:
-        raw_correct_output = f.read()
-    if pprint.isreadable(raw_correct_output):
-        correctOutput = eval(raw_correct_output)
-    else:
-        raise ValueError("No readable correct output found")
+    # # read correct output
+    # with open(path.join(args.basedir, 'correctOutput.py'), 'r') as f:
+    #     raw_correct_output = f.read()
+    # if pprint.isreadable(raw_correct_output):
+    #     correctOutput = eval(raw_correct_output)
+    # else:
+    #     raise ValueError("No readable correct output found")
 
     if args.run_pipeline:
         outputPath = path.join(args.basedir, 'output')
