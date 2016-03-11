@@ -32,17 +32,18 @@ if args.run_pre:
     )
 
 if args.run_pipeline or args.run_old:
-    # read correct output
-    with open(path.join(args.basedir, 'correctOutput.py'), 'r') as f:
-        raw_correct_output = f.read()
-    if pprint.isreadable(raw_correct_output):
-        correctOutput = eval(raw_correct_output)
-    else:
-        raise ValueError("No readable correct output found")
+    # # read correct output
+    # with open(path.join(args.basedir, 'correctOutput.py'), 'r') as f:
+    #     raw_correct_output = f.read()
+    # if pprint.isreadable(raw_correct_output):
+    #     correctOutput = eval(raw_correct_output)
+    # else:
+    #     raise ValueError("No readable correct output found")
 
     if args.run_pipeline:
         outputPath = path.join(args.basedir, 'output')
-        pipeline.run(datadir, outputPath, correctOutput)
+        # pipeline.run(datadir, outputPath, correctOutput)
+        pipeline.run(datadir, outputPath)
     else:
         # The old, original pipeline. Here there be dragons.
         outputPath = path.join(args.basedir, 'output_old')

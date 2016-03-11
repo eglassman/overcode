@@ -10,7 +10,7 @@ from pipeline_util import ensure_folder_exists
 # Trace info extractor, tidier finalizer
 from pipeline_default_functions import extract_var_info_from_trace
 from pipeline_default_functions import tidy_one
-from pipeline_default_functions import make_default_finalizer
+from pipeline_default_functions import elena_finalizer
 
 STOP_ON_ERROR = False
 
@@ -50,7 +50,7 @@ def tidy(source_dir, dest_dir, tested_function_name):
             skipped.append(sol_id)
     return skipped
 
-def logger_wrapper(source, finalizer):
+def logger_wrapper(source):
     """
     Call pg_logger on the given source with the given finalizer. Only return
     the trace and drop the argument names and return variables on the floor.
@@ -60,17 +60,16 @@ def logger_wrapper(source, finalizer):
         False, # raw_input_lst_json,
         False, # cumulative,
         False, # heapPrimitives,
-        finalizer)
+        elena_finalizer)
 
     return trace
 
-def do_logger_run(source, testcases, finalizer):
+def do_logger_run(source, testcases):
     """
-    Run the logger on the given source for each test case in testcases.
+    Run the logger on the given source
 
     source: string, python source
     testcases: list of strings, where each element is a well-formed testcase
-    finalizer: function of (code, raw_trace) that returns a final trace
 
     returns: list of traces, one for each test case. Traces are in the same
     order as the given list of testcases.
@@ -86,6 +85,11 @@ def do_logger_run(source, testcases, finalizer):
         source_with_test = source + '\n\n' + test_case
         trace = logger_wrapper(source_with_test, finalizer)
         munged_trace = extract_var_info_from_trace(trace)
+
+        with open('trace_unmunged.txt', 'w') as f:
+            pprint.pprint(trace, f)
+
+
         all_traces.append(munged_trace)
     print
 
@@ -100,6 +104,11 @@ def do_pickle(sol_id, all_traces, testcases, dest_dir):
 
     # Dump out
     pickle_path = path.join(dest_dir, sol_id + '.pickle')
+
+    if sol_id == "answer":
+        with open('finalized_trace.txt', 'w') as f:
+            pprint.pprint(to_pickle, f)
+
     try:
         with open(pickle_path, 'w') as f:
             pickle.dump(to_pickle, f)
@@ -119,7 +128,6 @@ def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
         already exist
     testcases: list of strings, where each string is a well-formed test case
         for the source files in question
-    finalizer: a function of (code, raw trace) that returns a finalized trace
 
     If STOP_ON_ERROR is set and an error is encountered while logging or
         pickling, raises that error (and returns nothing).
