@@ -539,10 +539,20 @@ class InvokeStudentFunctionTest(Test):
     A Test that invokes a student function.
     """
     def __init__(self, fn_name, args, environment=None, output_writer=None, short_desc=None, detailed_desc=None,compare=None):
+        print "initializing InvokeStudentFunctionTest"
+        self.fn_name, self.args = fn_name, args
+
         test_fn = invoke_student_function(fn_name, args, environment, output_writer)
         if short_desc is None:
             short_desc = "Test: %s(%s)" % (fn_name, ", ".join(repr(a) for a in args))
         Test.__init__(self, test_fn, short_desc, detailed_desc, compare)
+
+    def get_writable_version(self):
+        def my_str(s):
+            if isinstance(s, str):
+                return "'%s'" % s
+            return str(s)
+        return "{0}({1})".format(self.fn_name, ','.join(map(my_str, self.args)))
 
 def round_float_writer(n):
     """Returns an output_writer function that rounds its argument to `n` places."""

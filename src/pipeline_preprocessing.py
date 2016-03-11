@@ -1,3 +1,5 @@
+import importlib
+import inspect
 import os
 from os import path
 import pickle
@@ -116,10 +118,40 @@ def logger_wrapper(source):
 
 #     return all_traces
 
-def do_pickle(sol_id, trace, dest_dir):
+def do_logger_run(sol_runner_template, format_args_shared, grader_module):
+    results = {}
+    for (i, test) in enumerate(grader_module.grader.tests()):
+        format_args = format_args_shared.copy()
+        format_args.update({
+            'which_test': i,
+            'function_invocation': test.get_writable_version(),
+            'function_name': test.fn_name
+        })
+        source = sol_runner_template.format(**format_args)
+
+        print source
+
+        # print "source:", source
+        # logger_wrapper(source)
+        # print "*********"
+        # print "*********\n"
+        # print type(test)
+        # print inspect.getsource(test._test_fn)
+        # print "*********\n"
+        # print test.get_writable_version()
+
+
+        results[test.short_description] = logger_wrapper(source)
+    return results
+
+    # source = sol_runner_template.format(**format_args_shared)
+    # return logger_wrapper(source)
+
+
+def do_pickle(sol_id, testcases_to_traces, dest_dir):
     # Not backwards compatible - old version required trace, args, returnVars
     to_pickle = {
-        'trace': trace
+        'testcases_to_traces': testcases_to_traces
     }
 
     # Dump out
@@ -171,6 +203,7 @@ def execute_and_pickle(source_dir, dest_dir, grader_path):
     shutil.copy('./solution_runner_template.py', source_dir)
 
     grader_name = path.basename(grader_path).rstrip('.py')
+    grader_module = importlib.import_module(grader_name)
     try:
         with open(path.join(source_dir, 'solution_runner_template.py'), 'r') as f:
             sol_runner_template = f.read()
@@ -187,25 +220,35 @@ def execute_and_pickle(source_dir, dest_dir, grader_path):
             # with open(path.join(source_dir, filename), 'r') as f:
             #     source = f.read()
             submission_path = path.join(source_dir, filename)
-            tmp = sol_runner_template.replace('__student_sub_path__', submission_path)
-            source = tmp.replace('__grader_name__', grader_name)
+            # tmp = sol_runner_template.replace('__student_sub_path__', submission_path)
+            # source = tmp.replace('__grader_name__', grader_name)
+            format_args_shared = {
+                'student_sub_path': submission_path,
+                'grader_name': grader_name
+            }
+            # source = sol_runner_template.format(
+            #     student_sub_path=submission_path,
+            #     grader_name=grader_name
+            # )
             # print source
-            testcases=['pass']
+            # testcases=['pass']
 
             # Execute
             print "Running logger on", sol_id
             try:
                 # all_traces = do_logger_run(source, testcases)
-                trace = logger_wrapper(source)
+                all_traces = do_logger_run(sol_runner_template, format_args_shared, grader_module)
+                # trace = logger_wrapper(source)
             except:
                 if STOP_ON_ERROR: raise
+                raise
                 skipped_running.append(sol_id)
                 # We had an error, do not try to pickle and just move on
                 continue
 
             # Pickle results
             try:
-                do_pickle(sol_id, trace, dest_dir)
+                do_pickle(sol_id, all_traces, dest_dir)
             except pickle.PicklingError:
                 if STOP_ON_ERROR: raise
                 skipped_pickling.append(sol_id)
