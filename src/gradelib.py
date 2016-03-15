@@ -539,7 +539,6 @@ class InvokeStudentFunctionTest(Test):
     A Test that invokes a student function.
     """
     def __init__(self, fn_name, args, environment=None, output_writer=None, short_desc=None, detailed_desc=None,compare=None):
-        print "initializing InvokeStudentFunctionTest"
         self.fn_name, self.args = fn_name, args
 
         test_fn = invoke_student_function(fn_name, args, environment, output_writer)

@@ -9,6 +9,7 @@ import pipeline
 
 parser = argparse.ArgumentParser()
 parser.add_argument('basedir', help='Path to the base directory')
+parser.add_argument('grader_path', help='Path to the grader for this problem')
 parser.add_argument('-n', '--funcname', default='test',
     help='The name of the tested function')
 parser.add_argument('-p', '--run-pipeline', action='store_true',
@@ -43,6 +44,7 @@ if args.run_pipeline or args.run_old:
     if args.run_pipeline:
         outputPath = path.join(args.basedir, 'output')
         # pipeline.run(datadir, outputPath, correctOutput)
+        pipeline.set_grader(args.grader_path)
         pipeline.run(datadir, outputPath)
     else:
         # The old, original pipeline. Here there be dragons.

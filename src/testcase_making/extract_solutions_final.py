@@ -49,7 +49,7 @@ def extract_solutions_from_file(filename, output_base):
             extra_info = ("# student id: %s\n" % student_id +
                 "# attempts: %s\n" % attempts +
                 "# auto-assigned grade: %s\n\n" % grade)
-            with open(os.path.join(output_base, str(i-1) + '.py'), 'w') as sol_file:
+            with open(os.path.join(output_base, 's%s.py' % str(i-1)), 'w') as sol_file:
                 sol_file.write(extra_info + student_response)
 
     print "Incorrect solutions/Total solutions:", str(num_incorrect) + '/' + str(num_incorrect + num_correct)

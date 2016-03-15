@@ -1,4 +1,5 @@
 import StringIO
+import pprint
 
 from external import (
     pythonTidy,
@@ -121,30 +122,30 @@ def elena_finalizer(input_code, output_trace):
                 dictToReturn[varname] = varencoded
         return dictToReturn
 
-    def extractArgumentsAndReturnVars(step):
-        namesOfArguments = []
-        namesOfReturnVariables = []
-        try:
-            dictOfVars = step['stack_to_render'][0]['encoded_locals']
-            if step['event'] == 'call':
-                for variableName in dictOfVars.keys():
-                    namesOfArguments.append(variableName)
-            if '__return__' in dictOfVars.keys():
-                for variableName in dictOfVars.keys():
-                    if variableName != '__return__' and dictOfVars[variableName] == dictOfVars['__return__']:
-                        namesOfReturnVariables.append(variableName)
-        except:
-            pass
-        return namesOfArguments, namesOfReturnVariables
+    # def extractArgumentsAndReturnVars(step):
+    #     namesOfArguments = []
+    #     namesOfReturnVariables = []
+    #     try:
+    #         dictOfVars = step['stack_to_render'][0]['encoded_locals']
+    #         if step['event'] == 'call':
+    #             for variableName in dictOfVars.keys():
+    #                 namesOfArguments.append(variableName)
+    #         if '__return__' in dictOfVars.keys():
+    #             for variableName in dictOfVars.keys():
+    #                 if variableName != '__return__' and dictOfVars[variableName] == dictOfVars['__return__']:
+    #                     namesOfReturnVariables.append(variableName)
+    #     except:
+    #         pass
+    #     return namesOfArguments, namesOfReturnVariables
 
     progTraceDict = {}
     argAndReturnVarInfo = {}
     ctr = 0
-    printed = False
+    # printed = False
     for scope in output_trace:
-        if not printed and 'stdout' in scope and scope['stdout']:
-            print "stdout:", scope['stdout']
-            printed = True
+        # if not printed and 'stdout' in scope and scope['stdout']:
+            # print "stdout:", scope['stdout']
+            # printed = True
 
         # if 'func_name' in scope:
         #     print "func_name:", scope['func_name']
@@ -170,15 +171,16 @@ def elena_finalizer(input_code, output_trace):
                 # print "\t",
                 # print "locals:", progTraceDict[ctr]['locals']
         ctr += 1
-    namesOfArguments_accumulated = []
-    namesOfReturnVariables_accumulated = []
-    for scope in output_trace:
-        namesOfArguments, namesOfReturnVariables = extractArgumentsAndReturnVars(scope)
-        namesOfArguments_accumulated.extend(namesOfArguments)
-        namesOfReturnVariables_accumulated.extend(namesOfReturnVariables)
-    argAndReturnVarInfo['namesOfArguments'] = list(set(namesOfArguments_accumulated))
-    argAndReturnVarInfo['namesOfReturnVariables'] = list(set(namesOfReturnVariables_accumulated))
-    return progTraceDict, argAndReturnVarInfo['namesOfArguments'], argAndReturnVarInfo['namesOfReturnVariables']
+    # namesOfArguments_accumulated = []
+    # namesOfReturnVariables_accumulated = []
+    # for scope in output_trace:
+    #     namesOfArguments, namesOfReturnVariables = extractArgumentsAndReturnVars(scope)
+    #     namesOfArguments_accumulated.extend(namesOfArguments)
+    #     namesOfReturnVariables_accumulated.extend(namesOfReturnVariables)
+    # argAndReturnVarInfo['namesOfArguments'] = list(set(namesOfArguments_accumulated))
+    # argAndReturnVarInfo['namesOfReturnVariables'] = list(set(namesOfReturnVariables_accumulated))
+    last_stdout = output_trace[-1]['stdout']
+    return progTraceDict, last_stdout#, argAndReturnVarInfo['namesOfArguments'], argAndReturnVarInfo['namesOfReturnVariables']
 
 def extract_var_info_from_trace(trace):
     """
