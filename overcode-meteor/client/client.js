@@ -146,6 +146,21 @@ var getCorrectsInOrder = function() {
     return correct_stacks;
 }
 
+Template.filterPanel.helpers({
+    "solutions": getAllSolutions,
+    "errorVectors": function(){
+        var stacks = getAllSolutions();
+        var distinct_error_vectors = [];
+        stacks.forEach(function(item){
+            var error_vector = item.error_vector;
+            if (distinct_error_vectors.indexOf(error_vector) < 0){
+                distinct_error_vectors.push(error_vector);
+            }
+        })
+        console.log(distinct_error_vectors)
+    }
+});
+
 Template.correctSolutionsList.helpers({
     "solutions": getCorrectsInOrder
 });
