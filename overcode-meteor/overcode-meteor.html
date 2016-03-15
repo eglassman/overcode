@@ -25,17 +25,28 @@
 </body>
 
 <template name="filterPanel">
-    <h5>Filter by</h5>
-    <ul>
+    <table>
+        <tr>
+            <th></th>
+            <th># Passed</th>
+            <th>Passed Test Cases</th>
+            <th># Students</th>
+        </tr>
         {{#each errorVectors}}
-            <li class="error-vectors"><input type="checkbox">
+            <tr class="error-vectors">
+                <td><input type="checkbox"></td>
+                <td class="right-aligned">*/25</td>
+                <td>
                 {{#each this}}
-                    {{#if this}}<span class="color-correct glyphicon glyphicon-ok"></span>
-                    {{else}}<span class="color-incorrect glyphicon glyphicon-remove"></span>
+                    {{#if this}}<span class="test-indicator color-correct glyphicon glyphicon-ok"></span>
+                    {{else}}<span class="test-indicator color-incorrect glyphicon glyphicon-minus"></span>
                     {{/if}}
-                {{/each}}</li>
+                {{/each}}
+                </td>
+                <td class="right-aligned">(3)</td>
+            </tr>
         {{/each}}
-    </ul>
+    </table>
 </template>
 
 <template name="gradedCount">

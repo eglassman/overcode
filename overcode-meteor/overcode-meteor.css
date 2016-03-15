@@ -128,3 +128,21 @@ span.glyphicon {
 .new-deduction input {
     height:80%;
 }
+
+.color-correct {
+    color: green;
+}
+.color-incorrect {
+    color: gray;
+}
+span.test-indicator {
+    font-size: 0.5em;
+}
+.right-aligned{
+    text-align: right;
+}
+
+ul
+{
+    list-style-type: none;
+}
