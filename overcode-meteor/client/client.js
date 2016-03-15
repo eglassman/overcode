@@ -165,15 +165,23 @@ Template.filterPanel.helpers({
     "solutions": getAllSolutions,
     "errorVectors": function() {
         var stacks = getAllSolutions();
+
+        var results = []
+
         var distinct_error_vectors = [];
         stacks.forEach(function(item){
             var error_vector = item.error_vector;
             if (! contains_array(distinct_error_vectors, error_vector)){
                 distinct_error_vectors.push(error_vector);
+                results.push({
+                    error_vector: error_vector,
+                    num_passed: item.num_passed_tests,
+                    total_num: item.total_num_tests
+                })
             }
         })
         // console.log(distinct_error_vectors)
-        return distinct_error_vectors
+        return results
     }
 });
 
