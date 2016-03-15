@@ -11,15 +11,27 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6 solution-list">
+        <div class="col-xs-4 solution-list">
             {{> incorrectSolutionsList}}
         </div>
-        <div class="col-xs-6 solution-list">
+        <div class="col-xs-4 solution-list">
             {{> correctSolutionsList}}
+        </div>
+        <div class="col-xs-4 filter-panel">
+            {{> filterPanel}}
         </div>
     </div>
 </div>
 </body>
+
+<template name="filterPanel">
+    <h5>Filter by</h5>
+    <ul>
+        {{#each solutions}}
+            {{id}}
+        {{/each}}
+    </ul>
+</template>
 
 <template name="gradedCount">
 Graded: {{numGraded}}/{{totalNum}}
