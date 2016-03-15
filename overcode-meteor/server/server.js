@@ -7,12 +7,13 @@ RubricEntries = new Mongo.Collection('rubricEntries');
 
 var RELOAD = true; //false;
 
-var DATA_DIR_NAME = 'flatten'
+var DATA_DIR_NAME = 'flatten_medium'
 //var LOGGING_DIR_NAME = 'logging'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
 
-var base_path = ELENA_PATH //STACEY_PATH
+// var base_path = ELENA_PATH
+var base_path = STACEY_PATH
 
 var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output/');
 var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
@@ -68,11 +69,11 @@ Meteor.startup(function () {
                 raw_solutions.push(raw.toString());
             }
             sol.rawSolutions = raw_solutions;
-            var error_vector = [];
-            for (i = 0; i < 25; i++) {
-                error_vector.push(Math.random()>0.5);
-            }
-            sol.error_vector = error_vector;
+            // var error_vector = [];
+            // for (i = 0; i < 25; i++) {
+            //     error_vector.push(Math.random()>0.5);
+            // }
+            // sol.error_vector = error_vector;
             Stacks.insert(sol);
         });
 

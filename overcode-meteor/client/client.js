@@ -146,18 +146,34 @@ var getCorrectsInOrder = function() {
     return correct_stacks;
 }
 
+var arrays_equal = function(arr1, arr2) {
+    if (arr1.length != arr2.length) return false;
+    for (var i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
+}
+
+var contains_array = function(array_of_arrays, el) {
+    for (var i = 0; i < array_of_arrays.length; i++) {
+        if (arrays_equal(array_of_arrays[i], el)) return true;
+    }
+    return false;
+}
+
 Template.filterPanel.helpers({
     "solutions": getAllSolutions,
-    "errorVectors": function(){
+    "errorVectors": function() {
         var stacks = getAllSolutions();
         var distinct_error_vectors = [];
         stacks.forEach(function(item){
             var error_vector = item.error_vector;
-            if (distinct_error_vectors.indexOf(error_vector) < 0){
+            if (! contains_array(distinct_error_vectors, error_vector)){
                 distinct_error_vectors.push(error_vector);
             }
         })
-        console.log(distinct_error_vectors)
+        // console.log(distinct_error_vectors)
+        return distinct_error_vectors
     }
 });
 

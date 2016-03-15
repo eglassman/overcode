@@ -28,7 +28,12 @@
     <h5>Filter by</h5>
     <ul>
         {{#each errorVectors}}
-            <li><input type="checkbox"></li>
+            <li class="error-vectors"><input type="checkbox">
+                {{#each this}}
+                    {{#if this}}<span class="color-correct glyphicon glyphicon-ok"></span>
+                    {{else}}<span class="color-incorrect glyphicon glyphicon-remove"></span>
+                    {{/if}}
+                {{/each}}</li>
         {{/each}}
     </ul>
 </template>
