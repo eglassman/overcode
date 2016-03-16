@@ -182,6 +182,17 @@ Template.filterPanel.helpers({
         })
         // console.log(distinct_error_vectors)
         return results
+    },
+    "renderVector": function() {
+        var icons = ""
+        for(var i = 0; i < this.error_vector.length; i++) {
+            if (this.error_vector[i]) {
+                icons += '<span class="test-indicator color-correct glyphicon glyphicon-ok"></span>';
+            } else {
+                icons += '<span class="test-indicator color-incorrect glyphicon glyphicon-minus"></span>';
+            }
+        }
+        return icons;
     }
 });
 
@@ -221,6 +232,10 @@ Template.body.onRendered(function() {
 
 Template.registerHelper('log',function(){
     console.log('template logging',this);
+});
+
+Template.registerHelper('inFilteredSet', function() {
+    return true;
 });
 
 var setClickedStack = function(clickedStackID) {
@@ -338,3 +353,9 @@ Template.rubric.events({
 
     }
 });
+
+Template.filterPanel.events({
+    "change .error-vector-checkbox": function(event) {
+        console.log(event.currentTarget);
+    }
+})
