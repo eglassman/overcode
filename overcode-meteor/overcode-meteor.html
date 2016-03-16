@@ -27,14 +27,20 @@
 <template name="filterPanel">
     <table>
         <tr>
-            <th></th>
+            <th><input id="all-error-vectors" type="checkbox"></th>
             <th># Passed</th>
             <th>Passed Test Cases</th>
             <th># Students</th>
         </tr>
         {{#each errorVectors}}
             <tr class="error-vectors">
-                <td><input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}"></td>
+                <td>
+                    {{#if shouldBeChecked}}
+                    <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}" checked>
+                    {{else}}
+                    <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}">
+                    {{/if}}
+                </td>
                 <td class="right-aligned">{{num_passed}}/{{total_num}}</td>
                 <td>
                 {{{renderVector}}}

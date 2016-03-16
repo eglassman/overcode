@@ -167,7 +167,6 @@ Template.filterPanel.helpers({
         var stacks = getAllSolutions();
 
         var results = []
-
         var distinct_error_vectors = [];
         stacks.forEach(function(item){
             var error_vector = item.error_vector;
@@ -177,22 +176,42 @@ Template.filterPanel.helpers({
                     error_vector: error_vector,
                     num_passed: item.num_passed_tests,
                     total_num: item.total_num_tests
-                })
+                });
             }
         })
         // console.log(distinct_error_vectors)
+        results.sort(function(e1, e2) {
+            // sort in descending order of number of passed tests
+            return e2.num_passed - e1.num_passed
+        });
+        var error_vector_strings = distinct_error_vectors.map(function(el) {
+            return el.toString()
+        });
+
+        // Also make sure the session variables are set
+        // TODO: this is probably NOT the right place to put this
+        Session.set('allErrorVectors', error_vector_strings);
+        var currently_checked = Session.get('checkedErrorVectors');
+        if (currently_checked === undefined) {
+            Session.set('checkedErrorVectors', error_vector_strings);
+        }
+
         return results
     },
     "renderVector": function() {
         var icons = ""
         for(var i = 0; i < this.error_vector.length; i++) {
             if (this.error_vector[i]) {
-                icons += '<span class="test-indicator color-correct glyphicon glyphicon-ok"></span>';
+                icons += '<span class="test-indicator color-correct glyphicon glyphicon-ok"></span> ';
             } else {
-                icons += '<span class="test-indicator color-incorrect glyphicon glyphicon-minus"></span>';
+                icons += '<span class="test-indicator color-incorrect glyphicon glyphicon-minus"></span> ';
             }
         }
         return icons;
+    },
+    "shouldBeChecked": function() {
+        var currently_checked = Session.get('checkedErrorVectors');
+        return currently_checked !== undefined && currently_checked.includes(this.error_vector.toString());
     }
 });
 
@@ -235,7 +254,10 @@ Template.registerHelper('log',function(){
 });
 
 Template.registerHelper('inFilteredSet', function() {
-    return true;
+    var checked_error_vectors = Session.get('checkedErrorVectors');
+    // console.log(this.error_vector.toString());
+    return checked_error_vectors !== undefined &&
+        checked_error_vectors.includes(this.error_vector.toString());
 });
 
 var setClickedStack = function(clickedStackID) {
@@ -356,6 +378,32 @@ Template.rubric.events({
 
 Template.filterPanel.events({
     "change .error-vector-checkbox": function(event) {
-        console.log(event.currentTarget);
+        var target = $(event.currentTarget);
+        var vec = target.data('vector');
+        var currently_checked = Session.get('checkedErrorVectors');
+
+        if (target.prop('checked')) {
+            if (currently_checked === undefined) {
+                Session.set('checkedErrorVectors', [vec]);
+            } else {
+                if (! currently_checked.includes(vec)) {
+                    currently_checked.push(vec);
+                    Session.set('checkedErrorVectors', currently_checked)
+                }
+            }
+        } else {
+            currently_checked.splice(currently_checked.indexOf(vec), 1);
+            Session.set('checkedErrorVectors', currently_checked);
+        }
+
+        // var test = [vec, vec]
+        // console.log(test)
+    },
+    "change #all-error-vectors": function(event) {
+        if ($('#all-error-vectors').prop('checked')) {
+            Session.set('checkedErrorVectors', Session.get('allErrorVectors'));
+        } else {
+            Session.set('checkedErrorVectors', []);
+        }
     }
 })
