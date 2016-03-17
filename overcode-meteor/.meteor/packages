@@ -21,3 +21,4 @@ insecure                # Allow all DB writes from clients (for prototyping)
 twbs:bootstrap
 markdown
 simple:highlight.js
+peppelg:bootstrap-3-modal
