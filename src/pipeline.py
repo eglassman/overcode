@@ -348,8 +348,8 @@ def populate_from_pickles(all_solutions, pickleSrc):
         testcases, correct_outputs = unpickled['testcases'], unpickled['outputs']
         testcase_to_correct_output = {testcases[i]: correct_outputs[i] for i in range(len(testcases))}
         print "ANSWER:", testcase_to_correct_output
-        with open('correct.py', 'w') as f:
-            pprint.pprint(testcase_to_correct_output, f)
+        # with open('correct.py', 'w') as f:
+        #     pprint.pprint(testcase_to_correct_output, f)
         # return
         # for i in range(len(testcases)):
         #     testcase_to_trace[testcases[i]] = traces[i]
@@ -387,6 +387,8 @@ def populate_from_pickles(all_solutions, pickleSrc):
                        testcase_to_output,
                        testcase_to_correct_output)
         all_solutions.append(sol)
+
+    return testcase_to_correct_output
 
 
 ###############################################################################
@@ -1244,10 +1246,10 @@ def run(folderOfData, destFolder):
 
     # Load solutions
     all_solutions = []
-    populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
+    correct_output = populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
 
-    # with open('correct.py', 'w') as f:
-    #     pprint.pprint(CORRECT_OUTPUT, f)
+    with open(path.join(destFolder, 'correctOutput.py'), 'w') as f:
+        pprint.pprint(correct_output, f)
 
     # Extract output and variable sequences from the processed traces, and assign
     # correct variables to AbstractVariables
