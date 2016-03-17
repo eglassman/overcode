@@ -350,6 +350,13 @@ Template.solution.events({
         button.toggleClass('not-shown shown');
         var btn_text = (button.hasClass('shown') ? 'Hide' : 'Show') + ' raw solution(s)';
         button.text(btn_text);
+    },
+    "click .show-test-results": function(event) {
+        var button = $(event.currentTarget);
+        button.parents('.stack-wrapper').find('.test-results').toggleClass('hidden');
+        button.toggleClass('not-shown shown');
+        var btn_text = (button.hasClass('shown') ? 'Hide' : 'Show') + ' test results';
+        button.text(btn_text);
     }
 });
 

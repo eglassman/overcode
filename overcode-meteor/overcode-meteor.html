@@ -122,7 +122,7 @@ Graded: {{numGraded}}/{{totalNum}}
 <div class="show-raw-wrapper">
     <button class="show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
 </div>
-<button class="show-test-results btn btn-xs btn-link">Show test results</button>
+<button class="show-test-results not-shown btn btn-xs btn-link">Show test results</button>
 {{> testResults testResultInformation}}
 <div>
     {{#each rawSolutions}}
@@ -133,7 +133,7 @@ Graded: {{numGraded}}/{{totalNum}}
 </template>
 
 <template name="testResults">
-    <ul class="list-group">
+    <ul class="list-group test-results hidden">
         {{#each this}}
         <li class="list-group-item">
             {{#if correct}}
