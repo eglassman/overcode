@@ -25,6 +25,14 @@
     width: 15%;
 }
 
+.test-input {
+    margin-left: 3px;
+}
+
+.test-output {
+    margin-left: 25px;
+}
+
 .grade .form-group {
     margin-bottom: 2px;
 }
@@ -130,10 +138,10 @@ span.glyphicon {
 }
 
 .color-correct {
-    color: green;
+    color: #009900;
 }
 .color-incorrect {
-    color: gray;
+    color: #b30000;
 }
 span.test-indicator {
     font-size: 0.5em;

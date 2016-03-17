@@ -56,10 +56,6 @@ def compare_output(ordered_tests, tests_to_actual, tests_to_expected):
         expected = tests_to_expected[ordered_tests[i]]
         error_vector.append(test.compare_results(expected, actual))
 
-        print "actual:", actual,
-        print "expected:", expected
-        print
-
     return error_vector
     # total = 0
     # num_correct = 0
@@ -1128,6 +1124,7 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             'total_num_tests': len(rep.error_vector),
             'error_vector': rep.error_vector,
             'test_input_outputs': rep.output,
+            'testcases': rep.testcases,
             'members': stack.members,
             'count': stack.count,
             'phraseIDs': set(),

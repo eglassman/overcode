@@ -68,7 +68,21 @@ Template.solution.helpers({
         // }
         return false;
     },
-    "sharedWithClickedStack": sharedWithClickedStack
+    "sharedWithClickedStack": sharedWithClickedStack,
+    "testResultInformation": function() {
+        var ordered_testcases = this.testcases;
+
+        var results = []
+        for (var i = 0; i < ordered_testcases.length; i++) {
+            var test = ordered_testcases[i];
+            results.push({
+                test: test,
+                output: this.test_input_outputs[test],
+                correct: this.error_vector[i]
+            });
+        }
+        return results
+    }
 });
 
 // Template.filteredSolutions.helpers({
@@ -221,6 +235,20 @@ Template.correctSolutionsList.helpers({
 
 Template.incorrectSolutionsList.helpers({
     "solutions": getIncorrectsInOrder
+});
+
+Template.testResults.helpers({
+    "pairs": function() {
+        var results = []
+        for (var test in this) {
+            if (! this.hasOwnProperty(test)) continue;
+            results.push({
+                'test': test.slice(6), // remove 'print '
+                'result': this[test]
+            });
+        }
+        return results
+    }
 });
 
 Template.rubricRow.helpers({

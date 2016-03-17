@@ -122,12 +122,31 @@ Graded: {{numGraded}}/{{totalNum}}
 <div class="show-raw-wrapper">
     <button class="show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
 </div>
+<button class="show-test-results btn btn-xs btn-link">Show test results</button>
+{{> testResults testResultInformation}}
 <div>
     {{#each rawSolutions}}
         <pre class="raw-solution hidden"><code>{{this}}</code></pre>
     {{/each}}
 </div>
 </div>
+</template>
+
+<template name="testResults">
+    <ul class="list-group">
+        {{#each this}}
+        <li class="list-group-item">
+            {{#if correct}}
+            <span class="color-correct glyphicon glyphicon-ok"></span>
+            {{else}}
+            <span class="color-incorrect glyphicon glyphicon-remove"></span>
+            {{/if}}
+            <small class="test-input"><label>Test:</label> <samp>{{test}}</samp></small>
+            <br>
+            <small class="test-output"><label>Result:</label> <samp>{{#if output}}{{output}}{{else}}(No output){{/if}}</samp></small>
+        </li>
+        {{/each}}
+    </ul>
 </template>
 
 <template name="rubric">
