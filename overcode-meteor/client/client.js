@@ -26,6 +26,14 @@ var sharedWithClickedStack = function(phraseID){
     return clickedStack.phraseIDs.indexOf(phraseID) >= 0
 };
 
+var sharedWithModalStack = function(phraseID){
+    var modalStack = Session.get('modalStack');
+    if (clickedStack === undefined) {
+        return false;
+    }
+    return modalStack.phraseIDs.indexOf(phraseID) >= 0
+};
+
 Template.solution.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
@@ -39,36 +47,23 @@ Template.solution.helpers({
         return space
     },
     "hasDifferentIndent": function() {
-        // whether or not this line appears in the reference solution
-        // with different indentation (in other words, whether the indent
-        // should be visually distinguished)
-
-        // this is { phraseID, indent }
-        // var clickedStack = Session.get('clickedStack');
-        // if (clickedStack === undefined) {
-        //     return false;
-        // }
-        // var is_shared = false;
-        // var matches_exactly = false;
-        // var indentation_difference;
-        // clickedStack.lines.forEach(function(l) {
-        //     if (l.phraseID == this.phraseID) {
-        //         is_shared = true;
-        //         if (l.indent == this.indent) {
-        //             matches_exactly = true;
-        //         } else if ( !matches_exactly && (indentation_difference === undefined)) {
-        //             indentation_difference = l.indent - this.indent;
-        //         }
-        //     }
-        // }, this); // second argument is bound to this within the callback
-
-        // if (is_shared && !matches_exactly) {
-        //     this.indentDiff = indentation_difference;
-        //     return true;
-        // }
         return false;
     },
-    "sharedWithClickedStack": sharedWithClickedStack
+    "sharedWithClickedStack": sharedWithClickedStack,
+    "nearest": function(){
+
+        nearestCorrect = Stacks.findOne({ id: 63 });
+        nearestCorrect['label'] = 'Nearest Correct';
+        return [nearestCorrect]
+    }
+});
+Template.solutionCode.helpers({
+    "sharedWithModalStack": sharedWithModalStack,
+    "getPhraseFromID": getPhraseFromID,
+    "createSpace": function() {
+        var space = " ".repeat(this.indent - diff);
+        return space
+    }
 });
 
 // Template.filteredSolutions.helpers({
@@ -271,6 +266,11 @@ var setClickedStack = function(clickedStackID) {
     Session.set('clickedStack', clickedStack);
 };
 
+var setModalStack = function(modalStackID) {
+    var modalStack = Stacks.findOne({ id: modalStackID });
+    Session.set('modalStack', modalStack);
+};
+
 var update_grade = function(input, score_or_comment) {
     var form = input.parents('.grade');
     var _id = form.data('record-id');
@@ -322,6 +322,10 @@ Template.solution.events({
         button.toggleClass('not-shown shown');
         var btn_text = (button.hasClass('shown') ? 'Hide' : 'Show') + ' raw solution(s)';
         button.text(btn_text);
+    },
+    "click .show-modal":function(event){
+        var modalStackID = parseInt($(event.currentTarget).data('id'));
+        setModalStack(modalStackID);
     }
 });
 

@@ -69,11 +69,11 @@ Meteor.startup(function () {
                 raw_solutions.push(raw.toString());
             }
             sol.rawSolutions = raw_solutions;
-            var error_vector = [];
-            for (i = 0; i < 25; i++) {
-                error_vector.push(Math.random()>0.5);
-            }
-            sol.error_vector = error_vector;
+            // var error_vector = [];
+            // for (i = 0; i < 25; i++) {
+            //     error_vector.push(Math.random()>0.5);
+            // }
+            // sol.error_vector = error_vector;
             Stacks.insert(sol);
         });
 
