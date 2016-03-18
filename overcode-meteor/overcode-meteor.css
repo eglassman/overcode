@@ -143,11 +143,21 @@ span.glyphicon {
 .color-incorrect {
     color: #b30000;
 }
+
 span.test-indicator {
     font-size: 0.5em;
 }
-.right-aligned{
+
+.right-aligned {
     text-align: right;
+}
+
+.centered {
+    text-align: center;
+}
+
+th {
+    padding-right: 5px;
 }
 
 ul

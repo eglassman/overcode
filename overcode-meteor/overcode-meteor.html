@@ -27,10 +27,10 @@
 <template name="filterPanel">
     <table>
         <tr>
-            <th><input id="all-error-vectors" type="checkbox"></th>
+            <th><input id="all-error-vectors" type="checkbox" checked></th>
             <th># Passed</th>
-            <th>Passed Test Cases</th>
-            <th># Students</th>
+            <th>Test Cases Passed</th>
+            <!-- <th># Students</th> -->
         </tr>
         {{#each errorVectors}}
             <tr class="error-vectors">
@@ -41,11 +41,11 @@
                     <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}">
                     {{/if}}
                 </td>
-                <td class="right-aligned">{{num_passed}}/{{total_num}}</td>
-                <td>
+                <td class="centered">{{num_passed}}/{{total_num}}</td>
+                <td class="">
                 {{{renderVector}}}
                 </td>
-                <td class="right-aligned">(3)</td>
+                <!-- <td class="right-aligned">(3)</td> -->
             </tr>
         {{/each}}
     </table>

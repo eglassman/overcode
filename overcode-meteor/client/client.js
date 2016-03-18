@@ -428,6 +428,7 @@ Template.filterPanel.events({
             }
         } else {
             currently_checked.splice(currently_checked.indexOf(vec), 1);
+            $('#all-error-vectors').prop('checked', false);
             Session.set('checkedErrorVectors', currently_checked);
         }
 
@@ -436,8 +437,10 @@ Template.filterPanel.events({
     },
     "change #all-error-vectors": function(event) {
         if ($('#all-error-vectors').prop('checked')) {
+            $('.error-vector-checkbox').prop('checked', true);
             Session.set('checkedErrorVectors', Session.get('allErrorVectors'));
         } else {
+            $('.error-vector-checkbox').prop('checked', false);
             Session.set('checkedErrorVectors', []);
         }
     }
