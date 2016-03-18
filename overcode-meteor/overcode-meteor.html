@@ -119,10 +119,10 @@ Graded: {{numGraded}}/{{totalNum}}
     <pre><div class="pin-button pull-right {{#unless clicked}}not-toggled{{/unless}}" data-id={{id}} title="Click to {{#if clicked}}unpin{{else}}pin{{/if}}"><span class="glyphicon glyphicon-pushpin"></span></div><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
-<div class="show-raw-wrapper">
-    <button class="show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
+<div class="show-buttons-wrapper">
+    <button class="show-test-results not-shown btn btn-xs btn-link">Show test results</button>
+    <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
 </div>
-<button class="show-test-results not-shown btn btn-xs btn-link">Show test results</button>
 {{> testResults testResultInformation}}
 <div>
     {{#each rawSolutions}}
@@ -143,7 +143,13 @@ Graded: {{numGraded}}/{{totalNum}}
             {{/if}}
             <small class="test-input"><label>Test:</label> <samp>{{test}}</samp></small>
             <br>
-            <small class="test-output"><label>Result:</label> <samp>{{#if output}}{{output}}{{else}}(No output){{/if}}</samp></small>
+            <small class="test-output"><label>Expected:</label> <samp>{{correct_output}}</samp></small>
+            <br>
+            <small class="test-output"><label>Result:</label> <!-- trailing whitespace intentional -->
+                <samp class="{{#if correct}}color-correct{{else}}color-incorrect{{/if}}">
+                    {{#if output}}{{output}}{{else}}(No output){{/if}}
+                </samp>
+            </small>
         </li>
         {{/each}}
     </ul>

@@ -5,6 +5,9 @@ Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 RubricEntries = new Mongo.Collection('rubricEntries');
 
+// tiny collection for ease of syncing...
+CorrectTestResults = new Mongo.Collection('CorrectTestResults');
+
 var RELOAD = true; //false;
 
 var DATA_DIR_NAME = 'flatten'
@@ -50,12 +53,14 @@ Meteor.startup(function () {
     var solutions = JSON.parse(fs.readFileSync(solutions_path));
     var phrases = JSON.parse(fs.readFileSync(phrases_path));
 
-    // RubricEntries.insert({ pointValue: -3, text: 'append instead of extend' });
-
     if (RELOAD) {
         RubricEntries.remove({});
         Stacks.remove({});
         Phrases.remove({});
+
+        CorrectTestResults.remove({});
+        var correct = JSON.parse(fs.readFileSync(path.join(results_path, 'correctOutput.py')).toString());
+        CorrectTestResults.insert(correct);
 
         solutions.forEach(function(sol) {
             sol.graded = false;

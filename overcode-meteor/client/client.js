@@ -1,6 +1,7 @@
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 RubricEntries = new Mongo.Collection('rubricEntries');
+CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 
 Template.rubric.helpers({
     'rubricEntries': function() {
@@ -71,14 +72,16 @@ Template.solution.helpers({
     "sharedWithClickedStack": sharedWithClickedStack,
     "testResultInformation": function() {
         var ordered_testcases = this.testcases;
+        var correct_results = CorrectTestResults.findOne();
 
         var results = []
         for (var i = 0; i < ordered_testcases.length; i++) {
             var test = ordered_testcases[i];
             results.push({
-                test: test,
+                test: test.slice(6), // remove 'print '
                 output: this.test_input_outputs[test],
-                correct: this.error_vector[i]
+                correct: this.error_vector[i],
+                correct_output: correct_results[test]
             });
         }
         return results
@@ -238,17 +241,17 @@ Template.incorrectSolutionsList.helpers({
 });
 
 Template.testResults.helpers({
-    "pairs": function() {
-        var results = []
-        for (var test in this) {
-            if (! this.hasOwnProperty(test)) continue;
-            results.push({
-                'test': test.slice(6), // remove 'print '
-                'result': this[test]
-            });
-        }
-        return results
-    }
+    // "pairs": function() {
+    //     var results = []
+    //     for (var test in this) {
+    //         if (! this.hasOwnProperty(test)) continue;
+    //         results.push({
+    //             'test': test.slice(6), // remove 'print '
+    //             'result': this[test]
+    //         });
+    //     }
+    //     return results
+    // }
 });
 
 Template.rubricRow.helpers({
