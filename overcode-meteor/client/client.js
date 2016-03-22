@@ -73,6 +73,7 @@ Template.solution.helpers({
     "testResultInformation": function() {
         var ordered_testcases = this.testcases;
         var correct_results = CorrectTestResults.findOne();
+        if (correct_results === undefined) return;
 
         var results = []
         for (var i = 0; i < ordered_testcases.length; i++) {
