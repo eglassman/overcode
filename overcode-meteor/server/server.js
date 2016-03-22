@@ -59,7 +59,7 @@ Meteor.startup(function () {
         Phrases.remove({});
 
         CorrectTestResults.remove({});
-        var correct = JSON.parse(fs.readFileSync(path.join(results_path, 'correctOutput.py')).toString());
+        var correct = JSON.parse(fs.readFileSync(path.join(results_path, 'correctOutput.json')).toString());
         CorrectTestResults.insert(correct);
 
         solutions.forEach(function(sol) {

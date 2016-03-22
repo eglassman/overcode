@@ -1248,7 +1248,7 @@ def run(folderOfData, destFolder):
     all_solutions = []
     correct_output = populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
 
-    with open(path.join(destFolder, 'correctOutput.py'), 'w') as f:
+    with open(path.join(destFolder, 'correctOutput.json'), 'w') as f:
         json.dump(correct_output, f)
 
     # Extract output and variable sequences from the processed traces, and assign

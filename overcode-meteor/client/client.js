@@ -429,6 +429,14 @@ Template.filterPanel.events({
                     Session.set('checkedErrorVectors', currently_checked)
                 }
             }
+
+            // Fill in top checkbox if all the other checkboxes are checked
+            var all_checked = $('.error-vector-checkbox').map(function() {
+                return $(this).prop('checked');
+            });
+            if (all_checked.get().every(function(x) { return x; })) {
+                $('#all-error-vectors').prop('checked', true);
+            }
         } else {
             currently_checked.splice(currently_checked.indexOf(vec), 1);
             $('#all-error-vectors').prop('checked', false);
