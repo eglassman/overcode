@@ -164,50 +164,38 @@ var getCorrectsInOrder = function() {
     return correct_stacks;
 }
 
-var arrays_equal = function(arr1, arr2) {
-    if (arr1.length != arr2.length) return false;
-    for (var i = 0; i < arr1.length; i++) {
-        if (arr1[i] !== arr2[i]) return false;
-    }
-    return true;
-}
-
-var contains_array = function(array_of_arrays, el) {
-    for (var i = 0; i < array_of_arrays.length; i++) {
-        if (arrays_equal(array_of_arrays[i], el)) return true;
-    }
-    return false;
-}
-
 Template.filterPanel.helpers({
     "solutions": getAllSolutions,
     "errorVectors": function() {
         var stacks = getAllSolutions();
 
         var results = []
-        var distinct_error_vectors = [];
+        var distinct_error_vectors = {};
         stacks.forEach(function(item){
             var error_vector = item.error_vector;
-            if (! contains_array(distinct_error_vectors, error_vector)){
-                distinct_error_vectors.push(error_vector);
-                results.push({
+            var error_vector_string = error_vector.toString();
+
+            if (distinct_error_vectors[error_vector_string] === undefined) {
+                distinct_error_vectors[error_vector_string] = {
                     error_vector: error_vector,
                     num_passed: item.num_passed_tests,
-                    total_num: item.total_num_tests
-                });
+                    total_num: item.total_num_tests,
+                    solution_count: item.count
+                }
+                results.push(distinct_error_vectors[error_vector_string]);
+            } else {
+                distinct_error_vectors[error_vector_string].solution_count += item.count;
             }
-        })
-        // console.log(distinct_error_vectors)
+        });
+
         results.sort(function(e1, e2) {
             // sort in descending order of number of passed tests
-            return e2.num_passed - e1.num_passed
-        });
-        var error_vector_strings = distinct_error_vectors.map(function(el) {
-            return el.toString()
+            return e2.num_passed - e1.num_passed || e2.solution_count - e1.solution_count;
         });
 
         // Also make sure the session variables are set
         // TODO: this is probably NOT the right place to put this
+        var error_vector_strings = Object.keys(distinct_error_vectors);
         Session.set('allErrorVectors', error_vector_strings);
         var currently_checked = Session.get('checkedErrorVectors');
         if (currently_checked === undefined) {
@@ -287,7 +275,6 @@ Template.registerHelper('log',function(){
 
 Template.registerHelper('inFilteredSet', function() {
     var checked_error_vectors = Session.get('checkedErrorVectors');
-    // console.log(this.error_vector.toString());
     return checked_error_vectors !== undefined &&
         checked_error_vectors.includes(this.error_vector.toString());
 });
@@ -375,8 +362,6 @@ Template.rubric.events({
         var point_value = point_input.val();
         var text = text_input.val();
 
-        // console.log('point value:', point_value, 'text:', text);
-
         if (point_value && text) {
             RubricEntries.insert({ pointValue: point_value, text: text });
             point_input.val('');
@@ -415,6 +400,16 @@ Template.rubric.events({
     }
 });
 
+var set_all_vectors_checkbox = function() {
+    if ($('.error-vector-checkbox').get().every(function(el) {
+        return $(el).prop('checked');
+    })) {
+        $('#all-error-vectors').prop('checked', true);
+    } else {
+        $('#all-error-vectors').prop('checked', false);
+    }
+}
+
 Template.filterPanel.events({
     "change .error-vector-checkbox": function(event) {
         var target = $(event.currentTarget);
@@ -430,22 +425,12 @@ Template.filterPanel.events({
                     Session.set('checkedErrorVectors', currently_checked)
                 }
             }
-
-            // Fill in top checkbox if all the other checkboxes are checked
-            var all_checked = $('.error-vector-checkbox').map(function() {
-                return $(this).prop('checked');
-            });
-            if (all_checked.get().every(function(x) { return x; })) {
-                $('#all-error-vectors').prop('checked', true);
-            }
         } else {
             currently_checked.splice(currently_checked.indexOf(vec), 1);
-            $('#all-error-vectors').prop('checked', false);
             Session.set('checkedErrorVectors', currently_checked);
         }
 
-        // var test = [vec, vec]
-        // console.log(test)
+        set_all_vectors_checkbox();
     },
     "change #all-error-vectors": function(event) {
         if ($('#all-error-vectors').prop('checked')) {

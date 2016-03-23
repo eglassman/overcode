@@ -28,9 +28,9 @@
     <table>
         <tr>
             <th><input id="all-error-vectors" type="checkbox" checked></th>
-            <th># Passed</th>
-            <th>Test Cases Passed</th>
-            <!-- <th># Students</th> -->
+            <th>#&nbsp;Passed</th>
+            <th></th>
+            <th>#&nbsp;Solutions</th>
         </tr>
         {{#each errorVectors}}
             <tr class="error-vectors">
@@ -45,7 +45,7 @@
                 <td class="">
                 {{{renderVector}}}
                 </td>
-                <!-- <td class="right-aligned">(3)</td> -->
+                <td class="centered">{{solution_count}}</td>
             </tr>
         {{/each}}
     </table>
