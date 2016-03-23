@@ -356,7 +356,6 @@ Template.rubric.events({
         event.preventDefault();
 
         var form = $(event.target).parents('.form-group');
-        console.log('form group:', form);
         var point_input = form.find('.deduction-value-input');
         var text_input = form.find('.deduction-text-input');
         var point_value = point_input.val();
@@ -396,7 +395,13 @@ Template.rubric.events({
             comment_box.val(new_text2);
             comment_box.trigger('change');
         }
+    },
+    "click .remove-deduction": function(event) {
+        event.preventDefault();
+        // stopPropagation makes the dropdown stay open
+        event.stopPropagation();
 
+        RubricEntries.remove({ _id: this._id });
     }
 });
 

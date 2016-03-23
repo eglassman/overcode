@@ -66,6 +66,7 @@
 
 .rubric .row {
     margin-left: 0px;
+    margin-right: 0px;
 }
 
 .rubric .row div {
@@ -80,6 +81,10 @@
 
 .add-deduction {
     width: 100%;
+}
+
+.remove-deduction {
+    float: none;
 }
 
 .closest {

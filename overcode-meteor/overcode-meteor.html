@@ -11,13 +11,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4 solution-list">
+        <div class="col-xs-5 solution-list">
             {{> incorrectSolutionsList}}
         </div>
         <div class="col-xs-4 solution-list">
             {{> correctSolutionsList}}
         </div>
-        <div class="col-xs-4 filter-panel">
+        <div class="col-xs-3 filter-panel">
             {{> filterPanel}}
         </div>
     </div>
@@ -190,8 +190,11 @@ Graded: {{numGraded}}/{{totalNum}}
         <div class="col-xs-1 deduction-value">
             {{pointValue}}
         </div>
-        <div class="col-xs-10 deduction-text">
+        <div class="col-xs-9 deduction-text">
             {{text}}
+        </div>
+        <div class="col-xs-1">
+            <span class="close remove-deduction">&times;</span>
         </div>
     </div>
 </template>
