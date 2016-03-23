@@ -288,6 +288,7 @@ var setClickedStack = function(clickedStackID) {
         return;
     }
     Session.set('clickedStack', clickedStack);
+    $('.solution-list').scrollTop(0);
 };
 
 var update_grade = function(input, score_or_comment) {
