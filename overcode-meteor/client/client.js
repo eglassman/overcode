@@ -113,6 +113,9 @@ Template.gradedCount.helpers({
     },
     'totalNum': function() {
         return Stacks.find({}).count();
+    },
+    'firstUngraded': function() {
+        return Stacks.findOne({ graded: false }).id;
     }
 });
 
