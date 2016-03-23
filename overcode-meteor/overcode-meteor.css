@@ -35,6 +35,7 @@
 
 .grade .form-group {
     margin-bottom: 2px;
+    margin-right: 0px;
 }
 
 .score-column {
@@ -48,6 +49,11 @@
 .dropdown-column {
     padding-left: 3px;
     padding-right: 0px;
+}
+
+.graded-checkbox-column {
+    padding: 0px;
+    text-align: right;
 }
 
 .rubric {
@@ -159,6 +165,10 @@ span.test-indicator {
 
 .centered {
     text-align: center;
+}
+
+.no-left-padding {
+    padding-left: 0px;
 }
 
 th {
