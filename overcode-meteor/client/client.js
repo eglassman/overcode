@@ -115,8 +115,7 @@ Template.gradedCount.helpers({
         return Stacks.find({}).count();
     },
     'firstUngraded': function() {
-        var one_stack = Stacks.findOne({ graded: false })
-        return one_stack ? one_stack.id : undefined;
+        return Stacks.findOne({ graded: false }).id;
     }
 });
 
@@ -309,27 +308,6 @@ var setClickedStack = function(clickedStackID) {
     $('.solution-list').scrollTop(0);
 };
 
-var get_score_from_comment = function(comment) {
-    var deduction_pattern = /[+-]?\d+/g;
-    var matches = comment.match(deduction_pattern);
-    if (matches === null) return;
-
-    // console.log('matches:', matches);
-    var score_deltas = matches.map(function(el) {
-        return parseInt(el);
-    });
-    // console.log('parsed matches:', score_deltas);
-    var score_delta_sum = 0;
-    for (var i = 0; i < score_deltas.length; i++) {
-        score_delta_sum += score_deltas[i];
-    }
-
-    var max_score = Stacks.findOne().total_num_tests;
-    var score = score_delta_sum > 0 ? score_delta_sum : max_score + score_delta_sum;
-    console.log('calculated score:', score);
-    return score;
-}
-
 var update_grade = function(input, score_or_comment) {
     var form = input.parents('.grade');
     var _id = form.data('record-id');
@@ -337,13 +315,6 @@ var update_grade = function(input, score_or_comment) {
 
     var score = form.find('.score-input').val();
     var comment = form.find('.comment-input').val();
-
-    if (score_or_comment == 'comment') {
-        var calculated_score = get_score_from_comment(comment);
-        // TODO: this line causes issues sometimes with handlers triggering each other
-        form.find('.score-input').val(calculated_score);
-        score = calculated_score
-    }
 
     var grade_obj = { id: stack_id, score: score, comment: comment };
 
