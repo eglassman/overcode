@@ -168,6 +168,16 @@ var getCorrectsInOrder = function() {
     return correct_stacks;
 }
 
+var set_all_vectors_checkbox = function() {
+    if ($('.error-vector-checkbox').get().every(function(el) {
+        return $(el).prop('checked');
+    })) {
+        $('#all-error-vectors').prop('checked', true);
+    } else {
+        $('#all-error-vectors').prop('checked', false);
+    }
+}
+
 Template.filterPanel.helpers({
     "solutions": getAllSolutions,
     "errorVectors": function() {
@@ -205,6 +215,7 @@ Template.filterPanel.helpers({
         if (currently_checked === undefined) {
             Session.set('checkedErrorVectors', error_vector_strings);
         }
+        set_all_vectors_checkbox();
 
         return results
     },
@@ -440,16 +451,6 @@ Template.rubric.events({
         RubricEntries.remove({ _id: this._id });
     }
 });
-
-var set_all_vectors_checkbox = function() {
-    if ($('.error-vector-checkbox').get().every(function(el) {
-        return $(el).prop('checked');
-    })) {
-        $('#all-error-vectors').prop('checked', true);
-    } else {
-        $('#all-error-vectors').prop('checked', false);
-    }
-}
 
 Template.filterPanel.events({
     "change .error-vector-checkbox": function(event) {
