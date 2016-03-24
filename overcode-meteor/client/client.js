@@ -245,6 +245,9 @@ Template.testResults.helpers({
     //     }
     //     return results
     // }
+    "validOutput": function() {
+        return this.output !== '';
+    }
 });
 
 Template.rubricRow.helpers({

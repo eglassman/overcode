@@ -148,7 +148,7 @@ Graded: {{numGraded}}/{{totalNum}}
             <br>
             <small class="test-output"><label>Result:</label> <!-- trailing whitespace intentional -->
                 <samp class="{{#if correct}}color-correct{{else}}color-incorrect{{/if}}">
-                    {{#if output}}{{output}}{{else}}(No output){{/if}}
+                    {{#if validOutput}}{{output}}{{else}}(No output){{/if}}
                 </samp>
             </small>
         </li>
