@@ -14,3 +14,5 @@ called 'data' containing those 50 solutions. In `pipeline_tests.py`, change
 TEST_DIR_PATH to point to this folder and run the file. The raw data can be found
 in the private overcode repo, under rawData/6.0001/dotProduct/correct
 
+# Description of Overcode Pipeline (as of late March)
+#### Dependencies
