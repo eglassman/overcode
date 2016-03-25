@@ -15,4 +15,16 @@ TEST_DIR_PATH to point to this folder and run the file. The raw data can be foun
 in the private overcode repo, under rawData/6.0001/dotProduct/correct
 
 # Description of Overcode Pipeline (as of late March)
-#### Dependencies
+## Interesting Dependencies
+Philip Guo's variable renamer and python execution logger
+## Interesting Data Structures
+We implemented a "setlist" to help us organize information. It's a set, stored as a list, where order represents the order in which items were added.
+## Interesting Objects
+### Variable Objects
+Variable objects represent a specific variable within a specific program.
+### Solution Objects
+Solutions contain information about how they are written and how they behave.
+#### Input-Output Behavior
+Solutions know what test cases were run on them, in what order (`testcases`), and what output they produced. Solutions also know whether those test cases passed or failed to produce acceptable output.
+#### Internal Dynamics
+Solutions have traces of their internal behavior in response to each test case.
