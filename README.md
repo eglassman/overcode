@@ -23,8 +23,14 @@ We implemented a "setlist" to help us organize information. It's a set, stored a
 ### Variable Objects
 Variable objects represent a specific variable within a specific program.
 ### Solution Objects
-Solutions contain information about how they are written and how they behave.
+Solution objects contain information about how they are written and how they behave. They also store a unique id (`solnum`).
 #### Input-Output Behavior
-Solutions know what test cases were run on them, in what order (`testcases`), and what output they produced. Solutions also know whether those test cases passed or failed to produce acceptable output.
+Solution objects store what test cases were run on them, in what order (`testcases`), and what output they produced (`output`). 
+#### Correctness
+Solution objects store whether those test cases passed or failed to produce acceptable output (`error_vector`), and whether they passed *all* test cases (`correct`).
 #### Internal Dynamics
-Solutions have traces of their internal behavior in response to each test case.
+Solution objects store traces of their internal behavior in response to each test case (`testcase_to_trace`). Based on these traces, we derive:
+*Variable View*
+Solution objects store the behavior of all local variables logged during execution and which of those variables correspond to Abstract Variable Objects.
+*Line View*
+Solution objects store lines as tuples of templates (lines with blanks where the variables would be), local names for those variable blanks, sets of values that those blanks took on during execution, and the line's indent in the program.
