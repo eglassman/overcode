@@ -180,6 +180,13 @@ var set_all_vectors_checkbox = function() {
 
 Template.filterPanel.helpers({
     "solutions": getAllSolutions,
+    "percentGraded": function(){
+        //console.log('percentGraded this',this['error_vector'])
+        //console.log(Stacks.find({error_vector: this['error_vector']}).fetch())
+        var numTotal = Stacks.find({error_vector: this['error_vector']}).count();
+        var numGraded = Stacks.find({error_vector: this['error_vector'],graded: true}).count();
+        return Math.round(100*numGraded/numTotal);
+    },
     "errorVectors": function() {
         var stacks = getAllSolutions();
 
