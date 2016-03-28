@@ -12,6 +12,9 @@ from pipeline_default_functions import extract_var_info_from_trace
 from pipeline_default_functions import tidy_one
 from pipeline_default_functions import elena_finalizer
 
+from affixes import testcase_defs, import_prefix
+from definitions import *
+
 STOP_ON_ERROR = False
 
 def tidy(source_dir, dest_dir, tested_function_name):
@@ -50,6 +53,15 @@ def tidy(source_dir, dest_dir, tested_function_name):
             skipped.append(sol_id)
     return skipped
 
+def augment(source_dir, dest_dir):
+    ensure_folder_exists(dest_dir)
+
+    for filename in os.listdir(source_dir):
+        with open(path.join(source_dir, filename), 'r') as f:
+            source = f.read()
+        with open(path.join(dest_dir, filename), 'w') as f:
+            f.write(import_prefix + source + testcase_defs)
+
 def logger_wrapper(source):
     """
     Call pg_logger on the given source with the given finalizer. Only return
@@ -83,7 +95,8 @@ def do_logger_run(source, testcases):
     all_traces = []
     all_outputs = []
     for i, test_case in enumerate(testcases):
-        print ".",
+        # print ".",
+        print "\t" + test_case
         source_with_test = source + '\n\n' + test_case
         trace, stdout = logger_wrapper(source_with_test)
         # print "stdout:", stdout
@@ -175,6 +188,7 @@ def preprocess_pipeline_data(folder_of_data,
                              testcase_path,
                              tested_function_name):
     tidyDataPath = path.join(folder_of_data, 'tidyData')
+    augmentedPath = path.join(folder_of_data, 'augmentedData')
     formatPath = path.join(folder_of_data, 'tidyDataHTML')
     picklePath = path.join(folder_of_data, 'pickleFiles')
 
@@ -193,14 +207,15 @@ def preprocess_pipeline_data(folder_of_data,
 
     # if testCases == []:
     #     raise ValueError("No test cases matching the given function name")
-    print "running preprocessor"
-    print "folder of data:", folder_of_data, "tidy data path:", tidyDataPath
+    # print "running preprocessor"
+    # print "folder of data:", folder_of_data, "tidy data path:", tidyDataPath
 
     skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
 
-    # finalizer = make_default_finalizer(tested_function_name)
+    augment(tidyDataPath, augmentedPath)
+
     skipped_running, skipped_pickling = execute_and_pickle(
-        tidyDataPath, picklePath, testCases)
+        augmentedPath, picklePath, testCases)
 
     print "Solutions skipped:", len(skipped_tidy) + len(skipped_running) + len(skipped_pickling)
     if skipped_tidy:

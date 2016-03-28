@@ -1304,7 +1304,7 @@ def run(folderOfData, destFolder):
 
     try:
         dumpOutput(variables, 'variables.json')
-    except ValueError:
+    except (ValueError, TypeError):
         # Circular reference. Try pretty printing instead. This might break
         # things in the UI (though currently variables are not used so it's
         # safe, for now)
