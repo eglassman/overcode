@@ -10,7 +10,7 @@ CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 
 var RELOAD = true; //false;
 
-var DATA_DIR_NAME = 'flatten'
+var DATA_DIR_NAME = 'newField_small'
 //var LOGGING_DIR_NAME = 'logging'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'

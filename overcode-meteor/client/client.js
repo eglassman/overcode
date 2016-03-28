@@ -79,7 +79,7 @@ Template.solution.helpers({
         for (var i = 0; i < ordered_testcases.length; i++) {
             var test = ordered_testcases[i];
             results.push({
-                test: test.slice(6), // remove 'print '
+                test: test,//.slice(6), // remove 'print '
                 output: this.test_input_outputs[test],
                 correct: this.error_vector[i],
                 correct_output: correct_results[test]
