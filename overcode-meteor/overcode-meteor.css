@@ -9,6 +9,7 @@ html {
 .stack pre {
     margin-top: 2px;
     margin-bottom: 5px;
+    height: 300px;
 }
 
 .stack-wrapper {
@@ -19,7 +20,7 @@ html {
     padding-top: 5px;
     padding-left: 15px;
     width: 500px;
-    display: inline-block;
+    display: table-cell;
 }
 
 .show-buttons-wrapper {
@@ -201,4 +202,8 @@ ul
 }
 .solution-list {
     margin-left: 410px; /*margin-left + width of filter-panel + buffer?*/
+    display: table;
+}
+.graded {
+    opacity: 0.5;
 }

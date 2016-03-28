@@ -71,7 +71,7 @@ Graded: {{numGraded}}/{{totalNum}}
 </template>
 
 <template name="solution">
-<div class="stack-wrapper {{#if clicked}}clicked{{/if}}">
+<div class="stack-wrapper {{#if clicked}}clicked{{/if}} {{#if graded}}graded{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
 <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
