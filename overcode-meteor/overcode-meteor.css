@@ -180,4 +180,17 @@ ul
     list-style-type: none;
 }
 
+.progress {height: 10px;}
 .progress-bar {height: 10px;}
+
+.filter-panel {
+    margin-left: 10px;
+    position: fixed;
+    width: 400px;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+}
+.solution-list {
+    margin-left: 410px; /*margin-left + width of filter-panel + buffer?*/
+}
