@@ -72,22 +72,29 @@ class Solution(object):
     """Information about a single solution."""
 
     def __init__(self, solnum, ordered_testcases, testcase_to_trace, testcase_to_output, correct_output):
+        #unique identifier
         self.solnum = solnum
+
+        #input-output behavior
         self.testcases = ordered_testcases
         # a dictionary mapping a testcase string to a trace
         self.testcase_to_trace = testcase_to_trace
         # maps a testcase string to stdout results for that test
         self.output = testcase_to_output
 
+        #correctness
+        self.error_vector = compare_output(ordered_testcases, testcase_to_output, correct_output)
+        self.correct = all(self.error_vector)
+
+        #variable view
         self.local_vars = []
         self.abstract_vars = []
+
+        #line view
         # a list of (line object, local names, indent) tuples
         self.lines = []
         # a list of line objects
         self.canonical_lines = []
-
-        self.error_vector = compare_output(ordered_testcases, testcase_to_output, correct_output)
-        self.correct = all(self.error_vector)
 
     def getDict(self):
         return self.__dict__
