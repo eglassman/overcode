@@ -46,7 +46,11 @@
                 {{{renderVector}}}
                 </td>
                 <td class="centered">{{solution_count}}</td>
-                <td class="centered">{{percentGraded}}%</td>
+                <td>
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{percentGraded}}"
+                      aria-valuemin="0" aria-valuemax="100" style="width:{{percentGraded}}%">
+                      </div>      
+                </td>
             </tr>
         {{/each}}
     </table>
