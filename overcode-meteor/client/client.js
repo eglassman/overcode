@@ -138,34 +138,19 @@ var findClosestStack = function(stack) {
     return best_stack;
 }
 
-var getIncorrectsInOrder = function() {
+var getSolutionsInOrder = function() {
     var clickedStack = Session.get('clickedStack');
     if (clickedStack === undefined) {
         return getAllSolutions();
     }
     var distances = clickedStack.stack_distances;
 
-    var orderedIncorrects = Stacks.find({ correct: false }).fetch();
+    var orderedIncorrects = Stacks.find({}).fetch();
     orderedIncorrects.sort(function(s1, s2) {
         return distances[s2.id] - distances[s1.id]
     });
 
     return orderedIncorrects;
-}
-
-var getCorrectsInOrder = function() {
-    var clickedStack = Session.get('clickedStack');
-    if (clickedStack === undefined) {
-        return getAllSolutions();
-    }
-    var distances = clickedStack.stack_distances;
-
-    var correct_stacks = Stacks.find({ correct: true }).fetch();
-    correct_stacks.sort(function(s1, s2) {
-        return distances[s2.id] - distances[s1.id]
-    });
-
-    return correct_stacks;
 }
 
 var set_all_vectors_checkbox = function() {
@@ -243,12 +228,8 @@ Template.filterPanel.helpers({
     }
 });
 
-Template.correctSolutionsList.helpers({
-    "solutions": getCorrectsInOrder
-});
-
-Template.incorrectSolutionsList.helpers({
-    "solutions": getIncorrectsInOrder
+Template.solutionsList.helpers({
+    "solutions": getSolutionsInOrder
 });
 
 Template.testResults.helpers({

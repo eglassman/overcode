@@ -15,8 +15,7 @@
             {{> filterPanel}}
         </div>
         <div class="col-xs-8 solution-list">
-            {{> correctSolutionsList}}
-            {{> incorrectSolutionsList}}
+            {{> solutionsList}}
         </div>
         
     </div>
@@ -61,37 +60,13 @@ Graded: {{numGraded}}/{{totalNum}}
 <span style="margin-left:30px">A random stack in need of a grade: {{firstUngraded}}</span>
 </template>
 
-<template name="correctSolutionsList">
+<template name="solutionsList">
     {{#each solutions}}
-        {{#if correct}}
-            {{#if inFilteredSet}}
-                {{> solution}}
-            {{/if}}
+        {{#if inFilteredSet}}
+            {{> solution}}
         {{/if}}
     {{/each}}
 </template>
-
-<template name="incorrectSolutionsList">
-    {{#each solutions}}
-        {{#unless correct}}
-            {{#if inFilteredSet}}
-                {{> solution}}
-            {{/if}}
-        {{/unless}}
-    {{/each}}
-</template>
-
-<!-- <template name="solutionsList">
-    {{#each solutions}}
-        {{> solution}}
-    {{/each}}
-</template> -->
-
-<!-- <template name="filteredSolutions">
-    {{#each filteredSolutions}}
-        {{> solution}}
-    {{/each}}
-</template> -->
 
 <template name="solution">
 <div class="stack-wrapper {{#if clicked}}clicked{{/if}}">
