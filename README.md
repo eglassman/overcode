@@ -19,15 +19,27 @@ in the private overcode repo, under rawData/6.0001/dotProduct/correct
 Philip Guo's variable renamer and python execution logger
 ## Interesting Data Structures
 We implemented a "setlist" to help us organize information. It's a set, stored as a list, where order represents the order in which items were added.
+
 ## Interesting Objects
+
 ### Variable Objects
 Variable objects represent a specific variable within a specific program.
+
+### Abstract Variable
+An abstract variable, distinguished (for now) from other abstract variables by its sequence of values. Stores the histogram of names given to it in student solutions, and which student solutions those are.
+
+### Line Objects
+Line objects contain a line of code (without any indent specified) with blanks for variables. The blanks have corresponding Abstract Variables, based on the whole solution and the whole collection of solutions this line is in. The blanks also have a (sequence or set?) of values plugged into them during the solution's execution, and these values are stored.
+
 ### Solution Objects
 Solution objects contain information about how they are written and how they behave. They also store a unique id (`solnum`).
+
 #### Input-Output Behavior
 Solution objects store what test cases were run on them, in what order (`testcases`), and what output they produced (`output`). 
+
 #### Correctness
 Solution objects store whether those test cases passed or failed to produce acceptable output (`error_vector`), and whether they passed *all* test cases (`correct`).
+
 #### Internal Dynamics
 Solution objects store traces of their internal behavior in response to each test case (`testcase_to_trace`). Based on these traces, we derive:
 
