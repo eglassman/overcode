@@ -11,15 +11,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4 solution-list">
-            {{> incorrectSolutionsList}}
-        </div>
-        <div class="col-xs-4 solution-list no-left-padding">
-            {{> correctSolutionsList}}
-        </div>
         <div class="col-xs-4 filter-panel">
             {{> filterPanel}}
         </div>
+        <div class="col-xs-8 solution-list">
+            {{> correctSolutionsList}}
+            {{> incorrectSolutionsList}}
+        </div>
+        
     </div>
 </div>
 </body>
@@ -31,6 +30,7 @@
             <th>#&nbsp;Passed</th>
             <th></th>
             <th>#&nbsp;Solutions</th>
+            <th>%&nbsp;Graded</th>
         </tr>
         {{#each errorVectors}}
             <tr class="error-vectors">
@@ -46,6 +46,7 @@
                 {{{renderVector}}}
                 </td>
                 <td class="centered">{{solution_count}}</td>
+                <td class="centered">{{percentGraded}}%</td>
             </tr>
         {{/each}}
     </table>
