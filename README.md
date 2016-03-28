@@ -50,3 +50,11 @@ Solution objects store the behavior of all local variables logged during executi
 *Line View*
 
 Solution objects store lines as tuples of templates (lines with blanks where the variables would be), local names for those variable blanks, sets of values that those blanks took on during execution, and the line's indent in the program.
+
+## Interesting Heuristics
+
+In the original OverCode work, we clustered canonicalized solutions so teachers could get a sense of the common and uncommon solutions. In this expanded OverCode work, we support the arduous grading processes in introductory python courses like 6.0001. We canonicalize incorrect solutions as well as correct solutions, and sort solutions by similarity heuristics, rather than cluster size.
+
+### Recommendation heuristic
+
+We're interested in helping teachers "bring more context with them" when they're jumping from solution to solution during exhaustive grading.
