@@ -139,9 +139,9 @@ Graded: {{numGraded}}/{{totalNum}}
         <li class="list-group-item">
             {{#if correct}}
             <span class="color-correct glyphicon glyphicon-ok"></span>
+            <small class="test-input"><label>Test:</label> <samp>{{test}}</samp></small>
             {{else}}
             <span class="color-incorrect glyphicon glyphicon-remove"></span>
-            {{/if}}
             <small class="test-input"><label>Test:</label> <samp>{{test}}</samp></small>
             <br>
             <small class="test-output"><label>Expected:</label> <samp>{{correct_output}}</samp></small>
@@ -151,6 +151,7 @@ Graded: {{numGraded}}/{{totalNum}}
                     {{#if validOutput}}{{output}}{{else}}(No output){{/if}}
                 </samp>
             </small>
+            {{/if}}
         </li>
         {{/each}}
     </ul>
