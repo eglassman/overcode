@@ -6,15 +6,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
-            {{> gradedCount}}
             {{> rubric}}
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4 filter-panel">
+        <div class="filter-panel">
             {{> filterPanel}}
         </div>
-        <div class="col-xs-8 solution-list">
+        <div class="solution-list">
             {{> solutionsList}}
         </div>
         
@@ -40,19 +39,22 @@
                     <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}">
                     {{/if}}
                 </td>
-                <td class="centered">{{num_passed}}/{{total_num}}</td>
+                <td class="centered">{{num_passed}}</td>
                 <td class="">
                 {{{renderVector}}}
                 </td>
                 <td class="centered">{{solution_count}}</td>
                 <td>
+                    <div class="progress">
                       <div class="progress-bar" role="progressbar" aria-valuenow="{{percentGraded}}"
                       aria-valuemin="0" aria-valuemax="100" style="width:{{percentGraded}}%">
-                      </div>      
+                      </div>   
+                    </div>   
                 </td>
             </tr>
         {{/each}}
     </table>
+    {{> gradedCount}}
 </template>
 
 <template name="gradedCount">
