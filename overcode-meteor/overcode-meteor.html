@@ -11,13 +11,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-5 solution-list">
+        <div class="col-xs-4 solution-list">
             {{> incorrectSolutionsList}}
         </div>
         <div class="col-xs-4 solution-list no-left-padding">
             {{> correctSolutionsList}}
         </div>
-        <div class="col-xs-3 filter-panel">
+        <div class="col-xs-4 filter-panel">
             {{> filterPanel}}
         </div>
     </div>
@@ -53,7 +53,7 @@
 
 <template name="gradedCount">
 Graded: {{numGraded}}/{{totalNum}}
-<span style="margin-left:30px">First ungraded stack id: {{firstUngraded}}</span>
+<span style="margin-left:30px">A random stack in need of a grade: {{firstUngraded}}</span>
 </template>
 
 <template name="correctSolutionsList">
