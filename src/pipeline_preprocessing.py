@@ -12,6 +12,8 @@ from pipeline_default_functions import extract_var_info_from_trace
 from pipeline_default_functions import tidy_one
 from pipeline_default_functions import elena_finalizer
 
+# To run on a non-class problem, comment out definitions.py and change testcase_defs
+# and import_prefix to empty strings
 from affixes import testcase_defs, import_prefix
 from definitions import *
 
