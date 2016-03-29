@@ -94,13 +94,16 @@ Graded: {{numGraded}}/{{totalNum}}
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
 <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
-        <div class="col-xs-2 score-column">
-            <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
+        <div class="col-xs-1 auto-score-column">
+            {{getScore}}
         </div>
-        <div class="col-xs-7 comment-column">
+        <div class="col-xs-2 fudge-column">
+            <input type="text" class="fudge-input form-control" name="fudge" placeholder="#" value="{{fudge_factor}}"/>
+        </div>
+        <div class="col-xs-5 comment-column">
             <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
         </div>
-        <div class="col-xs-2 dropdown-column">
+        <div class="col-xs-3 dropdown-column">
             <div class="dropdown">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     Rubric <span class="caret"></span>

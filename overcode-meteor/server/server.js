@@ -10,7 +10,7 @@ CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 
 var RELOAD = true; //false;
 
-var DATA_DIR_NAME = 'newField_small'
+var DATA_DIR_NAME = 'flatten'
 //var LOGGING_DIR_NAME = 'logging'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
@@ -74,6 +74,7 @@ Meteor.startup(function () {
                 raw_solutions.push(raw.toString());
             }
             sol.rawSolutions = raw_solutions;
+            sol.deductions = [];
             // var error_vector = [];
             // for (i = 0; i < 25; i++) {
             //     error_vector.push(Math.random()>0.5);
