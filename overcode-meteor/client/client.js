@@ -160,23 +160,32 @@ var getSolutionsInOrder = function() {
         //console.log('filteredSolutions',filteredSolutions)
     }
 
-    // var min_distance = 1;
-    // var indexes_of_min_distance = -1;
-    // for (var i in filteredSolutions){
-    //     for (var sol_id in filteredSolutions[i].stack_distances){
-    //         var dist_to_sol = filteredSolutions[i].stack_distances[sol_id];
-    //         if (dist_to_sol <= min_distance){
-    //             min_distance = dist_to_sol;
-    //             index_of_min_distance = [filteredSolutions[i].id,sol_id];
-    //         }
-    //     }
-    // }
+    var max_value = 1;
+    var max_pair = -1;
+    var max_index = -1;
+    for (var i in filteredSolutions){
+        var origin_sol_id = filteredSolutions[i].id;
+        for (var sol_id in filteredSolutions[i].stack_distances){
+            var distance_between_solutions = filteredSolutions[i].stack_distances[sol_id];
+            if (distance_between_solutions >= max_value && origin_sol_id!=sol_id){
+                max_value = distance_between_solutions;
+                max_pair = [origin_sol_id,sol_id];
+                max_index = i; //index of origin_sol_id in filteredSolutions
+                console.log('max_value',max_value)
+                console.log('max_pair',max_pair)
+                console.log('max_index',max_index)
+            }
+        }
+    }
+    var starting_solution_index = max_index;
     
     var orderedSolutions = [];
 
     if (filteredSolutions.length>0) {
-        orderedSolutions.push(filteredSolutions[0]);
-        filteredSolutions.splice(0,1); //remove the solution we just added
+        //orderedSolutions.push(filteredSolutions[0]);
+        orderedSolutions.push(filteredSolutions[starting_solution_index]); //arbitrarily choosing first of two
+        //filteredSolutions.splice(0,1); //remove the solution we just added
+        filteredSolutions.splice(starting_solution_index,1);
     }
 
     while (filteredSolutions.length>0){
