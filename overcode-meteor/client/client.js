@@ -145,12 +145,12 @@ var getSolutionsInOrder = function() {
     }
     var distances = clickedStack.stack_distances;
 
-    var orderedIncorrects = Stacks.find({}).fetch();
-    orderedIncorrects.sort(function(s1, s2) {
+    var orderedSolutions = Stacks.find({}).fetch();
+    orderedSolutions.sort(function(s1, s2) {
         return distances[s2.id] - distances[s1.id]
     });
 
-    return orderedIncorrects;
+    return orderedSolutions;
 }
 
 var set_all_vectors_checkbox = function() {
@@ -279,11 +279,13 @@ Template.registerHelper('log',function(){
     console.log('template logging',this);
 });
 
-Template.registerHelper('inFilteredSet', function() {
+var inFilteredSet = function() {
     var checked_error_vectors = Session.get('checkedErrorVectors');
     return checked_error_vectors !== undefined &&
         checked_error_vectors.includes(this.error_vector.toString());
-});
+}
+
+Template.registerHelper('inFilteredSet', inFilteredSet);
 
 var setClickedStack = function(clickedStackID) {
     var clickedStack = Stacks.findOne({ id: clickedStackID });
