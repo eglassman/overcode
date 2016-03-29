@@ -22,6 +22,7 @@
 </body>
 
 <template name="filterPanel">
+    <button class="pull-right show-all btn btn-xs btn-link">Only show ungraded solution(s)</button>
     <table>
         <tr>
             <th><input id="all-error-vectors" type="checkbox"></th>
@@ -74,12 +75,16 @@ Graded: {{numGraded}}/{{totalNum}}
 <div class="stack-wrapper {{#if clicked}}clicked{{/if}} {{#if graded}}graded{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
+<span class="show-buttons-wrapper">
+    <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
+</span>
+
 <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
         <div class="col-xs-2 score-column">
             <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
         </div>
-        <div class="col-xs-7 comment-column">
+        <div class="col-xs-8 comment-column">
             <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
         </div>
         <div class="col-xs-2 dropdown-column">
@@ -90,9 +95,9 @@ Graded: {{numGraded}}/{{totalNum}}
                 {{> rubric}}
             </div>
         </div>
-        <div class="col-xs-1 graded-checkbox-column">
+        <!-- <div class="col-xs-1 graded-checkbox-column">
             <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
-        </div>
+        </div> -->
     </div>
 </form>
 <div class="stack {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
@@ -102,21 +107,17 @@ Graded: {{numGraded}}/{{totalNum}}
     <pre><div class="pin-button pull-right {{#unless clicked}}not-toggled{{/unless}}" data-id={{id}} title="Click to {{#if clicked}}unpin{{else}}pin{{/if}}"><span class="glyphicon glyphicon-pushpin"></span></div><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
-<div class="show-buttons-wrapper">
-    <button class="show-test-results not-shown btn btn-xs btn-link">Show test results</button>
-    <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
-</div>
-{{> testResults testResultInformation}}
 <div>
     {{#each rawSolutions}}
         <pre class="raw-solution hidden"><code>{{this}}</code></pre>
     {{/each}}
 </div>
+{{> testResults testResultInformation}}
 </div>
 </template>
 
 <template name="testResults">
-    <ul class="list-group test-results hidden">
+    <ul class="list-group test-results">
         {{#each this}}
         <li class="list-group-item">
             {{#if correct}}
