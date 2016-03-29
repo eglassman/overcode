@@ -22,8 +22,16 @@
 </body>
 
 <template name="filterPanel">
-    <button class="pull-right show-all btn btn-xs btn-link">Only show ungraded solution(s)</button>
     <table>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                <button class="pull-right hide-graded shown btn btn-xs btn-link">Hide graded<br>solution(s)</button>
+            </th>
+        </tr>
         <tr>
             <th><input id="all-error-vectors" type="checkbox"></th>
             <th>#&nbsp;Passed</th>
@@ -119,17 +127,17 @@ Graded: {{numGraded}}/{{totalNum}}
 <template name="testResults">
     <ul class="list-group test-results">
         {{#each this}}
-        <li class="list-group-item">
+        <li>
             {{#if correct}}
             <span class="color-correct glyphicon glyphicon-ok"></span>
-            <small class="test-input"><label>Test:</label> <samp>{{test}}</samp></small>
+            <small class="test-input">Test: <samp>{{test}}</samp></small>
             {{else}}
             <span class="color-incorrect glyphicon glyphicon-remove"></span>
-            <small class="test-input"><label>Test:</label> <samp>{{test}}</samp></small>
+            <small class="test-input">Test: <samp>{{test}}</samp></small>
             <br>
-            <small class="test-output"><label>Expected:</label> <samp>{{correct_output}}</samp></small>
+            <small class="test-output">Expected: <samp>{{correct_output}}</samp></small>
             <br>
-            <small class="test-output"><label>Result:</label> <!-- trailing whitespace intentional -->
+            <small class="test-output">Result: <!-- trailing whitespace intentional -->
                 <samp class="{{#if correct}}color-correct{{else}}color-incorrect{{/if}}">
                     {{#if validOutput}}{{output}}{{else}}(No output){{/if}}
                 </samp>
