@@ -441,6 +441,16 @@ Template.rubric.events({
 });
 
 Template.filterPanel.events({
+    "click .hide-graded": function(event){
+        $('.graded').toggle();
+        //console.log('hide-graded clicked')
+        var button = $(event.currentTarget);
+        //console.log('button',button)
+        var btn_text = (button.hasClass('shown') ? 'Show' : 'Hide') + ' graded<br>solution(s)';
+        button.toggleClass('not-shown shown');
+        //console.log('button',button)
+        button.html(btn_text);
+    },
     "change .error-vector-checkbox": function(event) {
         var target = $(event.currentTarget);
         var vec = target.data('vector');
