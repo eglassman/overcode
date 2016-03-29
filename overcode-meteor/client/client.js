@@ -138,17 +138,57 @@ var findClosestStack = function(stack) {
     return best_stack;
 }
 
-var getSolutionsInOrder = function() {
-    var clickedStack = Session.get('clickedStack');
-    if (clickedStack === undefined) {
-        return getAllSolutions();
-    }
-    var distances = clickedStack.stack_distances;
+var isTrue = function(arg){return (arg === 'true')}
 
-    var orderedSolutions = Stacks.find({}).fetch();
-    orderedSolutions.sort(function(s1, s2) {
-        return distances[s2.id] - distances[s1.id]
-    });
+var getSolutionsInOrder = function() {
+
+    //return Stacks.find({}).fetch();
+
+    var checked_error_vectors = Session.get('checkedErrorVectors');
+    //console.log(checked_error_vectors)
+    //console.log(checked_error_vectors[0])
+    if (checked_error_vectors==undefined){
+        return Stacks.find({}).fetch();
+    } else {
+        //iterate over checked_error_vectors
+        var filteredSolutions = [];
+        for (var i=0; i<checked_error_vectors.length; i++){
+            var err_vec_split = checked_error_vectors[i].split(',');
+            var parsed_error_vector = err_vec_split.map(isTrue);
+            filteredSolutions = filteredSolutions.concat(Stacks.find({error_vector: parsed_error_vector}).fetch());
+        }
+        //console.log('filteredSolutions',filteredSolutions)
+    }
+    
+    var orderedSolutions = [];
+
+    if (filteredSolutions.length>0) {
+        orderedSolutions.push(filteredSolutions[0]);
+        filteredSolutions.splice(0,1); //remove the solution we just added
+    }
+
+    while (filteredSolutions.length>0){
+        var nextSol = orderedSolutions[orderedSolutions.length-1];
+        console.log('nextSol',nextSol)
+        var distances_from_nextSol = nextSol.stack_distances;
+        var max_value = 0;
+        var max_index = -1;
+        for (var i in filteredSolutions){
+            var filtered_solution_id = filteredSolutions[i].id;
+            var distance_between_solutions = distances_from_nextSol[filtered_solution_id];
+            if (distance_between_solutions>=max_value){
+                max_value = distance_between_solutions;
+                max_index = i;
+            }
+        }
+        orderedSolutions.push(filteredSolutions[max_index]);
+        filteredSolutions.splice(max_index,1);
+    }
+
+    //var orderedSolutions = filteredSolutions;
+    // orderedSolutions.sort(function(s1, s2) {
+    //     return distances[s2.id] - distances[s1.id]
+    // });
 
     return orderedSolutions;
 }
@@ -279,13 +319,13 @@ Template.registerHelper('log',function(){
     console.log('template logging',this);
 });
 
-var inFilteredSet = function() {
-    var checked_error_vectors = Session.get('checkedErrorVectors');
-    return checked_error_vectors !== undefined &&
-        checked_error_vectors.includes(this.error_vector.toString());
-}
+// var inFilteredSet = function() {
+//     var checked_error_vectors = Session.get('checkedErrorVectors');
+//     return checked_error_vectors !== undefined &&
+//         checked_error_vectors.includes(this.error_vector.toString());
+// }
 
-Template.registerHelper('inFilteredSet', inFilteredSet);
+//Template.registerHelper('inFilteredSet', inFilteredSet);
 
 var setClickedStack = function(clickedStackID) {
     var clickedStack = Stacks.findOne({ id: clickedStackID });
