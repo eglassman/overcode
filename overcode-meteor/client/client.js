@@ -159,6 +159,18 @@ var getSolutionsInOrder = function() {
         }
         //console.log('filteredSolutions',filteredSolutions)
     }
+
+    // var min_distance = 1;
+    // var indexes_of_min_distance = -1;
+    // for (var i in filteredSolutions){
+    //     for (var sol_id in filteredSolutions[i].stack_distances){
+    //         var dist_to_sol = filteredSolutions[i].stack_distances[sol_id];
+    //         if (dist_to_sol <= min_distance){
+    //             min_distance = dist_to_sol;
+    //             index_of_min_distance = [filteredSolutions[i].id,sol_id];
+    //         }
+    //     }
+    // }
     
     var orderedSolutions = [];
 
@@ -513,6 +525,9 @@ Template.filterPanel.events({
         }
 
         set_all_vectors_checkbox();
+
+        var currentDiv = $(".stack-wrapper:first");
+        $('html, body').animate({scrollLeft: $(currentDiv).offset().left-410}, 800);
     },
     "change #all-error-vectors": function(event) {
         if ($('#all-error-vectors').prop('checked')) {
