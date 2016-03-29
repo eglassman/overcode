@@ -73,9 +73,7 @@ Graded: {{numGraded}}/{{totalNum}}
 
 <template name="solutionsList">
     {{#each solutions}}
-        {{#if inFilteredSet}}
-            {{> solution}}
-        {{/if}}
+        {{> solution}}
     {{/each}}
 </template>
 
@@ -83,10 +81,18 @@ Graded: {{numGraded}}/{{totalNum}}
 <div class="stack-wrapper {{#if clicked}}clicked{{/if}} {{#if graded}}graded{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
+{{#if graded}}
+<span class="already-graded">
+    Graded
+</span>
+{{else}}
+<span class="need-grade">
+    Not Yet Graded
+</span>
+{{/if}}
 <span class="show-buttons-wrapper">
     <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
 </span>
-
 <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
         <div class="col-xs-2 score-column">
