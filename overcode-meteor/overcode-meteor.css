@@ -204,6 +204,15 @@ ul
     margin-left: 410px; /*margin-left + width of filter-panel + buffer?*/
     display: table;
 }
-.graded {
-    opacity: 0.5;
+.need-grade {
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+    padding-left: 10px;
+}
+.already-graded {
+    font-weight: bold;
+    font-size: 20px;
+    color: gray;
+    padding-left: 10px;
 }
