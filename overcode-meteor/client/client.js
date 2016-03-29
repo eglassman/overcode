@@ -27,6 +27,7 @@ var sharedWithClickedStack = function(phraseID){
     return clickedStack.phraseIDs.indexOf(phraseID) >= 0
 };
 
+
 Template.solution.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
@@ -70,6 +71,14 @@ Template.solution.helpers({
         return false;
     },
     "sharedWithClickedStack": sharedWithClickedStack,
+    "sharedWithPreviousStack": function(){
+        var current_stack_id = Template.parentData(1).id;
+        var previous_stack_id = Template.parentData(1).previous_stack_id;
+        var previousStack = Stacks.findOne({id: previous_stack_id});
+        //console.log('Template.parentData(1)',Template.parentData(1))
+        //console.log('Template.parentData(2)',Template.parentData(2))
+        return previousStack.phraseIDs.indexOf(this.phraseID) >= 0
+    },
     "testResultInformation": function() {
         var ordered_testcases = this.testcases;
         var correct_results = CorrectTestResults.findOne();
@@ -189,20 +198,23 @@ var getSolutionsInOrder = function() {
     }
 
     while (filteredSolutions.length>0 && orderedSolutions.length>0){
-        var nextSol = orderedSolutions[orderedSolutions.length-1];
-        console.log('nextSol',nextSol)
-        var distances_from_nextSol = nextSol.stack_distances;
+        var prevSol = orderedSolutions[orderedSolutions.length-1];
+        console.log('prevSol',prevSol)
+        var distances_from_prevSol = prevSol.stack_distances;
         var max_value = 0;
         var max_index = -1;
         for (var i in filteredSolutions){
             var filtered_solution_id = filteredSolutions[i].id;
-            var distance_between_solutions = distances_from_nextSol[filtered_solution_id];
+            var distance_between_solutions = distances_from_prevSol[filtered_solution_id];
             if (distance_between_solutions>=max_value){
                 max_value = distance_between_solutions;
                 max_index = i;
             }
         }
-        orderedSolutions.push(filteredSolutions[max_index]);
+        //previous_stack_id being added
+        var sol_to_push = filteredSolutions[max_index];
+        sol_to_push.previous_stack_id = prevSol.id; //o.m.g.
+        orderedSolutions.push(sol_to_push);
         filteredSolutions.splice(max_index,1);
     }
 
