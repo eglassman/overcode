@@ -188,7 +188,7 @@ var getSolutionsInOrder = function() {
         filteredSolutions.splice(starting_solution_index,1);
     }
 
-    while (filteredSolutions.length>0){
+    while (filteredSolutions.length>0 && orderedSolutions.length>0){
         var nextSol = orderedSolutions[orderedSolutions.length-1];
         console.log('nextSol',nextSol)
         var distances_from_nextSol = nextSol.stack_distances;
@@ -210,6 +210,8 @@ var getSolutionsInOrder = function() {
     // orderedSolutions.sort(function(s1, s2) {
     //     return distances[s2.id] - distances[s1.id]
     // });
+
+    Session.set('clickedStack',orderedSolutions[0]);
 
     return orderedSolutions;
 }
