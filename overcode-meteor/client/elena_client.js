@@ -341,9 +341,6 @@ var setColumnHeights = function() {
 };
 
 Template.body.onRendered(function() {
-    if (Session.get('useNewView')) {
-        $('html').addClass('elena');
-    }
     setColumnHeights();
     $(window).on('resize', setColumnHeights);
 });
