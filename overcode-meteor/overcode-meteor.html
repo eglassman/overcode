@@ -3,6 +3,14 @@
 </head>
 
 <body>
+{{#if useNewView}}
+    {{> elena_body}}
+{{else}}
+    {{> stacey_body}}
+{{/if}}
+</body>
+
+<template name="stacey_body">
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
@@ -22,7 +30,7 @@
         </div>
     </div>
 </div>
-</body>
+</template>
 
 <template name="filterPanel">
     <table>

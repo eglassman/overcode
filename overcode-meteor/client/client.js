@@ -9,6 +9,11 @@ Template.rubric.helpers({
     }
 });
 
+Template.registerHelper('useNewView', function() {
+    var use_new = Session.get('useNewView');
+    if (use_new === undefined) return true;
+    return use_new;
+});
 
 var getPhraseFromID = function(phraseID) {
     return Phrases.findOne({ id: phraseID });
@@ -297,7 +302,7 @@ var setColumnHeights = function() {
     });
 };
 
-Template.body.onRendered(function() {
+Template.stacey_body.onRendered(function() {
     setColumnHeights();
     $(window).on('resize', setColumnHeights);
 });

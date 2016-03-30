@@ -1,0 +1,218 @@
+html.elena {
+    width: 100000px;
+}
+
+.heading {
+    border-bottom: 1px solid #ddd;
+}
+
+.stack.elena pre {
+    margin-top: 2px;
+    margin-bottom: 5px;
+    height: 300px;
+}
+
+.stack-wrapper.elena {
+    margin-right: -15px;
+    margin-bottom: 5px;
+    padding-right: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 15px;
+    width: 500px;
+    display: table-cell;
+}
+
+.show-buttons-wrapper {
+    margin-top: -5px;
+}
+
+.id-label.elena {
+    display: inline-block;
+    width: 10%;
+}
+
+.test-input {
+    margin-left: 3px;
+}
+
+.test-output {
+    margin-left: 25px;
+}
+
+.grade .form-group {
+    margin-bottom: 2px;
+    margin-right: 0px;
+}
+
+.score-column {
+    padding-right: 3px;
+}
+
+.comment-column {
+    padding: 0px;
+}
+
+.dropdown-column {
+    padding-left: 3px;
+    padding-right: 0px;
+}
+
+.graded-checkbox-column {
+    padding: 0px;
+    text-align: right;
+}
+
+.rubric {
+    width: 300px;
+}
+
+.dropdown-toggle {
+    width: 100%;
+}
+
+.new-deduction .form-group {
+    width: calc(100% - 3px); /* Who knew you could do this? Really cool! */
+    position: relative;
+    left: 15px;
+}
+
+.rubric .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.rubric .row div {
+    padding-left: 4px;
+    padding-right: 0px;
+}
+
+.new-deduction .form-group div {
+    padding-left: 3px;
+    padding-right: 0px;
+}
+
+.add-deduction {
+    width: 100%;
+}
+
+.remove-deduction {
+    float: none;
+}
+
+.closest {
+    width: 85%;
+    text-align: center;
+    display: inline-block;
+}
+
+.closer-to {
+    cursor: pointer;
+}
+
+.showRaw {
+    padding: 0px;
+}
+
+/*.clicked {
+    background-color: #ECF3F9;
+}*/
+
+span.glyphicon {
+    font-size: 1.2em;
+}
+
+.clicked .dimmed {
+    opacity: 1.0;
+}
+
+.blue {
+    background-color: #ECF3F9;
+}
+
+.solution-list {
+    overflow-y: scroll;
+}
+
+.dimmed {
+	opacity: 0.5;
+}
+
+.pin-button {
+    cursor: pointer;
+}
+
+.not-toggled {
+    opacity: 0.3;
+}
+
+.incorrect pre {
+    background-color: #f2dede;
+    border-color: #e2b6b6;
+}
+
+.new-deduction input {
+    height:80%;
+}
+
+.color-correct {
+    color: #009900;
+}
+.color-incorrect {
+    color: #b30000;
+}
+
+span.test-indicator {
+    font-size: 0.5em;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
+.centered {
+    text-align: center;
+}
+
+.no-left-padding {
+    padding-left: 0px;
+}
+
+th {
+    padding-right: 5px;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+.progress {height: 10px; margin-bottom: 0px;}
+.progress-bar {height: 10px;}
+
+.filter-panel.elena {
+    padding-left: 10px;
+    position: fixed;
+    width: 400px;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+}
+.solution-list.elena {
+    margin-left: 410px; /*margin-left + width of filter-panel + buffer?*/
+    display: table;
+}
+.need-grade {
+    font-weight: bold;
+    color: red;
+    font-size: 20px;
+    padding-left: 10px;
+}
+.already-graded {
+    font-weight: bold;
+    font-size: 20px;
+    color: gray;
+    padding-left: 10px;
+}
