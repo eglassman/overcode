@@ -111,6 +111,8 @@ Template.elena_solution.helpers({
 //     }
 // });
 
+
+//the following helpers are not DRY!!
 Template.elena_gradedCount.helpers({
     'numGraded': function() {
         return Stacks.find({ graded: true }).count();
@@ -121,6 +123,11 @@ Template.elena_gradedCount.helpers({
     'firstUngraded': function() {
         var one_stack = Stacks.findOne({ graded: false })
         return one_stack ? one_stack.id : undefined;
+    },
+    "totalPercentGraded": function(){
+        var numTotal = Stacks.find({}).count();
+        var numGraded = Stacks.find({ graded: true }).count();;
+        return Math.round(100*numGraded/numTotal);
     }
 });
 
@@ -243,6 +250,9 @@ var set_all_vectors_checkbox = function() {
 
 Template.elena_filterPanel.helpers({
     "solutions": getAllSolutions,
+    "numGraded": function(){
+        return Stacks.find({error_vector: this['error_vector'],graded: true}).count();
+    },
     "percentGraded": function(){
         //console.log('percentGraded this',this['error_vector'])
         //console.log(Stacks.find({error_vector: this['error_vector']}).fetch())

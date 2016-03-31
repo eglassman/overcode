@@ -27,15 +27,19 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
+            <th></th>
             <th>
-                <button class="pull-right hide-graded shown btn btn-xs btn-link">Hide graded<br>solution(s)</button>
+                <button class="hide-graded shown btn btn-xs btn-link">Hide graded<br>solution(s)</button>
             </th>
         </tr>
         <tr>
             <th><input id="all-error-vectors" type="checkbox"></th>
-            <th>#&nbsp;Passed</th>
+            <th>Tests<br>Passed</th>
             <th></th>
-            <th>#&nbsp;Solutions</th>
+            <th></th>
+            <th></th>
+            <th></th>
             <th>%&nbsp;Graded</th>
         </tr>
         {{#each errorVectors}}
@@ -47,11 +51,13 @@
                     <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}">
                     {{/if}}
                 </td>
-                <td class="centered">{{num_passed}}</td>
+                <td class="right-aligned padding-right">{{num_passed}}</td>
                 <td class="">
                 {{{renderVector}}}
                 </td>
-                <td class="centered">{{solution_count}}</td>
+                <td class="right-aligned">{{numGraded}}</td>
+                <td>&nbsp;&nbsp;&nbsp;/</td>
+                <td class="right-aligned padding-right">{{solution_count}}</td>
                 <td>
                     <div class="progress">
                       <div class="progress-bar" role="progressbar" aria-valuenow="{{percentGraded}}"
@@ -61,12 +67,28 @@
                 </td>
             </tr>
         {{/each}}
+        <tr class="gap-above">
+            <td></td>
+            <td></td>
+            <td></td>
+            {{> elena_gradedCount}}
+        </tr>
     </table>
-    {{> elena_gradedCount}}
 </template>
 
 <template name="elena_gradedCount">
-Graded: {{numGraded}}/{{totalNum}}
+
+<td class="right-aligned">{{numGraded}}</td>
+<td>&nbsp;&nbsp;&nbsp;/</td>
+<td class="right-aligned padding-right">{{totalNum}}</td>
+<td>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{totalPercentGraded}}"
+      aria-valuemin="0" aria-valuemax="100" style="width:{{totalPercentGraded}}%">
+      </div>   
+    </div>   
+</td>
+<!-- Graded: {{numGraded}}/{{totalNum}} -->
 <!-- <span style="margin-left:30px">A random stack in need of a grade: {{firstUngraded}}</span> -->
 </template>
 

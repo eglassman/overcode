@@ -169,6 +169,9 @@ span.test-indicator {
 .right-aligned {
     text-align: right;
 }
+.padding-right {
+    padding-right: 10px;
+}
 
 .centered {
     text-align: center;
@@ -200,6 +203,9 @@ ul
     background-color: white;
     z-index: 1000;
 }
+.filter-panel.elena > table {
+    width: 390px; /*10 less than its container*/
+}
 .solution-list.elena {
     margin-left: 410px; /*margin-left + width of filter-panel + buffer?*/
     display: table;
@@ -218,3 +224,7 @@ ul
 }
 .test-results li:nth-child(even) {background: gainsboro}
 .test-results li:nth-child(odd) {background: #FFF}
+
+.gap-above {
+    height: 40px; 
+}
