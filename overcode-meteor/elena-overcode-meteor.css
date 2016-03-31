@@ -216,3 +216,5 @@ ul
     color: gray;
     padding-left: 10px;
 }
+.test-results li:nth-child(even) {background: gainsboro}
+.test-results li:nth-child(odd) {background: #FFF}
