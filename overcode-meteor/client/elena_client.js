@@ -164,9 +164,14 @@ var getSolutionsInOrder = function() {
         //console.log('filteredSolutions',filteredSolutions)
     }
 
-    var max_value = 1;
+    var max_value = 0;
     var max_pair = -1;
     var max_index = -1;
+    console.log('max_value',max_value)
+    console.log('max_pair',max_pair)
+    console.log('max_index',max_index)
+
+    console.log('filteredSolutions, pre iteration',filteredSolutions)
     for (var i in filteredSolutions){
         var origin_sol_id = filteredSolutions[i].id;
         for (var sol_id in filteredSolutions[i].stack_distances){
@@ -187,12 +192,15 @@ var getSolutionsInOrder = function() {
 
     if (filteredSolutions.length>0) {
         //orderedSolutions.push(filteredSolutions[0]);
+        console.log('starting_solution_index',starting_solution_index);
+        console.log('filteredSolutions[starting_solution_index]',filteredSolutions[starting_solution_index]);
         orderedSolutions.push(filteredSolutions[starting_solution_index]); //arbitrarily choosing first of two
         //filteredSolutions.splice(0,1); //remove the solution we just added
         filteredSolutions.splice(starting_solution_index,1);
     }
 
     while (filteredSolutions.length>0 && orderedSolutions.length>0){
+        console.log('orderedSolutions',orderedSolutions)
         var prevSol = orderedSolutions[orderedSolutions.length-1];
         console.log('prevSol',prevSol)
         var distances_from_prevSol = prevSol.stack_distances;
