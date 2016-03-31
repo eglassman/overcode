@@ -117,7 +117,7 @@ Graded: {{numGraded}}/{{totalNum}}
     <!-- {{#if closest}}
         <span class="closest text-muted">Closer to <a class="closer-to" data-closer={{closest}}>stack {{closest}}</a></span>
     {{/if}} -->
-    <pre><div class="pin-button pull-right {{#unless clicked}}not-toggled{{/unless}}" data-id={{id}} title="Click to {{#if clicked}}unpin{{else}}pin{{/if}}"><span class="glyphicon glyphicon-pushpin"></span></div><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithPreviousStack}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
+    <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithPreviousStack}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
 <div>
