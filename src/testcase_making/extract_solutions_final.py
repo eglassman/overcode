@@ -19,8 +19,8 @@ def extract_solutions_from_file(filename, output_base):
                 # header row
                 continue
 
-            # print row
-            # print
+            print row
+            print
             try:
                 username, time, grade, attempts, student_response = row
             except ValueError:

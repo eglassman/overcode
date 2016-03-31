@@ -20,7 +20,7 @@ def make_testcases_and_correct_output(grader_path_orig, output_dir):
     grader_copy_path = path.join(current_dir, grader_name + '.py')
     # answer_copy_path = path.join(current_dir, 'answer.py')
 
-    # testcase_path = path.join(output_dir, 'testCase.py')
+    testcase_path = path.join(output_dir, 'testCase.py')
     # correct_output_path = path.join(output_dir, 'correctOutput.py')
 
     try:
@@ -28,8 +28,8 @@ def make_testcases_and_correct_output(grader_path_orig, output_dir):
 
         # Write out the testCase.py
         module = importlib.import_module(grader_name)
-        pprint.pprint(map(lambda t: inspect.getargspec(t._test_fn), module.grader.tests()))
-        # module.grader.write_out(testcase_path)
+        # pprint.pprint(map(lambda t: inspect.getargspec(t._test_fn), module.grader.tests()))
+        module.grader.write_out(testcase_path)
 
         # Evaluate and write the correct answer if there is an answer.py
         # if os.path.isfile(answer_path_orig):

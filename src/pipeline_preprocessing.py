@@ -14,8 +14,9 @@ from pipeline_default_functions import elena_finalizer
 
 # To run on a non-class problem, comment out definitions.py and change testcase_defs
 # and import_prefix to empty strings
-from affixes import testcase_defs, import_prefix
-from definitions import *
+# from affixes import testcase_defs_deepreverse as testcase_defs, import_prefix
+testcase_defs, import_prefix = "", ""
+# from definitions import *
 
 STOP_ON_ERROR = False
 
