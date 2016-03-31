@@ -21,7 +21,7 @@
 </div>
 </body>
 
-<template name="filterPanel">
+<template name="elena_filterPanel">
     <table>
         <tr>
             <th></th>
@@ -66,18 +66,18 @@
     {{> gradedCount}}
 </template>
 
-<template name="gradedCount">
+<template name="elena_gradedCount">
 Graded: {{numGraded}}/{{totalNum}}
 <!-- <span style="margin-left:30px">A random stack in need of a grade: {{firstUngraded}}</span> -->
 </template>
 
-<template name="solutionsList">
+<template name="elena_solutionsList">
     {{#each solutions}}
         {{> solution}}
     {{/each}}
 </template>
 
-<template name="solution">
+<template name="elena_solution">
 <div class="stack-wrapper {{#if clicked}}clicked{{/if}} {{#if graded}}graded{{/if}}">
 <span class="text-muted id-label">id: {{id}}</span>
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
@@ -130,7 +130,7 @@ Graded: {{numGraded}}/{{totalNum}}
 </div>
 </template>
 
-<template name="testResults">
+<template name="elena_testResults">
     <ul class="list-group test-results">
         {{#each this}}
         <li>
@@ -154,7 +154,7 @@ Graded: {{numGraded}}/{{totalNum}}
     </ul>
 </template>
 
-<template name="rubric">
+<template name="elena_rubric">
 <ul class="rubric dropdown-menu dropdown-menu-right">
     {{#each rubricEntries}}
     <li>
@@ -177,7 +177,7 @@ Graded: {{numGraded}}/{{totalNum}}
 </ul>
 </template>
 
-<template name="rubricRow">
+<template name="elena_rubricRow">
     <div class="row">
         <div class="col-xs-1">
             {{#if shouldBeChecked}}

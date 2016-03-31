@@ -15,8 +15,8 @@ var DATA_DIR_NAME = 'flatten'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
 
-// var base_path = ELENA_PATH
-var base_path = STACEY_PATH
+var base_path = ELENA_PATH
+//var base_path = STACEY_PATH
 
 var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output/');
 var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');

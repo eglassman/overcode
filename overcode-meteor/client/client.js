@@ -3,7 +3,7 @@ Phrases = new Mongo.Collection('phrases');
 RubricEntries = new Mongo.Collection('rubricEntries');
 CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 
-Template.rubric.helpers({
+Template.elena_rubric.helpers({
     'rubricEntries': function() {
         return RubricEntries.find({});
     }
@@ -28,7 +28,7 @@ var sharedWithClickedStack = function(phraseID){
 };
 
 
-Template.solution.helpers({
+Template.elena_solution.helpers({
     "getPhraseFromID": getPhraseFromID,
     "clicked": clicked,
     "createSpace": function() {
@@ -116,7 +116,7 @@ Template.solution.helpers({
 //     }
 // });
 
-Template.gradedCount.helpers({
+Template.elena_gradedCount.helpers({
     'numGraded': function() {
         return Stacks.find({ graded: true }).count();
     },
@@ -238,7 +238,7 @@ var set_all_vectors_checkbox = function() {
     }
 }
 
-Template.filterPanel.helpers({
+Template.elena_filterPanel.helpers({
     "solutions": getAllSolutions,
     "percentGraded": function(){
         //console.log('percentGraded this',this['error_vector'])
@@ -303,11 +303,11 @@ Template.filterPanel.helpers({
     }
 });
 
-Template.solutionsList.helpers({
+Template.elena_solutionsList.helpers({
     "solutions": getSolutionsInOrder
 });
 
-Template.testResults.helpers({
+Template.elena_testResults.helpers({
     // "pairs": function() {
     //     var results = []
     //     for (var test in this) {
@@ -324,7 +324,7 @@ Template.testResults.helpers({
     }
 });
 
-Template.rubricRow.helpers({
+Template.elena_rubricRow.helpers({
     "shouldBeChecked": function() {
         var stack_data = Template.parentData(1);
         if (!stack_data || stack_data.comment === undefined) {
@@ -430,7 +430,7 @@ var grade_update_callback = function(err, object) {
     Meteor.call('writeGrade', object);
 };
 
-Template.solution.events({
+Template.elena_solution.events({
     // "click .closer-to": function(event) {
     //     var clickedStack = $(event.currentTarget).data('closer');
     //     setClickedStack(clickedStack);
@@ -463,7 +463,7 @@ Template.solution.events({
     }
 });
 
-Template.rubric.events({
+Template.elena_rubric.events({
     "click .add-deduction": function(event) {
         event.preventDefault();
 
@@ -517,7 +517,7 @@ Template.rubric.events({
     }
 });
 
-Template.filterPanel.events({
+Template.elena_filterPanel.events({
     "click .hide-graded": function(event){
         $('.graded').toggle();
         //console.log('hide-graded clicked')
