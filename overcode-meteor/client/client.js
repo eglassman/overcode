@@ -416,7 +416,7 @@ var calculate_and_write_grade = function(stack_id) {
     // console.log('comments:', comment_text, 'calculated_score:', calculated_score);
     var r = get_score_and_comments(stack);
     var grade_obj = { id: stack_id, score: r.score, comment: r.comment };
-    console.log(grade_obj);
+    // console.log(grade_obj);
     Meteor.call('writeGrade', grade_obj);
 }
 
@@ -546,6 +546,19 @@ Template.rubric.events({
         event.stopPropagation();
 
         RubricEntries.remove({ _id: this._id });
+        var all_stacks = Stacks.find({}).fetch();
+        for (var i = 0; i < all_stacks.length; i++) {
+            var stack = all_stacks[i];
+            var deductions = stack.deductions;
+            for (var j = 0; j < deductions.length; j++) {
+                if (deductions[j].value == this.pointValue && deductions[j].text == this.text) {
+                    var deduction_item = { value: parseInt(this.pointValue), text: this.text };
+                    Stacks.update({ _id: stack._id }, {
+                        $pull: { deductions: deduction_item}
+                    });
+                }
+            }
+        }
     }
 });
 
