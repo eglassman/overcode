@@ -93,8 +93,35 @@ Template.elena_solution.helpers({
             });
         }
         return results
+    },
+    "getScore": function() {
+        return get_score_and_comments(this).score;
     }
 });
+
+var get_score_and_comments = function(stack) {
+    var calculated_score = stack.total_num_tests;
+    var all_comments_text = [];
+    if (stack.comment !== undefined) {
+        all_comments_text.push(stack.comment);
+    }
+    stack.deductions.forEach(function(d) {
+        all_comments_text.push(d.value.toString() + ' ' + d.text);
+        calculated_score += d.value;
+    });
+    calculated_score += stack.fudge_factor || 0;
+    return { 'score': Math.max(calculated_score, 0), 'comment': all_comments_text.join('; ') };
+}
+
+var calculate_and_write_grade = function(stack_id) {
+    var stack = Stacks.findOne({ id: stack_id });
+    if (stack === undefined) return;
+
+    var r = get_score_and_comments(stack);
+    var grade_obj = { id: stack_id, score: r.score, comment: r.comment };
+    console.log(grade_obj);
+    Meteor.call('writeGrade', grade_obj);
+}
 
 // Template.filteredSolutions.helpers({
 //     "filteredSolutions": function() {
@@ -458,7 +485,18 @@ Template.elena_solution.events({
     },
     "change .comment-input": function(event) {
         var comment_input = $(event.target);
-        update_grade(comment_input, 'comment');
+        // console.log('form:', comment_input.parents('.grade'));
+
+        var form = comment_input.parents('.grade');
+        var _id = form.data('record-id');
+        Stacks.update(
+            { _id: _id },
+            { $set: { 'comment': comment_input.val() }},
+            function(err, num_updated) {
+                calculate_and_write_grade(form.data('id'));
+            });
+
+        // update_grade(comment_input, 'comment');
     },
     "click .show-raw": function(event) {
         var button = $(event.currentTarget);
@@ -473,6 +511,18 @@ Template.elena_solution.events({
         button.toggleClass('not-shown shown');
         var btn_text = (button.hasClass('shown') ? 'Hide' : 'Show') + ' test results';
         button.text(btn_text);
+    },
+    "change .fudge-input": function(event) {
+        var fudge_input = $(event.target);
+        // update_grade(fudge_input, 'score');
+        var form = fudge_input.parents('.grade');
+        var _id = form.data('record-id');
+        Stacks.update(
+            { _id: _id },
+            { $set: { 'fudge_factor': parseInt(fudge_input.val()) }},
+            function(err, num_updated) {
+                calculate_and_write_grade(form.data('id'));
+            });
     }
 });
 
