@@ -211,14 +211,15 @@ ul
     display: table;
 }
 .need-grade {
-    font-weight: bold;
+/*    font-weight: bold;
     color: red;
-    font-size: 20px;
+    font-size: 20px;*/
+    color: gray;
     padding-left: 10px;
 }
 .already-graded {
     font-weight: bold;
-    font-size: 20px;
+    /*font-size: 20px;*/
     color: gray;
     padding-left: 10px;
 }
@@ -227,4 +228,7 @@ ul
 
 .gap-above {
     height: 40px; 
+}
+.width-20px {
+    width: 20px;
 }
