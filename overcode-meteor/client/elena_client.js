@@ -416,12 +416,12 @@ var update_grade = function(input, score_or_comment) {
     var score = form.find('.score-input').val();
     var comment = form.find('.comment-input').val();
 
-    if (score_or_comment == 'comment') {
-        var calculated_score = get_score_from_comment(comment);
-        // TODO: this line causes issues sometimes with handlers triggering each other
-        form.find('.score-input').val(calculated_score);
-        score = calculated_score
-    }
+    // if (score_or_comment == 'comment') {
+    //     var calculated_score = get_score_from_comment(comment);
+    //     // TODO: this line causes issues sometimes with handlers triggering each other
+    //     form.find('.score-input').val(calculated_score);
+    //     score = calculated_score
+    // }
 
     var grade_obj = { id: stack_id, score: score, comment: comment };
 
