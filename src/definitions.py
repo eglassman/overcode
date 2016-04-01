@@ -13,7 +13,10 @@ class Location(object):
         yDist = self.y - other.y
         return (xDist**2 + yDist**2)**0.5
     def __eq__(self, other):
-        return (self.x == other.x and self.y == other.y)
+        try:
+            return (self.x == other.x and self.y == other.y)
+        except AttributeError:
+            return False
     def __str__(self):
         return '<' + str(self.x) + ',' + str(self.y) + '>'
         

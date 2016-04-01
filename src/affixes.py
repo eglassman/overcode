@@ -1,5 +1,5 @@
-# import_prefix = "from definitions import *\n\n"
-import_prefix = ""
+import_prefix = "from definitions import *\n\n"
+# import_prefix = ""
 
 ##### applyF_filterG
 testcase_defs = r"""

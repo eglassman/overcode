@@ -169,7 +169,10 @@ class AbstractVariable(object):
         returns: boolean, True if inst should be added to self, False otherewise.
         """
         assert isinstance(inst, VariableInstance)
-        return self.sequence == inst.sequence
+        try:
+            return self.sequence == inst.sequence
+        except AttributeError:
+            return False
 
     def add_instance(self, inst):
         """

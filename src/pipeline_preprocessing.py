@@ -14,9 +14,9 @@ from pipeline_default_functions import elena_finalizer
 
 # To run on a non-class problem, comment out definitions.py and change testcase_defs
 # and import_prefix to empty strings
-# from affixes import testcase_defs_deepreverse as testcase_defs, import_prefix
-testcase_defs, import_prefix = "", ""
-# from definitions import *
+from affixes import testcase_defs_mitcampus as testcase_defs, import_prefix
+# testcase_defs, import_prefix = "", ""
+from definitions import *
 
 STOP_ON_ERROR = False
 
@@ -132,14 +132,13 @@ def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
     try:
         with open(pickle_path, 'w') as f:
             pickle.dump(to_pickle, f)
-    except pickle.PicklingError:
+    except (pickle.PicklingError, TypeError):
         # If something goes wrong, clean up, then pass the exception back up
         # the stack
         os.remove(pickle_path)
 
         with open('failed_pickle.txt', 'w') as f:
                 pprint.pprint(to_pickle, f)
-        raise
 
 def execute_and_pickle(source_dir, dest_dir, testcases):
     """

@@ -219,11 +219,8 @@ Template.filterPanel.helpers({
         // TODO: this is probably NOT the right place to put this
         var error_vector_strings = Object.keys(distinct_error_vectors);
         Session.set('allErrorVectors', error_vector_strings);
-        var currently_checked = Session.get('checkedErrorVectors');
-        if (currently_checked === undefined) {
-            Session.set('checkedErrorVectors', error_vector_strings);
-        }
-        set_all_vectors_checkbox();
+        Session.set('checkedErrorVectors', error_vector_strings);
+        $('#all-error-vectors').prop('checked', true);
 
         return results
     },
