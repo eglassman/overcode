@@ -1,3 +1,8 @@
+Stacks = new Mongo.Collection('stacks');
+Phrases = new Mongo.Collection('phrases');
+RubricEntries = new Mongo.Collection('rubricEntries');
+CorrectTestResults = new Mongo.Collection('CorrectTestResults');
+
 Template.elena_rubric.helpers({
     'rubricEntries': function() {
         return RubricEntries.find({});
@@ -375,6 +380,29 @@ Template.elena_rubricRow.helpers({
     }
 });
 
+Template.rubricRow.helpers({
+    "shouldBeChecked": function() {
+        var stack_data = Template.parentData(1);
+        if (!stack_data) {
+            return false;
+        }
+        var target_deduction = {
+            value: this.pointValue,
+            text: this.text
+        }
+
+        for (var i = 0; i < stack_data.deductions.length; i++) {
+            var d = stack_data.deductions[i];
+            if (d.value == target_deduction.value && d.text == target_deduction.text) {
+                return true;
+            }
+        }
+        return false;
+        // var deduction_string = this.pointValue + ' ' + this.text
+        // return stack_data.comment.indexOf(deduction_string) !== -1
+    }
+});
+
 var setColumnHeights = function() {
     $('.solution-list').css({
         'height': window.innerHeight,
@@ -479,9 +507,17 @@ Template.elena_solution.events({
         var clickedStackID = parseInt($(event.currentTarget).data('id'));
         setClickedStack(clickedStackID);
     },
-    "change .score-input": function(event) {
-        var score_input = $(event.target);
-        update_grade(score_input, 'score');
+    "change .fudge-input": function(event) {
+        var fudge_input = $(event.target);
+        // update_grade(fudge_input, 'score');
+        var form = fudge_input.parents('.grade');
+        var _id = form.data('record-id');
+        Stacks.update(
+            { _id: _id },
+            { $set: { 'fudge_factor': parseInt(fudge_input.val()) }},
+            function(err, num_updated) {
+                calculate_and_write_grade(form.data('id'));
+            });
     },
     "change .comment-input": function(event) {
         var comment_input = $(event.target);
@@ -511,18 +547,96 @@ Template.elena_solution.events({
         button.toggleClass('not-shown shown');
         var btn_text = (button.hasClass('shown') ? 'Hide' : 'Show') + ' test results';
         button.text(btn_text);
+    }
+});
+
+Template.rubric.events({
+    "click .add-deduction": function(event) {
+        event.preventDefault();
+
+        var form = $(event.target).parents('.form-group');
+        var point_input = form.find('.deduction-value-input');
+        var text_input = form.find('.deduction-text-input');
+        var point_value = point_input.val();
+        var text = text_input.val();
+
+        if (point_value && text) {
+            RubricEntries.insert({ pointValue: point_value, text: text });
+            point_input.val('');
+            text_input.val('');
+        }
     },
-    "change .fudge-input": function(event) {
-        var fudge_input = $(event.target);
-        // update_grade(fudge_input, 'score');
-        var form = fudge_input.parents('.grade');
+    "change .deduction-checkbox": function(event) {
+        var checkbox = $(event.target);
+        var checked = checkbox.prop('checked');
+
+        var parent_row = $(checkbox.parents('.row').get(0));
+        var deduction_value = parent_row.find('.deduction-value').text().trim();
+        var deduction_text = parent_row.find('.deduction-text').text().trim();
+
+        var deduction_item = { deductions: {
+            value: parseInt(deduction_value),
+            text: deduction_text
+        }};
+
+        // console.log('deduction:', deduction_item);
+
+        var form = parent_row.parents('.grade');
         var _id = form.data('record-id');
-        Stacks.update(
-            { _id: _id },
-            { $set: { 'fudge_factor': parseInt(fudge_input.val()) }},
-            function(err, num_updated) {
-                calculate_and_write_grade(form.data('id'));
+        var stack_id = form.data('id');
+
+        if (checked) {
+            Stacks.update({ _id: _id }, {
+                $push: deduction_item
+            }, function(err, num_updated) {
+                calculate_and_write_grade(stack_id);
             });
+        } else {
+            Stacks.update({ _id: _id }, {
+                $pull: deduction_item
+            }, function(err, num_updated) {
+                calculate_and_write_grade(stack_id);
+            });
+        }
+        // var item_text = deduction_value + ' ' + deduction_text;
+
+        // var grade_form = parent_row.parents('.grade');
+        // var comment_box = grade_form.find('.comment-input');
+        // var old_comment = comment_box.val();
+
+        // if (checked) {
+        //     // Adding a deduction
+        //     var new_text = old_comment && !old_comment.endsWith('; ') ? '; ': '';
+        //     new_text += item_text;
+        //     comment_box.val(old_comment + new_text);
+        // } else {
+        //     // removing a deduction
+        //     var new_text1 = old_comment.replace(item_text + '; ', '');
+        //     var new_text2 = new_text1.replace(item_text, '');
+
+        //     comment_box.val(new_text2);
+        // }
+        // update_grade(comment_box, 'comment');
+    },
+    "click .remove-deduction": function(event) {
+        event.preventDefault();
+        // stopPropagation makes the dropdown stay open
+        event.stopPropagation();
+
+        RubricEntries.remove({ _id: this._id });
+        var all_stacks = Stacks.find({}).fetch();
+        for (var i = 0; i < all_stacks.length; i++) {
+            var stack = all_stacks[i];
+            var deductions = stack.deductions;
+            for (var j = 0; j < deductions.length; j++) {
+                if (deductions[j].value == this.pointValue && deductions[j].text == this.text) {
+                    var deduction_item = { value: parseInt(this.pointValue), text: this.text };
+                    Stacks.update({ _id: stack._id }, {
+                        $pull: { deductions: deduction_item}
+                    });
+                }
+            }
+        }
     }
 });
 
