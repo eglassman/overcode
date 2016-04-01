@@ -100,17 +100,16 @@
 
 <template name="elena_solution">
 <div class="stack-wrapper elena {{#if clicked}}clicked{{/if}} {{#if graded}}graded{{/if}}">
-<span class="text-muted id-label elena">Calculated Score</span>
-<span class="pull-right text-muted id-label elena">id: {{id}}</span>
-<!-- {{#if graded}}
-<span class="already-graded">
+<span class="text-muted id-label elena">id: {{id}}</span>
+{{#if graded}}
+<!-- <span class="already-graded">
     Graded
-</span>
+</span> -->
 {{else}}
 <span class="need-grade">
     Not Yet Graded
 </span>
-{{/if}} -->
+{{/if}}
 <!-- <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
         <div class="col-xs-2 score-column">
@@ -131,15 +130,11 @@
 </form> -->
 <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
-        <div class="col-xs-2 auto-score-column">
-            {{#if graded}}
-                {{getScore}} pts
-            {{else}}
-                __ pts
-            {{/if}}
+        <div class="col-xs-1 auto-score-column">
+            {{getScore}}
         </div>
         <div class="col-xs-2 fudge-column">
-            <input type="text" class="fudge-input form-control" name="fudge" placeholder="Fudge" value="{{fudge_factor}}"/>
+            <input type="text" class="fudge-input form-control" name="fudge" placeholder="#" value="{{fudge_factor}}"/>
         </div>
         <div class="col-xs-5 comment-column">
             <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
