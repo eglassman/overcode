@@ -427,7 +427,7 @@ var update_grade = function(input, score_or_comment) {
 
     Stacks.update(_id, { $set: {
         score: score,
-        graded: score !== '',
+        graded: score != '',
         comment: comment
     }}, function(err, num_updated) {
         grade_update_callback(err, grade_obj);
