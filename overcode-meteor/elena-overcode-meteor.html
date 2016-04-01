@@ -110,7 +110,7 @@
     Not Yet Graded
 </span>
 {{/if}}
-<!-- <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
+<form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
         <div class="col-xs-2 score-column">
             <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
@@ -126,27 +126,9 @@
                 {{> elena_rubric}}
             </div>
         </div>
-    </div>
-</form> -->
-<form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
-    <div class="form-group">
-        <div class="col-xs-1 auto-score-column">
-            {{getScore}}
-        </div>
-        <div class="col-xs-2 fudge-column">
-            <input type="text" class="fudge-input form-control" name="fudge" placeholder="#" value="{{fudge_factor}}"/>
-        </div>
-        <div class="col-xs-5 comment-column">
-            <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
-        </div>
-        <div class="col-xs-3 dropdown-column">
-            <div class="dropdown">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Rubric <span class="caret"></span>
-                </button>
-                {{> rubric}}
-            </div>
-        </div>
+        <!-- <div class="col-xs-1 graded-checkbox-column">
+            <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
+        </div> -->
     </div>
 </form>
 <div class="stack elena {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
@@ -215,50 +197,6 @@
     </form></li>
 </ul>
 </template>
-
-<!-- <template name="rubric">
-<ul class="rubric dropdown-menu dropdown-menu-right">
-    {{#each rubricEntries}}
-    <li>
-        {{> rubricRow}}
-    </li>
-    {{/each}}
-    <li><form class="new-deduction form-horizontal">
-        <div class="form-group">
-            <div class="col-xs-2">
-                <input type="text" class="form-control input-sm deduction-value-input"/>
-            </div>
-            <div class="col-xs-8">
-                <input type="text" class="form-control input-sm deduction-text-input" placeholder="New item"/>
-            </div>
-            <div class="col-xs-2">
-                <button class="col-xs-2 add-deduction btn btn-default btn-sm">Add</button>
-            </div>
-        </div>
-    </form></li>
-</ul>
-</template>
-
-<template name="rubricRow">
-    <div class="row">
-        <div class="col-xs-1">
-            {{#if shouldBeChecked}}
-                <input type="checkbox" class="deduction-checkbox" checked/>
-            {{else}}
-                <input type="checkbox" class="deduction-checkbox"/>
-            {{/if}}
-        </div>
-        <div class="col-xs-1 deduction-value">
-            {{pointValue}}
-        </div>
-        <div class="col-xs-9 deduction-text">
-            {{text}}
-        </div>
-        <div class="col-xs-1">
-            <span class="close remove-deduction">&times;</span>
-        </div>
-    </div>
-</template> -->
 
 <template name="elena_rubricRow">
     <div class="row">
