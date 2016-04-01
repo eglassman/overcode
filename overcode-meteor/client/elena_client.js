@@ -581,6 +581,14 @@ Template.elena_rubric.events({
 });
 
 Template.elena_filterPanel.events({
+    "click .toggle-views": function(event){
+        var use_new = Session.get('useNewView');
+        if (use_new === false) {
+            Session.set('useNewView',true);
+        } else {
+            Session.set('useNewView',false);
+        }
+    },
     "click .hide-graded": function(event){
         $('.graded').toggle();
         //console.log('hide-graded clicked')

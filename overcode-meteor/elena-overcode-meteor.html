@@ -23,9 +23,9 @@
 <template name="elena_filterPanel">
     <table>
         <tr>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="3"><button class="toggle-views btn btn-xs btn-link">Toggle Between Grading Interfaces</button></th>
+            <!-- <th></th>
+            <th></th> -->
             <th></th>
             <th></th>
             <th></th>
@@ -35,12 +35,12 @@
         </tr>
         <tr>
             <th><input id="all-error-vectors" type="checkbox"></th>
-            <th>Tests<br>Passed</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>%&nbsp;Graded</th>
+            <th colspan="2">Tests Passed</th>
+            <!-- <th></th> -->
+            <th colspan="4"># and % Graded</th>
+            <!-- <th></th>
+            <th></th> -->
+            <!-- <th>%&nbsp;Graded</th> -->
         </tr>
         {{#each errorVectors}}
             <tr class="error-vectors">

@@ -303,6 +303,18 @@ Template.stacey_body.onRendered(function() {
     setColumnHeights();
     $(window).on('resize', setColumnHeights);
 });
+Template.stacey_body.events({
+    "click .toggle-views": function(event){
+        var use_new = Session.get('useNewView');
+        console.log(use_new)
+        if (use_new === false) {
+            Session.set('useNewView',true);
+        } else {
+            Session.set('useNewView',false);
+        }
+        console.log(Session.get('useNewView'))
+    }
+})
 
 Template.registerHelper('log',function(){
     console.log('template logging',this);
