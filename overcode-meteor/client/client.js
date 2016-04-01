@@ -1,7 +1,7 @@
-// Stacks = new Mongo.Collection('stacks');
-// Phrases = new Mongo.Collection('phrases');
-// RubricEntries = new Mongo.Collection('rubricEntries');
-// CorrectTestResults = new Mongo.Collection('CorrectTestResults');
+Stacks = new Mongo.Collection('stacks');
+Phrases = new Mongo.Collection('phrases');
+RubricEntries = new Mongo.Collection('rubricEntries');
+CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 
 Template.rubric.helpers({
     'rubricEntries': function() {
