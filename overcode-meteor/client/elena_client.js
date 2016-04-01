@@ -25,6 +25,9 @@ var sharedWithClickedStack = function(phraseID){
 
 Template.elena_solution.helpers({
     "getPhraseFromID": getPhraseFromID,
+    "numRaw": function(){
+        return this.rawSolutions.length
+    },
     "clicked": clicked,
     "createSpace": function() {
         var diff = this.indentDiff !== undefined ? Math.abs(this.indentDiff / 4) : 0;
