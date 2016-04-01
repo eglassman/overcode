@@ -57,7 +57,7 @@
                 </td>
                 <td class="right-aligned">{{numGraded}}</td>
                 <td>&nbsp;&nbsp;&nbsp;/</td>
-                <td class="right-aligned padding-right">{{solution_count}}</td>
+                <td class="right-aligned padding-right width-20px">{{solution_count}}</td>
                 <td>
                     <div class="progress">
                       <div class="progress-bar" role="progressbar" aria-valuenow="{{percentGraded}}"
@@ -80,7 +80,7 @@
 
 <td class="right-aligned">{{numGraded}}</td>
 <td>&nbsp;&nbsp;&nbsp;/</td>
-<td class="right-aligned padding-right">{{totalNum}}</td>
+<td class="right-aligned padding-right width-20px">{{totalNum}}</td>
 <td>
     <div class="progress">
       <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{totalPercentGraded}}"
@@ -101,19 +101,15 @@
 <template name="elena_solution">
 <div class="stack-wrapper elena {{#if clicked}}clicked{{/if}} {{#if graded}}graded{{/if}}">
 <span class="text-muted id-label elena">id: {{id}}</span>
-<span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
 {{#if graded}}
-<span class="already-graded">
+<!-- <span class="already-graded">
     Graded
-</span>
+</span> -->
 {{else}}
 <span class="need-grade">
     Not Yet Graded
 </span>
 {{/if}}
-<span class="show-buttons-wrapper">
-    <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show {{numRaw}} raw solution(s)</button>
-</span>
 <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
         <div class="col-xs-2 score-column">
@@ -142,11 +138,15 @@
     <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithPreviousStack}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
+<span class="show-buttons-wrapper">
+    <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show {{numRaw}} raw solution(s)</button>
+</span>
 <div>
     {{#each rawSolutions}}
         <pre class="raw-solution hidden"><code>{{this}}</code></pre>
     {{/each}}
 </div>
+<span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
 {{> elena_testResults testResultInformation}}
 </div>
 </template>
