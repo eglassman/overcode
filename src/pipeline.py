@@ -1280,7 +1280,7 @@ def run(folderOfData, destFolder):
     incorrect_variables = []
     var_mappings = find_all_matching_vars(
         incorrect_solutions, correct_abstracts, incorrect_variables)
-    dumpOutput(var_mappings, 'var_mappings.json')
+    # dumpOutput(var_mappings, 'var_mappings.json')
 
     # Turn every incorrect solution into a singleton stack
     incorrect_fake_stacks = fake_stacks(incorrect_solutions)

@@ -7,6 +7,7 @@ import sys
 def extract_solutions_from_file(filename, output_base):
     max_id = 0
     username_to_id = {}
+    id_to_username = {}
     num_correct = 0
     num_incorrect = 0
     total_num_lines = 0
@@ -37,6 +38,7 @@ def extract_solutions_from_file(filename, output_base):
             else:
                 student_id = 'student_' + str(max_id)
                 username_to_id[username] = student_id
+                id_to_username[student_id] = username
                 max_id += 1
 
             try:
@@ -50,7 +52,7 @@ def extract_solutions_from_file(filename, output_base):
                 "# attempts: %s\n" % attempts +
                 "# auto-assigned grade: %s\n\n" % grade)
             with open(os.path.join(output_base, 's%s.py' % str(i-1)), 'w') as sol_file:
-                sol_file.write(extra_info + student_response)
+                sol_file.write(student_response)
 
     print "Incorrect solutions/Total solutions:", str(num_incorrect) + '/' + str(num_incorrect + num_correct)
     print "Number of unique students:", len(username_to_id)
@@ -58,7 +60,7 @@ def extract_solutions_from_file(filename, output_base):
     print "Average number of lines:", float(total_num_lines) / (num_incorrect + num_correct)
 
     with open('mapping.txt', 'w') as f:
-        pprint.pprint(username_to_id, f)
+        pprint.pprint(id_to_username, f)
 
 if __name__ == '__main__':
     output_base = os.path.join(sys.argv[2], "data")
