@@ -211,7 +211,7 @@ ul
     width: 390px; /*10 less than its container*/
 }
 .solution-list.elena {
-    margin-left: 410px; /*margin-left + width of filter-panel + buffer?*/
+    /*margin-left: 410px; margin-left + width of filter-panel + buffer?*/
     display: table;
 }
 .need-grade {
