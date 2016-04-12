@@ -86,7 +86,7 @@ Template.elena_solution.helpers({
         for (var i = 0; i < ordered_testcases.length; i++) {
             var test = ordered_testcases[i];
             results.push({
-                test: test.slice(6), // remove 'print '
+                test: test.replace('run_code', 'deep_reverse'),//test.slice(6), // remove 'print '
                 output: this.test_input_outputs[test],
                 correct: this.error_vector[i],
                 correct_output: correct_results[test]
@@ -317,7 +317,11 @@ Template.elena_filterPanel.helpers({
 });
 
 Template.elena_solutionsList.helpers({
-    "solutions": getSolutionsInOrder
+    "solutions": function() {
+        return getSolutionsInOrder().filter(function(sol) {
+            return sol.split == 'B';
+        });
+    }
 });
 
 Template.elena_testResults.helpers({

@@ -10,7 +10,7 @@ CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 
 var RELOAD = true; //false;
 
-var DATA_DIR_NAME = 'flatten'
+var DATA_DIR_NAME = 'user_test'
 //var LOGGING_DIR_NAME = 'logging'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
@@ -55,6 +55,12 @@ Meteor.startup(function () {
 
     if (RELOAD) {
         RubricEntries.remove({});
+
+        var entries = [{"_id":"FwvJLEnkixqeGE2tT","pointValue":"-3","text":"fails to mutate inner lists correctly (e.g. [::-1] with for each loop)"},{"_id":"KDBFNcNKx8tr624qG","pointValue":"-1","text":"mixing up indices and elements"},{"_id":"Ls76N4DobYYqft5rf","pointValue":"-2","text":"manual reverse has wrong index"},{"_id":"MAtLYjN6xSYw2foET","pointValue":"-2","text":"var = L.reverse() --\u003e L.reverse()"},{"_id":"PKbfe4TxS7hWjP6Ni","pointValue":"-5","text":"sort in reverse instead of reverse"},{"_id":"RDJxcmy5HLX44XNka","pointValue":"-1","text":"function returns something"},{"_id":"Wx3cmxbtnHauct24J","pointValue":"-2","text":"needed to make a deepcopy of original list"},{"_id":"YRRBMvrKP9tfAZ4ca","pointValue":"-2","text":"index out of bounds"},{"_id":"Z5kDPAEi68QEcBse6","pointValue":"-1","text":"does not handle empty lists"},{"_id":"c45svq6czJcojac7a","pointValue":"-2","text":"sort in reverse instead of reverse"},{"_id":"eDzHk7bBAKffg9Gh7","pointValue":"-1","text":"violates docstring"},{"_id":"kQzvinvWMcsggwCgy","pointValue":"-3","text":"reverses inner lists multiple times"},{"_id":"kiTtEWqr5doz2GqQu","pointValue":"-3","text":"makes a copy of input list but correctly mutates the copy"},{"_id":"pyS7SwRTySfhwaYCc","pointValue":"-3","text":"function terminates early"},{"_id":"qWstyxX6RwCkxAW4r","pointValue":"-3","text":"fails to mutate overal list correctly (e.g. [::-1])"},{"_id":"rjveWh9aBkL4Xw58r","pointValue":"-1","text":"minor error with minor reverse"},{"_id":"ru3JyNtR5qpqcANMh","pointValue":"-5","text":"does not reverse inner lists"},{"_id":"tmfaX8dwpDeHr9PSj","pointValue":"-8","text":"shuffles instead of swaps"},{"_id":"vRNxN5RvLXabNt3tJ","pointValue":"-3","text":"reverses some inner lists but not all"},{"_id":"wfTEPubCG8eRMsLMu","pointValue":"+1","text":"attempt to reverse outer list"},{"_id":"zZesXpwN5TAZFw3ne","pointValue":"-5","text":"does not reverse overall list"}]
+        for (var i = 0; i < entries.length; i++) {
+            RubricEntries.insert(entries[i]);
+        }
+
         Stacks.remove({});
         Phrases.remove({});
 
