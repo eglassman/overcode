@@ -1,3 +1,7 @@
+Meteor.startup(function() {
+    Session.set('checkedErrorVectors', ["true,true,true,true,true,true,true,true,true,true,true", "false,true,false,false,false,false,false,false,false,true,false", "false,false,false,false,false,false,false,false,false,false,false"])
+});
+
 Template.elena_rubric.helpers({
     'rubricEntries': function() {
         return RubricEntries.find({});
