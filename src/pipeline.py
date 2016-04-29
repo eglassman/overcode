@@ -1154,7 +1154,7 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
 
         for (line_object, local_names, indent) in rep.lines:
             phrase = line_object.render()
-            line_obj_id = all_lines.index(line_object)
+            line_obj_id = all_lines.index(line_object) + 1
             if phrase not in phrase_to_lines:
                 phrase_to_lines[phrase] = set()
                 ordered_phrases.append(phrase)
