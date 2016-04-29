@@ -1133,6 +1133,7 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             'members': stack.members,
             'count': stack.count,
             'phraseIDs': set(),
+            'lineIDs': set(),
             'variableIDs': set(),
             'lines': []
         }
@@ -1160,9 +1161,11 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             phrase_to_lines[phrase].add(line_obj_id)
             phraseID = ordered_phrases.index(phrase) + 1
             stack_json['phraseIDs'].add(phraseID)
+            stack_json['lineIDs'].add(line_obj_id)
             stack_json['lines'].append({
                 'indent': indent,
-                'phraseID': phraseID
+                'phraseID': phraseID,
+                'line_obj_ID': line_obj_id
             })
 
         if rep.correct:
@@ -1193,11 +1196,21 @@ def format_variable_output(all_abstracts):
     return variables_json_format
 
 def format_line_output(all_lines):
+
+    # These are the properties of lines
+    # self.template = template
+    # self.abstract_variables = abstract_variables
+    # # dictionary mapping testcase strings to sequences of values
+    # self.line_values = line_values
+
     expanded_output = []
     for (i, line) in enumerate(all_lines):
         expanded_output.append({
             'id': i + 1,
-            'expanded_representation': str(line)
+            'expanded_representation': str(line),
+            'template': line.template,
+            #'abstract_variables': line.abstract_variables, #TODO: OPENS CAN OF WORMS
+            'line_values': line.line_values
         })
     return expanded_output
 
