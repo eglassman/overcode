@@ -1,5 +1,6 @@
 import cgi
 from collections import Counter
+import imp
 import json
 from math import log
 import os
@@ -13,6 +14,7 @@ import types
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
 
+GRADER = None
 use_original_line_equality_metric = False
 
 ###############################################################################
@@ -42,14 +44,26 @@ def get_name(var_obj):
         return var_obj.maps_to.canon_name
     return var_obj.local_name
 
-def compare_output(actual, correct_output):
-    total = 0
-    num_correct = 0
-    for test in correct_output:
-        total += 1
-        if actual[test] == correct_output[test]:
-            num_correct += 1
-    return num_correct == total, num_correct, total
+def compare_output(ordered_tests, tests_to_actual, tests_to_expected):
+    # print "GRADER:", GRADER
+    # print "tests_to_actual:", tests_to_actual
+    # print "tests_to_expected:", tests_to_expected
+    # return True, []
+
+    error_vector = []
+    for (i, test) in enumerate(GRADER.tests()):
+        actual = tests_to_actual[ordered_tests[i]]
+        expected = tests_to_expected[ordered_tests[i]]
+        error_vector.append(test.compare_results(expected, actual))
+
+    return error_vector
+    # total = 0
+    # num_correct = 0
+    # for test in correct_output:
+    #     total += 1
+    #     if actual[test] == correct_output[test]:
+    #         num_correct += 1
+    # return num_correct == total, num_correct, total
 
 ###############################################################################
 ## Classes
@@ -57,10 +71,14 @@ def compare_output(actual, correct_output):
 class Solution(object):
     """Information about a single solution."""
 
-    def __init__(self, solnum, testcase_to_trace):
+    def __init__(self, solnum, ordered_testcases, testcase_to_trace, testcase_to_output, correct_output):
         self.solnum = solnum
+        self.testcases = ordered_testcases
         # a dictionary mapping a testcase string to a trace
         self.testcase_to_trace = testcase_to_trace
+        # maps a testcase string to stdout results for that test
+        self.output = testcase_to_output
+
         self.local_vars = []
         self.abstract_vars = []
         # a list of (line object, local names, indent) tuples
@@ -68,7 +86,8 @@ class Solution(object):
         # a list of line objects
         self.canonical_lines = []
 
-        self.correct = None
+        self.error_vector = compare_output(ordered_testcases, testcase_to_output, correct_output)
+        self.correct = all(self.error_vector)
 
     def getDict(self):
         return self.__dict__
@@ -78,20 +97,23 @@ class Solution(object):
         Higher numbers => more similar. Currently, the number of rendered
         phrases shared between the two solutions, plus the number of variable
         names shared."""
-        rendered_self = set(l.render() for l in self.canonical_lines)
-        rendered_other = set(l.render() for l in other.canonical_lines)
-        # my_line_total = len(self.canonical_lines)
-        shared_lines = rendered_self & rendered_other
-        num_lines_total = len(rendered_self) + len(rendered_other)
-        shared_lines_percent = float(len(shared_lines)) / num_lines_total
+        try:
+            rendered_self = set(l.render() for l in self.canonical_lines)
+            rendered_other = set(l.render() for l in other.canonical_lines)
+            # my_line_total = len(self.canonical_lines)
+            shared_lines = rendered_self & rendered_other
+            num_lines_total = len(rendered_self) + len(rendered_other)
+            shared_lines_percent = float(len(shared_lines)) / num_lines_total
 
-        names_self = set(get_name(v) for v in self.local_vars)
-        names_other = set(get_name(v) for v in other.local_vars)
-        shared_names = names_self & names_other
-        num_names_total = len(names_self) + len(names_other)
-        shared_names_percent = float(len(shared_names)) / num_names_total
+            names_self = set(get_name(v) for v in self.local_vars)
+            names_other = set(get_name(v) for v in other.local_vars)
+            shared_names = names_self & names_other
+            num_names_total = len(names_self) + len(names_other)
+            shared_names_percent = float(len(shared_names)) / num_names_total
+            return shared_lines_percent + shared_names_percent
+        except ZeroDivisionError:
+            return 0.0
 
-        return shared_lines_percent + shared_names_percent
 
     def __str__(self):
         return "Solution(" + str(self.solnum) + ")"
@@ -147,7 +169,10 @@ class AbstractVariable(object):
         returns: boolean, True if inst should be added to self, False otherewise.
         """
         assert isinstance(inst, VariableInstance)
-        return self.sequence == inst.sequence
+        try:
+            return self.sequence == inst.sequence
+        except AttributeError:
+            return False
 
     def add_instance(self, inst):
         """
@@ -317,23 +342,56 @@ def populate_from_pickles(all_solutions, pickleSrc):
     """
 
     print "Loading data"
+
+    answer_path = path.join(pickleSrc, 'answer.pickle')
+    if path.isfile(answer_path):
+        with open(answer_path, 'r') as f:
+            unpickled = pickle.load(f)
+
+        testcases, correct_outputs = unpickled['testcases'], unpickled['outputs']
+        testcase_to_correct_output = {testcases[i]: correct_outputs[i] for i in range(len(testcases))}
+        print "ANSWER:", testcase_to_correct_output
+        # with open('correct.py', 'w') as f:
+        #     pprint.pprint(testcase_to_correct_output, f)
+        # return
+        # for i in range(len(testcases)):
+        #     testcase_to_trace[testcases[i]] = traces[i]
+
+        # correct_outputs = {}
+        # for (testcase, trace) in testcase_to_trace.iteritems():
+        #     if '__return__' not in trace:
+        #         raise ExtractionException('Solution did not run to completion')
+
+        #     # The second-to-last step seems to always have the return value.
+        #     # Steps in the trace are of the form (step, value), so take just
+        #     # the value
+        #     correct_outputs[testcase] = trace['__return__'][-2][1]
+        # print "ANSWER IS:", correct_outputs
+
     for filename in os.listdir(pickleSrc):
         solnum = filename.split('.')[0]
         # print solnum
+        if solnum == "answer":
+            continue
 
         with open(path.join(pickleSrc, filename), 'r') as f:
             unpickled = pickle.load(f)
 
         testcases = unpickled['testcases']
+        ordered_outputs = unpickled['outputs']
         traces = unpickled['traces']
 
-        testcase_to_trace = {}
-        for i in range(len(testcases)):
-            testcase_to_trace[testcases[i]] = traces[i]
+        testcase_to_trace = {testcases[i]: traces[i] for i in range(len(testcases))}
+        testcase_to_output = {testcases[i]: ordered_outputs[i] for i in range(len(testcases))}
 
-        sol = Solution(solnum, testcase_to_trace)
-
+        sol = Solution(solnum,
+                       testcases,
+                       testcase_to_trace,
+                       testcase_to_output,
+                       testcase_to_correct_output)
         all_solutions.append(sol)
+
+    return testcase_to_correct_output
 
 
 ###############################################################################
@@ -442,7 +500,7 @@ def extract_single_sequence(column):
 class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
 
-def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_output):
+def extract_output_and_sequences_single_sol(sol, correct_abstracts):
     """
     For each local variable in a single solution, extract its sequence of
     values, create a VariableInstance, and assign that VariableInstance to
@@ -456,16 +514,16 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_outp
     mutates sol and correct_abstracts
     """
 
-    output = {}
+    # output = {}
     sequences = {}
     for (testcase, trace) in sol.testcase_to_trace.iteritems():
-        if '__return__' not in trace:
-            raise ExtractionException('Solution did not run to completion')
+        # if '__return__' not in trace:
+        #     raise ExtractionException('Solution did not run to completion')
 
         # The second-to-last step seems to always have the return value.
         # Steps in the trace are of the form (step, value), so take just
         # the value
-        output[testcase] = trace['__return__'][-2][1]
+        # output[testcase] = trace['__return__'][-2][1]
 
         for localVarName, localVarData in trace.iteritems():
             if localVarName.startswith('__'):
@@ -487,11 +545,11 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_outp
                 sequences[localVarName] = {}
             sequences[localVarName][testcase] = sequence
 
-    sol.output = output
-    is_correct, num_passed_tests, total_num_tests = compare_output(output, correct_output)
-    sol.correct = is_correct
-    sol.num_passed_tests = num_passed_tests
-    sol.total_num_tests = total_num_tests
+    # sol.output = output
+    # is_correct, num_passed_tests, total_num_tests = compare_output(output, correct_output)
+    # sol.correct = is_correct
+    # sol.num_passed_tests = num_passed_tests
+    # sol.total_num_tests = total_num_tests
 
     for localVarName in sequences:
         var = VariableInstance(sequences[localVarName], sol.solnum, localVarName)
@@ -508,8 +566,7 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_outp
 def extract_output_and_seqs(all_solutions,
                             correct_solutions,
                             incorrect_solutions,
-                            correct_abstracts,
-                            correct_output):
+                            correct_abstracts):
     """
     Extract and collect variable information from all solutions.
 
@@ -525,7 +582,7 @@ def extract_output_and_seqs(all_solutions,
     for sol in all_solutions[:]:
         try:
             print "Collecting variables in", sol.solnum
-            extract_output_and_sequences_single_sol(sol, correct_abstracts, correct_output)
+            extract_output_and_sequences_single_sol(sol, correct_abstracts)
             if sol.correct:
                 correct_solutions.append(sol)
             else:
@@ -1068,11 +1125,15 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
             'id': i,
             'number': rep.solnum,
             'correct': rep.correct,
-            'num_passed_tests': rep.num_passed_tests,
-            'total_num_tests': rep.total_num_tests,
+            'num_passed_tests': rep.error_vector.count(True),
+            'total_num_tests': len(rep.error_vector),
+            'error_vector': rep.error_vector,
+            'test_input_outputs': rep.output,
+            'testcases': rep.testcases,
             'members': stack.members,
             'count': stack.count,
             'phraseIDs': set(),
+            'lineIDs': set(),
             'variableIDs': set(),
             'lines': []
         }
@@ -1093,16 +1154,18 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
 
         for (line_object, local_names, indent) in rep.lines:
             phrase = line_object.render()
-            line_obj_id = all_lines.index(line_object)
+            line_obj_id = all_lines.index(line_object) + 1
             if phrase not in phrase_to_lines:
                 phrase_to_lines[phrase] = set()
                 ordered_phrases.append(phrase)
             phrase_to_lines[phrase].add(line_obj_id)
             phraseID = ordered_phrases.index(phrase) + 1
             stack_json['phraseIDs'].add(phraseID)
+            stack_json['lineIDs'].add(line_obj_id)
             stack_json['lines'].append({
                 'indent': indent,
-                'phraseID': phraseID
+                'phraseID': phraseID,
+                'line_obj_ID': line_obj_id
             })
 
         if rep.correct:
@@ -1133,11 +1196,21 @@ def format_variable_output(all_abstracts):
     return variables_json_format
 
 def format_line_output(all_lines):
+
+    # These are the properties of lines
+    # self.template = template
+    # self.abstract_variables = abstract_variables
+    # # dictionary mapping testcase strings to sequences of values
+    # self.line_values = line_values
+
     expanded_output = []
     for (i, line) in enumerate(all_lines):
         expanded_output.append({
             'id': i + 1,
-            'expanded_representation': str(line)
+            'expanded_representation': str(line),
+            'template': line.template,
+            #'abstract_variables': line.abstract_variables, #TODO: OPENS CAN OF WORMS
+            'line_values': line.line_values
         })
     return expanded_output
 
@@ -1174,7 +1247,13 @@ class ElenaEncoder(json.JSONEncoder):
 ###############################################################################
 ## Run the pipeline!
 ###############################################################################
-def run(folderOfData, destFolder, correct_output):
+def set_grader(path):
+    gm = imp.load_source('graderModule', path)
+
+    global GRADER
+    GRADER = gm.grader
+
+def run(folderOfData, destFolder):
     ensure_folder_exists(destFolder)
     def dumpOutput(data, filename, sort_keys=True, indent=4):
         filepath = path.join(destFolder, filename)
@@ -1183,7 +1262,10 @@ def run(folderOfData, destFolder, correct_output):
 
     # Load solutions
     all_solutions = []
-    populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
+    correct_output = populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
+
+    with open(path.join(destFolder, 'correctOutput.json'), 'w') as f:
+        json.dump(correct_output, f)
 
     # Extract output and variable sequences from the processed traces, and assign
     # correct variables to AbstractVariables
@@ -1193,8 +1275,7 @@ def run(folderOfData, destFolder, correct_output):
         all_solutions,
         correct_solutions,
         incorrect_solutions,
-        correct_abstracts,
-        correct_output)
+        correct_abstracts)
 
     # Assign names to the correct AbstractVariables
     find_canon_names(correct_abstracts)
@@ -1212,7 +1293,7 @@ def run(folderOfData, destFolder, correct_output):
     incorrect_variables = []
     var_mappings = find_all_matching_vars(
         incorrect_solutions, correct_abstracts, incorrect_variables)
-    dumpOutput(var_mappings, 'var_mappings.json')
+    # dumpOutput(var_mappings, 'var_mappings.json')
 
     # Turn every incorrect solution into a singleton stack
     incorrect_fake_stacks = fake_stacks(incorrect_solutions)
@@ -1239,7 +1320,7 @@ def run(folderOfData, destFolder, correct_output):
 
     try:
         dumpOutput(variables, 'variables.json')
-    except ValueError:
+    except (ValueError, TypeError):
         # Circular reference. Try pretty printing instead. This might break
         # things in the UI (though currently variables are not used so it's
         # safe, for now)

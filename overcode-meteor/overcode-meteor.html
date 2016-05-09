@@ -3,32 +3,76 @@
 </head>
 
 <body>
+{{#if useNewView}}
+    <div class="supersize-me">
+    {{> elena_body}}
+    </div>
+{{else}}
+    {{> stacey_body}}
+{{/if}}
+</body>
+
+<template name="stacey_body">
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">
+            <button class="toggle-views btn btn-xs btn-link">Toggle Between Grading Interfaces</button>
             {{> gradedCount}}
             {{> rubric}}
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6 solution-list">
+        <div class="col-xs-4 solution-list">
             {{> incorrectSolutionsList}}
         </div>
-        <div class="col-xs-6 solution-list">
+        <div class="col-xs-4 solution-list no-left-padding">
             {{> correctSolutionsList}}
+        </div>
+        <div class="col-xs-4 filter-panel">
+            {{> filterPanel}}
         </div>
     </div>
 </div>
-</body>
+</template>
+
+<template name="filterPanel">
+    <table>
+        <tr>
+            <th><input id="all-error-vectors" type="checkbox"></th>
+            <th>#&nbsp;Passed</th>
+            <th></th>
+            <th>#&nbsp;Solutions</th>
+        </tr>
+        {{#each errorVectors}}
+            <tr class="error-vectors">
+                <td>
+                    {{#if shouldBeChecked}}
+                    <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}" checked>
+                    {{else}}
+                    <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}">
+                    {{/if}}
+                </td>
+                <td class="centered">{{num_passed}}/{{total_num}}</td>
+                <td class="">
+                {{{renderVector}}}
+                </td>
+                <td class="centered">{{solution_count}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</template>
 
 <template name="gradedCount">
 Graded: {{numGraded}}/{{totalNum}}
+<span style="margin-left:30px">First ungraded stack id: {{firstUngraded}}</span>
 </template>
 
 <template name="correctSolutionsList">
     {{#each solutions}}
         {{#if correct}}
-            {{> solution}}
+            {{#if inFilteredSet}}
+                {{> solution}}
+            {{/if}}
         {{/if}}
     {{/each}}
 </template>
@@ -36,7 +80,9 @@ Graded: {{numGraded}}/{{totalNum}}
 <template name="incorrectSolutionsList">
     {{#each solutions}}
         {{#unless correct}}
-            {{> solution}}
+            {{#if inFilteredSet}}
+                {{> solution}}
+            {{/if}}
         {{/unless}}
     {{/each}}
 </template>
@@ -59,13 +105,16 @@ Graded: {{numGraded}}/{{totalNum}}
 <span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
 <form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
     <div class="form-group">
-        <div class="col-xs-2 score-column">
-            <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
+        <div class="col-xs-1 auto-score-column">
+            {{getScore}}
         </div>
-        <div class="col-xs-7 comment-column">
+        <div class="col-xs-2 fudge-column">
+            <input type="text" class="fudge-input form-control" name="fudge" placeholder="#" value="{{fudge_factor}}"/>
+        </div>
+        <div class="col-xs-5 comment-column">
             <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
         </div>
-        <div class="col-xs-2 dropdown-column">
+        <div class="col-xs-3 dropdown-column">
             <div class="dropdown">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     Rubric <span class="caret"></span>
@@ -85,15 +134,40 @@ Graded: {{numGraded}}/{{totalNum}}
     <pre><div class="pin-button pull-right {{#unless clicked}}not-toggled{{/unless}}" data-id={{id}} title="Click to {{#if clicked}}unpin{{else}}pin{{/if}}"><span class="glyphicon glyphicon-pushpin"></span></div><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithClickedStack phraseID}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
 {{/with}}</span>{{/each}}</code></pre>
 </div>
-<div class="show-raw-wrapper">
-    <button class="show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
+<div class="show-buttons-wrapper">
+    <button class="show-test-results not-shown btn btn-xs btn-link">Show test results</button>
+    <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show raw solution(s)</button>
 </div>
+{{> testResults testResultInformation}}
 <div>
     {{#each rawSolutions}}
         <pre class="raw-solution hidden"><code>{{this}}</code></pre>
     {{/each}}
 </div>
 </div>
+</template>
+
+<template name="testResults">
+    <ul class="list-group test-results hidden">
+        {{#each this}}
+        <li class="list-group-item">
+            {{#if correct}}
+            <span class="color-correct glyphicon glyphicon-ok"></span>
+            {{else}}
+            <span class="color-incorrect glyphicon glyphicon-remove"></span>
+            {{/if}}
+            <small class="test-input"><label>Test:</label> <samp>{{test}}</samp></small>
+            <br>
+            <small class="test-output"><label>Expected:</label> <samp>{{correct_output}}</samp></small>
+            <br>
+            <small class="test-output"><label>Result:</label> <!-- trailing whitespace intentional -->
+                <samp class="{{#if correct}}color-correct{{else}}color-incorrect{{/if}}">
+                    {{#if validOutput}}{{output}}{{else}}(No output){{/if}}
+                </samp>
+            </small>
+        </li>
+        {{/each}}
+    </ul>
 </template>
 
 <template name="rubric">
@@ -131,8 +205,11 @@ Graded: {{numGraded}}/{{totalNum}}
         <div class="col-xs-1 deduction-value">
             {{pointValue}}
         </div>
-        <div class="col-xs-10 deduction-text">
+        <div class="col-xs-9 deduction-text">
             {{text}}
+        </div>
+        <div class="col-xs-1">
+            <span class="close remove-deduction">&times;</span>
         </div>
     </div>
 </template>

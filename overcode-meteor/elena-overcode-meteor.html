@@ -1,0 +1,221 @@
+<head>
+  <title>overcode-meteor</title>
+</head>
+
+<template name="elena_body">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            {{> elena_rubric}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="filter-panel elena">
+            {{> elena_filterPanel}}
+        </div>
+        <div class="solution-list elena">
+            {{> elena_solutionsList}}
+        </div>
+    </div>
+</div>
+</template>
+
+<template name="elena_filterPanel">
+    <table>
+        <tr>
+            <th colspan="3"><button class="toggle-views btn btn-xs btn-link">Toggle Between Grading Interfaces</button></th>
+            <!-- <th></th>
+            <th></th> -->
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>
+                <button class="hide-graded shown btn btn-xs btn-link">Hide graded<br>solution(s)</button>
+            </th>
+        </tr>
+        <tr>
+            <th><input id="all-error-vectors" type="checkbox"></th>
+            <th colspan="2">Tests Passed</th>
+            <!-- <th></th> -->
+            <th colspan="4"># and % Graded</th>
+            <!-- <th></th>
+            <th></th> -->
+            <!-- <th>%&nbsp;Graded</th> -->
+        </tr>
+        {{#each errorVectors}}
+            <tr class="error-vectors">
+                <td>
+                    {{#if shouldBeChecked}}
+                    <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}" checked>
+                    {{else}}
+                    <input class="error-vector-checkbox" type="checkbox" data-vector="{{error_vector}}">
+                    {{/if}}
+                </td>
+                <td class="right-aligned padding-right">{{num_passed}}</td>
+                <td class="">
+                {{{renderVector}}}
+                </td>
+                <td class="right-aligned">{{numGraded}}</td>
+                <td>&nbsp;&nbsp;&nbsp;/</td>
+                <td class="right-aligned padding-right width-20px">{{solution_count}}</td>
+                <td>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="{{percentGraded}}"
+                      aria-valuemin="0" aria-valuemax="100" style="width:{{percentGraded}}%">
+                      </div>   
+                    </div>   
+                </td>
+            </tr>
+        {{/each}}
+        <tr class="gap-above">
+            <td></td>
+            <td></td>
+            <td></td>
+            {{> elena_gradedCount}}
+        </tr>
+    </table>
+</template>
+
+<template name="elena_gradedCount">
+
+<td class="right-aligned">{{numGraded}}</td>
+<td>&nbsp;&nbsp;&nbsp;/</td>
+<td class="right-aligned padding-right width-20px">{{totalNum}}</td>
+<td>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{totalPercentGraded}}"
+      aria-valuemin="0" aria-valuemax="100" style="width:{{totalPercentGraded}}%">
+      </div>   
+    </div>   
+</td>
+<!-- Graded: {{numGraded}}/{{totalNum}} -->
+<!-- <span style="margin-left:30px">A random stack in need of a grade: {{firstUngraded}}</span> -->
+</template>
+
+<template name="elena_solutionsList">
+    {{#each solutions}}
+        {{> elena_solution}}
+    {{/each}}
+</template>
+
+<template name="elena_solution">
+<div class="stack-wrapper elena {{#if clicked}}clicked{{/if}} {{#if graded}}graded{{/if}}">
+<span class="text-muted id-label elena">id: {{id}}</span>
+{{#if graded}}
+<!-- <span class="already-graded">
+    Graded
+</span> -->
+{{else}}
+<span class="need-grade">
+    Not Yet Graded
+</span>
+{{/if}}
+<form class="grade form-horizontal"  data-record-id="{{_id}}" data-id="{{id}}">
+    <div class="form-group">
+        <div class="col-xs-2 score-column">
+            <input type="text" class="score-input form-control" name="score" placeholder="Score" value="{{score}}"/>
+        </div>
+        <div class="col-xs-8 comment-column">
+            <input type="text" class="comment-input form-control" name="comment" placeholder="Comments" value="{{comment}}"/>
+        </div>
+        <div class="col-xs-2 dropdown-column">
+            <div class="dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Rubric <span class="caret"></span>
+                </button>
+                {{> elena_rubric}}
+            </div>
+        </div>
+        <!-- <div class="col-xs-1 graded-checkbox-column">
+            <span class="glyphicon glyphicon-{{#if graded}}check{{else}}unchecked{{/if}}"></span>
+        </div> -->
+    </div>
+</form>
+<div class="stack elena {{#if correct}}correct{{else}}incorrect{{/if}}" id="{{id}}">
+    <!-- {{#if closest}}
+        <span class="closest text-muted">Closer to <a class="closer-to" data-closer={{closest}}>stack {{closest}}</a></span>
+    {{/if}} -->
+    <pre><code>{{#each lines}}<span class="{{#if hasDifferentIndent}}different-indent{{/if}}">{{{createSpace}}}</span><span class="{{#if sharedWithPreviousStack}}dimmed{{/if}}">{{#with getPhraseFromID phraseID}}{{{code}}}
+{{/with}}</span>{{/each}}</code></pre>
+</div>
+<span class="show-buttons-wrapper">
+    <button class="pull-right show-raw not-shown btn btn-xs btn-link">Show {{numRaw}} raw solution(s)</button>
+</span>
+<div>
+    {{#each rawSolutions}}
+        <pre class="raw-solution hidden"><code>{{this}}</code></pre>
+    {{/each}}
+</div>
+<span class="text-muted auto-score">{{num_passed_tests}}/{{total_num_tests}} tests passed</span>
+{{> elena_testResults testResultInformation}}
+</div>
+</template>
+
+<template name="elena_testResults">
+    <ul class="list-group test-results">
+        {{#each this}}
+        <li>
+            {{#if correct}}
+            <span class="color-correct glyphicon glyphicon-ok"></span>
+            <small class="test-input">Test: <samp>{{test}}</samp></small>
+            {{else}}
+            <span class="color-incorrect glyphicon glyphicon-remove"></span>
+            <small class="test-input">Test: <samp>{{test}}</samp></small>
+            <br>
+            <small class="test-output">Expected: <samp>{{correct_output}}</samp></small>
+            <br>
+            <small class="test-output">Result: <!-- trailing whitespace intentional -->
+                <samp class="{{#if correct}}color-correct{{else}}color-incorrect{{/if}}">
+                    {{#if validOutput}}{{output}}{{else}}(No output){{/if}}
+                </samp>
+            </small>
+            {{/if}}
+        </li>
+        {{/each}}
+    </ul>
+</template>
+
+<template name="elena_rubric">
+<ul class="rubric dropdown-menu dropdown-menu-right">
+    {{#each rubricEntries}}
+    <li>
+        {{> elena_rubricRow}}
+    </li>
+    {{/each}}
+    <li><form class="new-deduction form-horizontal">
+        <div class="form-group">
+            <div class="col-xs-2">
+                <input type="text" class="form-control input-sm deduction-value-input"/>
+            </div>
+            <div class="col-xs-8">
+                <input type="text" class="form-control input-sm deduction-text-input" placeholder="New item"/>
+            </div>
+            <div class="col-xs-2">
+                <button class="col-xs-2 add-deduction btn btn-default btn-sm">Add</button>
+            </div>
+        </div>
+    </form></li>
+</ul>
+</template>
+
+<template name="elena_rubricRow">
+    <div class="row">
+        <div class="col-xs-1">
+            {{#if shouldBeChecked}}
+                <input type="checkbox" class="deduction-checkbox" checked/>
+            {{else}}
+                <input type="checkbox" class="deduction-checkbox"/>
+            {{/if}}
+        </div>
+        <div class="col-xs-1 deduction-value">
+            {{pointValue}}
+        </div>
+        <div class="col-xs-9 deduction-text">
+            {{text}}
+        </div>
+        <div class="col-xs-1">
+            <span class="close remove-deduction">&times;</span>
+        </div>
+    </div>
+</template>
+

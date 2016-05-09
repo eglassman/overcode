@@ -10,7 +10,13 @@ from pipeline_util import ensure_folder_exists
 # Trace info extractor, tidier finalizer
 from pipeline_default_functions import extract_var_info_from_trace
 from pipeline_default_functions import tidy_one
-from pipeline_default_functions import make_default_finalizer
+from pipeline_default_functions import elena_finalizer
+
+# To run on a non-class problem, comment out definitions.py and change testcase_defs
+# and import_prefix to empty strings
+from affixes import testcase_defs_mitcampus as testcase_defs, import_prefix
+# testcase_defs, import_prefix = "", ""
+from definitions import *
 
 STOP_ON_ERROR = False
 
@@ -50,27 +56,36 @@ def tidy(source_dir, dest_dir, tested_function_name):
             skipped.append(sol_id)
     return skipped
 
-def logger_wrapper(source, finalizer):
+def augment(source_dir, dest_dir):
+    ensure_folder_exists(dest_dir)
+
+    for filename in os.listdir(source_dir):
+        with open(path.join(source_dir, filename), 'r') as f:
+            source = f.read()
+        with open(path.join(dest_dir, filename), 'w') as f:
+            f.write(import_prefix + source + testcase_defs)
+
+def logger_wrapper(source):
     """
     Call pg_logger on the given source with the given finalizer. Only return
     the trace and drop the argument names and return variables on the floor.
     """
-    trace, args, returnVars = pg_logger.exec_script_str_local(
+    # trace, args, returnVars = pg_logger.exec_script_str_local(
+    trace, stdout = pg_logger.exec_script_str_local(
         source,
         False, # raw_input_lst_json,
         False, # cumulative,
         False, # heapPrimitives,
-        finalizer)
+        elena_finalizer)
 
-    return trace
+    return trace, stdout
 
-def do_logger_run(source, testcases, finalizer):
+def do_logger_run(source, testcases):
     """
-    Run the logger on the given source for each test case in testcases.
+    Run the logger on the given source
 
     source: string, python source
     testcases: list of strings, where each element is a well-formed testcase
-    finalizer: function of (code, raw_trace) that returns a final trace
 
     returns: list of traces, one for each test case. Traces are in the same
     order as the given list of testcases.
@@ -81,35 +96,51 @@ def do_logger_run(source, testcases, finalizer):
     # RuntimeErrors form max recursion depth exceeded
     # Make sure all_traces is the right length if this happens!
     all_traces = []
+    all_outputs = []
     for i, test_case in enumerate(testcases):
-        print ".",
+        # print ".",
+        print "\t" + test_case
         source_with_test = source + '\n\n' + test_case
-        trace = logger_wrapper(source_with_test, finalizer)
+        trace, stdout = logger_wrapper(source_with_test)
+        # print "stdout:", stdout
         munged_trace = extract_var_info_from_trace(trace)
+
+        with open('trace_unmunged.txt', 'w') as f:
+            pprint.pprint(trace, f)
+
         all_traces.append(munged_trace)
+        all_outputs.append(stdout)
     print
 
-    return all_traces
+    return all_traces, all_outputs
 
-def do_pickle(sol_id, all_traces, testcases, dest_dir):
+def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
     # Not backwards compatible - old version required trace, args, returnVars
     to_pickle = {
         'traces': all_traces,
+        'outputs': all_outputs,
         'testcases': testcases
     }
 
     # Dump out
     pickle_path = path.join(dest_dir, sol_id + '.pickle')
+
+    if sol_id == "answer":
+        with open('finalized_trace.txt', 'w') as f:
+            pprint.pprint(to_pickle, f)
+
     try:
         with open(pickle_path, 'w') as f:
             pickle.dump(to_pickle, f)
-    except pickle.PicklingError:
+    except (pickle.PicklingError, TypeError):
         # If something goes wrong, clean up, then pass the exception back up
         # the stack
         os.remove(pickle_path)
-        raise
 
-def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
+        with open('failed_pickle.txt', 'w') as f:
+                pprint.pprint(to_pickle, f)
+
+def execute_and_pickle(source_dir, dest_dir, testcases):
     """
     Run pg_logger on each file in source_dir for each test case and store the
     results in pickle files in dest_dir.
@@ -119,7 +150,6 @@ def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
         already exist
     testcases: list of strings, where each string is a well-formed test case
         for the source files in question
-    finalizer: a function of (code, raw trace) that returns a finalized trace
 
     If STOP_ON_ERROR is set and an error is encountered while logging or
         pickling, raises that error (and returns nothing).
@@ -140,7 +170,7 @@ def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
         # Execute
         print "Running logger on", sol_id
         try:
-            all_traces = do_logger_run(source, testcases, finalizer)
+            all_traces, all_outputs = do_logger_run(source, testcases)
         except:
             if STOP_ON_ERROR: raise
             skipped_running.append(sol_id)
@@ -149,7 +179,7 @@ def execute_and_pickle(source_dir, dest_dir, testcases, finalizer):
 
         # Pickle results
         try:
-            do_pickle(sol_id, all_traces, testcases, dest_dir)
+            do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir)
         except pickle.PicklingError:
             if STOP_ON_ERROR: raise
             skipped_pickling.append(sol_id)
@@ -160,20 +190,34 @@ def preprocess_pipeline_data(folder_of_data,
                              testcase_path,
                              tested_function_name):
     tidyDataPath = path.join(folder_of_data, 'tidyData')
+    augmentedPath = path.join(folder_of_data, 'augmentedData')
     formatPath = path.join(folder_of_data, 'tidyDataHTML')
     picklePath = path.join(folder_of_data, 'pickleFiles')
 
     with open(testcase_path, 'r') as f:
-        testCases = [line.strip() for line in f if line.startswith(tested_function_name)]
+        testCases = [line.strip() for line in f] # if line.startswith(tested_function_name)]
 
-    if testCases == []:
-        raise ValueError("No test cases matching the given function name")
+    # testCases = []
+    # with open(testcase_path, 'r') as f:
+    #     for line in f:
+    #         testcase = line.strip()
+    #         function_name = line.split('(')[0]
+    #         # print "function name:", function_name,"\n"
+    #         if function_name in tested_function_names:
+    #             testCases.append(testcase)
+        # testCases = [line.strip() for line in f if line.startswith(tested_function_name)]
+
+    # if testCases == []:
+    #     raise ValueError("No test cases matching the given function name")
+    # print "running preprocessor"
+    # print "folder of data:", folder_of_data, "tidy data path:", tidyDataPath
 
     skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
 
-    finalizer = make_default_finalizer(tested_function_name)
+    augment(tidyDataPath, augmentedPath)
+
     skipped_running, skipped_pickling = execute_and_pickle(
-        tidyDataPath, picklePath, testCases, finalizer)
+        augmentedPath, picklePath, testCases)
 
     print "Solutions skipped:", len(skipped_tidy) + len(skipped_running) + len(skipped_pickling)
     if skipped_tidy:

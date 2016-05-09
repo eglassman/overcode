@@ -16,7 +16,7 @@
     padding-left: 15px;
 }
 
-.show-raw-wrapper {
+.show-buttons-wrapper {
     margin-top: -5px;
 }
 
@@ -25,11 +25,20 @@
     width: 15%;
 }
 
-.grade .form-group {
-    margin-bottom: 2px;
+.test-input {
+    margin-left: 3px;
 }
 
-.score-column {
+.test-output {
+    margin-left: 25px;
+}
+
+.grade .form-group {
+    margin-bottom: 2px;
+    margin-right: 0px;
+}
+
+.fudge-column {
     padding-right: 3px;
 }
 
@@ -40,6 +49,11 @@
 .dropdown-column {
     padding-left: 3px;
     padding-right: 0px;
+}
+
+.graded-checkbox-column {
+    padding: 0px;
+    text-align: right;
 }
 
 .rubric {
@@ -58,6 +72,7 @@
 
 .rubric .row {
     margin-left: 0px;
+    margin-right: 0px;
 }
 
 .rubric .row div {
@@ -72,6 +87,10 @@
 
 .add-deduction {
     width: 100%;
+}
+
+.remove-deduction {
+    float: none;
 }
 
 .closest {
@@ -127,4 +146,36 @@ span.glyphicon {
 
 .new-deduction input {
     height:80%;
+}
+
+.color-correct {
+    color: #009900;
+}
+.color-incorrect {
+    color: #b30000;
+}
+
+span.test-indicator {
+    font-size: 0.5em;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
+.centered {
+    text-align: center;
+}
+
+.no-left-padding {
+    padding-left: 0px;
+}
+
+th {
+    padding-right: 5px;
+}
+
+ul
+{
+    list-style-type: none;
 }
