@@ -7,17 +7,42 @@ import sys
 from external import pg_logger
 from pipeline_util import ensure_folder_exists
 
-# Trace info extractor, tidier finalizer
+# Trace info extractor, tidier, finalizer
 from pipeline_default_functions import extract_var_info_from_trace
 from pipeline_default_functions import tidy_one
 from pipeline_default_functions import elena_finalizer
 
-# To run on a non-class problem, comment out definitions.py and change testcase_defs
-# and import_prefix to empty strings
-from affixes import testcase_defs_mitcampus as testcase_defs, import_prefix
-# testcase_defs, import_prefix = "", ""
+###############################################################################
+## NOTES
+###############################################################################
+# The function that does all the work is "preprocess_pipeline_data", at the
+# bottom of the file. This file shouldn't be run directly - use run_pipeline.py
+# instead.
+#
+# Comments explaining the flow of execution can be found below. Start with the
+# imports below, then look at the "preprocess_pipeline_data" function!
+###############################################################################
+
+# These imports control what extra code, if any, is appended/prepended to student
+# submissions before running them.
+# FUTURE WORK: Usability: change this to be controlled by a config file or
+# something similar, rather than requiring code changes.
+
+# If a problem has custom test case definitions, they must be defined as a
+# string in affixes.py. The import below changed accordingly and toggled. See
+# affixes.py for some examples.
+from affixes import null_testcase_defs as testcase_defs    # simple test cases
+# from affixes import CHANGE_ME as testcase_defs           # custom test cases
+
+# If a problem involves subclassing (i.e., student submissions can assume that
+# a parent class definition will be supplied), the parent class definition
+# must be defined in definitions.py, and the correct import should be toggled
+# below
+from affixes import null_import_prefix as import_prefix  # no subclassing
+# from affixes import import_prefix                      # subclassing
 from definitions import *
 
+# Whether or not to halt execution if an error is encountered in student code
 STOP_ON_ERROR = False
 
 def tidy(source_dir, dest_dir, tested_function_name):
@@ -57,6 +82,13 @@ def tidy(source_dir, dest_dir, tested_function_name):
     return skipped
 
 def augment(source_dir, dest_dir):
+    """
+    Append or prepend any extra code from affixes.py to student submissions.
+
+    source_dir: string, path to folder with data to augment
+    dest_dir: string, path to folder to write augmented data to. Does not need
+        to already exist.
+    """
     ensure_folder_exists(dest_dir)
 
     for filename in os.listdir(source_dir):
@@ -68,7 +100,8 @@ def augment(source_dir, dest_dir):
 def logger_wrapper(source):
     """
     Call pg_logger on the given source with the given finalizer. Only return
-    the trace and drop the argument names and return variables on the floor.
+    the trace and stdout and drop the argument names and return variables on
+    the floor.
     """
     # trace, args, returnVars = pg_logger.exec_script_str_local(
     trace, stdout = pg_logger.exec_script_str_local(
@@ -90,23 +123,27 @@ def do_logger_run(source, testcases):
     returns: list of traces, one for each test case. Traces are in the same
     order as the given list of testcases.
     """
-    # TODO: when the sol has errors, printed out from line 1283 in pg_logger
-    # look for trace['exception_msg'] (probably in the finalizer) and don't
-    # bother rerunning on all the test cases for certain exceptions, e.g.,
-    # RuntimeErrors form max recursion depth exceeded
+    # FUTURE WORK: Performance: when the sol has errors, printed out from line
+    # 1283 in pg_logger look for trace['exception_msg'] (probably in the finalizer)
+    # and don't bother rerunning on all the test cases for certain exceptions, e.g.,
+    # RuntimeErrors from max recursion depth exceeded.
     # Make sure all_traces is the right length if this happens!
+
     all_traces = []
     all_outputs = []
     for i, test_case in enumerate(testcases):
-        # print ".",
+        # Print each time so the user can follow along with the progress
         print "\t" + test_case
+
+        # append each test case in turn
         source_with_test = source + '\n\n' + test_case
+        # Run the logger
         trace, stdout = logger_wrapper(source_with_test)
-        # print "stdout:", stdout
         munged_trace = extract_var_info_from_trace(trace)
 
-        with open('trace_unmunged.txt', 'w') as f:
-            pprint.pprint(trace, f)
+        # To look at the trace before extracting info, print it out to the
+        # console or a file here.
+        # pprint.pprint(trace)
 
         all_traces.append(munged_trace)
         all_outputs.append(stdout)
@@ -115,7 +152,12 @@ def do_logger_run(source, testcases):
     return all_traces, all_outputs
 
 def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
-    # Not backwards compatible - old version required trace, args, returnVars
+    """
+    Pickle the traces, outputs, and testcases. Cleans up after errors.
+
+    Not sure why this is a separate function instead of just part of
+    execute_and_pickle.
+    """
     to_pickle = {
         'traces': all_traces,
         'outputs': all_outputs,
@@ -125,10 +167,6 @@ def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
     # Dump out
     pickle_path = path.join(dest_dir, sol_id + '.pickle')
 
-    if sol_id == "answer":
-        with open('finalized_trace.txt', 'w') as f:
-            pprint.pprint(to_pickle, f)
-
     try:
         with open(pickle_path, 'w') as f:
             pickle.dump(to_pickle, f)
@@ -136,12 +174,12 @@ def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
         # If something goes wrong, clean up, then pass the exception back up
         # the stack
         os.remove(pickle_path)
-
-        with open('failed_pickle.txt', 'w') as f:
-                pprint.pprint(to_pickle, f)
+        raise
 
 def execute_and_pickle(source_dir, dest_dir, testcases):
     """
+    Wrapper function.
+
     Run pg_logger on each file in source_dir for each test case and store the
     results in pickle files in dest_dir.
 
@@ -186,39 +224,36 @@ def execute_and_pickle(source_dir, dest_dir, testcases):
 
     return skipped_running, skipped_pickling
 
-def preprocess_pipeline_data(folder_of_data,
-                             testcase_path,
-                             tested_function_name):
+def preprocess_pipeline_data(folder_of_data, testcase_path, tested_function_name):
+    # Various file paths
     tidyDataPath = path.join(folder_of_data, 'tidyData')
     augmentedPath = path.join(folder_of_data, 'augmentedData')
     formatPath = path.join(folder_of_data, 'tidyDataHTML')
     picklePath = path.join(folder_of_data, 'pickleFiles')
 
+    # read in the test case
     with open(testcase_path, 'r') as f:
-        testCases = [line.strip() for line in f] # if line.startswith(tested_function_name)]
+        testCases = [line.strip() for line in f]
 
-    # testCases = []
-    # with open(testcase_path, 'r') as f:
-    #     for line in f:
-    #         testcase = line.strip()
-    #         function_name = line.split('(')[0]
-    #         # print "function name:", function_name,"\n"
-    #         if function_name in tested_function_names:
-    #             testCases.append(testcase)
-        # testCases = [line.strip() for line in f if line.startswith(tested_function_name)]
-
-    # if testCases == []:
-    #     raise ValueError("No test cases matching the given function name")
-    # print "running preprocessor"
-    # print "folder of data:", folder_of_data, "tidy data path:", tidyDataPath
-
+    # Tidy data. Reads in raw solutions from folder_of_data, writes tidied
+    # solutions to tidyDataPath. skipped_tidy is a list of the IDs (i.e.,
+    # filenames) of any solutions that caused the tidier to raise an
+    # exception. Errors are usually caused by syntax errors in the solution.
     skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
 
+    # Augment data. Reads in tidied solutions from tidyDataPath, writes
+    # solutions with extra code to augmentedPath.
     augment(tidyDataPath, augmentedPath)
 
+    # Runs the logger on the augmented data and serializes the results to
+    # pickle files, stored in the picklePath directory. skipped_running is
+    # a list of the IDs of any solutions that the logger could not run.
+    # skipped_pickling is a list of the IDs of any solutions whose program
+    # trace etc. could not be serialized.
     skipped_running, skipped_pickling = execute_and_pickle(
         augmentedPath, picklePath, testCases)
 
+    # Print out any skipped solutions.
     print "Solutions skipped:", len(skipped_tidy) + len(skipped_running) + len(skipped_pickling)
     if skipped_tidy:
         print "SKIPPED WHEN TIDYING:"
