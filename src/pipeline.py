@@ -14,6 +14,19 @@ import types
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
 
+###############################################################################
+## NOTES
+###############################################################################
+# The function that does all the work is "run", at the bottom of the file. This
+# file shouldn't be run directly: use run_pipeline.py instead, which provides a
+# nice command-line interface.
+#
+# Comments explaining the flow of execution can be found below. Start with the
+# "run" function!
+###############################################################################
+
+
+# The MITx grader object. Set with set_grader near the bottom of the file.
 GRADER = None
 use_original_line_equality_metric = False
 
@@ -45,10 +58,6 @@ def get_name(var_obj):
     return var_obj.local_name
 
 def compare_output(ordered_tests, tests_to_actual, tests_to_expected):
-    # print "GRADER:", GRADER
-    # print "tests_to_actual:", tests_to_actual
-    # print "tests_to_expected:", tests_to_expected
-    # return True, []
 
     error_vector = []
     for (i, test) in enumerate(GRADER.tests()):
@@ -57,13 +66,6 @@ def compare_output(ordered_tests, tests_to_actual, tests_to_expected):
         error_vector.append(test.compare_results(expected, actual))
 
     return error_vector
-    # total = 0
-    # num_correct = 0
-    # for test in correct_output:
-    #     total += 1
-    #     if actual[test] == correct_output[test]:
-    #         num_correct += 1
-    # return num_correct == total, num_correct, total
 
 ###############################################################################
 ## Classes
@@ -73,10 +75,11 @@ class Solution(object):
 
     def __init__(self, solnum, ordered_testcases, testcase_to_trace, testcase_to_output, correct_output):
         self.solnum = solnum
+        # list of testcase strings
         self.testcases = ordered_testcases
         # a dictionary mapping a testcase string to a trace
         self.testcase_to_trace = testcase_to_trace
-        # maps a testcase string to stdout results for that test
+        # a dictionary mapping a testcase string to stdout results for that test
         self.output = testcase_to_output
 
         self.local_vars = []
@@ -86,6 +89,8 @@ class Solution(object):
         # a list of line objects
         self.canonical_lines = []
 
+        # list of booleans, one per test, where True indicates a passed test
+        # and False represents a failed test.
         self.error_vector = compare_output(ordered_testcases, testcase_to_output, correct_output)
         self.correct = all(self.error_vector)
 
@@ -130,6 +135,12 @@ class VariableInstance(object):
         self.clash_resolution_name = None
 
         self.maps_to = None
+
+        # A set of tuples of the form (template, tuple of indices). Templates
+        # are strings representing lines of code with variables replaced with
+        # blanks, as in Line objects. The tuple of indices indicate which
+        # blanks in the template are occupied by this variable. The set as a
+        # whole represents all lines of code in which this variable appears.
         self.templates_with_indices = set()
 
     def __repr__(self):
@@ -158,6 +169,12 @@ class AbstractVariable(object):
         self.canon_name = None
         self.is_unique = None
 
+        # (This field is the same as in VariableInstances)
+        # A set of tuples of the form (template, tuple of indices). Templates
+        # are strings representing lines of code with variables replaced with
+        # blanks, as in Line objects. The tuple of indices indicate which
+        # blanks in the template are occupied by this variable. The set as a
+        # whole represents all lines of code in which this variable appears.
         self.templates_with_indices = set()
 
     def should_contain(self, inst):
@@ -235,36 +252,51 @@ class Line(object):
     """A line of code, without indent recorded, with blanks for variables, and
     the corresponding abstract variables to fill the blanks."""
 
-    def __init__(self, template, abstract_variables, line_values):
+    def __init__(self, template, variable_objects, line_values):
+        # A string representing a line of code with all variables replaced
+        # with blanks
         self.template = template
-        self.abstract_variables = abstract_variables
-        # dictionary mapping testcase strings to sequences of values
+
+        # An ordered list of variables that fill in the blanks. May be either
+        # AbstractVariables or VariableInstances.
+        self.variable_objects = variable_objects
+
+        # A list of dictionaries representing the values each blank takes on.
+        # Each dict maps testcase strings to lists of values.
         self.line_values = line_values
 
     def __hash__(self):
         if use_original_line_equality_metric:
-            return hash((make_hashable(self.abstract_variables),self.template))
+            return hash((make_hashable(self.variable_objects),self.template))
         return hash((make_hashable(self.line_values),self.template))
 
     def __eq__(self, other):
-        """Old definition: Two Lines are equal if they have the same template and
-        abstract variables. New definition: two Lines are equal if they have the
-        same template and line values"""
+        """
+        Old definition: Two Lines are equal if they have the same template and
+        abstract variables.
+        New definition: two Lines are equal if they have the
+        same template and line values.
+        """
         assert isinstance(other, Line)
         if use_original_line_equality_metric:
-            return self.abstract_variables == other.abstract_variables and self.template == other.template
+            return self.variable_objects == other.variable_objects and self.template == other.template
         return self.line_values == other.line_values and self.template == other.template
 
     def getDict(self):
         return self.__dict__
 
     def render(self):
-        # Replace all the blanks with '{}' so we can use built-in string formatting
-        # to fill in the blanks with the list of ordered names
-        names = [get_name(var) for var in self.abstract_variables]
+        """
+        Get the string representation of this line with all the appropriate
+        names filled in.
+        """
+        # The variable names to fill in
+        names = [get_name(var) for var in self.variable_objects]
 
-        # Make sure that a pair of curly braces in the actual line, e.g. from
-        # initializing a dictionary, does not cause issues
+        # Temporarily replace curly braces so that built-in string formatting
+        # can be used. Then replace all the blanks with '{}' and fill in the
+        # names with said string formatting. Finally put the original curly
+        # braces back in.
         try:
             step1 = self.template.replace('{', '_left_brace_')
             step2 = step1.replace('}', '_right_brace_')
@@ -343,6 +375,7 @@ def populate_from_pickles(all_solutions, pickleSrc):
 
     print "Loading data"
 
+    # Get the correct answer from answer.py
     answer_path = path.join(pickleSrc, 'answer.pickle')
     if path.isfile(answer_path):
         with open(answer_path, 'r') as f:
@@ -351,26 +384,10 @@ def populate_from_pickles(all_solutions, pickleSrc):
         testcases, correct_outputs = unpickled['testcases'], unpickled['outputs']
         testcase_to_correct_output = {testcases[i]: correct_outputs[i] for i in range(len(testcases))}
         print "ANSWER:", testcase_to_correct_output
-        # with open('correct.py', 'w') as f:
-        #     pprint.pprint(testcase_to_correct_output, f)
-        # return
-        # for i in range(len(testcases)):
-        #     testcase_to_trace[testcases[i]] = traces[i]
 
-        # correct_outputs = {}
-        # for (testcase, trace) in testcase_to_trace.iteritems():
-        #     if '__return__' not in trace:
-        #         raise ExtractionException('Solution did not run to completion')
-
-        #     # The second-to-last step seems to always have the return value.
-        #     # Steps in the trace are of the form (step, value), so take just
-        #     # the value
-        #     correct_outputs[testcase] = trace['__return__'][-2][1]
-        # print "ANSWER IS:", correct_outputs
-
+    # Now load the rest of the solutions
     for filename in os.listdir(pickleSrc):
         solnum = filename.split('.')[0]
-        # print solnum
         if solnum == "answer":
             continue
 
@@ -384,6 +401,7 @@ def populate_from_pickles(all_solutions, pickleSrc):
         testcase_to_trace = {testcases[i]: traces[i] for i in range(len(testcases))}
         testcase_to_output = {testcases[i]: ordered_outputs[i] for i in range(len(testcases))}
 
+        # Make the Solution object
         sol = Solution(solnum,
                        testcases,
                        testcase_to_trace,
@@ -419,9 +437,13 @@ def add_to_abstracts(var, all_abstracts):
 
 def find_canon_names(all_abstracts):
     """
-    Assign canon names to all AbstractVariables by appending a modifier to
-    the most common name if it collides with another name, or appending a
-    double underscore if a variable is unique.
+    Assign canon names to all AbstractVariables. Each AbstractVariable
+    takes on the name that it is assigned most frequently. If two or more
+    AbstractVariables are assigned the SAME name most frequently, the
+    AbstractVariable that appears in the most solutions gets the unmodified
+    name. Any other AbstractVariables get suffixes appended: three underscores
+    and a number, in order of decreasing frequency (i.e., the second most
+    common variable gets ___2 appended, the third most common gets ___3, etc.)
 
     all_abstracts: list of AbstractVariable instances
 
@@ -500,7 +522,7 @@ def extract_single_sequence(column):
 class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
 
-def extract_output_and_sequences_single_sol(sol, correct_abstracts):
+def extract_sequences_single_sol(sol, correct_abstracts):
     """
     For each local variable in a single solution, extract its sequence of
     values, create a VariableInstance, and assign that VariableInstance to
@@ -514,17 +536,11 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts):
     mutates sol and correct_abstracts
     """
 
-    # output = {}
+    # maps the name of a local variable to a sequence. A sequence is a
+    # dictionary mapping testcase strings to lists of values.
     sequences = {}
     for (testcase, trace) in sol.testcase_to_trace.iteritems():
-        # if '__return__' not in trace:
-        #     raise ExtractionException('Solution did not run to completion')
-
-        # The second-to-last step seems to always have the return value.
-        # Steps in the trace are of the form (step, value), so take just
-        # the value
-        # output[testcase] = trace['__return__'][-2][1]
-
+        # Extract the sequences for each variable in the trace
         for localVarName, localVarData in trace.iteritems():
             if localVarName.startswith('__'):
                 continue
@@ -537,20 +553,16 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts):
                 raise ExtractionException('Error extracting sequence')
 
             if (len(sequence) == 1 and
-                type(sequence[0]) is str and
-                sequence[0].startswith('__')):
+                    type(sequence[0]) is str and
+                    sequence[0].startswith('__')):
                 # Just a function definition
                 continue
             if localVarName not in sequences:
                 sequences[localVarName] = {}
             sequences[localVarName][testcase] = sequence
 
-    # sol.output = output
-    # is_correct, num_passed_tests, total_num_tests = compare_output(output, correct_output)
-    # sol.correct = is_correct
-    # sol.num_passed_tests = num_passed_tests
-    # sol.total_num_tests = total_num_tests
-
+    # Create VariableInstance objects and associate them with Solutions.
+    # For correct solutions, also collect the variables into AbstractVariables
     for localVarName in sequences:
         var = VariableInstance(sequences[localVarName], sol.solnum, localVarName)
         sol.local_vars.append(var)
@@ -563,10 +575,10 @@ def extract_output_and_sequences_single_sol(sol, correct_abstracts):
             add_to_abstracts(var, correct_abstracts)
             sol.abstract_vars.append(var.abstract_var)
 
-def extract_output_and_seqs(all_solutions,
-                            correct_solutions,
-                            incorrect_solutions,
-                            correct_abstracts):
+def extract_variable_seqs(all_solutions,
+                          correct_solutions,
+                          incorrect_solutions,
+                          correct_abstracts):
     """
     Extract and collect variable information from all solutions.
 
@@ -582,7 +594,7 @@ def extract_output_and_seqs(all_solutions,
     for sol in all_solutions[:]:
         try:
             print "Collecting variables in", sol.solnum
-            extract_output_and_sequences_single_sol(sol, correct_abstracts)
+            extract_sequences_single_sol(sol, correct_abstracts)
             if sol.correct:
                 correct_solutions.append(sol)
             else:
@@ -590,7 +602,7 @@ def extract_output_and_seqs(all_solutions,
         except ExtractionException:
             # If we couldn't extract the required info, remove this solution from
             # the list so we don't keep trying to process it later. Since we are
-            # iterating through a copy, this will not cause problems
+            # iterating through a (shallow) copy, this will not cause problems
             all_solutions.remove(sol)
             skipped.append(sol.solnum)
 
@@ -694,7 +706,8 @@ def compute_lines(sol, tidy_path, all_lines):
         template = re.sub(r'___\d+___', '___', stripped_line)
 
         # line_values is a list of dictionaries, one per blank
-        # Each dictionary maps from a testcase to a sequence of values
+        # Each dictionary maps from a testcase to a sequence of values, and
+        # represents the values taken on by the variable at that blank
         line_values = []
         for lname in local_names:
             values = {}
@@ -956,7 +969,23 @@ def break_ties(var_to_match, best_avars):
 
 def find_matching_var(var_to_match, correct_abstracts, scores, threshold):
     """Actually apply our heuristic to determine which AbstractVariable,
-    if any, should be associated with the given incorrect variable.
+    if any, should be associated with the given incorrect variable,
+    var_to_match.
+
+    First, check if var_to_match belongs in an existing AbstractVariable,
+    i.e., if its sequence of values is the same as some correct variable's.
+    If so, add var_to_match to that AbstractVariable.
+
+    Second, check if there is a correct variable with exactly the same set of
+    template-index pairs. In other words, are the same operations performed
+    on var_to_match as on a correct variable? If so, assign the name of that
+    variable to var_to_match.
+
+    Third, go through all the correct variables and find the set of
+    template-index pairs they share with var_to_match. For each pair that
+    var_to_match shares with a correct variable, find how much information
+    the presence of that pair gives us. Pick (one of) the correct variable(s)
+    whose set of shared template-index pairs gives us the most information.
 
     var_to_match: VariableInstance, the variable to find an association for
     correct_abstracts: list of correct AbstractVariables
@@ -1248,6 +1277,9 @@ class ElenaEncoder(json.JSONEncoder):
 ## Run the pipeline!
 ###############################################################################
 def set_grader(path):
+    """
+    Set the GRADER variable from the grader at the given path.
+    """
     gm = imp.load_source('graderModule', path)
 
     global GRADER
@@ -1255,41 +1287,107 @@ def set_grader(path):
 
 def run(folderOfData, destFolder):
     ensure_folder_exists(destFolder)
+
+    # Helper function for dumping output
     def dumpOutput(data, filename, sort_keys=True, indent=4):
         filepath = path.join(destFolder, filename)
         with open(filepath, 'w') as f:
             json.dump(data, f, sort_keys=sort_keys, indent=indent, cls=ElenaEncoder)
 
     # Load solutions
+    # Populates all_solutions with Solution objects, one per student solution.
+    # correct_output is a dictionary mapping testcase strings to the output
+    # (to stdout) of answer.py. After this point, the following fields of
+    # Solution objects are filled in:
+    #   solnum (unique ID)
+    #   testcases (ordered list of testcases as strings)
+    #   testcase_to_trace (dict mapping testcase strings to traces)
+    #   output (dict mapping testcase strings to stdout contents)
+    #   error_vector (list of booleans representing test case successes/failures)
+    #   correct (boolean, True if all test cases passesd)
     all_solutions = []
     correct_output = populate_from_pickles(all_solutions, path.join(folderOfData, 'pickleFiles'))
 
+    # Write out the correct output for reference. This should probably be part
+    # of the previous function.
     with open(path.join(destFolder, 'correctOutput.json'), 'w') as f:
         json.dump(correct_output, f)
 
-    # Extract output and variable sequences from the processed traces, and assign
-    # correct variables to AbstractVariables
+
+    # The next function call does two things:
+    # 1) Extracts the sequences of values for all global/local variables in
+    # solutions and initializes VariableInstance objects for each variable.
+    # 2) Collects correct variables into AbstractVariables.
+    # FUTURE WORK: Maintainability: Break this up into more modular pieces?
+    #              This might have consequences for performance since it would
+    #              require another loop, but maybe that isn't a big problem.
+
+    # After this point, the following additional fields in Solution objects are
+    # filled in:
+    #   local_vars (list of VariableInstance that appear in this Solution)
+    #   abstract_vars (list of AbstractVariables that appear in this Solution)
+    #       NOTE: this list is only non-empty if the solution is correct!
+
+    # Populates correct_abstracts with AbstractVariable objects. After this
+    # point, the following fields of AbstractVariable objects are filled in:
+    #   sequence (dict mapping test case strings to lists of values)
+    #   solutions (dict mapping Solution IDs to this variable's local name)
+    #   name_ctr (Counter keeping track of the frequency of names applied to
+    #             this variable)
+
+    # There is no list for VariableInstances. To loop over all VariableInstances,
+    # loop over the local_vars fields of all Solutions. After this point,
+    # VariableInstances objects have the following fields filled in:
+    #   solnum (unique ID of the solution in which the variable occurs)
+    #   sequence (dict mapping testcase strings to lists of values)
+    #   local_name (string, name of this variable in the associated solution)
+    # If the associated solution is correct, the abstract_variable field is also
+    # filled in, with a reference to the AbstractVariable object this variable
+    # belongs to.
+
+    # Populates correct_solutions and incorrect_solutions with all correct and
+    # incorrect Solutions respectively (in case that wasn't obvious :) )
+    # (This should probably be moved to the previous step. It was originally
+    # here because output was handled differently, and the code was not
+    # restructured when that changed.)
+
+    # skipped_extraction is a list of the IDs of solutions that encounter
+    # errors when trying to extract variable sequences.
     correct_abstracts = []
     correct_solutions, incorrect_solutions = [], []
-    skipped_extraction = extract_output_and_seqs(
+    skipped_extraction = extract_variable_seqs(
         all_solutions,
         correct_solutions,
         incorrect_solutions,
         correct_abstracts)
 
-    # Assign names to the correct AbstractVariables
+    # Assign names to the correct AbstractVariables. See docstring.
     find_canon_names(correct_abstracts)
 
-    # Collect lines
+    # Compute lines. Populates all_lines with Line objects. All the fields of
+    # Line objects are filled in - see the __init__ method. Fills in the
+    # following additional fields in Solution objects:
+    #   lines (list of tuples: (Line object, list of local names that fill
+    #          in the blanks in this solution, indent in this solution))
+    #   canonical_lines (list of Line objects)
+    # Also fills in the templates_with_indices field of all VariableInstances
+    # and AbstractVariables. See the __init__ method of either class for
+    # details.
+    # As usual, skipped_by_renamer is a list of the IDs of solutions that
+    # encounter errors during this process.
     all_lines = []
     skipped_by_renamer = compute_all_lines(all_solutions, folderOfData, all_lines)
 
-    # Stack correct solutions
+    # Stack correct solutions. Populates correct_stacks with Stack objects.
+    # Correct Solutions belong in the same stack if they have the same set of
+    # Line objects, where Line objects are considered equal if their templates
+    # match and the values that appear in each blank match.
     correct_stacks = []
     stack_solutions(correct_solutions, correct_stacks)
 
     # Determine how to name variables in incorrect solutions by matching them
-    # to variables in correct solutions
+    # to variables in correct solutions. See docstrings for
+    # find_all_matching_vars and find_matching_var.
     incorrect_variables = []
     var_mappings = find_all_matching_vars(
         incorrect_solutions, correct_abstracts, incorrect_variables)
@@ -1300,12 +1398,17 @@ def run(folderOfData, destFolder):
     all_stacks = correct_stacks + incorrect_fake_stacks
     all_variables = correct_abstracts + incorrect_variables
 
-    # For every stack, find the other stacks that are closest
-    # find_closest_stacks(all_stacks, correct_stacks)
-    # find_sort_metrics(incorrect_fake_stacks, correct_stacks)
+    # Find the distance (as defined in Solution.distance_metric) between all
+    # pairs of stacks.
     find_sort_metrics_all(all_stacks)
 
-    # Generate the output for json files
+    # Generate the output for json files. format_stack_output controls the
+    # contents of solutions.json; format_phrase_output controls the contents
+    # of phrases.json. The other json files are only for debugging and not
+    # necessary for the view.
+    # FUTURE WORK: Features: To display any information about variables in the
+    # view, such as what values they take on, any issues with serialization
+    # will have to be resolved.
     ordered_phrases = []
     phrase_to_lines = {}
     solutions = format_stack_output(
@@ -1332,5 +1435,5 @@ def run(folderOfData, destFolder):
     print "Number of correct stacks:", len(correct_stacks)
     print "Number of phrases:", len(formatted_phrases)
     print "Number of variables:", len(variables)
-    # print "skipped when extracting:", skipped_extraction
-    # print "skipped when rewriting:", skipped_rewrite
+    print "skipped when extracting:", skipped_extraction
+    print "skipped when rewriting:", skipped_by_renamer
