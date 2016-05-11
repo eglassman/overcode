@@ -91,6 +91,12 @@ Next, change the `import` statement in `src/pipeline_preprocessing.py` to import
     test_0()
     test_1()
 
-### Output of the preprocessor
+#### Output of the preprocessor
 
-Todo.
+The preprocessor adds three subdirectories to the "data" directory: `tidyData`, `augmentedData`, and `pickleFiles`. `tidyData` contains submissions with comments removed, whitespace normalized, etc. `augmentedData` contains the tidied submissions with any extra code appended/prepended, like the testcase definitions described above. `pickleFiles` is the important folder! This has the serialized version of the program traces and outputs of each submission, and is what the pipeline reads in.
+
+### Analysis Pipeline
+
+The pipeline is where the magic happens. From within the src directory, run the pipeline with `python run_pipeline.py path/to/target/directory -g path/to/MITx/grader -p`. Instead of `-p`, `--run-pipeline` will work as well. The target directory is the same as described above. The path to the MITx grader is exactly that - the path to the grader for the problem in question, including the `grade_*.py` part.
+
+The pipeline reads in the pickle files output by the preprocessor. There is no need to rerun the preprocessor once those have been generated.
