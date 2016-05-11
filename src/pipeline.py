@@ -1311,7 +1311,7 @@ def run(folderOfData, destFolder):
     # Write out the correct output for reference. This should probably be part
     # of the previous function.
     with open(path.join(destFolder, 'correctOutput.json'), 'w') as f:
-        json.dump(correct_output, f)
+        json.dump(correct_output, f, indent=2)
 
 
     # The next function call does two things:
@@ -1391,7 +1391,7 @@ def run(folderOfData, destFolder):
     incorrect_variables = []
     var_mappings = find_all_matching_vars(
         incorrect_solutions, correct_abstracts, incorrect_variables)
-    # dumpOutput(var_mappings, 'var_mappings.json')
+    dumpOutput(var_mappings, 'var_mappings.json')
 
     # Turn every incorrect solution into a singleton stack
     incorrect_fake_stacks = fake_stacks(incorrect_solutions)

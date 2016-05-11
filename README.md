@@ -100,3 +100,33 @@ The preprocessor adds three subdirectories to the "data" directory: `tidyData`, 
 The pipeline is where the magic happens. From within the src directory, run the pipeline with `python run_pipeline.py path/to/target/directory -g path/to/MITx/grader -p`. Instead of `-p`, `--run-pipeline` will work as well. The target directory is the same as described above. The path to the MITx grader is exactly that - the path to the grader for the problem in question, including the `grade_*.py` part.
 
 The pipeline reads in the pickle files output by the preprocessor. There is no need to rerun the preprocessor once those have been generated.
+
+#### Output of the pipeline
+
+The pipeline adds an "output" subdirectory to the target directory and creates several json files in that subdirectory. The most important json files are `phrases.json` and `solutions.json` – these are used by the view. The other output files are only for debugging or reference.
+
+`phrases.json` contains a list of objects representing lines of code with the variables renamed, which we call phrases. Each object has the following keys:
+* `code`: string, the actual text of this phrase
+* `id`: integer, a unique id for this phrase. Indexed from 1.
+* `corresponding_lines`: list of integers, indicating which Line objects generated this phrase. Each integer corresponds to the id of a Line in `lines.json`.
+Only the first two keys, `code` and `id`, are used by the view.
+
+`solutions.json` contains a list of objects representing stacks, that is, groups of one or more student submissions. The name is slightly misleading – a better name would probably be `stacks.json`. This is where most of the information is stored. Each object has the following keys:
+* `correct`: boolean, true if the submissions making up this stack passed all test cases, false otherewise
+* `count`: integer, the number of submissions contained in this stack
+* `error_vector`: list of booleans, one per test case. true indicates a passed test case, false indicates a failed test case
+* `id`: integer, a unique id for this stack. Indexed from 1.
+* `line_ids`: set of integers, indicating which Line objects are associated with the solution(s) in this stack. Not used by the view
+* `lines`: list of objects representing the phrases in this stack. This is what the view uses to reassemble the code for this stack. This field should probably be called `phrases` instead. Each object has these keys:
+  * `indent`: integer. The number of spaces to indent this phrase
+  * `line_obj_ID`: integer indicating which Line object generated this phrase. Corresponds to the id of a line in `lines.json`. Not used by the view
+  * `phraseID`: integer. Corresponds to the id of a phrase in `phrases.json`.
+* `members`: list of strings. The identifiers (i.e., filenames without `.py`) of the submission(s) that belong to this stack
+* `num_passed_tests`: integer. How many test cases this stack passed
+* `number`: string. The identifier of the representative for this stack
+* `phraseIDs`: set of integers. Indicates which phrases are associated with this stack, not necessarily in order of appearence
+* `stack_distances`: object mapping the id of each stack (as a string, for some reason) to the distance between that stack and this stack (as a float between 0 and 1.0). Includes itself. So if there are four stacks in total, this object will have the keys `"1"`, `"2"`, `"3"`, and `"4"`.
+* `test_input_outputs`: object mapping the text of each testcase (a string) to the output of this stack on that testcase (also a string)
+* `testcases`: list of strings. The ordered list of test cases on which this stack was run. The same as the keys of `test_input_outputs`, but ordered.
+* `total_num_tests`: integer, the total number of test cases.
+* `variable_ids`: list of integers indicating which variables are present in this stack. Each integer corresponds to the id of a variable in `variables.json`. Not used by the view
