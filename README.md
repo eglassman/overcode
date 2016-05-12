@@ -96,10 +96,19 @@ The OverCode user interface is implemented in [Meteor](http://www.meteor.com/). 
 
 Open `overcode-meteor/server/server.js`. Underneath the comment that says "Define paths here", define the three variables `results_path`, `data_path`, and `logging_path` so that they point to the appropriate locations on your machine. See inline comments.
 
+Change the `RELOAD` constant to true to load the analyzed data on server startup. **Change it back to false before doing any grading.** If it's set to true, the log will not be replaced when the server restarts, so no grades will be permanently lost, but the state of the interface will be reset, so none of the previous grades will be displayed in the OverCode interface.
+
 #### Running the view
 
 In the command line, navigate to the `overcode-meteor` directory and run `meteor`. Navigate to localhost:3000.
 
+#### More view customization
+
+Warning: the view code is not very clean and could use refactoring. Mess with it at your own risk. More maintainable configuration, e.g., a config file, would be helpful as well.
+
+The test case display currently assumes that test cases are of the form `print <function call>` and slices off the `print` part. This is controlled around line 90 in both `overcode-meteor/client/elena_client.js` and `overcode-meteor/client/client.js`, in this line:
+    test: test.slice(6), // remove 'print '
+Change this to something else to display nicer test case descriptions for custom test cases. Unfortunately there is no existing infrastructure for extracting, say, test docstrings.
 
 
 ## Description of Overcode Pipeline (as of late March)
