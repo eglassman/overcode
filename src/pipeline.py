@@ -1175,11 +1175,11 @@ def format_stack_output(all_stacks, all_abstracts, ordered_phrases, phrase_to_li
         #         right_id = all_stacks.index(right_stack) + 1
         #         id_to_metric[right_id] = metric
         #     stack_json['correct_stack_distances'] = id_to_metric
-        id_to_metric = {}
-        for (s, metric) in stack.stack_distances:
-            s_id = all_stacks.index(s) + 1
-            id_to_metric[s_id] = metric
-        stack_json['stack_distances'] = id_to_metric
+        # id_to_metric = {}
+        # for (s, metric) in stack.stack_distances:
+        #     s_id = all_stacks.index(s) + 1
+        #     id_to_metric[s_id] = metric
+        # stack_json['stack_distances'] = id_to_metric
 
         for (line_object, local_names, indent) in rep.lines:
             phrase = line_object.render()
@@ -1404,7 +1404,7 @@ def run(folderOfData, destFolder):
 
     # Find the distance (as defined in Solution.distance_metric) between all
     # pairs of stacks.
-    find_sort_metrics_all(all_stacks)
+    # find_sort_metrics_all(all_stacks)
 
     # Generate the output for json files. format_stack_output controls the
     # contents of solutions.json; format_phrase_output controls the contents
