@@ -107,7 +107,9 @@ In the command line, navigate to the `overcode-meteor` directory and run `meteor
 Warning: the view code is not very clean and could use refactoring. Mess with it at your own risk. More maintainable configuration, e.g., a config file, would be helpful as well.
 
 The test case display currently assumes that test cases are of the form `print <function call>` and slices off the `print` part. This is controlled around line 90 in both `overcode-meteor/client/elena_client.js` and `overcode-meteor/client/client.js`, in this line:
+
     test: test.slice(6), // remove 'print '
+
 Change this to something else to display nicer test case descriptions for custom test cases. Unfortunately there is no existing infrastructure for extracting, say, test docstrings.
 
 
