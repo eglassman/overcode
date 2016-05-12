@@ -20,6 +20,9 @@ var RELOAD = false;
 // FUTURE WORK: Usability: make this a config file or something similar instead
 // of requiring changes directly to the code
 
+// This is currently set up to enable easy switching between the authors'
+// computers, and between different data sets. The important part is the three
+// variables below, results_path, data_path, and logging_path
 var DATA_DIR_NAME = 'flatten'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
@@ -31,7 +34,8 @@ var base_path = STACEY_PATH
 var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output/');
 // Path to the "data" directory that contains the unprocessed submissions
 var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
-// Path to the desired location of the log file
+// Path to the desired location of the log file. This is where grading events
+// are recorded.
 var logging_path = path.join(base_path, 'overcode/logging/log.txt');
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -48,7 +48,7 @@ Next, change the `import` statement in `src/pipeline_preprocessing.py` to import
     test_0()
     test_1()
 
-#### Output of the preprocessor
+#### Output of the preprocessor (For reference)
 
 The preprocessor adds three subdirectories to the "data" directory: `tidyData`, `augmentedData`, and `pickleFiles`. `tidyData` contains submissions with comments removed, whitespace normalized, etc. `augmentedData` contains the tidied submissions with any extra code appended/prepended, like the testcase definitions described above. `pickleFiles` is the important folder! This has the serialized version of the program traces and outputs of each submission, and is what the pipeline reads in.
 
@@ -58,7 +58,7 @@ The pipeline is where the magic happens. From within the src directory, run the 
 
 The pipeline reads in the pickle files output by the preprocessor. There is no need to rerun the preprocessor once those have been generated.
 
-#### Output of the pipeline
+#### Output of the pipeline (For reference)
 
 The pipeline adds an "output" subdirectory to the target directory and creates several json files in that subdirectory. The most important json files are `phrases.json` and `solutions.json` – these are used by the view. The other output files are only for debugging or reference.
 
@@ -87,6 +87,20 @@ Only the first two keys, `code` and `id`, are used by the view.
 * `testcases`: list of strings. The ordered list of test cases on which this stack was run. The same as the keys of `test_input_outputs`, but ordered.
 * `total_num_tests`: integer, the total number of test cases.
 * `variable_ids`: list of integers indicating which variables are present in this stack. Each integer corresponds to the id of a variable in `variables.json`. Not used by the view
+
+### View
+
+The OverCode user interface is implemented in [Meteor](http://www.meteor.com/). The user interface code is located in the `overcode-meteor` directory.
+
+#### Setting up the view
+
+Open `overcode-meteor/server/server.js`. Underneath the comment that says "Define paths here", define the three variables `results_path`, `data_path`, and `logging_path` so that they point to the appropriate locations on your machine. See inline comments.
+
+#### Running the view
+
+In the command line, navigate to the `overcode-meteor` directory and run `meteor`. Navigate to localhost:3000.
+
+
 
 ## Description of Overcode Pipeline (as of late March)
 ### Interesting Dependencies
