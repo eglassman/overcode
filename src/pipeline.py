@@ -1373,6 +1373,9 @@ def run(folderOfData, destFolder):
     # Also fills in the templates_with_indices field of all VariableInstances
     # and AbstractVariables. See the __init__ method of either class for
     # details.
+    # Finally, this is where we resolve name clashes between multiple instances
+    # of the same abstract variable in the same (correct) solution. This is
+    # sort of a weird place to do it but it works.
     # As usual, skipped_by_renamer is a list of the IDs of solutions that
     # encounter errors during this process.
     all_lines = []
@@ -1387,7 +1390,8 @@ def run(folderOfData, destFolder):
 
     # Determine how to name variables in incorrect solutions by matching them
     # to variables in correct solutions. See docstrings for
-    # find_all_matching_vars and find_matching_var.
+    # find_all_matching_vars and find_matching_var. Fills in the maps_to field
+    # of local variables in incorrect solutions.
     incorrect_variables = []
     var_mappings = find_all_matching_vars(
         incorrect_solutions, correct_abstracts, incorrect_variables)
