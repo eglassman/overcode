@@ -1,3 +1,5 @@
+// FUTURE WORK: Maintanability: So much refactoring :(
+
 Template.elena_rubric.helpers({
     'rubricEntries': function() {
         return RubricEntries.find({});

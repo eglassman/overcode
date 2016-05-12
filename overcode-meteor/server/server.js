@@ -8,19 +8,33 @@ RubricEntries = new Mongo.Collection('rubricEntries');
 // tiny collection for ease of syncing...
 CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 
-var RELOAD = true; //false;
+// Whether to clear and repopulate the collections when the server is
+// restarted. CAREFUL - can lead to loss of data!
+// FUTURE WORK: Safety: Only reload if collections are empty or something else
+// less dangerous
+var RELOAD = false;
+
+///////////////////////////////////////////////////////////////////////////////
+// Define paths here
+///////////////////////////////////////////////////////////////////////////////
+// FUTURE WORK: Usability: make this a config file or something similar instead
+// of requiring changes directly to the code
 
 var DATA_DIR_NAME = 'flatten'
-//var LOGGING_DIR_NAME = 'logging'
 var ELENA_PATH = '/Users/elena/publicCodeRepos/'
 var STACEY_PATH = '/Users/staceyterman/'
 
 // var base_path = ELENA_PATH
 var base_path = STACEY_PATH
 
+// Path to the "output" directory produced by the pipeline
 var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output/');
+// Path to the "data" directory that contains the unprocessed submissions
 var data_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'data/');
+// Path to the desired location of the log file
 var logging_path = path.join(base_path, 'overcode/logging/log.txt');
+
+///////////////////////////////////////////////////////////////////////////////
 
 Meteor.methods({
     "writeGrade": function(grade_object) {
@@ -41,7 +55,6 @@ Meteor.methods({
             ];
 
             var str_to_write = fields.join(',') + '\n';
-
             fs.appendFile(grade_file_path, str_to_write);
         }
     }
@@ -66,8 +79,9 @@ Meteor.startup(function () {
             sol.graded = false;
             var raw_solutions = [];
             for (var i = 0; i < sol.members.length; i++) {
-                // TODO: make asynchronous? would need to be wrapped with fancy
-                // meteor magic
+                // This could be made asynchronous, but it would need to be
+                // wrapped with fancy meteor magic. Probably not worth it since
+                // this is a one-time cost.
                 var solnum = sol.members[i];
                 var file_path = path.join(data_path, solnum + '.py');
                 var raw = fs.readFileSync(file_path);
@@ -75,11 +89,6 @@ Meteor.startup(function () {
             }
             sol.rawSolutions = raw_solutions;
             sol.deductions = [];
-            // var error_vector = [];
-            // for (i = 0; i < 25; i++) {
-            //     error_vector.push(Math.random()>0.5);
-            // }
-            // sol.error_vector = error_vector;
             Stacks.insert(sol);
         });
 

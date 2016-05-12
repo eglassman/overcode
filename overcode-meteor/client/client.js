@@ -1,3 +1,5 @@
+// FUTURE WORK: Maintanability: So much refactoring :(
+
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 RubricEntries = new Mongo.Collection('rubricEntries');
