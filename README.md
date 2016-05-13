@@ -18,6 +18,11 @@ Example `testCase.py`:
 
     print student_defined_function('foo')
     print student_defined_function('bar')
+ 
+4. Run the analysis pipeline on the results of executing the solutions
+    * In this repo's `src` directory, execute ```python run_pipeline.py PATH_TO_TARGET_DIRECTORY --run-pipeline```
+       * `-d` is optional; it turns on the calculation of a pairwise distance metric, a heuristic of code similarity between solutions, which is slow for > a few hundred solutions
+       * `-g PATH_TO_MITX_GRADER/grade_....py` is optional. If you don't have one, the pipeline compares the output of each solution to the answer.py's output (as strings) with `==`.
 
 ## Running the pipeline (The Long Version)
 
