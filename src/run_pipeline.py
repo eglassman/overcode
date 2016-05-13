@@ -36,6 +36,8 @@ parser.add_argument('-p', '--run-pipeline', action='store_true',
 parser.add_argument('-g', '--grader-path',
     help='Path to an MITx grader, including the grade_*.py part. Used to ' +
          'check correctness of student code in the pipeline.')
+parser.add_argument('-d', '--distances', action='store_true',
+    help='Include to calculate pairwise distances between all stacks.')
 
 parser.add_argument('-o', '--run-old', action='store_true',
     help='Run the old pipeline. Legacy, not maintained.')
@@ -61,7 +63,7 @@ if args.run_pipeline or args.run_old:
         outputPath = path.join(args.basedir, 'output')
         if args.grader_path:
             pipeline.set_grader(args.grader_path)
-        pipeline.run(datadir, outputPath)
+        pipeline.run(datadir, outputPath, args.distances)
     else:
         # The old, original pipeline. Here there be dragons.
         outputPath = path.join(args.basedir, 'output_old')

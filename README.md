@@ -58,7 +58,7 @@ The preprocessor adds three subdirectories to the "data" directory: `tidyData`, 
 
 ### Analysis Pipeline
 
-The pipeline is where the magic happens. From within the src directory, run the pipeline with `python run_pipeline.py path/to/target/directory -p`. Instead of `-p`, `--run-pipeline` will work as well. The target directory is the same as described above.
+The pipeline is where the magic happens. From within the src directory, run the pipeline with `python run_pipeline.py path/to/target/directory -p -d`. Instead of `-p`, `--run-pipeline` will work as well. The target directory is the same as described above. The `-d` flag tells the pipeline to compute the pairwise distances between stacks. This is necessary for the view, but will be very slow with extra large datasets, so can be disabled by excluding the flag.
 
 An MITx grader can be specified by adding the `-g` flag, like this: `-g path/to/MITx/grader`. The path should include the `grade_*.py` part. The grader is used for comparing the output of student submissions to the output of the correct answer. If no grader is supplied, the comparison defaults to comparing the results (as strings) with `==`.
 
