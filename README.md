@@ -8,7 +8,11 @@ OverCode's public repo (in development). See http://people.csail.mit.edu/elg/ove
 Use the `src/run_pipeline.py` script from the command line to interact with the various parts of the OverCode pipeline. Run `python run_pipeline.py -h` for a description of the available arguments.
 
 ### Preprocessor
-The preprocessor actually executes student solutions using Philip guo's execution logger. From within the src directory, run the preprocessor with `python run_pipeline.py path/to/target/directory -P -n name_of_function`. Instead of `-P`, `--run-pre` will work as well. If `name_of_function` is supplied, any calls to that function within a submission will be removed when the code is tidied. The given target directory must contain two things:
+The preprocessor actually executes student solutions using Philip guo's execution logger. From within the src directory, run the preprocessor with `python run_pipeline.py path/to/target/directory -P`. Instead of `-P`, `--run-pre` will work as well.
+
+The name of the student-defined function being called can be supplied with `-n` or `--funcname`, like this: `-n name_of_function`. Any calls to the named function within a submission will be removed when the code is tidied.
+
+The given target directory must contain two things:
 
 * A subdirectory called "data", containing one Python file per student submission, and an official correct solution named `answer.py`.
 

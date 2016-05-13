@@ -23,11 +23,11 @@ parser.add_argument('basedir', metavar='TARGET_DIR',
 
 # preprocessor & arguments
 parser.add_argument('-P', '--run-pre', action='store_true',
-    help='Run the preprocessor. Must specify a function name with -n or ' +
-         '--funcname as well.')
+    help='Run the preprocessor.')
 parser.add_argument('-n', '--funcname', default='test', metavar='NAME',
-    help='The name of the function that is being tested. Required for tidying ' +
-         'student code in the preprocessor.')
+    help='The name of the function that is being tested. Calls to the named ' +
+         'function will be removed from student code during the tidying step ' +
+         'in the preprocessor.')
 
 # pipeline & arguments
 parser.add_argument('-p', '--run-pipeline', action='store_true',
