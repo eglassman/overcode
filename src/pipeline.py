@@ -10,9 +10,14 @@ import pprint
 import re
 import string
 import types
+import numpy
+from gensim import corpora, models, similarities
 
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
+
+import logging
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 ###############################################################################
 ## NOTES
@@ -1253,6 +1258,44 @@ def format_phrase_output(ordered_phrases, phrase_to_lines):
         })
     return phrases_json_format
 
+###############################################################################
+## Do Topic Modeling
+###############################################################################
+def create_LDA_results(solutions,variables):
+
+    topic_model = {}
+
+    #create a corpus of variables
+    corpus = []
+    for i,varIds in enumerate([sol['variableIDs'] for sol in solutions]):
+        document = []
+        for var_id in varIds:
+            try:
+                for entry in document:
+                    if entry[0]==(var_id-1):
+                        #print 'already in document'
+                        raise ValueError('There are multiple copies of this \
+                            variable in the solution, and we dont handle that yet')
+                document.append((var_id-1,1.0))
+            except ValueError as err:
+                print(err.args)
+        corpus.append(document)
+
+    K = 100 #number of topics
+    lda = models.ldamodel.LdaModel(corpus,num_topics=K,passes=10,alpha='auto')
+
+    topic_model['top_topics'] = lda.top_topics(corpus, num_words=10)
+
+    sol_topics = []
+    for doc in enumerate(corpus):
+        topics_for_doc = lda.get_document_topics(doc)
+        sol_topics.append(topics_for_doc)
+    topic_model['topics_per_sol'] = sol_topics
+
+    topic_model['topic_terms'] = lda.print_topics(num_topics=K, num_words=10)
+
+    return topic_model
+
 
 ###############################################################################
 ## Dump output
@@ -1421,9 +1464,12 @@ def run(folderOfData, destFolder):
     expanded_lines = format_line_output(all_lines)
     formatted_phrases = format_phrase_output(ordered_phrases, phrase_to_lines)
 
+    topic_model = create_LDA_results(solutions,variables)
+
     dumpOutput(expanded_lines, 'lines.json')
     dumpOutput(solutions, 'solutions.json')
     dumpOutput(formatted_phrases, 'phrases.json')
+    dumpOutput(topic_model, 'topic_model.json')
 
     try:
         dumpOutput(variables, 'variables.json')
