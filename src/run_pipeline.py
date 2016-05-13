@@ -32,11 +32,10 @@ parser.add_argument('-n', '--funcname', default='test', metavar='NAME',
 # pipeline & arguments
 parser.add_argument('-p', '--run-pipeline', action='store_true',
     help='Run the analysis pipeline. Will not work if the preprocessor has ' +
-         'never been run. Must specify a path to a grader with -g or ' +
-         '--grader-path as well.')
+         'never been run.')
 parser.add_argument('-g', '--grader-path',
-    help='Path to an MITx grader, including the grade_*.py part. Required ' +
-         'for checking correctness of student code in the pipeline.')
+    help='Path to an MITx grader, including the grade_*.py part. Used to ' +
+         'check correctness of student code in the pipeline.')
 
 parser.add_argument('-o', '--run-old', action='store_true',
     help='Run the old pipeline. Legacy, not maintained.')

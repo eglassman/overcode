@@ -54,7 +54,9 @@ The preprocessor adds three subdirectories to the "data" directory: `tidyData`, 
 
 ### Analysis Pipeline
 
-The pipeline is where the magic happens. From within the src directory, run the pipeline with `python run_pipeline.py path/to/target/directory -g path/to/MITx/grader -p`. Instead of `-p`, `--run-pipeline` will work as well. The target directory is the same as described above. The path to the MITx grader is exactly that - the path to the grader for the problem in question, including the `grade_*.py` part.
+The pipeline is where the magic happens. From within the src directory, run the pipeline with `python run_pipeline.py path/to/target/directory -p`. Instead of `-p`, `--run-pipeline` will work as well. The target directory is the same as described above.
+
+An MITx grader can be specified by adding the `-g` flag, like this: `-g path/to/MITx/grader`. The path should include the `grade_*.py` part. The grader is used for comparing the output of student submissions to the output of the correct answer. If no grader is supplied, the comparison defaults to comparing the results (as strings) with `==`.
 
 The pipeline reads in the pickle files output by the preprocessor. There is no need to rerun the preprocessor once those have been generated.
 
