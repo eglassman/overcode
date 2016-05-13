@@ -4,9 +4,10 @@ OverCode's public repo (in development). See http://people.csail.mit.edu/elg/ove
 ## Running the pipeline (TL;DR)
 
 1. Create a target directory. It should have two things:
-* a subdirectory called `data` containing one Python file per student submission
-* a correct solution named `answer.py`
-Note that this correct solution needs only to pass all test cases. There may be many corret solutions. Only `answer.py`'s input-output behavior on test cases will be compared to student solutions.
+    * a subdirectory called `data` containing one Python file per student submission
+    * a correct solution named `answer.py`[^1]
+
+[^1]Note that this correct solution needs only to pass all test cases. There may be many corret solutions. Only `answer.py`'s input-output behavior on test cases will be compared to student solutions.
 
 ## Running the pipeline (The Long Version)
 
