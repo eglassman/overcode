@@ -60,7 +60,8 @@ if args.run_pipeline or args.run_old:
 
     if args.run_pipeline:
         outputPath = path.join(args.basedir, 'output')
-        pipeline.set_grader(args.grader_path)
+        if args.grader_path:
+            pipeline.set_grader(args.grader_path)
         pipeline.run(datadir, outputPath)
     else:
         # The old, original pipeline. Here there be dragons.
