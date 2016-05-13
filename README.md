@@ -10,9 +10,11 @@ OverCode's public repo (in development). See http://people.csail.mit.edu/elg/ove
     * a correct solution named `answer.py` [Note: this correct solution needs only to pass all test cases. There may be many corret solutions. Only `answer.py`'s input-output behavior on test cases will be compared to student solutions.]
 2. Next to the `data` subdirectory, add a `testCase.py` file
     * each line of the file is a single test case, i.e., a Python function call, prepended by the command `print`:
-      ```print student_defined_function('foo')
-      print student_defined_function('bar')```
-    For more complicated test cases, see Notes on Test Cases below.
+
+       print student_defined_function('foo')
+       print student_defined_function('bar')
+
+For more complicated test cases, see Notes on Test Cases below.
 3. 
 
 ## Running the pipeline (The Long Version)
