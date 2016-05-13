@@ -9,7 +9,10 @@ OverCode's public repo (in development). See http://people.csail.mit.edu/elg/ove
     * one Python file per student submission
     * a correct solution named `answer.py` [Note: this correct solution needs only to pass all test cases. There may be many corret solutions. Only `answer.py`'s input-output behavior on test cases will be compared to student solutions.]
 2. Next to the `data` subdirectory, add a `testCase.py` file. Each line in this file is a single test case, i.e., a Python function call, prepended by the command `print`. See below for an example. For more complicated test cases, see Notes on Test Cases below.
-3. 
+3. Execute the solutions on the testcases
+    * In this repo's `src` directory, execute```python run_pipeline.py PATH_TO_TARGET_DIRECTORY --run-pre -n FUNCTION_NAME```
+       * `-n FUNCTION_NAME` is optional, but helps us better tidy up solutions before execution
+       * `--run-pre` means "run the preprocessor" which is what we call the code that executes and logs the behavior of solutions. It only needs to be done once, unless the test cases change.
 
 Example `testCase.py`:
 
