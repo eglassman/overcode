@@ -12,7 +12,7 @@ OverCode's public repo (in development). See http://people.csail.mit.edu/elg/ove
     * each line of the file is a single test case, i.e., a Python function call, prepended by the command `print`:
        `print student_defined_function('foo')`
        `print student_defined_function('bar')`
-   For more complicated test cases, see Notes on Test Cases below.
+    * For more complicated test cases, see Notes on Test Cases below.
 3. 
 
 ## Running the pipeline (The Long Version)
