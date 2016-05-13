@@ -63,12 +63,17 @@ def get_name(var_obj):
     return var_obj.local_name
 
 def compare_output(ordered_tests, tests_to_actual, tests_to_expected):
-
     error_vector = []
-    for (i, test) in enumerate(GRADER.tests()):
-        actual = tests_to_actual[ordered_tests[i]]
-        expected = tests_to_expected[ordered_tests[i]]
-        error_vector.append(test.compare_results(expected, actual))
+    if GRADER:
+        for (i, test) in enumerate(GRADER.tests()):
+            actual = tests_to_actual[ordered_tests[i]]
+            expected = tests_to_expected[ordered_tests[i]]
+            error_vector.append(test.compare_results(expected, actual))
+    else:
+        for test in ordered_tests:
+            actual = tests_to_actual[test]
+            expected = tests_to_expected[test]
+            error_vector.append(actual == expected)
 
     return error_vector
 
