@@ -1,12 +1,16 @@
 var fs = Npm.require('fs');
 var path = Npm.require('path');
+var fiber = Npm.require('fibers');
+var exec = Npm.require("child_process").exec;
+var os = Npm.require('os');
 
 Stacks = new Mongo.Collection('stacks');
 Phrases = new Mongo.Collection('phrases');
 RubricEntries = new Mongo.Collection('rubricEntries');
+CorrectTestResults = new Mongo.Collection('CorrectTestResults'); // tiny collection for ease of syncing...
 
-// tiny collection for ease of syncing...
-CorrectTestResults = new Mongo.Collection('CorrectTestResults');
+python_path = process.env["PWD"] + "/.python/";
+
 
 // Whether to clear and repopulate the collections when the server is
 // restarted. CAREFUL - can lead to loss of data!
@@ -40,6 +44,12 @@ var logging_path = path.join(base_path, 'overcode/logging/log.txt');
 
 ///////////////////////////////////////////////////////////////////////////////
 
+var python_execution_callback = function(error, stdout, stderr){
+    //console.log(stdout,stdout.split('\n'),stdout.split('\n').slice(1,-1).join('\n'));
+    console_error_logging(error, stdout, stderr);
+    //fiber(function () {UserQuizzes.remove({});}).run();
+};
+
 Meteor.methods({
     "writeGrade": function(grade_object) {
         var grade_file_path = logging_path;
@@ -61,6 +71,19 @@ Meteor.methods({
             var str_to_write = fields.join(',') + '\n';
             fs.appendFile(grade_file_path, str_to_write);
         }
+    },
+    executeOnTestCase: function(studentId,studentSolution,testCase){
+        fs.writeFile(python_path+'test'+studentId+'.py', studentSolution + os.EOL + testCase, 
+            function (err) {
+                if (err) throw err;
+                console.log('Done writing test.py from student code form');
+                //var path = process.env["PWD"] + "/.python/"; //repeat, sadly
+                fiber(function () {
+                    console.log('running solution on test case');
+                    var child = exec('python ' + path + 'test'+studentId+'.py',python_execution_callback);
+                }).run();;
+            }
+        );
     }
 });
 

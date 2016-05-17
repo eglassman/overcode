@@ -26,6 +26,11 @@ var sharedWithClickedStack = function(phraseID){
 
 
 Template.elena_solution.helpers({
+    "click .run-on-testcases": function(event) {
+    console.log('click .run-on-testcases')
+    event.preventDefault();
+    Meteor.call('executeOnTestCase',studentId$('#code').val(),testcase);
+  },
     "getPhraseFromID": getPhraseFromID,
     "numRaw": function(){
         return this.rawSolutions.length
