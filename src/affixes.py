@@ -8,6 +8,8 @@ null_testcase_defs = ""
 
 import_prefix = "from definitions import *\n\n"
 
+import_random = "import random\nrandom.seed(1)\n"
+
 ##### applyF_filterG
 testcase_defs_applyF_filterG = r"""
 def test_0():

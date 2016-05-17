@@ -38,7 +38,7 @@ from affixes import null_testcase_defs as testcase_defs    # simple test cases
 # a parent class definition will be supplied), the parent class definition
 # must be defined in definitions.py, and the correct import should be toggled
 # below
-from affixes import null_import_prefix as import_prefix  # no subclassing
+from affixes import import_random as import_prefix  # no subclassing
 # from affixes import import_prefix                      # subclassing
 from definitions import *
 
