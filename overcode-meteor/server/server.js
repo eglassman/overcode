@@ -12,7 +12,7 @@ CorrectTestResults = new Mongo.Collection('CorrectTestResults');
 // restarted. CAREFUL - can lead to loss of data!
 // FUTURE WORK: Safety: Only reload if collections are empty or something else
 // less dangerous
-var RELOAD = false;
+var RELOAD = true;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Define paths here
@@ -23,12 +23,12 @@ var RELOAD = false;
 // This is currently set up to enable easy switching between the authors'
 // computers, and between different data sets. The important part is the three
 // variables below, results_path, data_path, and logging_path
-var DATA_DIR_NAME = 'flatten'
-var ELENA_PATH = '/Users/elena/publicCodeRepos/'
+var DATA_DIR_NAME = 'replacementSimulation'
+var ELENA_PATH = '/Users/elena/Dropbox/'
 var STACEY_PATH = '/Users/staceyterman/'
 
-// var base_path = ELENA_PATH
-var base_path = STACEY_PATH
+var base_path = ELENA_PATH
+// var base_path = STACEY_PATH
 
 // Path to the "output" directory produced by the pipeline
 var results_path = path.join(base_path, 'overcode_data/', DATA_DIR_NAME, 'output/');
@@ -99,7 +99,7 @@ Meteor.startup(function () {
         phrases.forEach(function(phrase) {
             var highlighted_line = hljs.highlight('python', phrase.code).value;
             var subscripted_line = highlighted_line.replace(/___(\d+)/g, function(match, digit) {
-                return "<sub>" + digit + "</sub>";
+                return ""; // "<sub>" + digit + "</sub>"; removing numerical subscripts from view
             });
             phrase.code = subscripted_line;
             Phrases.insert(phrase);
