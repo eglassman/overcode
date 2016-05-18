@@ -51,7 +51,7 @@ import pg_encoder
 
 # upper-bound on the number of executed lines, in order to guard against
 # infinite loops
-MAX_EXECUTED_LINES = 3000
+MAX_EXECUTED_LINES = 90000
 
 #DEBUG = False
 DEBUG = True
@@ -114,7 +114,7 @@ else:
 ALLOWED_STDLIB_MODULE_IMPORTS = ('math', 'random', 'datetime',
                           'functools', 'itertools', 'operator', 'string',
                           'collections', 're', 'json',
-                          'heapq', 'bisect', 'copy')
+                          'heapq', 'bisect', 'copy', 'pylab', 'numpy')
 
 # whitelist of custom modules to import into OPT
 # (TODO: support modules in a subdirectory, but there are various
