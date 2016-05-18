@@ -179,8 +179,11 @@ def elena_finalizer(input_code, output_trace):
     #     namesOfReturnVariables_accumulated.extend(namesOfReturnVariables)
     # argAndReturnVarInfo['namesOfArguments'] = list(set(namesOfArguments_accumulated))
     # argAndReturnVarInfo['namesOfReturnVariables'] = list(set(namesOfReturnVariables_accumulated))
-    last_stdout = output_trace[-1]['stdout']
-    return progTraceDict, last_stdout#, argAndReturnVarInfo['namesOfArguments'], argAndReturnVarInfo['namesOfReturnVariables']
+    try:
+        last_stdout = output_trace[-1]['stdout']
+    except KeyError:
+        last_stdout = None
+    return progTraceDict, last_stdout #, argAndReturnVarInfo['namesOfArguments'], argAndReturnVarInfo['namesOfReturnVariables']
 
 def extract_var_info_from_trace(trace):
     """
