@@ -22,7 +22,19 @@ Example `testCase.py`:
 
     print student_defined_function('foo')
     print student_defined_function('bar')
- 
+
+## Friendly Utility Functions (TL;DR)
+
+If you wan to extract solutions from a csv where each row is of the form STUDENT_ID, TIME_STAMP, GRADE, NUMBER_OF_ATTEMPTS, SOLUTION, run the function `extract_solutions_final.py` on it to produce data of the form expected by the pipeline like this: 
+`python testcase_making/extract_solutions_final.py PATH_TO_CSV/CSV_NAME.CSV PATH_TO_WHERE_FOLDER_OF_DATA_WILL_BE_CREATED`
+
+Here's an example of a row in the expected CSV format:
+
+```['Jon Snow', '2016-05-16 18:21:18+00:00', '1.0', '3', 'def stock_sim(trials, price):\r\n    """\r\n    trials: integer, number of trials to run\r\n    price: float, starting price of the stock\r\n    Runs a Monte Carlo simulation, \'trials\' times. \r\n    In each trial you determine the price of the stock \r\n    at the end of 20 days, assuming that the closing price \r\n    at each day is drawn from a normal distribution with a \r\n    mean of 1.002 times the closing price of the previous \r\n    day and a standard deviation of 0.2.\r\n    Returns: \r\n    a tuple of (observed mean possible final stock price, \r\n                lower bound for the 95% confidence interval, \r\n                upper bound for the 95% confidence interval) \r\n    after 20 days over \'trials\' trials\r\n    """\r\n    def single_trial(num_days, start_price):\r\n        cur_price = start_price\r\n        for x in range(num_days):\r\n            cur_price = random.gauss(1.02*cur_price, 0.2)\r\n        return cur_price \r\n    \r\n    price_list = []\r\n    for trial in range(trials):\r\n        price_list.append(single_trial(20, price))\r\n        \r\n    mean = float(sum(price_list))/trials\r\n    std = pylab.std(price_list)\r\n    SE = std/(trials**0.5)\r\n    return (mean, mean-1.96*SE, mean+1.96*SE)']```
+
+Here's an example of calling the function (from the `src` directory):
+
+```python testcase_making/extract_solutions_final.py ~/Dropbox/overcode_data/6.0002final/q8/q8_stocksim.csv ~/Dropbox/overcode_data/6.0002final/q8/```
 
 ## Running the pipeline (The Long Version)
 
