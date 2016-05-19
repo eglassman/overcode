@@ -38,6 +38,8 @@ parser.add_argument('-g', '--grader-path',
          'check correctness of student code in the pipeline.')
 parser.add_argument('-d', '--distances', action='store_true',
     help='Include to calculate pairwise distances between all stacks.')
+parser.add_argument('-t', '--output-only', action='store_true',
+    help='Include to only calculate output during pre-processing pipeline.')
 
 parser.add_argument('-o', '--run-old', action='store_true',
     help='Run the old pipeline. Legacy, not maintained.')
@@ -51,9 +53,11 @@ testcasePath = path.join(args.basedir, 'testCase.py')
 
 # preprocess
 if args.run_pre:
+    if args.output_only: print 'only output traced'
     pipeline_preprocessing.preprocess_pipeline_data(
         datadir,
         testcasePath,
+        args.output_only,
         args.funcname
     )
 

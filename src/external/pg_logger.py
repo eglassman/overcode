@@ -1097,6 +1097,9 @@ class PGLogger(bdb.Bdb):
         # executed line, so that if you set only ONE breakpoint, OPT shows
         # the state before and after that line gets executed.
         append_to_trace = True
+        if len(self.trace)>100 and self.show_only_outputs and trace_entry['stdout']=='': #limiting total length of trace
+          append_to_trace = False
+
         if self.breakpoints:
           if not ((lineno in self.breakpoints) or (self.prev_lineno in self.breakpoints)):
             append_to_trace = False
@@ -1390,9 +1393,9 @@ def exec_script_str(script_str, raw_input_lst_json, options_json, finalizer_func
 # disables security check and returns the result of finalizer_func
 # WARNING: ONLY RUN THIS LOCALLY and never over the web, since
 # security checks are disabled
-def exec_script_str_local(script_str, raw_input_lst_json, cumulative_mode, heap_primitives, finalizer_func):
+def exec_script_str_local(script_str, raw_input_lst_json, cumulative_mode, heap_primitives, output_only, finalizer_func):
   # TODO: add py_crazy_mode option here too ...
-  logger = PGLogger(cumulative_mode, heap_primitives, False, finalizer_func, disable_security_checks=True)
+  logger = PGLogger(cumulative_mode, heap_primitives, output_only, finalizer_func, disable_security_checks=True)
 
   # TODO: refactor these NOT to be globals
   global input_string_queue

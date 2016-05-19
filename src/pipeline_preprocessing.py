@@ -3,6 +3,9 @@ from os import path
 import pickle
 import pprint
 import sys
+import time
+
+t0 = time.clock()
 
 from external import pg_logger
 from pipeline_util import ensure_folder_exists
@@ -97,7 +100,7 @@ def augment(source_dir, dest_dir):
         with open(path.join(dest_dir, filename), 'w') as f:
             f.write(import_prefix + source + testcase_defs)
 
-def logger_wrapper(source):
+def logger_wrapper(source, output_only):
     """
     Call pg_logger on the given source with the given finalizer. Only return
     the trace and stdout and drop the argument names and return variables on
@@ -109,11 +112,20 @@ def logger_wrapper(source):
         False, # raw_input_lst_json,
         False, # cumulative,
         False, # heapPrimitives,
+        output_only, #don't remember intermediate values
         elena_finalizer)
+
+    try:
+        print 'stdout'
+        print trace.keys()
+        print stdout
+        print time.clock() - t0
+    except:
+        print 'ran into problem'
 
     return trace, stdout
 
-def do_logger_run(source, testcases):
+def do_logger_run(source, testcases, output_only):
     """
     Run the logger on the given source
 
@@ -138,7 +150,7 @@ def do_logger_run(source, testcases):
         # append each test case in turn
         source_with_test = source + '\n\n' + test_case
         # Run the logger
-        trace, stdout = logger_wrapper(source_with_test)
+        trace, stdout = logger_wrapper(source_with_test, output_only)
         munged_trace = extract_var_info_from_trace(trace)
 
         # To look at the trace before extracting info, print it out to the
@@ -176,7 +188,7 @@ def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
         os.remove(pickle_path)
         raise
 
-def execute_and_pickle(source_dir, dest_dir, testcases):
+def execute_and_pickle(source_dir, dest_dir, testcases, output_only):
     """
     Wrapper function.
 
@@ -208,7 +220,7 @@ def execute_and_pickle(source_dir, dest_dir, testcases):
         # Execute
         print "Running logger on", sol_id
         try:
-            all_traces, all_outputs = do_logger_run(source, testcases)
+            all_traces, all_outputs = do_logger_run(source, testcases, output_only)
         except:
             if STOP_ON_ERROR: raise
             skipped_running.append(sol_id)
@@ -224,7 +236,7 @@ def execute_and_pickle(source_dir, dest_dir, testcases):
 
     return skipped_running, skipped_pickling
 
-def preprocess_pipeline_data(folder_of_data, testcase_path, tested_function_name):
+def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_function_name):
     # Various file paths
     tidyDataPath = path.join(folder_of_data, 'tidyData')
     augmentedPath = path.join(folder_of_data, 'augmentedData')
@@ -251,7 +263,7 @@ def preprocess_pipeline_data(folder_of_data, testcase_path, tested_function_name
     # skipped_pickling is a list of the IDs of any solutions whose program
     # trace etc. could not be serialized.
     skipped_running, skipped_pickling = execute_and_pickle(
-        augmentedPath, picklePath, testCases)
+        augmentedPath, picklePath, testCases, output_only)
 
     # Print out any skipped solutions.
     print "Solutions skipped:", len(skipped_tidy) + len(skipped_running) + len(skipped_pickling)
