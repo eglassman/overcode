@@ -1,6 +1,10 @@
 import os
 from os import path
-import pickle
+#import pickle
+try:
+   import cPickle as pickle
+except:
+   import pickle
 import pprint
 import sys
 import time
