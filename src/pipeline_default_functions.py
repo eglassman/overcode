@@ -1,3 +1,4 @@
+import sys
 import StringIO
 import pprint
 
@@ -64,6 +65,7 @@ def tidy_one(source_path, dest_path, tested_function_name):
             f.write(line+'\n')
 
 def elena_finalizer(input_code, output_trace):
+    #sys.exit(0)
     """
     Return a finalizer function that reformats the trace to only contain info
     about variables over time. Also extracts info about argument names and
@@ -98,8 +100,8 @@ def elena_finalizer(input_code, output_trace):
         a tuple of (new_trace, argument names, return variable names)
     """
 
-    with open('trace.txt', 'w') as f:
-        pprint.pprint(output_trace, f)
+    #with open('trace.txt', 'w') as f:
+    #    pprint.pprint(output_trace, f)
 
     def extractValues(dictOfVars,heap):
         dictToReturn = {}
