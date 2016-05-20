@@ -5,11 +5,16 @@ import json
 from math import log
 import os
 from os import path
-import pickle
+#import pickle
+try:
+   import cPickle as pickle
+except:
+   import pickle
 import pprint
 import re
 import string
 import types
+import sys
 
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
@@ -58,12 +63,21 @@ def get_name(var_obj):
     return var_obj.local_name
 
 def compare_output(ordered_tests, tests_to_actual, tests_to_expected):
+    print 'tests_to_expected',tests_to_expected
+    print 'tests_to_actual', tests_to_actual
     error_vector = []
     if GRADER:
+        print 'GRADER.tests()',GRADER.tests()
         for (i, test) in enumerate(GRADER.tests()):
+            print i, test
             actual = tests_to_actual[ordered_tests[i]]
             expected = tests_to_expected[ordered_tests[i]]
-            error_vector.append(test.compare_results(expected, actual))
+            print 'actual', actual
+            print 'expected', expected
+            if actual != '':
+                error_vector.append(test.compare_results(expected, actual))
+            else:
+                error_vector.append(False) #returned nothing
     else:
         for test in ordered_tests:
             actual = tests_to_actual[test]
@@ -390,29 +404,37 @@ def populate_from_pickles(all_solutions, pickleSrc):
         testcase_to_correct_output = {testcases[i]: correct_outputs[i] for i in range(len(testcases))}
         print "ANSWER:", testcase_to_correct_output
 
+    
     # Now load the rest of the solutions
     for filename in os.listdir(pickleSrc):
+        skip_flag = False #initialize flag to not skip solution
+
         solnum = filename.split('.')[0]
         if solnum == "answer":
             continue
 
         with open(path.join(pickleSrc, filename), 'r') as f:
-            unpickled = pickle.load(f)
+            try:
+                unpickled = pickle.load(f)
+            except:
+                print 'probably too large'
+                #sys.exit()
+                skip_flag = True
+        if not skip_flag:
+            testcases = unpickled['testcases']
+            ordered_outputs = unpickled['outputs']
+            traces = unpickled['traces']
 
-        testcases = unpickled['testcases']
-        ordered_outputs = unpickled['outputs']
-        traces = unpickled['traces']
+            testcase_to_trace = {testcases[i]: traces[i] for i in range(len(testcases))}
+            testcase_to_output = {testcases[i]: ordered_outputs[i] for i in range(len(testcases))}
 
-        testcase_to_trace = {testcases[i]: traces[i] for i in range(len(testcases))}
-        testcase_to_output = {testcases[i]: ordered_outputs[i] for i in range(len(testcases))}
-
-        # Make the Solution object
-        sol = Solution(solnum,
-                       testcases,
-                       testcase_to_trace,
-                       testcase_to_output,
-                       testcase_to_correct_output)
-        all_solutions.append(sol)
+            # Make the Solution object
+            sol = Solution(solnum,
+                           testcases,
+                           testcase_to_trace,
+                           testcase_to_output,
+                           testcase_to_correct_output)
+            all_solutions.append(sol)
 
     return testcase_to_correct_output
 
