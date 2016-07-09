@@ -30,6 +30,21 @@ function logAction(action, other) {
   console.log(params.join("\t\t"));
 }
 
+/** Input: a string that may or may not represent a number.
+If the string is successfully parsed as a float,
+then it will be rounded to two decimal places. If
+it is not parsed as a float, it is returned, unchanged. */
+function roundToTwoDecimalPlaces(stringThatMightBeAFloat){
+  var parsedObj = parseFloat(stringThatMightBeAFloat);
+  //if it does not parse as a float, return it unchanged
+  if (isNaN(parsedObj)) {
+    return stringThatMightBeAFloat;
+  } else {
+    //otherwise, fix it to 2 decimal places
+    return parsedObj.toFixed(2);
+  }
+}
+
 $(function() {
   //logAction("start", []);
   // Sliders for phrase and variable thresholds

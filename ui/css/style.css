@@ -82,3 +82,7 @@ pre.h3 {text-align: center;}
 #variable-list>li>small {display: inline-block; margin-left: 5px;}
 #testcase {margin-left: 20px; }
 #variables-header { padding-bottom: 10px; }
+
+.tests {
+	display: none;
+}
