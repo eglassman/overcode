@@ -127,9 +127,15 @@ Only the first two keys, `code` and `id`, are used by the view.
 * `total_num_tests`: integer, the total number of test cases.
 * `variable_ids`: list of integers indicating which variables are present in this stack. Each integer corresponds to the id of a variable in `variables.json`. Not used by the view
 
-### View
+## View
 
-The OverCode user interface is implemented in [Meteor](http://www.meteor.com/). The user interface code is located in the `overcode-meteor` directory.
+### OverCode
+
+cd into the ui folder, run a server in the folder from the commandline, and give ?src=DATASET where DATASET is a key in the config.json file.
+
+### GroverCode (OverCode for grading)
+
+The GroverCode user interface is implemented in [Meteor](http://www.meteor.com/). The user interface code is located in the `overcode-meteor` directory.
 
 #### Setting up the view
 
