@@ -94,7 +94,8 @@ var fetchExamplePyFiles = function(solutionIDs,divToAppendTo) {
   if (baseDir === undefined) return;
 
   var dataSource = baseDir + '/data/'
-  for (i = 0; i < solutionIDs.length; i++) {
+  var maxSolExamples = Math.min(solutionIDs.length,100);
+  for (i = 0; i < maxSolExamples; i++) {
     solFileName = solutionIDs[i] + ".py";
     //get solFileName
     d3.text(dataSource + solFileName, function(text) {
