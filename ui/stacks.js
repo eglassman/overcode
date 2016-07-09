@@ -317,9 +317,15 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
   var stackEnter = stack.enter().insert("div")
       .attr("class", "stack");
 
+  var stackWidthOnScreen = $($('.stack')[0]).width();
+  
   var stackBadge = stackEnter.append("span")
     .attr("class", "badge")
     .style("margin", "5px")
+    .style("width",function(d) {
+      //console.log(numTotalSolutions,stackWidthOnScreen,stackCount(d),parseInt(totalNumSolutions),stackCount(d)/parseInt(totalNumSolutions))
+      return Math.max(40,Math.ceil(stackCount(d)*stackWidthOnScreen/parseInt(numTotalSolutions))).toString()+"px";
+    })
     .text(function(d) {return stackCount(d);});
   //stackEnter.append("span").attr("class", "stackid text-muted").text(function(d) { return "id: " + d.id; });
 
