@@ -265,10 +265,29 @@ var drawVariables = function() {
   var variableItem = variableList.selectAll("li")
       .data(mergedVariables, function(d) { return d.id; });
 
+  var extractSequences = function(dsequence){
+    //console.log('prejoin',d.sequence)
+    var alltests = []
+    for (var key in dsequence) {
+      if (dsequence.hasOwnProperty(key)) {
+        if (key.startsWith("print ")){
+          var test = key.substring(6);
+        } else {
+          var test = key;
+        }
+        //console.log(test + ": " + d.sequence[key].join(' &rarr; '));
+        alltests.push(test + ": " + dsequence[key].join(' &rarr; '));
+      }
+    }
+    //console.log('alltests',alltests)
+    //var sequence = alltests.join('<br>');
+    return alltests.join('<br>');
+  };
+
   variableItem.each(function(d) {
     $(this).find("code").html(d.varName);
     //var sequence = d.varNameAndSeq.replace(/^.*?:/, "");
-    var sequence = d.sequence.join(' &rarr; ');
+    var sequence = extractSequences(d.sequence);
     $(this).find(".sequence").html(sequence);
   });
 
@@ -279,10 +298,8 @@ var drawVariables = function() {
   variableEnter.append("small")
       .attr("class", "sequence text-muted")
       .html(function(d) {
-        var testcases = Object.getOwnPropertyNames(d.sequence);
-        // console.log(testcases)
-        return d.sequence[testcases[0]].join(' &rarr; ');
-      }); //return d.varNameAndSeq.replace(/^.*?:/, "");
+        return extractSequences(d.sequence); //d.sequence[testcases[0]].join(' &rarr; ');
+      }); 
   variableEnter.on("click", function(d) {
     //logAction("clickVariableForFiltering", [d.id, d.varName]);
     filterVariables.push(d);
