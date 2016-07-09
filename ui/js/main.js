@@ -174,8 +174,12 @@ var drawSidebarList = function(type, allData, filterData) {
   filterEnter.append("span")
     .attr("class", "badge")
     .text("x");
+  var suffix_re = /___(\d+)/g;
   filterEnter.append("code").append("pre")
-    .html(function(d) {return d[codeField];});
+    .html(function(d) {return d[codeField].replace(suffix_re, function(match, digit) {
+      return "<sub>" + digit + "</sub>";
+    });
+  });
   filterEnter.selectAll(".badge")
     .on("click", function(d) {
       //logAction("unfilter", [d.id, d.code]);
@@ -212,9 +216,12 @@ var drawSidebarList = function(type, allData, filterData) {
   var remainingItem = remainingList.selectAll("li")
       .data(remainingData, function(d) {return d.id;});
 
+  var suffix_re = /___(\d+)/g;
   remainingItem.each(function(d) {
     $(this).find(".badge").html(d.count);
-    $(this).find("code").html(d[codeField]);
+    $(this).find("code").html(d[codeField].replace(suffix_re, function(match, digit) {
+        return "<sub>" + digit + "</sub>";
+      }));
   });
 
   var remainingEnter = remainingItem.enter().insert("li");
@@ -233,7 +240,7 @@ var drawSidebarList = function(type, allData, filterData) {
       .attr("class", "code")
     .append("a")
       .attr("href", "#");
-  var suffix_re = /___(\d+)/g;
+  //var suffix_re = /___(\d+)/g;
   remainingCode.append("code").append("pre")
     .html(function(d) {return d[codeField].replace(suffix_re, function(match, digit) {
           return "<sub>" + digit + "</sub>";
