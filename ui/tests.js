@@ -2,7 +2,12 @@
 //   assert.ok( 1 == "1", "Passed!" );
 // });
 
-QUnit.test('test roundToTwoDecimalPlaces', function(assert){
+QUnit.test('test renderFloatsTo2DecimalPlaces on floats', function(assert){
   var testStr = '1.019342194';
-  assert.ok( roundToTwoDecimalPlaces(testStr)>=1.01 && roundToTwoDecimalPlaces(testStr)<=1.02, "Passed!");
+  assert.ok( renderFloatsTo2DecimalPlaces(testStr)>=1.01 && renderFloatsTo2DecimalPlaces(testStr)<=1.02, "Passed!");
+});
+
+QUnit.test('test renderFloatsTo2DecimalPlaces on integers', function(assert){
+  var testStr = '1';
+  assert.ok( renderFloatsTo2DecimalPlaces(testStr)==1, "Passed!");
 });

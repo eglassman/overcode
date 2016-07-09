@@ -31,17 +31,22 @@ function logAction(action, other) {
 }
 
 /** Input: a string that may or may not represent a number.
-If the string is successfully parsed as a float,
-then it will be rounded to two decimal places. If
-it is not parsed as a float, it is returned, unchanged. */
-function roundToTwoDecimalPlaces(stringThatMightBeAFloat){
-  var parsedObj = parseFloat(stringThatMightBeAFloat);
-  //if it does not parse as a float, return it unchanged
-  if (isNaN(parsedObj)) {
+Output: if the string is a float, it only has two decimal places */
+function renderFloatsTo2DecimalPlaces(stringThatMightBeAFloat){
+  var parsedIntObj = parseInt(stringThatMightBeAFloat);
+  var parsedFloatObj = parseFloat(stringThatMightBeAFloat);
+  
+  if (isNaN(parsedFloatObj)) {
+    //if it does not parse as a float, return it unchanged
     return stringThatMightBeAFloat;
   } else {
-    //otherwise, fix it to 2 decimal places
-    return parsedObj.toFixed(2);
+    if (parsedFloatObj==parsedIntObj){
+      //if its actually really just an integer
+      return stringThatMightBeAFloat;
+    } else {
+      //otherwise, fix it to 2 decimal places
+      return parsedFloatObj.toFixed(2).toString();
+    }
   }
 }
 
@@ -290,8 +295,11 @@ var drawVariables = function() {
         } else {
           var test = key;
         }
+        var sequence_to_render = _.map(dsequence[key],function(var_value){
+          return renderFloatsTo2DecimalPlaces(var_value);
+        });
         //console.log(test + ": " + d.sequence[key].join(' &rarr; '));
-        alltests.push(test + ": " + dsequence[key].join(' &rarr; '));
+        alltests.push(test + ": " + sequence_to_render.join(' &rarr; '));
       }
     }
     //console.log('alltests',alltests)
