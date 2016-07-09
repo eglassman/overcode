@@ -233,8 +233,12 @@ var drawSidebarList = function(type, allData, filterData) {
       .attr("class", "code")
     .append("a")
       .attr("href", "#");
+  var suffix_re = /___(\d+)/g;
   remainingCode.append("code").append("pre")
-    .html(function(d) {return d[codeField];});
+    .html(function(d) {return d[codeField].replace(suffix_re, function(match, digit) {
+          return "<sub>" + digit + "</sub>";
+        });
+      }); //added calls that remove ___2 and makes it a subscript 2
   remainingCode.on("click", function(p) {
     filterData.push(p);
     //logAction("filter", [p.id, p.code]);
