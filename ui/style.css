@@ -6,7 +6,7 @@ body {
 }
 #header {
 	border-bottom: solid 1px #ddd;
-	min-height: 180px;
+	/*min-height: 180px;*/
 }
 #header-prefix { padding-right: 0px; }
 #header-container { padding-left: 25px; }
