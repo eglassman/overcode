@@ -68,6 +68,7 @@ pre.h3 {text-align: center;}
 .sidebar-list>li>a {padding: 0px; }
 #sidebar .tab-pane { border-left: solid 1px #ddd; border-right: solid 1px #ddd; }
 .ui-slider { width: 80%; margin-left: 10px;}
+.align-center {text-align: center;}
 
 #rewrite, #variables { padding: 10px; }
 #rule-list>li:hover { background-color: #ddd; }
