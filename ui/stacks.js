@@ -324,7 +324,7 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     .style("margin", "5px")
     .style("width",function(d) {
       //console.log(numTotalSolutions,stackWidthOnScreen,stackCount(d),parseInt(totalNumSolutions),stackCount(d)/parseInt(totalNumSolutions))
-      return Math.max(40,Math.ceil(stackCount(d)*stackWidthOnScreen/parseInt(numTotalSolutions))).toString()+"px";
+      return Math.max(30,Math.ceil(stackCount(d)*stackWidthOnScreen/parseInt(numTotalSolutions))).toString()+"px";
     })
     .text(function(d) {return stackCount(d);});
   //stackEnter.append("span").attr("class", "stackid text-muted").text(function(d) { return "id: " + d.id; });
