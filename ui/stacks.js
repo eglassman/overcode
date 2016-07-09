@@ -321,7 +321,7 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     .attr("class", "badge")
     .style("margin", "5px")
     .text(function(d) {return stackCount(d);});
-  stackEnter.append("span").attr("class", "stackid text-muted").text(function(d) { return "id: " + d.id; });
+  //stackEnter.append("span").attr("class", "stackid text-muted").text(function(d) { return "id: " + d.id; });
 
   var stackCode = stackEnter.append("div")
     .attr("class", function(d) {
