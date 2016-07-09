@@ -65,7 +65,7 @@ var addRule = function() {
 	if (pattern == "" || repl == "")
 		return;
 
-	logAction("rewrite", [pattern, repl]);
+	//logAction("rewrite", [pattern, repl]);
 	var newRuleID = (rules.length > 0) ? rules[rules.length - 1].id + 1 : 1;
 	var rule = {
 		id: newRuleID,
@@ -77,8 +77,8 @@ var addRule = function() {
 	$("#repl-input").val("");
 	previewing = false;
 	redraw();
-        logAction("postmerge", [mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
-        logAction("progress", [numDoneSolutions + " of " + numTotalSolutions, (100*numDoneSolutions/numTotalSolutions).toFixed(2) + "%"]);
+    //logAction("postmerge", [mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
+    //logAction("progress", [numDoneSolutions + " of " + numTotalSolutions, (100*numDoneSolutions/numTotalSolutions).toFixed(2) + "%"]);
 };
 
 var applyRules = function() {
