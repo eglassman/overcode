@@ -54,8 +54,8 @@ var stackCopy = function(stack) {
 
 var generateRewriteRule = function(downStack,upStack) {
   var diff1, diff2;
-  console.log(downStack.lines)
-  console.log(upStack.lines)
+  //console.log(downStack.lines)
+  //console.log(upStack.lines)
 
   //initialized some sets for holding phraseIDs
   //var upStackLines = new Set(upStack.lines);
@@ -65,9 +65,9 @@ var generateRewriteRule = function(downStack,upStack) {
     diff2 = _.difference(downStack.phraseIDs,upStack.phraseIDs);
     if ((diff1.length == 1) && (diff2.length == 1)) {
         //we have a potential rewrite rule!
-        console.log('potential rewrite rule:',diff1,diff2);
-        console.log(_.where(allPhrases,{id:diff1[0]})[0].code);
-        console.log(_.where(allPhrases,{id:diff2[0]})[0].code); 
+        //console.log('potential rewrite rule:',diff1,diff2);
+        //console.log(_.where(allPhrases,{id:diff1[0]})[0].code);
+        //console.log(_.where(allPhrases,{id:diff2[0]})[0].code); 
         $("#repl-input").val(_.where(allPhrases,{id:diff1[0]})[0].code);
         $("#pattern-input").val(_.where(allPhrases,{id:diff2[0]})[0].code);
     } else {
@@ -279,8 +279,8 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
     $(this).find(".code").on("click", function(){
       if (d.category == 'done') return;
 
-      logAction('read', [d.id, stackCount(d)]);
-      logAction('read members', [d.id, stackMembers(d), stackMembers(d).length]);
+      //logAction('read', [d.id, stackCount(d)]);
+      //logAction('read members', [d.id, stackMembers(d), stackMembers(d).length]);
       d.category = 'done';
       $(this).addClass("read");
 
@@ -290,19 +290,19 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
           s.category = d.category;
       });
       updateProgress();
-      logAction("progress", [numDoneSolutions + " of " + numTotalSolutions, (100*numDoneSolutions/numTotalSolutions).toFixed(2) + "%"]);
+      //logAction("progress", [numDoneSolutions + " of " + numTotalSolutions, (100*numDoneSolutions/numTotalSolutions).toFixed(2) + "%"]);
     });
     $(this).find(".code").on("dblclick", function(){
       $(this).find(".codeEx").toggle();
-      logAction('dblclick read members', [d.id, stackMembers(d).slice(0,10)]);
+      //logAction('dblclick read members', [d.id, stackMembers(d).slice(0,10)]);
     });
     $(this).find(".code").on("mousedown",function(d){
       stackPairToMerge.mouseDownStack = stackCopy(d);  //d.id;
-      logAction('mousedown', [d.id, stackCount(d)]);
+      //logAction('mousedown', [d.id, stackCount(d)]);
     });
     $(this).find(".code").on("mouseup",function(d){
       stackPairToMerge.mouseUpStack = stackCopy(d);  //d.id;
-      logAction('mouseup', [d.id, stackCount(d)]);
+      //logAction('mouseup', [d.id, stackCount(d)]);
       //console.log(stackPairToMerge.mouseUpStack.lines)
       //console.log(stackPairToMerge.mouseDownStack.lines)
         if (stackPairToMerge.mouseDownStack.id === stackPairToMerge.mouseUpStack.id) {
@@ -358,8 +358,8 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
   stackCode.on("click", function(d){
     if (d.category == 'done') return;
 
-    logAction('read', [d.id, stackCount(d)]);
-    logAction('read members', [d.id, stackMembers(d), stackMembers(d).length]);
+    //logAction('read', [d.id, stackCount(d)]);
+    //logAction('read members', [d.id, stackMembers(d), stackMembers(d).length]);
     d.category = 'done';
     $(this).addClass("read");
 
@@ -369,19 +369,19 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
         s.category = d.category;
     });
     updateProgress();
-    logAction("progress", [numDoneSolutions + " of " + numTotalSolutions, (100*numDoneSolutions/numTotalSolutions).toFixed(2) + "%"]);
+    //logAction("progress", [numDoneSolutions + " of " + numTotalSolutions, (100*numDoneSolutions/numTotalSolutions).toFixed(2) + "%"]);
   });
   stackCode.on("dblclick", function(d){
       $(this).find(".codeEx").toggle();
-       logAction('dblclick read members', [d.id, stackMembers(d).slice(0,10)]);
+       //logAction('dblclick read members', [d.id, stackMembers(d).slice(0,10)]);
   });
   stackCode.on("mousedown",function(d){
     stackPairToMerge.mouseDownStack = stackCopy(d);  //d.id;
-    logAction('mousedown', [d.id, stackCount(d)]);
+    //logAction('mousedown', [d.id, stackCount(d)]);
   });
   stackCode.on("mouseup",function(d){
     stackPairToMerge.mouseUpStack = stackCopy(d); //d.id;
-    logAction('mouseup', [d.id, stackCount(d)]);
+    //logAction('mouseup', [d.id, stackCount(d)]);
     //console.log(stackPairToMerge.mouseUpStack.lines)
     //console.log(stackPairToMerge.mouseDownStack.lines)
       if (stackPairToMerge.mouseDownStack.id === stackPairToMerge.mouseUpStack.id) {
