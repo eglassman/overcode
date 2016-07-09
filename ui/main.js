@@ -31,7 +31,7 @@ function logAction(action, other) {
 }
 
 $(function() {
-  logAction("start", []);
+  //logAction("start", []);
   // Sliders for phrase and variable thresholds
   $( "#slider-threshold-phrases" ).slider({
     range: "max",
@@ -43,7 +43,7 @@ $(function() {
         drawPhrases()
     },
     stop: function( event, ui) {
-      logAction("slider", [ui.value]);
+      //logAction("slider", [ui.value]);
       drawPhrases()
     }
   });
@@ -69,7 +69,7 @@ $(function() {
   $("#add-rule-btn").on('click', addRule);
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var activeTab = $(e.target).attr("class");
-    logAction("switchTab", [activeTab]);
+    //logAction("switchTab", [activeTab]);
     rewriting = (activeTab == "rewrite");
     if (previewing)
       drawStacks();
@@ -126,7 +126,7 @@ var loadData = function(e) {
         }, 0);
 
         redraw();
-        logAction("loaded", [baseDir, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
+        //logAction("loaded", [baseDir, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
 
       });
     });
@@ -178,7 +178,7 @@ var drawSidebarList = function(type, allData, filterData) {
     .html(function(d) {return d[codeField];});
   filterEnter.selectAll(".badge")
     .on("click", function(d) {
-      logAction("unfilter", [d.id, d.code]);
+      //logAction("unfilter", [d.id, d.code]);
       var index;
       filterData.forEach(function(filterDatum, i) {if (filterDatum.id == d.id) index = i;});
       filterData.splice(index, 1);
@@ -237,7 +237,7 @@ var drawSidebarList = function(type, allData, filterData) {
     .html(function(d) {return d[codeField];});
   remainingCode.on("click", function(p) {
     filterData.push(p);
-    logAction("filter", [p.id, p.code]);
+    //logAction("filter", [p.id, p.code]);
     redraw();
   });
 
@@ -273,9 +273,9 @@ var drawVariables = function() {
         return d.sequence[testcases[0]].join(' &rarr; ');
       }); //return d.varNameAndSeq.replace(/^.*?:/, "");
   variableEnter.on("click", function(d) {
-    logAction("clickVariableForFiltering", [d.id, d.varName]);
+    //logAction("clickVariableForFiltering", [d.id, d.varName]);
     filterVariables.push(d);
-    //logAction("filter", [p.id, p.code]);
+    ////logAction("filter", [p.id, p.code]);
     redraw();
   });
 
