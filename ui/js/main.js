@@ -310,12 +310,37 @@ var drawSidebarList = function(type, allData, filterData) {
   var remainingExit = remainingItem.exit().remove();
 };
 
+
+function originalVarNameComparator(a,b){
+  return b > a ? -1 : b < a ? 1 : 0;
+}
+
+function varNameComparator(var1,var2){
+  //console.log(var1,var2)
+  name1 = var1.varName;
+  name2 = var2.varName;
+  var name1_split = name1.split('___');
+  var name2_split = name2.split('___');
+  if (name1_split[0] !== name2_split[0]){ //if they don't have the same base name
+    a = name1_split[0];
+    b = name2_split[0];
+    return originalVarNameComparator(a,b);
+  } else { //they have the same name
+    //if they don't both have subscripts
+    if (name1_split.length !== name2_split.length) {
+      a = name1_split.length;
+      b = name2_split.length;
+      return originalVarNameComparator(a,b);
+    } else {//they both have subscripts
+      a = parseInt(name1_split[1]);
+      b = parseInt(name2_split[1]);
+      return originalVarNameComparator(a,b);
+    }
+  }
+}
+
 var drawVariables = function() {
-  mergedVariables.sort(function(a,b) {
-    a = a.varName;
-    b = b.varName;
-    return b > a ? -1 : b < a ? 1 : 0;
-  });
+  mergedVariables.sort(varNameComparator);
   var variableList = d3.select("#variable-list");
   var variableItem = variableList.selectAll("li")
       .data(mergedVariables, function(d) { return d.id; });
