@@ -298,21 +298,21 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       $(this).find(".codeEx").toggle();
       //logAction('dblclick read members', [d.id, stackMembers(d).slice(0,10)]);
     });
-    $(this).find(".code").on("mousedown",function(d){
-      stackPairToMerge.mouseDownStack = stackCopy(d);  //d.id;
-      //logAction('mousedown', [d.id, stackCount(d)]);
-    });
-    $(this).find(".code").on("mouseup",function(d){
-      stackPairToMerge.mouseUpStack = stackCopy(d);  //d.id;
-      //logAction('mouseup', [d.id, stackCount(d)]);
-      //console.log(stackPairToMerge.mouseUpStack.lines)
-      //console.log(stackPairToMerge.mouseDownStack.lines)
-        if (stackPairToMerge.mouseDownStack.id === stackPairToMerge.mouseUpStack.id) {
-            console.log('this is the same stack--no rewrite rules necessary')
-        } else {
-            generateRewriteRule(stackPairToMerge.mouseDownStack,stackPairToMerge.mouseUpStack)
-        }
-    });
+    // $(this).find(".code").on("mousedown",function(d){
+    //   stackPairToMerge.mouseDownStack = stackCopy(d);  //d.id;
+    //   //logAction('mousedown', [d.id, stackCount(d)]);
+    // });
+    // $(this).find(".code").on("mouseup",function(d){
+    //   stackPairToMerge.mouseUpStack = stackCopy(d);  //d.id;
+    //   //logAction('mouseup', [d.id, stackCount(d)]);
+    //   //console.log(stackPairToMerge.mouseUpStack.lines)
+    //   //console.log(stackPairToMerge.mouseDownStack.lines)
+    //     if (stackPairToMerge.mouseDownStack.id === stackPairToMerge.mouseUpStack.id) {
+    //         console.log('this is the same stack--no rewrite rules necessary')
+    //     } else {
+    //         generateRewriteRule(stackPairToMerge.mouseDownStack,stackPairToMerge.mouseUpStack)
+    //     }
+    // });
   });
 
   // ENTER
@@ -392,21 +392,21 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       $(this).find(".codeEx").toggle();
        //logAction('dblclick read members', [d.id, stackMembers(d).slice(0,10)]);
   });
-  stackCode.on("mousedown",function(d){
-    stackPairToMerge.mouseDownStack = stackCopy(d);  //d.id;
-    //logAction('mousedown', [d.id, stackCount(d)]);
-  });
-  stackCode.on("mouseup",function(d){
-    stackPairToMerge.mouseUpStack = stackCopy(d); //d.id;
-    //logAction('mouseup', [d.id, stackCount(d)]);
-    //console.log(stackPairToMerge.mouseUpStack.lines)
-    //console.log(stackPairToMerge.mouseDownStack.lines)
-      if (stackPairToMerge.mouseDownStack.id === stackPairToMerge.mouseUpStack.id) {
-            console.log('this is the same stack--no rewrite rules necessary')
-        } else {
-            generateRewriteRule(stackPairToMerge.mouseDownStack,stackPairToMerge.mouseUpStack)
-        }
-  });
+  // stackCode.on("mousedown",function(d){
+  //   stackPairToMerge.mouseDownStack = stackCopy(d);  //d.id;
+  //   //logAction('mousedown', [d.id, stackCount(d)]);
+  // });
+  // stackCode.on("mouseup",function(d){
+  //   stackPairToMerge.mouseUpStack = stackCopy(d); //d.id;
+  //   //logAction('mouseup', [d.id, stackCount(d)]);
+  //   //console.log(stackPairToMerge.mouseUpStack.lines)
+  //   //console.log(stackPairToMerge.mouseDownStack.lines)
+  //     if (stackPairToMerge.mouseDownStack.id === stackPairToMerge.mouseUpStack.id) {
+  //           console.log('this is the same stack--no rewrite rules necessary')
+  //       } else {
+  //           generateRewriteRule(stackPairToMerge.mouseDownStack,stackPairToMerge.mouseUpStack)
+  //       }
+  // });
 
   // EXIT
   var stackExit = stack.exit()
