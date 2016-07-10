@@ -12,10 +12,16 @@ var applyFilters = function() {
 
   // update the phrase counts
   mergedPhrases.forEach(function(phrase) { phrase.count = 0; });
+  mergedTemplates.forEach(function(phrase) { template.count = 0; });
   filteredStacks.forEach(function(stack) {
     mergedPhrases.forEach(function(phrase) {
       if (stack.phraseIDs.indexOf(phrase.id) != -1)
         phrase.count += stackCount(stack);
+    });
+    mergedTemplates.forEach(function(phrase) {
+      // if (stack.phraseIDs.indexOf(phrase.id) != -1)
+      //   phrase.count += stackCount(stack);
+      //TODO: EXTRACT TEMPLATES...
     });
   });
 };
