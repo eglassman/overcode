@@ -371,13 +371,15 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
         .style("left", "0px");
 
   stackCode.on("click", function(d){
-    if (d.category == 'done') return;
-
+    if (d.category == 'done') {
+      d.category = 'undone';
+      $(this).removeClass("read");
+    } else {
+      d.category = 'done';
+      $(this).addClass("read");
+    }
     //logAction('read', [d.id, stackCount(d)]);
     //logAction('read members', [d.id, stackMembers(d), stackMembers(d).length]);
-    d.category = 'done';
-    $(this).addClass("read");
-
     allStacks.forEach(function(s) {
     // getCurrentStack().forEach(function(s) {
       if (d.originalStacks.indexOf(s.id) != -1)
