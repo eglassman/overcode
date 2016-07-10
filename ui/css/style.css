@@ -58,7 +58,7 @@ code span.highlighted { background-color: #FFFFB2;}
 pre.h3 {text-align: center;} 
 
 /* Sidebar styling */
-#lines-header { margin-top: 0px; padding-top: 10px; text-align: center; }
+#lines-header { margin-top: 0px; padding-top: 10px; padding-left: 10px; }
 #remaining-phrases {margin-left: 10px; margin-top: 10px; overflow-y: scroll; overflow-x: hidden; }
 #variable-list {overflow-y: scroll; overflow-x: hidden; }
 .sidebar-list div.badge { width: 40px; display: inline-block; vertical-align: top;}
