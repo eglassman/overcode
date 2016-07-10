@@ -80,7 +80,11 @@ pre.h3 {text-align: center;}
 }
 #rule-list>li>span.badge:hover { cursor: pointer; background-color: black;}
 /*#variable-list>li>small {display: inline-block; margin-left: 5px;}*/
-#testcase {margin-left: 20px; }
+.testCase, .var-value-sequence {
+	/*margin-left: 20px; */
+	font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+	font-size: 10px;
+}
 #variables-header { padding-bottom: 10px; }
 
 #slider-threshold-templates, #remaining-templates {display: none;}
