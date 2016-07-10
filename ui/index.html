@@ -197,7 +197,7 @@
         <div class="tab-pane" id="variables">
           <div id="variables-header">
             <!-- <h3>variable legend</h3> -->
-            <h5>variables and their runtime values in 
+            <h5>variable runtime values in 
             <div id="filter-variables" class="btn-group" data-toggle="buttons">
               <label class="btn btn-default btn-xs active">
                 <input type="checkbox" autocomplete="off" name="var-in-correct" checked>correct
@@ -206,7 +206,11 @@
                 <input type="checkbox" autocomplete="off" name="var-in-incorrect">incorrect
               </label>
             </div>
-             solutions</h5>
+             solutions
+             <ul class="nav nav-pills nav-stacked sidebar-list" id="filter-by-stack">
+              <li><a href="#"><span class="badge">x</span>filtered by the most recently clicked stack</a></li>
+            </ul>
+            </h5>
           </div>
           <ul class="list-group" id="variable-list">
           </ul>

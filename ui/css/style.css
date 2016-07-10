@@ -47,6 +47,9 @@ div.read>pre {
 	background-color: #E8DEDE;
 	display: none;
 }
+#filter-by-stack {
+	display: none;
+}
 
 .codeEx {
     display: none;
