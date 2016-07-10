@@ -129,7 +129,13 @@ $(function() {
     $('.var-in-incorrect').toggle();
   });
   $('#filter-by-stack').click(function(e){
-    $('.variable-list-item').show();
+    //$('.variable-list-item').show();
+    if ($('input:checkbox[name=var-in-correct]:checked').length){
+      $('.var-in-correct').show();
+    }
+    if ($('input:checkbox[name=var-in-incorrect]:checked').length){
+      $('.var-in-incorrect').show();
+    }
     $('#filter-by-stack').hide();
   });
 
