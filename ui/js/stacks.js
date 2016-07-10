@@ -15,7 +15,8 @@ var initializeStacks = function() {
                   lines: solution.lines.slice(),
                   merged: false,
                   category: 'unread',
-                  originalStacks: [i+1]
+                  originalStacks: [i+1], //what is this?
+                  correct: solution.correct
                 };
     allStacks.push(stack);
     // if (solution.output in stacksByOutput) {
@@ -35,7 +36,8 @@ var stackCopy = function(stack) {
           variableIDs: stack.variableIDs.slice(),
           lines: stack.lines.slice(),
           merged: stack.merged,
-          category: stack.category
+          category: stack.category,
+          correct: stack.correct
         };
 };
 
@@ -77,7 +79,17 @@ var generateRewriteRule = function(downStack,upStack) {
 
 var stackCount = function(stack) {
   return stack.solutions.reduce(function(prev, solution) {
+    //console.log('solution.correct',solution.correct,solution.correct=='true')
     return prev + solution.count;
+  }, 0);
+};
+var stackCorrectCount = function(stack) {
+  return stack.solutions.reduce(function(prev, solution) {
+    if (solution.correct){
+      return prev + solution.count;
+    } else {
+      return prev;
+    }
   }, 0);
 };
 
@@ -169,18 +181,44 @@ var drawStacks = function() {
 
   if (filterPhrases.length == 0) {
     $("#num-filtered-stacks").hide();
+    $("#num-filtered-correct-stacks").hide();
     $("#num-filtered-solutions").hide();
+    $("#num-filtered-correct-solutions").hide();
   } else {
     $("#num-filtered-stacks").show();
+    $("#num-filtered-correct-stacks").show();
     $("#num-filtered-solutions").show();
+    $("#num-filtered-correct-solutions").show();
   }
   var numSolutionsData = filterPhrases.length > 0 ?
   [filteredStacks.reduce(function(prev, stack) {
     return prev + stackCount(stack);
   }, 0)] : [];
   var numTotalSolutionsData = [numTotalSolutions];
+  
+  var numCorrectSolutionsData = filterPhrases.length > 0 ?
+  [filteredStacks.reduce(function(prev, stack) {
+    return prev + stackCorrectCount(stack);
+  }, 0)] : [];
+  var numTotalCorrectSolutionsData = [numTotalCorrectSolutions];
+  
   var numStacksData = filterPhrases.length > 0 ? [filteredStacks.length] : [];
   var numTotalStacksData = [mergedStacks.length];
+
+  var numCorrectStacksData = filterPhrases.length > 0 ? [filteredStacks.reduce(function(prev, stack) {
+    if (stack.correct){
+      return prev + 1;
+    } else {
+      return prev;
+    }
+  }, 0)] : [];
+  var numTotalCorrectStacksData = [mergedStacks.reduce(function(prev, stack) {
+    if (stack.correct){
+      return prev + 1;
+    } else {
+      return prev;
+    }
+  }, 0)];
 
   var numSolutionsSpan = d3.select("#num-solutions").selectAll("span")
       .data(numSolutionsData);
@@ -210,6 +248,34 @@ var drawStacks = function() {
       .text(function(d) { return d; });
   numTotalSolutionsSpan.exit().remove();
 
+  var numCorrectSolutionsSpan = d3.select("#num-correct-solutions").selectAll("span")
+      .data(numCorrectSolutionsData);
+  numCorrectSolutionsSpan
+      .style("font-weight", "bold")
+      .style("color", "#c7254e")
+      .transition().duration(1000)
+      .tween("text", interpolateNumber)
+      .transition().duration(1000)
+      .style("color", "black")
+      .style("font-weight", "normal");
+  numCorrectSolutionsSpan.enter().append("span")
+      .text(function(d) { return d; });
+  numCorrectSolutionsSpan.exit().remove();
+
+  var numTotalCorrectSolutionsSpan = d3.select("#total-correct-solutions").selectAll("span")
+      .data(numTotalCorrectSolutionsData);
+  numTotalCorrectSolutionsSpan
+      .style("font-weight", "bold")
+      .style("color", "#c7254e")
+      .transition().duration(1000)
+      .tween("text", interpolateNumber)
+      .transition().duration(1000)
+      .style("color", "black")
+      .style("font-weight", "normal");
+  numTotalCorrectSolutionsSpan.enter().append("span")
+      .text(function(d) { return d; });
+  numTotalCorrectSolutionsSpan.exit().remove();
+
   var numStacksSpan = d3.select("#num-stacks").selectAll("span")
       .data(numStacksData);
   numStacksSpan
@@ -237,6 +303,34 @@ var drawStacks = function() {
   numTotalStacksSpan.enter().append("span")
       .text(function(d) { return d; });
   numTotalStacksSpan.exit().remove();
+
+  var numCorrectStacksSpan = d3.select("#num-correct-stacks").selectAll("span")
+      .data(numCorrectStacksData);
+  numCorrectStacksSpan
+      .style("font-weight", "bold")
+      .style("color", "#c7254e")
+      .transition().duration(1000)
+      .tween("text", interpolateNumber)
+      .transition().duration(1000)
+      .style("color", "black")
+      .style("font-weight", "normal");
+  numCorrectStacksSpan.enter().append("span")
+      .text(function(d) { return d; });
+  numCorrectStacksSpan.exit().remove();
+
+  var numTotalCorrectStacksSpan = d3.select("#total-correct-stacks").selectAll("span")
+      .data(numTotalCorrectStacksData);
+  numTotalCorrectStacksSpan
+      .style("font-weight", "bold")
+      .style("color", "#c7254e")
+      .transition().duration(1000)
+      .tween("text", interpolateNumber)
+      .transition().duration(1000)
+      .style("color", "black")
+      .style("font-weight", "normal");
+  numTotalCorrectStacksSpan.enter().append("span")
+      .text(function(d) { return d; });
+  numTotalCorrectStacksSpan.exit().remove();
 };
 
 var interpolateNumber = function(d) {

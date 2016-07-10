@@ -18,7 +18,7 @@ var mergedStacks = [], filteredStacks = [];
 
 var filterPhrases = [], filterTemplates = [], filterVariables = [];
 
-var numTotalSolutions = 0, numDoneSolutions = 0;
+var numTotalSolutions = 0, numTotalCorrectSolutions = 0, numDoneSolutions = 0;
 
 var previewing = false, rewriting = false;
 
@@ -173,8 +173,10 @@ var loadData = function(e) {
         // fill allStacks as single-solution stacks
         initializeStacks();
         numTotalSolutions = allStacks.reduce(function(prev, stack) {
-        // numTotalSolutions = getCurrentStack().reduce(function(prev, stack) {
           return prev + stackCount(stack);
+        }, 0);
+        numTotalCorrectSolutions = allStacks.reduce(function(prev, stack) {
+          return prev + stackCorrectCount(stack);
         }, 0);
 
         redraw();
