@@ -125,8 +125,6 @@ var loadData = function(e) {
   $("#repl-input").val("");
   previewing = false;
 
-  $("#testcase").html("");
-
   redraw();
 
   // load the new data
