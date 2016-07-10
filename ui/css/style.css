@@ -45,6 +45,7 @@ div.read>pre {
 }
 .var-in-incorrect {
 	background-color: #E8DEDE;
+	display: none;
 }
 
 .codeEx {

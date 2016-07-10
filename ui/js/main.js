@@ -122,6 +122,12 @@ $(function() {
     $('#remaining-phrases').toggle();
     $('#remaining-templates').toggle();
   });
+  $('input:checkbox[name=var-in-correct]').on('change',function(e){
+    $('.var-in-correct').toggle();
+  });
+  $('input:checkbox[name=var-in-incorrect]').on('change',function(e){
+    $('.var-in-incorrect').toggle();
+  });
 
   getBaseDir(function(error, returnedBaseDir) {
     if (error) throw error;
