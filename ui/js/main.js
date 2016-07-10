@@ -128,6 +128,10 @@ $(function() {
   $('input:checkbox[name=var-in-incorrect]').on('change',function(e){
     $('.var-in-incorrect').toggle();
   });
+  $('#filter-by-stack').click(function(e){
+    $('.variable-list-item').show();
+    $('#filter-by-stack').hide();
+  });
 
   getBaseDir(function(error, returnedBaseDir) {
     if (error) throw error;
@@ -387,7 +391,7 @@ var drawVariables = function() {
         if (varIDsInCorrectSolutions.has(d.id)){
           varClass = "var-in-correct";
         }
-        return "list-group-item " + varClass;
+        return "list-group-item variable-list-item " + varClass + ' varID-'+d.id;
       });
       //.attr("class", "list-group-item");
   var suffix_re = /___(\d+)/g;

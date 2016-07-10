@@ -371,7 +371,7 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
         d.category = 'done';
         $(this).addClass("read");
       }
-
+      $('#filter-by-stack').toggle();
       allStacks.forEach(function(s) {
       // getCurrentStack().forEach(function(s) {
         if (d.originalStacks.indexOf(s.id) != -1)
@@ -447,6 +447,16 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       d.category = 'done';
       $(this).addClass("read");
     }
+    $('#filter-by-stack').show();
+    console.log('varIDs',d.variableIDs)
+
+    // hide all variables, then show those that are in clicked solution
+    $('.variable-list-item').hide();
+    d.variableIDs.forEach(function(varID){
+      console.log($('.varID-'+varID))
+      $('.varID-'+varID).show();
+    });
+    
     //logAction('read', [d.id, stackCount(d)]);
     //logAction('read members', [d.id, stackMembers(d), stackMembers(d).length]);
     allStacks.forEach(function(s) {
