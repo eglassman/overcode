@@ -249,7 +249,8 @@ var interpolateNumber = function(d) {
 var drawStackColumn = function(selector, stackData, referencePhraseIDs, isReference) {
   var column = d3.select(selector);
   var stack = column.selectAll("div.stack")
-      .data(stackData.slice(0,200), function(d) {return d.id;});
+    .data(stackData, function(d) {return d.id;});
+    //  .data(stackData.slice(0,200), function(d) {return d.id;});
 
   // UPDATE
   stack.selectAll(".code").on("click", null);
@@ -336,8 +337,10 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       if (d.category == 'done') {
         classes += " read";
       }
+      //console.log('d.solutions[0].correct',d.solutions[0].correct)
       if (!(d.solutions[0].correct)) {
         classes += " incorrect-code"
+        // consoe.log('incorrect code:',d.id)
       }
       return classes
       // console.log(d.solutions[0].correct)
