@@ -299,16 +299,20 @@ var drawVariables = function() {
           return renderFloatsTo2DecimalPlaces(var_value);
         });
         //console.log(test + ": " + d.sequence[key].join(' &rarr; '));
-        alltests.push(test + ": " + sequence_to_render.join(' &rarr; '));
+        alltests.push("<div class='testCase col-xs-5'>"+test + "</div>" + "<div class='var-value-sequence col-xs-7'>" + sequence_to_render.join(' &rarr; ') + "</div></div>");
       }
     }
     //console.log('alltests',alltests)
     //var sequence = alltests.join('<br>');
-    return alltests.join('<br>');
+    return alltests.join('');
   };
 
   variableItem.each(function(d) {
-    $(this).find("code").html(d.varName);
+    var suffix_re = /___(\d+)/g;
+    var varNameSubScripted = d.varName.replace(suffix_re, function(match, digit) {
+      return "<sub>" + digit + "</sub>";
+    });
+    $(this).find("div.varName").html("<div class='col-xs-12'><code>"+varNameSubScripted+"</code></div");
     //var sequence = d.varNameAndSeq.replace(/^.*?:/, "");
     var sequence = extractSequences(d.sequence);
     $(this).find(".sequence").html(sequence);
@@ -316,19 +320,26 @@ var drawVariables = function() {
 
   var variableEnter = variableItem.enter().insert("li")
       .attr("class", "list-group-item");
-  variableEnter.append("code")
-      .html(function(d) { return d.varName; });
-  variableEnter.append("small")
-      .attr("class", "sequence text-muted")
+  var suffix_re = /___(\d+)/g;
+  variableEnter.append("div").attr("class", "row varName")
+      .append("div").attr("class","col-xs-12")
+      .append("code")
+      .html(function(d) { return d.varName.replace(suffix_re, function(match, digit) {
+          return "<sub>" + digit + "</sub>";
+        }); 
+      });
+  variableEnter.append("div").attr("class","row text-muted")
+      // .append("small").attr("class", "sequence text-muted")
       .html(function(d) {
         return extractSequences(d.sequence); //d.sequence[testcases[0]].join(' &rarr; ');
       }); 
-  variableEnter.on("click", function(d) {
-    //logAction("clickVariableForFiltering", [d.id, d.varName]);
-    filterVariables.push(d);
-    ////logAction("filter", [p.id, p.code]);
-    redraw();
-  });
+  // The following code is broken; TODO: fix filtering by variable
+  // variableEnter.on("click", function(d) {
+  //   //logAction("clickVariableForFiltering", [d.id, d.varName]);
+  //   filterVariables.push(d);
+  //   ////logAction("filter", [p.id, p.code]);
+  //   redraw();
+  // });
 
   variableItem.exit().remove();
 };
