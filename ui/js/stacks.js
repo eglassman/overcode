@@ -341,6 +341,11 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       if (!(d.solutions[0].correct)) {
         classes += " incorrect-code"
         // consoe.log('incorrect code:',d.id)
+      } else {
+        //console.log('variables in correct sol',d.variableIDs)
+        d.variableIDs.forEach(function(item){
+          varIDsInCorrectSolutions.add(item);
+        });
       }
       return classes
       // console.log(d.solutions[0].correct)

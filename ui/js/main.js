@@ -5,6 +5,7 @@ hljs.initHighlightingOnLoad();
 
 var allPhrases, allTemplates, allSolutions, allStacks, allVariables;
 var rules;
+var varIDsInCorrectSolutions = new Set();
 // var stacksByOutput = {
 //   // 0: [],
 //   // 12: [],
@@ -347,7 +348,15 @@ var drawVariables = function() {
   });
 
   var variableEnter = variableItem.enter().insert("li")
-      .attr("class", "list-group-item");
+      .attr("class",function(d){
+        var varClass = "var-in-incorrect";
+        //console.log('var id',d.id)
+        if (varIDsInCorrectSolutions.has(d.id)){
+          varClass = "var-in-correct";
+        }
+        return "list-group-item " + varClass;
+      });
+      //.attr("class", "list-group-item");
   var suffix_re = /___(\d+)/g;
   variableEnter.append("div").attr("class", "row varName")
       .append("div").attr("class","col-xs-12")
@@ -380,7 +389,7 @@ var redraw = function() {
   drawRules();
   drawPhrases();
   drawTemplates();
-  drawVariables();
   drawStacks();
+  drawVariables();
   updateProgress();
 };
