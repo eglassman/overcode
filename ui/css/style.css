@@ -83,6 +83,9 @@ pre.h3 {text-align: center;}
 #testcase {margin-left: 20px; }
 #variables-header { padding-bottom: 10px; }
 
+#slider-threshold-templates, #remaining-templates {display: none;}
+
+
 .tests {
 	display: none;
 }

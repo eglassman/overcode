@@ -94,6 +94,12 @@ $(function() {
     if (previewing)
       drawStacks();
   });
+  $('#filter-type-select').click(function(e){
+    $('#slider-threshold-phrases').toggle();
+    $('#slider-threshold-templates').toggle();
+    $('#remaining-phrases').toggle();
+    $('#remaining-templates').toggle();
+  });
 
   getBaseDir(function(error, returnedBaseDir) {
     if (error) throw error;
