@@ -3,7 +3,7 @@ var baseDir;
 var miscBottom = true;
 hljs.initHighlightingOnLoad();
 
-var allPhrases, allSolutions, allStacks, allVariables;
+var allPhrases, allTemplates, allSolutions, allStacks, allVariables;
 var rules;
 // var stacksByOutput = {
 //   // 0: [],
@@ -12,10 +12,10 @@ var rules;
 //   // 36: []
 // }
 
-var mergedPhrases = [], mergedVariables = [];
+var mergedPhrases = [], mergedTemplates = [], mergedVariables = [];
 var mergedStacks = [], filteredStacks = [];
 
-var filterPhrases = []; filterVariables = [];
+var filterPhrases = [], filterTemplates = [], filterVariables = [];
 
 var numTotalSolutions = 0, numDoneSolutions = 0;
 
@@ -67,12 +67,33 @@ $(function() {
       drawPhrases()
     }
   });
+  $( "#slider-threshold-templates" ).slider({
+    range: "max",
+    min: 1,
+    max: 300,
+    value: 50,
+    slide: function( event, ui ) {
+        $( "#templateThresh" ).val( ui.value );
+        drawTemplates()
+    },
+    stop: function( event, ui) {
+      //logAction("slider", [ui.value]);
+      drawTemplates()
+    }
+  });
   $( "#lineThresh" ).val( Math.ceil(parseFloat($( "#slider-threshold-phrases" ).slider( "value" ))) );
   $('#lineThresh').keyup(function () {
         //isn't selecting the correct value with this line here
         var position = parseInt($('#lineThresh').val(),10);
         $("#slider-threshold-phrases").slider("option","value", position);
-        drawPhrases()
+        drawPhrases();
+    });
+  $( "#templateThresh" ).val( Math.ceil(parseFloat($( "#slider-threshold-templates" ).slider( "value" ))) );
+  $('#templateThresh').keyup(function () {
+        //isn't selecting the correct value with this line here
+        var position = parseInt($('#templateThresh').val(),10);
+        $("#slider-threshold-templates").slider("option","value", position);
+        drawTemplates();
     });
 
   // Constrain various lists to the browser height
@@ -177,6 +198,9 @@ var hasAllVariables = function(object, variables) {
 
 var drawPhrases = function() {
   drawSidebarList("phrase", mergedPhrases, filterPhrases);
+};
+var drawTemplates = function() {
+  drawSidebarList("template", mergedTemplates, filterTemplates);
 };
 
 var drawSidebarList = function(type, allData, filterData) {
@@ -355,6 +379,7 @@ var redraw = function() {
   applyFilters();
   drawRules();
   drawPhrases();
+  drawTemplates();
   drawVariables();
   drawStacks();
   updateProgress();
