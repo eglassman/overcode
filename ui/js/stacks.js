@@ -442,8 +442,6 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
         });
       }
       return classes
-      // console.log(d.solutions[0].correct)
-      // return (d.category == 'done') ? "code read" : "code";
     });
   stackCode.html(function(d) {
       code = d.id == "miscellaneous" ?
