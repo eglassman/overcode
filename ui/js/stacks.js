@@ -448,12 +448,12 @@ var drawStackColumn = function(selector, stackData, referencePhraseIDs, isRefere
       $(this).addClass("read");
     }
     $('#filter-by-stack').show();
-    console.log('varIDs',d.variableIDs)
+    //console.log('varIDs',d.variableIDs)
 
     // hide all variables, then show those that are in clicked solution
     $('.variable-list-item').hide();
     d.variableIDs.forEach(function(varID){
-      console.log($('.varID-'+varID))
+      //console.log($('.varID-'+varID))
       $('.varID-'+varID).show();
     });
     

@@ -3,7 +3,7 @@ var baseDir;
 var miscBottom = true;
 hljs.initHighlightingOnLoad();
 
-var allPhrases, allTemplates, allSolutions, allStacks, allVariables;
+var allPhrases, allLines, allSolutions, allStacks, allVariables;
 var rules;
 var varIDsInCorrectSolutions = new Set();
 // var stacksByOutput = {
@@ -13,7 +13,7 @@ var varIDsInCorrectSolutions = new Set();
 //   // 36: []
 // }
 
-var mergedPhrases = [], mergedTemplates = [], mergedVariables = [];
+var mergedPhrases = [], mergedVariables = [];
 var mergedStacks = [], filteredStacks = [];
 
 var filterPhrases = [], filterTemplates = [], filterVariables = [];
@@ -151,7 +151,7 @@ $(function() {
 // Load initial phrases and representative solutions
 var loadData = function(e) {
   // first, empty everything
-  allStacks = []; allPhrases = []; allVariables = []; allSolutions = [];
+  allStacks = []; allPhrases = []; allLines = []; allVariables = []; allSolutions = [];
   filterPhrases = [];
   filterVariables = [];
   mergedPhrases = []; mergedStacks = []; mergedVariables = [];
@@ -180,18 +180,22 @@ var loadData = function(e) {
       d3.json(outputPath + 'variables.json', function(error, variables) {
         allVariables = variables.map(function(d) { d.merged = false; return d;});
 
-        // fill allStacks as single-solution stacks
-        initializeStacks();
-        numTotalSolutions = allStacks.reduce(function(prev, stack) {
-          return prev + stackCount(stack);
-        }, 0);
-        numTotalCorrectSolutions = allStacks.reduce(function(prev, stack) {
-          return prev + stackCorrectCount(stack);
-        }, 0);
+        d3.json(outputPath + 'lines.json', function(error, lines) {
+          allLines = lines.map(function(d){return d;});
+          console.log(allLines)
 
-        redraw();
-        //logAction("loaded", [baseDir, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
+          // fill allStacks as single-solution stacks
+          initializeStacks();
+          numTotalSolutions = allStacks.reduce(function(prev, stack) {
+            return prev + stackCount(stack);
+          }, 0);
+          numTotalCorrectSolutions = allStacks.reduce(function(prev, stack) {
+            return prev + stackCorrectCount(stack);
+          }, 0);
 
+          redraw();
+          //logAction("loaded", [baseDir, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
+        })
       });
     });
   });
@@ -218,18 +222,11 @@ var hasAllVariables = function(object, variables) {
 var drawPhrases = function() {
   drawSidebarList("phrase", mergedPhrases, filterPhrases);
 };
-var drawTemplates = function() {
-  drawSidebarList("template", mergedTemplates, filterTemplates);
-};
 
 var drawSidebarList = function(type, allData, filterData) {
   var filterContainer = "#filter-"+type+"s";
   //var codeField = type == 'phrase' ? 'code' : 'varNameAndSeq';
   var codeField = type == 'phrase' ? 'code' : 'sequence';
-  if (filterData.length == 0)
-    $("#nothing").show();
-  else
-    $("#nothing").hide();
 
    // Draw the filter items
   var filterList = d3.select(filterContainer);
