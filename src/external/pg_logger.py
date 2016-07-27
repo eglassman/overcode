@@ -1041,24 +1041,24 @@ class PGLogger(bdb.Bdb):
           e['unique_hash'] = hash_str
 
 
-        if self.show_only_outputs:
-          trace_entry = dict(line=lineno,
-                             event=event_type,
-                             func_name=tos[0].f_code.co_name,
-                             globals={},
-                             ordered_globals=[],
-                             stack_to_render=[],
-                             heap={},
-                             stdout=get_user_stdout(tos[0]))
-        else:
-          trace_entry = dict(line=lineno,
-                             event=event_type,
-                             func_name=tos[0].f_code.co_name,
-                             globals=encoded_globals,
-                             ordered_globals=ordered_globals,
-                             stack_to_render=stack_to_render,
-                             heap=self.encoder.get_heap(),
-                             stdout=get_user_stdout(tos[0]))
+        # if self.show_only_outputs:
+        #   trace_entry = dict(line=lineno,
+        #                      event=event_type,
+        #                      func_name=tos[0].f_code.co_name,
+        #                      globals={},
+        #                      ordered_globals=[],
+        #                      stack_to_render=[],
+        #                      heap={},
+        #                      stdout=get_user_stdout(tos[0]))
+        # else:
+        trace_entry = dict(line=lineno,
+                           event=event_type,
+                           func_name=tos[0].f_code.co_name,
+                           globals=encoded_globals,
+                           ordered_globals=ordered_globals,
+                           stack_to_render=stack_to_render,
+                           heap=self.encoder.get_heap(),
+                           stdout=get_user_stdout(tos[0]))
 
         # optional column numbers for greater precision
         # (only relevant in Py2crazy, a hacked CPython that supports column numbers)
