@@ -1,7 +1,20 @@
 {
     "base_dirs": {
     	"iterpower": "iterPower-edx",
-        "example2": "hangman", 
-        "example1": "6.0001_dotprod"
+        "example1": "6.0001_dotprod",
+        "compderiv": "computeDeriv",
+        "flatten": "flatten",
+        "permutation": "is_list_permutation",
+        "longestword": "longest_word",
+        "mylog": "myLog",
+        "q4_power": "q4",
+        "q4_deep": "q4_deep_reverse",
+        "giveandtake": "q5",
+        "q5_apply": "q5_applyf_fitlerg",
+        "campus": "q6_mitcampus",
+        "q7": "q7_longest_run",
+        "replacementsim": "replacementSimulation",
+        "hangman1":"hangman_Ans1",
+        "hangman2":"hangman_Ans2"
     }
 }
