@@ -181,8 +181,13 @@ var loadData = function(e) {
         allVariables = variables.map(function(d) { d.merged = false; return d;});
 
         d3.json(outputPath + 'lines.json', function(error, lines) {
-          allLines = lines.map(function(d){return d;});
+          allLines = lines;//.map(function(d){return d;});
           console.log(allLines)
+          templateSet = new Set();
+          allLines.forEach(function(item){
+            templateSet.add(item.template);
+          });
+          console.log(templateSet);
 
           // fill allStacks as single-solution stacks
           initializeStacks();
@@ -223,10 +228,21 @@ var drawPhrases = function() {
   drawSidebarList("phrase", mergedPhrases, filterPhrases);
 };
 
+var drawTemplates = function() {
+  drawSidebarList("template", [], []);
+};
+
 var drawSidebarList = function(type, allData, filterData) {
   var filterContainer = "#filter-"+type+"s";
   //var codeField = type == 'phrase' ? 'code' : 'varNameAndSeq';
-  var codeField = type == 'phrase' ? 'code' : 'sequence';
+  var codeField = '';
+  if (type=='phrase'){
+    codeField = 'code';
+  }
+  if (type=='template'){
+    codeField = 'template';
+  }
+  if (codeField == '') {alert('unknown type specified for sidebar list')};
 
    // Draw the filter items
   var filterList = d3.select(filterContainer);
@@ -265,10 +281,6 @@ var drawSidebarList = function(type, allData, filterData) {
             && d.count >= thresholdValue;
   });
   remainingData.sort(function(a,b) {
-    //a_indent = a.indent;
-    //b_indent = b.indent;
-    //if (a_indent > b_indent) return 1;
-    //if (b_indent > a_indent) return -1;
     a = a[codeField];
     b = b[codeField];
     return b > a ? -1 : b < a ? 1 : 0;
