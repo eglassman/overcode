@@ -189,6 +189,7 @@ def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
     except (pickle.PicklingError, TypeError):
         # If something goes wrong, clean up, then pass the exception back up
         # the stack
+        print 'failed to pickle sol', sol_id
         os.remove(pickle_path)
         raise
 
