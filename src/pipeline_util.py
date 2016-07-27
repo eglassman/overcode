@@ -14,5 +14,7 @@ def make_hashable(seq):
         return tuple(make_hashable(el) for el in seq)
     elif isinstance(seq, dict):
         return make_hashable(seq.items())
+    elif isinstance(seq, set):
+        return make_hashable(frozenset(seq))
     else:
         return seq
