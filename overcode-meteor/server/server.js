@@ -23,7 +23,7 @@ var RELOAD = true;
 // This is currently set up to enable easy switching between the authors'
 // computers, and between different data sets. The important part is the three
 // variables below, results_path, data_path, and logging_path
-var DATA_DIR_NAME = 'replacementSimulation'
+var DATA_DIR_NAME = '6.0002final-updated/q8'
 var ELENA_PATH = '/Users/elena/Dropbox/'
 var STACEY_PATH = '/Users/staceyterman/'
 
@@ -67,6 +67,7 @@ Meteor.methods({
 Meteor.startup(function () {
     var solutions_path = path.join(results_path, 'solutions.json');
     var phrases_path = path.join(results_path, 'phrases.json');
+    console.log(solutions_path,phrases_path)
     var solutions = JSON.parse(fs.readFileSync(solutions_path));
     var phrases = JSON.parse(fs.readFileSync(phrases_path));
 
