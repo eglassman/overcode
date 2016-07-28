@@ -1,0 +1,24 @@
+{___=___+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6])) ||| [([0, 2, 6],), ([0, 2, 6],), ([2, 4, 6],)]
+: 16,
+ ___=___+___ ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(product [2, 4, 6]), AbstractVariable(total [0, 2, 6, 12])) ||| [([0, 2, 6],), ([2, 4, 6],), ([0, 2, 6],)]
+: 3,
+
+
+template
+___=0
+:
+{___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [(['myNaN'],)]
+: 213,
+ ___=0 ||| (AbstractVariable(total [0, 2, 6, 12]),) ||| [([],)]
+: 1}
+
+
+
+template
+___=___+___[___]*___[___]
+:
+{___=___+___[___]*___[___] ||| (AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(total [0, 2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i [0, 1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i [0, 1, 2])) ||| [([0, 2, 6],), ([0, 2, 6],), ([[1, 2, 3], [1, 2, 3], [1, 2, 3]],), ([0, 1, 2],), ([[2, 2, 2], [2, 2, 2], [2, 2, 2]],), ([0, 1, 2],)]
+: 37,
+ ___=___+___[___]*___[___] ||| (AbstractVariable(product___3 [2, 6, 12]), AbstractVariable(product___3 [2, 6, 12]), AbstractVariable(listA [[1, 2, 3]]), AbstractVariable(i___3 [1, 2]), AbstractVariable(listB [[2, 2, 2]]), AbstractVariable(i___3 [1, 2])) ||| [([2, 6],), ([2, 6],), ([[1, 2, 3], [1, 2, 3]],), ([1, 2],), ([[2, 2, 2], [2, 2, 2]],), ([1, 2],)]
+: 2}
+None
