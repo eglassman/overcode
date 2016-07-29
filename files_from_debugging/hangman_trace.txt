@@ -1,0 +1,6391 @@
+{
+  "code": "def getGuessedWord(secretWord,lettersGuessed):\n    def isCharInList(cr,lst):\n        for l in lst:\n            if cr==l:\n                return True\n        return False\n    answer=''\n    pos=0\n    while pos<len(secretWord):\n        cr=secretWord[pos]\n        if isCharInList(cr,lettersGuessed):\n            answer+=cr\n        else:\n            answer+='_ '\n        pos+=1\n    return answer\n\ngetGuessedWord('tiger','aeiou')", 
+  "trace": [
+    {
+      "ordered_globals": [], 
+      "stdout": "", 
+      "func_name": "<module>", 
+      "stack_to_render": [], 
+      "globals": {}, 
+      "heap": {}, 
+      "line": 1, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "<module>", 
+      "stack_to_render": [], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ]
+      }, 
+      "line": 18, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ]
+      }, 
+      "line": 1, 
+      "event": "call"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ]
+      }, 
+      "line": 2, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "isCharInList": [
+              "REF", 
+              2
+            ], 
+            "secretWord": "tiger"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 7, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "answer": "", 
+            "lettersGuessed": "aeiou", 
+            "isCharInList": [
+              "REF", 
+              2
+            ], 
+            "secretWord": "tiger"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 8, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "answer": "", 
+            "lettersGuessed": "aeiou", 
+            "isCharInList": [
+              "REF", 
+              2
+            ], 
+            "secretWord": "tiger", 
+            "pos": 0
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 9, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "answer": "", 
+            "lettersGuessed": "aeiou", 
+            "isCharInList": [
+              "REF", 
+              2
+            ], 
+            "secretWord": "tiger", 
+            "pos": 0
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 10, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 11, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 2, 
+      "event": "call"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "o"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "o"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 6, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 2, 
+          "encoded_locals": {
+            "__return__": false, 
+            "cr": "t", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f2", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 6, 
+      "event": "return"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 14, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 0, 
+            "answer": "_ ", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 15, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 9, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "t", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 10, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 11, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 2, 
+      "event": "call"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "cr": "i", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 5, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 3, 
+          "encoded_locals": {
+            "__return__": true, 
+            "cr": "i", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f3", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 5, 
+      "event": "return"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ ", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 12, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 1, 
+            "answer": "_ i", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 15, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 9, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "i", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 10, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 11, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 2, 
+      "event": "call"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "o"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "o"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 6, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 4, 
+          "encoded_locals": {
+            "__return__": false, 
+            "cr": "g", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f4", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 6, 
+      "event": "return"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 14, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 2, 
+            "answer": "_ i_ ", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 15, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 9, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "g", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 10, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 11, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 5, 
+          "encoded_locals": {
+            "cr": "e", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f5", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 2, 
+      "event": "call"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 5, 
+          "encoded_locals": {
+            "cr": "e", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f5", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 5, 
+          "encoded_locals": {
+            "cr": "e", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f5", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 5, 
+          "encoded_locals": {
+            "cr": "e", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f5", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 5, 
+          "encoded_locals": {
+            "cr": "e", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f5", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 5, 
+          "encoded_locals": {
+            "cr": "e", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f5", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 5, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 5, 
+          "encoded_locals": {
+            "__return__": true, 
+            "cr": "e", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f5", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 5, 
+      "event": "return"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ ", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 12, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 3, 
+            "answer": "_ i_ e", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 15, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 9, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "e", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 10, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 11, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 2, 
+      "event": "call"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "a"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "e"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "i"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "o"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "o"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 6, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "isCharInList", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }, 
+        {
+          "frame_id": 6, 
+          "encoded_locals": {
+            "__return__": false, 
+            "cr": "r", 
+            "lst": "aeiou", 
+            "l": "u"
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "isCharInList", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [
+            1
+          ], 
+          "unique_hash": "isCharInList_f6", 
+          "ordered_varnames": [
+            "cr", 
+            "lst", 
+            "l", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 6, 
+      "event": "return"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 14, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 4, 
+            "answer": "_ i_ e_ ", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 15, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 5, 
+            "answer": "_ i_ e_ ", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 9, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 5, 
+            "answer": "_ i_ e_ ", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 16, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "getGuessedWord", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 5, 
+            "__return__": "_ i_ e_ ", 
+            "answer": "_ i_ e_ ", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 16, 
+      "event": "return"
+    }, 
+    {
+      "ordered_globals": [
+        "getGuessedWord"
+      ], 
+      "stdout": "", 
+      "func_name": "<module>", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "lettersGuessed": "aeiou", 
+            "secretWord": "tiger", 
+            "pos": 5, 
+            "__return__": "_ i_ e_ ", 
+            "answer": "_ i_ e_ ", 
+            "cr": "r", 
+            "isCharInList": [
+              "REF", 
+              2
+            ]
+          }, 
+          "is_highlighted": false, 
+          "is_parent": true, 
+          "func_name": "getGuessedWord", 
+          "is_zombie": true, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "getGuessedWord_f1_p_z", 
+          "ordered_varnames": [
+            "secretWord", 
+            "lettersGuessed", 
+            "isCharInList", 
+            "answer", 
+            "pos", 
+            "cr", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "getGuessedWord": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "getGuessedWord(secretWord, lettersGuessed)", 
+          null
+        ], 
+        "2": [
+          "FUNCTION", 
+          "isCharInList(cr, lst)", 
+          1
+        ]
+      }, 
+      "line": 18, 
+      "event": "return"
+    }
+  ]
+}

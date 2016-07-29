@@ -1,0 +1,746 @@
+{
+  "code": "def dotProduct(listA,listB):\n    tot=0\n    for i in range(len(listA)):\n        tot+=listA[i]*listB[i]\n    return tot\n\ndotProduct([1, 2, 3],[4, 5, 6])", 
+  "trace": [
+    {
+      "ordered_globals": [], 
+      "stdout": "", 
+      "func_name": "<module>", 
+      "stack_to_render": [], 
+      "globals": {}, 
+      "heap": {}, 
+      "line": 1, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "<module>", 
+      "stack_to_render": [], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ]
+      }, 
+      "line": 7, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 1, 
+      "event": "call"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 2, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 0, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 0, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 0, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 0, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 4, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 1, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 4, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 1, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 14, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 2, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 14, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 4, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 2, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 32, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 3, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 2, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 32, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 5, 
+      "event": "step_line"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "dotProduct", 
+      "stack_to_render": [
+        {
+          "frame_id": 1, 
+          "encoded_locals": {
+            "i": 2, 
+            "__return__": 32, 
+            "listA": [
+              "REF", 
+              2
+            ], 
+            "tot": 32, 
+            "listB": [
+              "REF", 
+              3
+            ]
+          }, 
+          "is_highlighted": true, 
+          "is_parent": false, 
+          "func_name": "dotProduct", 
+          "is_zombie": false, 
+          "parent_frame_id_list": [], 
+          "unique_hash": "dotProduct_f1", 
+          "ordered_varnames": [
+            "listA", 
+            "listB", 
+            "tot", 
+            "i", 
+            "__return__"
+          ]
+        }
+      ], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ], 
+        "2": [
+          "LIST", 
+          1, 
+          2, 
+          3
+        ], 
+        "3": [
+          "LIST", 
+          4, 
+          5, 
+          6
+        ]
+      }, 
+      "line": 5, 
+      "event": "return"
+    }, 
+    {
+      "ordered_globals": [
+        "dotProduct"
+      ], 
+      "stdout": "", 
+      "func_name": "<module>", 
+      "stack_to_render": [], 
+      "globals": {
+        "dotProduct": [
+          "REF", 
+          1
+        ]
+      }, 
+      "heap": {
+        "1": [
+          "FUNCTION", 
+          "dotProduct(listA, listB)", 
+          null
+        ]
+      }, 
+      "line": 7, 
+      "event": "return"
+    }
+  ]
+}
