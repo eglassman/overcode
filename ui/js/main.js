@@ -168,39 +168,34 @@ var loadData = function(e) {
   // load the new data
   // TODO: is there a JS equivalent of os.path.join?
   var outputPath = baseDir + '/output/';
-  d3.json(outputPath + 'phrases.json', function(error, phrases) {
-    allPhrases = phrases.map(function(d) {
-      d.merged = false;
-      return d;
-    });
+  console.log(outputPath);
+  d3.json(outputPath + 'expressions.json', function(error, expressions) {
+    console.log(error);
+    allExpressions = expressions;
 
-    d3.json(outputPath + 'solutions.json', function(error, solutions) {
+    d3.json(outputPath + 'solutions_temp.json', function(error, solutions) {
+      console.log(error);
       allSolutions = solutions;
 
-      d3.json(outputPath + 'variables.json', function(error, variables) {
-        allVariables = variables.map(function(d) { d.merged = false; return d;});
+      d3.json(outputPath + 'subtrees.json', function(error, subtrees) {
+        console.log(error);
+        //allVariables = variables.map(function(d) { d.merged = false; return d;});
+        allSubtrees = subtrees;
+        
+        console.log('allExpressions',allExpressions);
+        console.log('allSolutions',allSolutions);
+        console.log('allSubtrees',allSubtrees);
 
-        d3.json(outputPath + 'lines.json', function(error, lines) {
-          allLines = lines;//.map(function(d){return d;});
-          console.log(allLines)
-          templateSet = new Set();
-          allLines.forEach(function(item){
-            templateSet.add(item.template);
-          });
-          console.log(templateSet);
+        //initializeStacks();
+        numTotalSolutions = allSolutions.length;
+        numTotalSubtrees = allSubtrees.length;
+        numTotalExpressions = allExpressions.length;
+        console.log('numTotalSolutions, numTotalExpressions, numTotalSubtrees');
+        console.log(numTotalSolutions, numTotalExpressions, numTotalSubtrees);
+        console.log('testing')
 
-          // fill allStacks as single-solution stacks
-          initializeStacks();
-          numTotalSolutions = allStacks.reduce(function(prev, stack) {
-            return prev + stackCount(stack);
-          }, 0);
-          numTotalCorrectSolutions = allStacks.reduce(function(prev, stack) {
-            return prev + stackCorrectCount(stack);
-          }, 0);
-
-          redraw();
-          //logAction("loaded", [baseDir, mergedStacks.length, mergedPhrases.length, mergedVariables.length]);
-        })
+        redraw();
+        
       });
     });
   });

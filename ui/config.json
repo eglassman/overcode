@@ -15,6 +15,7 @@
         "q7": "q7_longest_run",
         "replacementsim": "replacementSimulation",
         "hangman1":"hangman_Ans1",
-        "hangman2":"hangman_Ans2"
+        "hangman2":"hangman_Ans2",
+        "latex": "latex"
     }
 }
