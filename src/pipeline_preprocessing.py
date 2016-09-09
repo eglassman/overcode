@@ -38,8 +38,8 @@ from pipeline_default_functions import elena_finalizer
 # If a problem has custom test case definitions, they must be defined as a
 # string in affixes.py. The import below changed accordingly and toggled. See
 # affixes.py for some examples.
-from affixes import null_testcase_defs as testcase_defs    # simple test cases
-# from affixes import CHANGE_ME as testcase_defs           # custom test cases
+# from affixes import null_testcase_defs as testcase_defs    # simple test cases
+from affixes import testcase_defs_gustavo as testcase_defs           # custom test cases
 
 # If a problem involves subclassing (i.e., student submissions can assume that
 # a parent class definition will be supplied), the parent class definition
