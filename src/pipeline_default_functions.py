@@ -9,6 +9,17 @@ from external import (
 
 DEBUG_PRINTS = True
 
+# def tidy_one_json(source_path, dest_path, tested_function_name):
+#     tidy_up_buffer = StringIO.StringIO()
+#     pythonTidy.tidy_up(source_path,tidy_up_buffer)
+#     new_src = remove_comments.minify(tidy_up_buffer.getvalue())
+
+#     print 'new_src'
+#     print new_src
+
+#     import sys
+#     sys.exit(1)
+
 def tidy_one(source_path, dest_path, tested_function_name):
     """
     Tidy up a single python file - remove comments, normalize spacing, remove

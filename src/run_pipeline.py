@@ -28,6 +28,8 @@ parser.add_argument('-n', '--funcname', default='test', metavar='NAME',
     help='The name of the function that is being tested. Calls to the named ' +
          'function will be removed from student code during the tidying step ' +
          'in the preprocessor.')
+parser.add_argument('-j', '--json',
+    help='The name of the JSON file that contains the python files and tests.')
 
 # pipeline & arguments
 parser.add_argument('-p', '--run-pipeline', action='store_true',
@@ -51,6 +53,19 @@ datadir = path.join(args.basedir, 'data')
 
 testcasePath = path.join(args.basedir, 'testCase.py')
 
+if args.json:
+    jsonPath = path.join(args.basedir, args.json)
+    print jsonPath
+else:
+    jsonPath = False
+
+print datadir
+print testcasePath
+
+
+#import sys
+#sys.exit(1)
+
 # preprocess
 if args.run_pre:
     if args.output_only: print 'only output traced'
@@ -58,7 +73,8 @@ if args.run_pre:
         datadir,
         testcasePath,
         args.output_only,
-        args.funcname
+        args.funcname,
+        jsonPath
     )
 
 if args.run_pipeline or args.run_old:

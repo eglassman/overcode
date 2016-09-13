@@ -8,6 +8,7 @@ except:
 import pprint
 import sys
 import time
+import json
 
 t0 = time.clock()
 
@@ -16,7 +17,7 @@ from pipeline_util import ensure_folder_exists
 
 # Trace info extractor, tidier, finalizer
 from pipeline_default_functions import extract_var_info_from_trace
-from pipeline_default_functions import tidy_one
+from pipeline_default_functions import tidy_one #, tidy_one_json
 from pipeline_default_functions import elena_finalizer
 
 ###############################################################################
@@ -51,6 +52,44 @@ from definitions import *
 
 # Whether or not to halt execution if an error is encountered in student code
 STOP_ON_ERROR = False
+
+def tidy_json(source_dir, json_name, tested_function_name):
+
+    source_json = path.join(source_dir, json_name)
+    before_path = path.join(source_dir, 'before.py')
+    after_path = path.join(source_dir, 'after.py')
+
+    skipped = []
+
+    with open(source_json) as data_file:
+        solutions = json.load(data_file)
+
+    for id,sol in enumerate(solutions):
+        
+        for key in sol.keys():
+            if key.startswith('py_') or key=='before' or key=='after':
+                print "Tidying ",id,key
+                print sol[key]
+        
+                with open(before_path,'w') as before_file:
+                    before_file.write(sol[key])
+
+                try:
+                    tidy_one(before_path, after_path, tested_function_name)
+                    
+                    with open(after_path) as after_file:
+                        sol['tidy_'+key] = after_file.read()
+                        print id,key, ' tidied'
+                        print sol['tidy_'+key]
+                except:
+                    if STOP_ON_ERROR: raise
+                    skipped.append(str(id)+key)
+
+    with open(source_json,'w') as data_file:
+        json.dump(solutions, data_file)
+
+    return skipped
+
 
 def tidy(source_dir, dest_dir, tested_function_name):
     """
@@ -87,6 +126,22 @@ def tidy(source_dir, dest_dir, tested_function_name):
             if STOP_ON_ERROR: raise
             skipped.append(sol_id)
     return skipped
+
+def augment_json(source_dir, json_name):
+    source_json = path.join(source_dir, json_name)
+    before_path = path.join(source_dir, 'before.py')
+    after_path = path.join(source_dir, 'after.py')
+
+    with open(source_json) as data_file:
+        solutions = json.load(data_file)
+
+    for id,sol in enumerate(solutions):    
+        for key in sol.keys():
+            if key.startswith('tidy_'):
+                sol['augmented_'+key] = import_prefix + sol[key] + testcase_defs
+
+    with open(source_json,'w') as data_file:
+        json.dump(solutions, data_file)
 
 def augment(source_dir, dest_dir):
     """
@@ -241,7 +296,7 @@ def execute_and_pickle(source_dir, dest_dir, testcases, output_only):
 
     return skipped_running, skipped_pickling
 
-def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_function_name):
+def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_function_name, json_path):
     # Various file paths
     tidyDataPath = path.join(folder_of_data, 'tidyData')
     augmentedPath = path.join(folder_of_data, 'augmentedData')
@@ -256,11 +311,16 @@ def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_
     # solutions to tidyDataPath. skipped_tidy is a list of the IDs (i.e.,
     # filenames) of any solutions that caused the tidier to raise an
     # exception. Errors are usually caused by syntax errors in the solution.
-    skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
+    if json_path:
+        skipped_tidy = tidy_json(folder_of_data, json_path, tested_function_name)
 
-    # Augment data. Reads in tidied solutions from tidyDataPath, writes
-    # solutions with extra code to augmentedPath.
-    augment(tidyDataPath, augmentedPath)
+        augment_json(folder_of_data, json_path)
+    else:
+        skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
+
+        # Augment data. Reads in tidied solutions from tidyDataPath, writes
+        # solutions with extra code to augmentedPath.
+        augment(tidyDataPath, augmentedPath)
 
     # Runs the logger on the augmented data and serializes the results to
     # pickle files, stored in the picklePath directory. skipped_running is
