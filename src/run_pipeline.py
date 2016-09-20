@@ -80,7 +80,10 @@ if args.run_pre:
 if args.run_pipeline or args.run_old:
 
     if args.run_pipeline:
-        outputPath = path.join(args.basedir, 'output')
+        if args.json:
+            outputPath = jsonPath
+        else:
+            outputPath = path.join(args.basedir, 'output')
         if args.grader_path:
             pipeline.set_grader(args.grader_path)
         pipeline.run(datadir, outputPath, args.distances)
