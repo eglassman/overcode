@@ -30,6 +30,8 @@ parser.add_argument('-n', '--funcname', default='test', metavar='NAME',
          'in the preprocessor.')
 parser.add_argument('-j', '--json',
     help='The name of the JSON file that contains the python files and tests.')
+parser.add_argument('-u', '--just', action='store_true',
+    help='Just running the pre-processor on json, not the pipeline. Only works with -json.')
 
 # pipeline & arguments
 parser.add_argument('-p', '--run-pipeline', action='store_true',
@@ -55,13 +57,16 @@ testcasePath = path.join(args.basedir, 'testCase.py')
 
 if args.json:
     jsonPath = path.join(args.basedir, args.json)
-    print jsonPath
+    print 'jsonPath', jsonPath
+    print 'args.just',args.just
 else:
     jsonPath = False
 
-print datadir
-print testcasePath
+#print datadir
+#print testcasePath
 
+# if not args.just:
+#     args.just = False
 
 #import sys
 #sys.exit(1)
@@ -74,7 +79,8 @@ if args.run_pre:
         testcasePath,
         args.output_only,
         args.funcname,
-        jsonPath
+        jsonPath,
+        args.just
     )
 
 if args.run_pipeline or args.run_old:

@@ -18,6 +18,7 @@ import sys
 
 from external import identifier_renamer
 from pipeline_util import ensure_folder_exists, make_hashable
+from pipeline_default_functions import extract_sequences
 
 ###############################################################################
 ## NOTES
@@ -525,26 +526,6 @@ def find_template_info_scores(abstracts):
 ###############################################################################
 ## Variable sequence extraction
 ###############################################################################
-def extract_single_sequence(column):
-    """
-    Collapse a trace of variable values over time into a single sequence.
-
-    column: list of (step, value) pairs
-    returns: list of values
-    """
-
-    valueSequence = []
-    for elem in column:
-        val = elem[1]
-        if val != 'myNaN' and val != None:
-
-            if valueSequence == []:
-                valueSequence.append(val)
-            else:
-                lastval = valueSequence[-1]
-                if val != lastval:
-                    valueSequence.append(val)
-    return valueSequence
 
 class ExtractionException(Exception):
     """No __return__ value in a solution trace."""
@@ -565,28 +546,7 @@ def extract_sequences_single_sol(sol, correct_abstracts):
 
     # maps the name of a local variable to a sequence. A sequence is a
     # dictionary mapping testcase strings to lists of values.
-    sequences = {}
-    for (testcase, trace) in sol.testcase_to_trace.iteritems():
-        # Extract the sequences for each variable in the trace
-        for localVarName, localVarData in trace.iteritems():
-            if localVarName.startswith('__'):
-                continue
-            try:
-                sequence = extract_single_sequence(localVarData)
-            except RuntimeError:
-                # Encountered a recursion error when comparing values. There
-                # was some sort of self-referential list? Couldn't figure out
-                # why so just catching the error.
-                raise ExtractionException('Error extracting sequence')
-
-            if (len(sequence) == 1 and
-                    type(sequence[0]) is str and
-                    sequence[0].startswith('__')):
-                # Just a function definition
-                continue
-            if localVarName not in sequences:
-                sequences[localVarName] = {}
-            sequences[localVarName][testcase] = sequence
+    sequences = extract_sequences(sol.testcase_to_trace)
 
     # Create VariableInstance objects and associate them with Solutions.
     # For correct solutions, also collect the variables into AbstractVariables

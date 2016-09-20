@@ -19,6 +19,7 @@ from pipeline_util import ensure_folder_exists
 from pipeline_default_functions import extract_var_info_from_trace
 from pipeline_default_functions import tidy_one #, tidy_one_json
 from pipeline_default_functions import elena_finalizer
+from pipeline_default_functions import extract_sequences
 
 ###############################################################################
 ## NOTES
@@ -61,6 +62,7 @@ def tidy_json(source_dir, json_name, tested_function_name):
 
     skipped = []
 
+    print 'opening json now'
     with open(source_json) as data_file:
         solutions = json.load(data_file)
 
@@ -69,7 +71,7 @@ def tidy_json(source_dir, json_name, tested_function_name):
         for key in sol.keys():
             if key.startswith('py_') or key=='before' or key=='after':
                 print "Tidying ",id,key
-                print sol[key]
+                #print sol[key]
         
                 with open(before_path,'w') as before_file:
                     before_file.write(sol[key])
@@ -80,13 +82,14 @@ def tidy_json(source_dir, json_name, tested_function_name):
                     with open(after_path) as after_file:
                         sol['tidy_'+key] = after_file.read()
                         print id,key, ' tidied'
-                        print sol['tidy_'+key]
+                        #print sol['tidy_'+key]
                 except:
                     if STOP_ON_ERROR: raise
                     skipped.append(str(id)+key)
 
+    print 'writing back out to json now'
     with open(source_json,'w') as data_file:
-        json.dump(solutions, data_file)
+        json.dump(solutions, data_file, indent=4)
 
     return skipped
 
@@ -132,6 +135,7 @@ def augment_json(source_dir, json_name):
     before_path = path.join(source_dir, 'before.py')
     after_path = path.join(source_dir, 'after.py')
 
+    print 'opening json now'
     with open(source_json) as data_file:
         solutions = json.load(data_file)
 
@@ -140,8 +144,9 @@ def augment_json(source_dir, json_name):
             if key.startswith('tidy_'):
                 sol['augmented_'+key] = import_prefix + sol[key] + testcase_defs
 
+    print 'writing back out to json now'
     with open(source_json,'w') as data_file:
-        json.dump(solutions, data_file)
+        json.dump(solutions, data_file, indent=4)
 
 def augment(source_dir, dest_dir):
     """
@@ -200,6 +205,7 @@ def do_logger_run(source, testcases, output_only):
     # RuntimeErrors from max recursion depth exceeded.
     # Make sure all_traces is the right length if this happens!
 
+    print 'running do_logger_run'
     all_traces = []
     all_outputs = []
     for i, test_case in enumerate(testcases):
@@ -247,6 +253,57 @@ def do_pickle(sol_id, all_traces, all_outputs, testcases, dest_dir):
         print 'failed to pickle sol', sol_id
         os.remove(pickle_path)
         raise
+
+def execute_json(source_dir, json_name, testCases, output_only, just_preprocessing):
+    """
+    Wrapper function.
+    Runs pg_logger on each item in json file, stores results back in the json file.
+    """
+    source_json = path.join(source_dir, json_name)
+    skipped_running = []
+
+    print 'opening json now'
+    with open(source_json) as data_file:
+        solutions = json.load(data_file)
+
+    for id,sol in enumerate(solutions):    
+        for key in sol.keys():
+            if key.startswith('augmented_'):
+                source = sol[key]
+                
+                # Execute
+                print "Running logger on", id
+                try:
+                    all_traces, all_outputs = do_logger_run(source, testCases, output_only)
+
+                    testcase_to_output = {testCases[i]: all_outputs[i] for i in range(len(testCases))}
+                    sol['testcase_to_output'] = testcase_to_output
+                    if not just_preprocessing:
+                        sol[key+'_traces'] = all_traces
+                        sol[key+'_outputs'] = all_outputs
+                        sol['testcases'] = testCases
+                    else:
+                        #consolidate
+                        testcase_to_trace = {testCases[i]: all_traces[i] for i in range(len(testCases))}
+                        sequences = extract_sequences(testcase_to_trace)
+                        sol['sequences'] = sequences
+
+                    if id % 100 == 0:
+                        print sol.keys()#['all_traces']
+                        for key in sol.keys():
+                            print key,':'
+                            print pprint.pprint(sol[key])
+                        #raw_input("Press Enter to continue...")
+                except:
+                    if STOP_ON_ERROR: raise
+                    skipped_running.append(id)
+                    print 'skipping ',id
+        
+    print 'writing back out to json now'            
+    with open(source_json,'w') as data_file:
+        json.dump(solutions, data_file, indent=4)
+
+    return skipped_running
 
 def execute_and_pickle(source_dir, dest_dir, testcases, output_only):
     """
@@ -296,7 +353,7 @@ def execute_and_pickle(source_dir, dest_dir, testcases, output_only):
 
     return skipped_running, skipped_pickling
 
-def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_function_name, json_path):
+def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_function_name, json_path, bool_just_preprocessing):
     # Various file paths
     tidyDataPath = path.join(folder_of_data, 'tidyData')
     augmentedPath = path.join(folder_of_data, 'augmentedData')
@@ -316,8 +373,8 @@ def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_
 
         augment_json(folder_of_data, json_path)
 
-        skipped_running, skipped_pickling = execute_and_pickle_json(
-            folder_of_data, json_path, picklePath, testCases, output_only)
+        skipped_pickling = []
+        skipped_running = execute_json(folder_of_data, json_path, testCases, output_only, bool_just_preprocessing)
     else:
         skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
 

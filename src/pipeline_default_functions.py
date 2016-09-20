@@ -235,3 +235,50 @@ def extract_var_info_from_trace(trace):
         # TODO: See above - do we need the step?
         results[var] = [(s, trace[s]['locals'].get(var, 'myNaN')) for s in xrange(numSteps)]
     return results
+
+def extract_single_sequence(column):
+    """
+    Collapse a trace of variable values over time into a single sequence.
+
+    column: list of (step, value) pairs
+    returns: list of values
+    """
+
+    valueSequence = []
+    for elem in column:
+        val = elem[1]
+        if val != 'myNaN' and val != None:
+
+            if valueSequence == []:
+                valueSequence.append(val)
+            else:
+                lastval = valueSequence[-1]
+                if val != lastval:
+                    valueSequence.append(val)
+    return valueSequence
+
+def extract_sequences(testcase_to_trace):
+    sequences = {}
+    for (testcase, trace) in testcase_to_trace.iteritems():
+        # Extract the sequences for each variable in the trace
+        for localVarName, localVarData in trace.iteritems():
+            if localVarName.startswith('__'):
+                continue
+            try:
+                sequence = extract_single_sequence(localVarData)
+            except RuntimeError:
+                # Encountered a recursion error when comparing values. There
+                # was some sort of self-referential list? Couldn't figure out
+                # why so just catching the error.
+                raise ExtractionException('Error extracting sequence')
+
+            if (len(sequence) == 1 and
+                    type(sequence[0]) is str and
+                    sequence[0].startswith('__')):
+                # Just a function definition
+                continue
+            if localVarName not in sequences:
+                sequences[localVarName] = {}
+            sequences[localVarName][testcase] = sequence
+
+    return sequences
