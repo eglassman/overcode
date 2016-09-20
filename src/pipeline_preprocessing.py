@@ -67,9 +67,11 @@ def tidy_json(source_dir, json_name, tested_function_name):
         solutions = json.load(data_file)
 
     for id,sol in enumerate(solutions):
-        
+        if not sol['IsFixed']:
+            print 'not fixed, skipping'
+            continue #if its not fixed, dont modify it
         for key in sol.keys():
-            if key.startswith('py_') or key=='before' or key=='after':
+            if key.startswith('py_') or key=='before' or key=='SynthesizedAfter':
                 print "Tidying ",id,key
                 #print sol[key]
         
@@ -266,7 +268,11 @@ def execute_json(source_dir, json_name, testCases, output_only, just_preprocessi
     with open(source_json) as data_file:
         solutions = json.load(data_file)
 
-    for id,sol in enumerate(solutions):    
+    print 'Before adding execution data, size of solutions is ',sys.getsizeof(solutions)
+    for id,sol in enumerate(solutions): 
+        print id,' size of solutions is ',sys.getsizeof(solutions) 
+        #sol['failed'] = 'REMOVED'  
+        sequence_comparison = {}
         for key in sol.keys():
             if key.startswith('augmented_'):
                 source = sol[key]
@@ -277,27 +283,48 @@ def execute_json(source_dir, json_name, testCases, output_only, just_preprocessi
                     all_traces, all_outputs = do_logger_run(source, testCases, output_only)
 
                     testcase_to_output = {testCases[i]: all_outputs[i] for i in range(len(testCases))}
-                    sol['testcase_to_output'] = testcase_to_output
+                    sol[key+'_testcase_to_output'] = testcase_to_output
+                    
+                    #consolidate
+                    testcase_to_trace = {testCases[i]: all_traces[i] for i in range(len(testCases))}
+                    sequences = extract_sequences(testcase_to_trace)
+
                     if not just_preprocessing:
                         sol[key+'_traces'] = all_traces
                         sol[key+'_outputs'] = all_outputs
                         sol['testcases'] = testCases
-                    else:
-                        #consolidate
-                        testcase_to_trace = {testCases[i]: all_traces[i] for i in range(len(testCases))}
-                        sequences = extract_sequences(testcase_to_trace)
-                        sol['sequences'] = sequences
+                        sol[key+'_sequences'] = sequences
 
-                    if id % 100 == 0:
-                        print sol.keys()#['all_traces']
-                        for key in sol.keys():
-                            print key,':'
-                            print pprint.pprint(sol[key])
-                        #raw_input("Press Enter to continue...")
+                    sequence_comparison[key+'_sequences'] = sequences
+
+                    #remove augmented solution, unnecessary now
+                    sol[key] = 'REMOVED'
+
                 except:
                     if STOP_ON_ERROR: raise
                     skipped_running.append(id)
                     print 'skipping ',id
+
+        # merged_keys = []
+        # for key in sequence_comparison.keys():
+        #     merged_keys = list(set(sequence_comparison[key].keys() + merged_keys))
+
+        # print 'sequence_comparison',sequence_comparison
+        # print 'merged_keys',merged_keys
+
+        # for var_key in merged_keys:
+        #     print 'var_key',var_key
+        #     for prog_ver_key in sequence_comparison.keys():
+        #         print 'prog_ver_key',prog_ver_key
+
+        # sys.exit()
+
+        if id % 100 == 0:
+            print sol.keys()#['all_traces']
+            for key in sol.keys():
+                print key,':'
+                print pprint.pprint(sol[key])
+            #raw_input("Press Enter to continue...")
         
     print 'writing back out to json now'            
     with open(source_json,'w') as data_file:
