@@ -315,6 +315,9 @@ def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_
         skipped_tidy = tidy_json(folder_of_data, json_path, tested_function_name)
 
         augment_json(folder_of_data, json_path)
+
+        skipped_running, skipped_pickling = execute_and_pickle_json(
+            folder_of_data, json_path, picklePath, testCases, output_only)
     else:
         skipped_tidy = tidy(folder_of_data, tidyDataPath, tested_function_name)
 
@@ -322,13 +325,13 @@ def preprocess_pipeline_data(folder_of_data, testcase_path, output_only, tested_
         # solutions with extra code to augmentedPath.
         augment(tidyDataPath, augmentedPath)
 
-    # Runs the logger on the augmented data and serializes the results to
-    # pickle files, stored in the picklePath directory. skipped_running is
-    # a list of the IDs of any solutions that the logger could not run.
-    # skipped_pickling is a list of the IDs of any solutions whose program
-    # trace etc. could not be serialized.
-    skipped_running, skipped_pickling = execute_and_pickle(
-        augmentedPath, picklePath, testCases, output_only)
+        # Runs the logger on the augmented data and serializes the results to
+        # pickle files, stored in the picklePath directory. skipped_running is
+        # a list of the IDs of any solutions that the logger could not run.
+        # skipped_pickling is a list of the IDs of any solutions whose program
+        # trace etc. could not be serialized.
+        skipped_running, skipped_pickling = execute_and_pickle(
+            augmentedPath, picklePath, testCases, output_only)
 
     # Print out any skipped solutions.
     print "Solutions skipped:", len(skipped_tidy) + len(skipped_running) + len(skipped_pickling)
